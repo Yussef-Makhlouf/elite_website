@@ -9,12 +9,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css">
     <!-- GSAP Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/TextPlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollToPlugin.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/page-transitions.js"></script>
     <script src="js/particles.js"></script>
@@ -253,153 +257,173 @@
         <!-- Services Section -->
         <section id="services" class="py-16 bg-gray-50 arabic-pattern">
             <div class="container mx-auto px-4">
-                <div class="section-header">
+                <div class="section-header section-header-decorated">
+                    <div class="corner-ornament corner-top-right"></div>
+                    <div class="corner-ornament corner-top-left"></div>
+                    <div class="corner-ornament corner-bottom-right"></div>
+                    <div class="corner-ornament corner-bottom-left"></div>
                     <h2 class="section-title fade-in-heading arabic-decoration" data-text="خدماتنا">خدماتنا</h2>
                     <div class="section-divider"></div>
                     <p class="section-subtitle">نقدم مجموعة متكاملة من الخدمات لتنظيم وإدارة الفعاليات بمختلف أنواعها، مع التركيز على الجودة والاحترافية والإبداع.</p>
                 </div>
                 
-                <div class="service-cards-container">
-                    <div class="service-card hover-card">
-                        <div class="service-icon">
-                            <i class="fas fa-calendar-alt"></i>
+                <!-- Swiper for Services -->
+                <div class="swiper services-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="service-card hover-card arabic-card">
+                                <div class="service-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <h3 class="service-title">تنظيم المؤتمرات</h3>
+                                <p>تنظيم وإدارة المؤتمرات المحلية والدولية بمختلف أحجامها، مع توفير كافة التجهيزات والخدمات اللوجستية.</p>
+                                <ul class="service-list">
+                                    <li class="service-list-item">
+                                        <i class="fas fa-circle service-list-icon"></i>
+                                        <span>إدارة التسجيل والحضور</span>
+                                    </li>
+                                    <li class="service-list-item">
+                                        <i class="fas fa-circle service-list-icon"></i>
+                                        <span>توفير أنظمة الصوت والإضاءة</span>
+                                    </li>
+                                    <li class="service-list-item">
+                                        <i class="fas fa-circle service-list-icon"></i>
+                                        <span>توفير خدمات الترجمة الفورية</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <h3 class="service-title">تنظيم المؤتمرات</h3>
-                        <p>تنظيم وإدارة المؤتمرات المحلية والدولية بمختلف أحجامها، مع توفير كافة التجهيزات والخدمات اللوجستية.</p>
-                        <ul class="service-list">
-                            <li class="service-list-item">
-                                <i class="fas fa-circle service-list-icon"></i>
-                                <span>إدارة التسجيل والحضور</span>
-                            </li>
-                            <li class="service-list-item">
-                                <i class="fas fa-circle service-list-icon"></i>
-                                <span>توفير أنظمة الصوت والإضاءة</span>
-                            </li>
-                            <li class="service-list-item">
-                                <i class="fas fa-circle service-list-icon"></i>
-                                <span>توفير خدمات الترجمة الفورية</span>
-                            </li>
-                        </ul>
+                        
+                        <div class="swiper-slide">
+                            <div class="service-card hover-card arabic-card">
+                                <div class="service-icon">
+                                    <i class="fas fa-store"></i>
+                                </div>
+                                <h3 class="service-title">تنظيم المعارض</h3>
+                                <p>تصميم وتنفيذ وإدارة المعارض التجارية والفنية والثقافية بمختلف أحجامها وأنواعها.</p>
+                                <ul class="service-list">
+                                    <li class="service-list-item">
+                                        <i class="fas fa-circle service-list-icon"></i>
+                                        <span>تصميم وبناء الأجنحة</span>
+                                    </li>
+                                    <li class="service-list-item">
+                                        <i class="fas fa-circle service-list-icon"></i>
+                                        <span>إدارة المساحات والمشاركين</span>
+                                    </li>
+                                    <li class="service-list-item">
+                                        <i class="fas fa-circle service-list-icon"></i>
+                                        <span>توفير الخدمات اللوجستية</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="swiper-slide">
+                            <div class="service-card hover-card arabic-card">
+                                <div class="service-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h3 class="service-title">الفعاليات الكبرى</h3>
+                                <p>تنظيم وإدارة الفعاليات الكبرى مثل المهرجانات، والفعاليات الثقافية، والفعاليات الترفيهية.</p>
+                                <ul class="service-list">
+                                    <li class="service-list-item">
+                                        <i class="fas fa-circle service-list-icon"></i>
+                                        <span>التخطيط الشامل للفعاليات</span>
+                                    </li>
+                                    <li class="service-list-item">
+                                        <i class="fas fa-circle service-list-icon"></i>
+                                        <span>إدارة الحشود والسلامة</span>
+                                    </li>
+                                    <li class="service-list-item">
+                                        <i class="fas fa-circle service-list-icon"></i>
+                                        <span>توفير الأنشطة والفقرات</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="swiper-slide">
+                            <div class="service-card hover-card arabic-card">
+                                <div class="service-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <h3 class="service-title">فعاليات الشركات</h3>
+                                <p>تنظيم الفعاليات الخاصة بالشركات مثل إطلاق المنتجات، والاحتفالات السنوية، والمناسبات الخاصة.</p>
+                                <ul class="service-list">
+                                    <li class="service-list-item">
+                                        <i class="fas fa-circle service-list-icon"></i>
+                                        <span>تخطيط وتنفيذ الفعاليات</span>
+                                    </li>
+                                    <li class="service-list-item">
+                                        <i class="fas fa-circle service-list-icon"></i>
+                                        <span>تصميم الديكورات والأجواء</span>
+                                    </li>
+                                    <li class="service-list-item">
+                                        <i class="fas fa-circle service-list-icon"></i>
+                                        <span>توفير خدمات الضيافة</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="swiper-slide">
+                            <div class="service-card hover-card arabic-card">
+                                <div class="service-icon">
+                                    <i class="fas fa-bullhorn"></i>
+                                </div>
+                                <h3 class="service-title">التسويق والعلاقات العامة</h3>
+                                <p>تقديم خدمات التسويق والعلاقات العامة للفعاليات، وإدارة الحملات الإعلامية والتواصل مع وسائل الإعلام.</p>
+                                <ul class="service-list">
+                                    <li class="service-list-item">
+                                        <i class="fas fa-circle service-list-icon"></i>
+                                        <span>التسويق الرقمي للفعاليات</span>
+                                    </li>
+                                    <li class="service-list-item">
+                                        <i class="fas fa-circle service-list-icon"></i>
+                                        <span>إدارة العلاقات الإعلامية</span>
+                                    </li>
+                                    <li class="service-list-item">
+                                        <i class="fas fa-circle service-list-icon"></i>
+                                        <span>تصميم الهوية البصرية</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="swiper-slide">
+                            <div class="service-card hover-card arabic-card">
+                                <div class="service-icon">
+                                    <i class="fas fa-cogs"></i>
+                                </div>
+                                <h3 class="service-title">الخدمات اللوجستية</h3>
+                                <p>توفير الخدمات اللوجستية المتكاملة للفعاليات، من النقل والإقامة إلى التجهيزات التقنية والضيافة.</p>
+                                <ul class="service-list">
+                                    <li class="service-list-item">
+                                        <i class="fas fa-circle service-list-icon"></i>
+                                        <span>توفير خدمات النقل والإقامة</span>
+                                    </li>
+                                    <li class="service-list-item">
+                                        <i class="fas fa-circle service-list-icon"></i>
+                                        <span>تجهيز المعدات التقنية</span>
+                                    </li>
+                                    <li class="service-list-item">
+                                        <i class="fas fa-circle service-list-icon"></i>
+                                        <span>خدمات الضيافة والتموين</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="service-card hover-card">
-                        <div class="service-icon">
-                            <i class="fas fa-store"></i>
-                        </div>
-                        <h3 class="service-title">تنظيم المعارض</h3>
-                        <p>تصميم وتنفيذ وإدارة المعارض التجارية والفنية والثقافية بمختلف أحجامها وأنواعها.</p>
-                        <ul class="service-list">
-                            <li class="service-list-item">
-                                <i class="fas fa-circle service-list-icon"></i>
-                                <span>تصميم وبناء الأجنحة</span>
-                            </li>
-                            <li class="service-list-item">
-                                <i class="fas fa-circle service-list-icon"></i>
-                                <span>إدارة المساحات والمشاركين</span>
-                            </li>
-                            <li class="service-list-item">
-                                <i class="fas fa-circle service-list-icon"></i>
-                                <span>توفير الخدمات اللوجستية</span>
-                            </li>
-                        </ul>
-                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination services-pagination"></div>
                     
-                    <div class="service-card hover-card">
-                        <div class="service-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h3 class="service-title">الفعاليات الكبرى</h3>
-                        <p>تنظيم وإدارة الفعاليات الكبرى مثل المهرجانات، والفعاليات الثقافية، والفعاليات الترفيهية.</p>
-                        <ul class="service-list">
-                            <li class="service-list-item">
-                                <i class="fas fa-circle service-list-icon"></i>
-                                <span>التخطيط الشامل للفعاليات</span>
-                            </li>
-                            <li class="service-list-item">
-                                <i class="fas fa-circle service-list-icon"></i>
-                                <span>إدارة الحشود والسلامة</span>
-                            </li>
-                            <li class="service-list-item">
-                                <i class="fas fa-circle service-list-icon"></i>
-                                <span>توفير الأنشطة والفقرات</span>
-                            </li>
-                        </ul>
+                    <!-- Add Navigation -->
+                    <div class="swiper-button-next services-button-next">
+                        <i class="fas fa-chevron-right"></i>
                     </div>
-                    
-                    <div class="service-card hover-card">
-                        <div class="service-icon">
-                            <i class="fas fa-building"></i>
-                        </div>
-                        <h3 class="service-title">فعاليات الشركات</h3>
-                        <p>تنظيم الفعاليات الخاصة بالشركات مثل إطلاق المنتجات، والاحتفالات السنوية، والمناسبات الخاصة.</p>
-                        <ul class="service-list">
-                            <li class="service-list-item">
-                                <i class="fas fa-circle service-list-icon"></i>
-                                <span>تخطيط وتنفيذ الفعاليات</span>
-                            </li>
-                            <li class="service-list-item">
-                                <i class="fas fa-circle service-list-icon"></i>
-                                <span>تصميم الديكورات والأجواء</span>
-                            </li>
-                            <li class="service-list-item">
-                                <i class="fas fa-circle service-list-icon"></i>
-                                <span>توفير خدمات الضيافة</span>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div class="service-card hover-card">
-                        <div class="service-icon">
-                            <i class="fas fa-bullhorn"></i>
-                        </div>
-                        <h3 class="service-title">التسويق والعلاقات العامة</h3>
-                        <p>تقديم خدمات التسويق والعلاقات العامة للفعاليات، وإدارة الحملات الإعلامية والتواصل مع وسائل الإعلام.</p>
-                        <ul class="service-list">
-                            <li class="service-list-item">
-                                <i class="fas fa-circle service-list-icon"></i>
-                                <span>التسويق الرقمي للفعاليات</span>
-                            </li>
-                            <li class="service-list-item">
-                                <i class="fas fa-circle service-list-icon"></i>
-                                <span>إدارة العلاقات الإعلامية</span>
-                            </li>
-                            <li class="service-list-item">
-                                <i class="fas fa-circle service-list-icon"></i>
-                                <span>تصميم الهوية البصرية</span>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div class="service-card hover-card">
-                        <div class="service-icon">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                        <h3 class="service-title">الخدمات اللوجستية</h3>
-                        <p>توفير الخدمات اللوجستية المتكاملة للفعاليات، من النقل والإقامة إلى التجهيزات التقنية والضيافة.</p>
-                        <ul class="service-list">
-                            <li class="service-list-item">
-                                <i class="fas fa-circle service-list-icon"></i>
-                                <span>توفير خدمات النقل والإقامة</span>
-                            </li>
-                            <li class="service-list-item">
-                                <i class="fas fa-circle service-list-icon"></i>
-                                <span>تجهيز المعدات التقنية</span>
-                            </li>
-                            <li class="service-list-item">
-                                <i class="fas fa-circle service-list-icon"></i>
-                                <span>خدمات الضيافة والتموين</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="flex justify-center mt-8">
-                    <div class="service-scroll-dots">
-                        <span class="service-dot active"></span>
-                        <span class="service-dot"></span>
-                        <span class="service-dot"></span>
-                        <span class="service-dot"></span>
-                        <span class="service-dot"></span>
+                    <div class="swiper-button-prev services-button-prev">
+                        <i class="fas fa-chevron-left"></i>
                     </div>
                 </div>
                 
@@ -605,65 +629,130 @@
                     <p class="section-subtitle">نفخر بثقة عملائنا بنا وبالخدمات التي نقدمها، وهذه بعض آرائهم في تجربتهم معنا.</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 card-container">
-                    <div class="testimonial-card hover-card arabic-card">
-                        <div class="flex items-center mb-4">
-                            <div class="testimonial-avatar">
-                                <span>أ</span>
-                            </div>
-                            <div>
-                                <h4 class="testimonial-name">أحمد السالم</h4>
-                                <p class="testimonial-position">مدير التسويق - شركة تقنية</p>
+                <!-- Swiper for Testimonials -->
+                <div class="swiper testimonials-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="testimonial-card hover-card arabic-card">
+                                <div class="flex items-center mb-4">
+                                    <div class="testimonial-avatar">
+                                        <span>أ</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="testimonial-name">أحمد السالم</h4>
+                                        <p class="testimonial-position">مدير التسويق - شركة تقنية</p>
+                                    </div>
+                                </div>
+                                <p class="mb-4 arabic-quote">"تعاملنا مع شركة Elite Arabia في تنظيم مؤتمرنا السنوي، وكانت التجربة رائعة من حيث الاحترافية والتنظيم والاهتمام بالتفاصيل، مما أدى إلى نجاح المؤتمر بشكل كبير."</p>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
                             </div>
                         </div>
-                        <p class="mb-4 arabic-quote">"تعاملنا مع شركة Elite Arabia في تنظيم مؤتمرنا السنوي، وكانت التجربة رائعة من حيث الاحترافية والتنظيم والاهتمام بالتفاصيل، مما أدى إلى نجاح المؤتمر بشكل كبير."</p>
-                        <div class="testimonial-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                        
+                        <div class="swiper-slide">
+                            <div class="testimonial-card hover-card arabic-card">
+                                <div class="flex items-center mb-4">
+                                    <div class="testimonial-avatar">
+                                        <span>س</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="testimonial-name">سارة الفهد</h4>
+                                        <p class="testimonial-position">مدير الفعاليات - جامعة سعودية</p>
+                                    </div>
+                                </div>
+                                <p class="mb-4 arabic-quote">"استعنا بخدمات Elite Arabia في تنظيم فعاليات أسبوع الابتكار في الجامعة، وكان التنظيم على أعلى مستوى من الاحترافية، والتزموا بكافة المواعيد والمتطلبات."</p>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="swiper-slide">
+                            <div class="testimonial-card hover-card arabic-card">
+                                <div class="flex items-center mb-4">
+                                    <div class="testimonial-avatar">
+                                        <span>م</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="testimonial-name">محمد العتيبي</h4>
+                                        <p class="testimonial-position">مدير عام - شركة استثمارية</p>
+                                    </div>
+                                </div>
+                                <p class="mb-4 arabic-quote">"أشكر فريق Elite Arabia على تنظيمهم الرائع لحفل إطلاق مشروعنا الجديد، لقد كانوا محترفين في كل شيء، من التخطيط إلى التنفيذ، وساهموا في إنجاح الحفل بشكل كبير."</p>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- إضافة شهادات إضافية لتعزيز التمرير -->
+                        <div class="swiper-slide">
+                            <div class="testimonial-card hover-card arabic-card">
+                                <div class="flex items-center mb-4">
+                                    <div class="testimonial-avatar">
+                                        <span>ن</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="testimonial-name">نورة القحطاني</h4>
+                                        <p class="testimonial-position">مديرة التسويق - شركة عقارية</p>
+                                    </div>
+                                </div>
+                                <p class="mb-4 arabic-quote">"تعاملنا مع شركة Elite Arabia في تنظيم معرضنا العقاري، وكان المستوى أكثر من رائع. الفريق متعاون ومحترف والنتائج تجاوزت توقعاتنا."</p>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="swiper-slide">
+                            <div class="testimonial-card hover-card arabic-card">
+                                <div class="flex items-center mb-4">
+                                    <div class="testimonial-avatar">
+                                        <span>ع</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="testimonial-name">عبدالله الشمري</h4>
+                                        <p class="testimonial-position">مؤسس - شركة ناشئة</p>
+                                    </div>
+                                </div>
+                                <p class="mb-4 arabic-quote">"ببساطة، فريق Elite Arabia هم أفضل منظمي فعاليات تعاملت معهم. محترفون ومبدعون ويعملون بروح الفريق. أوصي بهم بشدة لأي فعالية مهمة."</p>
+                                <div class="testimonial-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="testimonial-card hover-card arabic-card">
-                        <div class="flex items-center mb-4">
-                            <div class="testimonial-avatar">
-                                <span>س</span>
-                            </div>
-                            <div>
-                                <h4 class="testimonial-name">سارة الفهد</h4>
-                                <p class="testimonial-position">مدير الفعاليات - جامعة سعودية</p>
-                            </div>
-                        </div>
-                        <p class="mb-4 arabic-quote">"استعنا بخدمات Elite Arabia في تنظيم فعاليات أسبوع الابتكار في الجامعة، وكان التنظيم على أعلى مستوى من الاحترافية، والتزموا بكافة المواعيد والمتطلبات."</p>
-                        <div class="testimonial-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination testimonials-pagination"></div>
                     
-                    <div class="testimonial-card hover-card arabic-card">
-                        <div class="flex items-center mb-4">
-                            <div class="testimonial-avatar">
-                                <span>م</span>
-                            </div>
-                            <div>
-                                <h4 class="testimonial-name">محمد العتيبي</h4>
-                                <p class="testimonial-position">مدير عام - شركة استثمارية</p>
-                            </div>
-                        </div>
-                        <p class="mb-4 arabic-quote">"أشكر فريق Elite Arabia على تنظيمهم الرائع لحفل إطلاق مشروعنا الجديد، لقد كانوا محترفين في كل شيء، من التخطيط إلى التنفيذ، وساهموا في إنجاح الحفل بشكل كبير."</p>
-                        <div class="testimonial-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
+                    <!-- Add Navigation for large screens -->
+                    <div class="swiper-button-next testimonials-button-next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="swiper-button-prev testimonials-button-prev">
+                        <i class="fas fa-chevron-left"></i>
                     </div>
                 </div>
                 
@@ -710,7 +799,7 @@
                                     </div>
                                     <div>
                                         <h4 class="contact-title">الهاتف</h4>
-                                        <p>+966 12 XXX XXXX</p>
+                                        <p>0559770606</p>
                                         <p>+966 5X XXX XXXX</p>
                                     </div>
                                 </div>
@@ -721,7 +810,7 @@
                                     </div>
                                     <div>
                                         <h4 class="contact-title">البريد الإلكتروني</h4>
-                                        <p>info@events-ksa.com</p>
+                                        <p>ceo@elitearabia.sa</p>
                                         <p>support@events-ksa.com</p>
                                     </div>
                                 </div>
@@ -859,11 +948,11 @@
                         </li>
                         <li class="footer-contact-item">
                             <i class="fas fa-phone-alt footer-contact-icon"></i>
-                            <span>+966 12 XXX XXXX</span>
+                            <span>0559770606</span>
                         </li>
                         <li class="footer-contact-item">
                             <i class="fas fa-envelope footer-contact-icon"></i>
-                            <span>info@events-ksa.com</span>
+                            <span>ceo@elitearabia.sa</span>
                         </li>
                     </ul>
                 </div>
@@ -884,29 +973,108 @@
     </div>
 
     <script>
-        // Mobile menu toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const closeMenu = document.querySelector('.mobile-menu-close');
-        
-        if (menuToggle && mobileMenu && closeMenu) {
-            menuToggle.addEventListener('click', () => {
-                mobileMenu.classList.add('active');
-            });
+        // Initializing Swiper for Services
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const closeMenu = document.querySelector('.mobile-menu-close');
             
-            closeMenu.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-            });
-        }
-        
-        // Scrolled header
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+            if (menuToggle && mobileMenu && closeMenu) {
+                menuToggle.addEventListener('click', () => {
+                    mobileMenu.classList.add('active');
+                });
+                
+                closeMenu.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                });
             }
+            
+            // Scrolled header
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Initialize Services Swiper
+            const servicesSwiper = new Swiper('.services-swiper', {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                grabCursor: true,
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.services-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.services-button-next',
+                    prevEl: '.services-button-prev',
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 30,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 40,
+                    },
+                }
+            });
+
+            // Initialize Testimonials Swiper
+            const testimonialsSwiper = new Swiper('.testimonials-swiper', {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                grabCursor: true,
+                loop: true,
+                effect: 'coverflow',
+                coverflowEffect: {
+                    rotate: 0,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 2,
+                    slideShadows: false,
+                },
+                autoplay: {
+                    delay: 6000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.testimonials-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.testimonials-button-next',
+                    prevEl: '.testimonials-button-prev',
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 30,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 40,
+                    },
+                }
+            });
         });
     </script>
 </body>
