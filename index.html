@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Arabia | تنظيم وإدارة الفعاليات في السعودية</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- GSAP Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollToPlugin.min.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/page-transitions.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/magnetic-buttons.js"></script>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-logo">
+            <div class="arabic-symbol"></div>
+            <span>Elite Arabia</span>
+        </div>
+        <div class="preloader-container">
+            <div class="preloader-progress"></div>
+        </div>
+        <div class="preloader-pattern"></div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container mx-auto px-4">
+            <div class="navbar">
+                <div class="logo">Elite Arabia</div>
+                
+                <nav class="nav-links hidden md:flex">
+                    <a href="#home" class="nav-link navbar-item">الرئيسية</a>
+                    <a href="#about" class="nav-link navbar-item">من نحن</a>
+                    <a href="#services" class="nav-link navbar-item">خدماتنا</a>
+                    <a href="#vision" class="nav-link navbar-item">رؤية 2030</a>
+                    <a href="#projects" class="nav-link navbar-item">مشاريعنا</a>
+                    <a href="#contact" class="nav-link navbar-item">تواصل معنا</a>
+                </nav>
+               
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <button class="mobile-menu-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#home" class="nav-link">الرئيسية</a>
+        <a href="#about" class="nav-link">من نحن</a>
+        <a href="#services" class="nav-link">خدماتنا</a>
+        <a href="#vision" class="nav-link">رؤية 2030</a>
+        <a href="#projects" class="nav-link">مشاريعنا</a>
+        <a href="#contact" class="nav-link">تواصل معنا</a>
+    </div>
+    
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-overlay"></div>
+            
+            <!-- Parallax Background -->
+            <div class="parallax-bg"></div>
+            
+            <!-- Animated Background Shapes -->
+            <div class="animated-bg">
+                <div class="bg-shape bg-shape-1"></div>
+                <div class="bg-shape bg-shape-2"></div>
+                <div class="bg-shape bg-shape-3"></div>
+            </div>
+            
+            <!-- Particles -->
+            <div class="particles-container">
+                <div class="particle particle-1 floating-element"></div>
+                <div class="particle particle-2 floating-element"></div>
+                <div class="particle particle-3 floating-element"></div>
+                <div class="particle particle-4 floating-element"></div>
+                <div class="particle particle-5 floating-element"></div>
+                <div class="particle particle-6 floating-element"></div>
+                <div class="particle particle-7 floating-element"></div>
+                <div class="particle particle-8 floating-element"></div>
+                <div class="particle particle-9 floating-element"></div>
+                <div class="particle particle-10 floating-element"></div>
+            </div>
+            
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="md:w-1/2 mb-10 md:mb-0 hero-content">
+                        <h1 class="hero-title">نصنع لكم فعاليات تفوق التوقعات</h1>
+                        <p class="hero-text">نقدم حلولًا متكاملة للفعاليات بدمج التفكير الإبداعي، التخطيط الاستراتيجي، والتنفيذ الاحترافي لضمان ذكرى تدوم طويلاً.</p>
+                        <div class="flex space-x-4 space-x-reverse mt-8">
+                            <a href="#contact" class="btn btn-primary">تواصل معنا</a>
+                            <a href="#services" class="btn btn-outline">اكتشف خدماتنا</a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 hero-image">
+                        <div class="hero-image-container floating-element">
+                            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="فعالية في السعودية" class="w-full">
+                            <div class="hero-badge floating-element">
+                                <p class="font-bold">نجاح فعالياتكم هو هدفنا</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stats Counter -->
+                <div class="flex flex-wrap justify-center mt-20 gap-8">
+                    <div class="text-center text-white bg-white bg-opacity-10 p-6 rounded-lg">
+                        <div class="text-4xl font-bold counter mb-2" data-target="200">0</div>
+                        <p>مشروع ناجح</p>
+                    </div>
+                    <div class="text-center text-white bg-white bg-opacity-10 p-6 rounded-lg">
+                        <div class="text-4xl font-bold counter mb-2" data-target="50">0</div>
+                        <p>شركة عميلة</p>
+                    </div>
+                    <div class="text-center text-white bg-white bg-opacity-10 p-6 rounded-lg">
+                        <div class="text-4xl font-bold counter mb-2" data-target="10">0</div>
+                        <p>سنوات خبرة</p>
+                    </div>
+                    <div class="text-center text-white bg-white bg-opacity-10 p-6 rounded-lg">
+                        <div class="text-4xl font-bold counter mb-2" data-target="15">0</div>
+                        <p>جائزة مرموقة</p>
+                    </div>
+                </div>
+                
+                <!-- Scroll Indicator -->
+                <div class="scroll-indicator">
+                    <div class="scroll-indicator-text">اسكرول للأسفل</div>
+                    <div class="scroll-indicator-icon">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Arabic Divider -->
+        <div class="section-separator">
+            <div class="separator-top"></div>
+            <div class="separator-bottom"></div>
+        </div>
+        
+        <!-- About Us Section -->
+        <section id="about" class="py-16 arabic-pattern">
+            <div class="container mx-auto px-4">
+                <div class="section-header section-header-decorated">
+                    <div class="corner-ornament corner-top-right"></div>
+                    <div class="corner-ornament corner-top-left"></div>
+                    <div class="corner-ornament corner-bottom-right"></div>
+                    <div class="corner-ornament corner-bottom-left"></div>
+                    <h2 class="section-title fade-in-heading arabic-decoration">من نحن</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-subtitle">شركة سعودية متخصصة في تنظيم وإدارة الفعاليات بمختلف أنواعها، نقدم خدماتنا في جميع أنحاء المملكة العربية السعودية. مقرنا الرئيسي في مدينة جدة، ونعمل بتوافق تام مع رؤية المملكة 2030.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 card-container">
+                    <div class="about-card hover-card">
+                        <div class="about-card-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3 class="about-card-title">رؤيتنا</h3>
+                        <p>أن نكون الشريك الأول والأفضل في تنظيم وإدارة الفعاليات في المملكة، ونساهم في تحقيق رؤية 2030 من خلال تقديم تجارب استثنائية.</p>
+                    </div>
+                    
+                    <div class="about-card hover-card">
+                        <div class="about-card-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3 class="about-card-title">رسالتنا</h3>
+                        <p>تقديم حلول متكاملة للفعاليات تجمع بين الإبداع والاحترافية والجودة العالية، مع الالتزام بإرضاء عملائنا وتجاوز توقعاتهم.</p>
+                    </div>
+                    
+                    <div class="about-card hover-card">
+                        <div class="about-card-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h3 class="about-card-title">قيمنا</h3>
+                        <p>الإبداع، الاحترافية، الالتزام، الشغف، التميز، والعمل الجماعي هي القيم التي تحكم عملنا وتضمن تقديم أفضل الخدمات لعملائنا.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-20">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 mb-8 md:mb-0">
+                            <div class="about-image">
+                                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="فريق العمل" class="w-full">
+                            </div>
+                        </div>
+                        <div class="md:w-1/2 md:pr-12">
+                            <h3 class="text-3xl font-bold text-primary mb-6 fade-in-heading">لماذا نحن؟</h3>
+                            <ul class="feature-list">
+                                <li class="feature-item">
+                                    <i class="fas fa-check-circle feature-icon"></i>
+                                    <div class="feature-text">
+                                        <span class="feature-title">فريق محترف</span>
+                                        <p>نمتلك فريقًا من الخبراء المتخصصين في مجال تنظيم وإدارة الفعاليات.</p>
+                                    </div>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check-circle feature-icon"></i>
+                                    <div class="feature-text">
+                                        <span class="feature-title">خبرة واسعة</span>
+                                        <p>نتمتع بخبرة واسعة في تنظيم مختلف أنواع الفعاليات على مستوى المملكة.</p>
+                                    </div>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check-circle feature-icon"></i>
+                                    <div class="feature-text">
+                                        <span class="feature-title">حلول متكاملة</span>
+                                        <p>نقدم حلولًا متكاملة من التخطيط والتنفيذ إلى المتابعة وقياس النتائج.</p>
+                                    </div>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check-circle feature-icon"></i>
+                                    <div class="feature-text">
+                                        <span class="feature-title">التوافق مع رؤية 2030</span>
+                                        <p>نلتزم بتحقيق أهداف رؤية المملكة 2030 في كافة فعالياتنا.</p>
+                                    </div>
+                                </li>
+                                <li class="feature-item">
+                                    <i class="fas fa-check-circle feature-icon"></i>
+                                    <div class="feature-text">
+                                        <span class="feature-title">التميز والإبداع</span>
+                                        <p>نسعى دائمًا لتقديم أفكار إبداعية وحلول مبتكرة لجميع عملائنا.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Arabic Divider -->
+        <div class="section-separator separator-dark">
+            <div class="separator-top"></div>
+            <div class="separator-bottom"></div>
+        </div>
+        
+        <!-- Services Section -->
+        <section id="services" class="py-16 bg-gray-50 arabic-pattern">
+            <div class="container mx-auto px-4">
+                <div class="section-header">
+                    <h2 class="section-title fade-in-heading arabic-decoration" data-text="خدماتنا">خدماتنا</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-subtitle">نقدم مجموعة متكاملة من الخدمات لتنظيم وإدارة الفعاليات بمختلف أنواعها، مع التركيز على الجودة والاحترافية والإبداع.</p>
+                </div>
+                
+                <div class="service-cards-container">
+                    <div class="service-card hover-card">
+                        <div class="service-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="service-title">تنظيم المؤتمرات</h3>
+                        <p>تنظيم وإدارة المؤتمرات المحلية والدولية بمختلف أحجامها، مع توفير كافة التجهيزات والخدمات اللوجستية.</p>
+                        <ul class="service-list">
+                            <li class="service-list-item">
+                                <i class="fas fa-circle service-list-icon"></i>
+                                <span>إدارة التسجيل والحضور</span>
+                            </li>
+                            <li class="service-list-item">
+                                <i class="fas fa-circle service-list-icon"></i>
+                                <span>توفير أنظمة الصوت والإضاءة</span>
+                            </li>
+                            <li class="service-list-item">
+                                <i class="fas fa-circle service-list-icon"></i>
+                                <span>توفير خدمات الترجمة الفورية</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card hover-card">
+                        <div class="service-icon">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h3 class="service-title">تنظيم المعارض</h3>
+                        <p>تصميم وتنفيذ وإدارة المعارض التجارية والفنية والثقافية بمختلف أحجامها وأنواعها.</p>
+                        <ul class="service-list">
+                            <li class="service-list-item">
+                                <i class="fas fa-circle service-list-icon"></i>
+                                <span>تصميم وبناء الأجنحة</span>
+                            </li>
+                            <li class="service-list-item">
+                                <i class="fas fa-circle service-list-icon"></i>
+                                <span>إدارة المساحات والمشاركين</span>
+                            </li>
+                            <li class="service-list-item">
+                                <i class="fas fa-circle service-list-icon"></i>
+                                <span>توفير الخدمات اللوجستية</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card hover-card">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="service-title">الفعاليات الكبرى</h3>
+                        <p>تنظيم وإدارة الفعاليات الكبرى مثل المهرجانات، والفعاليات الثقافية، والفعاليات الترفيهية.</p>
+                        <ul class="service-list">
+                            <li class="service-list-item">
+                                <i class="fas fa-circle service-list-icon"></i>
+                                <span>التخطيط الشامل للفعاليات</span>
+                            </li>
+                            <li class="service-list-item">
+                                <i class="fas fa-circle service-list-icon"></i>
+                                <span>إدارة الحشود والسلامة</span>
+                            </li>
+                            <li class="service-list-item">
+                                <i class="fas fa-circle service-list-icon"></i>
+                                <span>توفير الأنشطة والفقرات</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card hover-card">
+                        <div class="service-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3 class="service-title">فعاليات الشركات</h3>
+                        <p>تنظيم الفعاليات الخاصة بالشركات مثل إطلاق المنتجات، والاحتفالات السنوية، والمناسبات الخاصة.</p>
+                        <ul class="service-list">
+                            <li class="service-list-item">
+                                <i class="fas fa-circle service-list-icon"></i>
+                                <span>تخطيط وتنفيذ الفعاليات</span>
+                            </li>
+                            <li class="service-list-item">
+                                <i class="fas fa-circle service-list-icon"></i>
+                                <span>تصميم الديكورات والأجواء</span>
+                            </li>
+                            <li class="service-list-item">
+                                <i class="fas fa-circle service-list-icon"></i>
+                                <span>توفير خدمات الضيافة</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card hover-card">
+                        <div class="service-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h3 class="service-title">التسويق والعلاقات العامة</h3>
+                        <p>تقديم خدمات التسويق والعلاقات العامة للفعاليات، وإدارة الحملات الإعلامية والتواصل مع وسائل الإعلام.</p>
+                        <ul class="service-list">
+                            <li class="service-list-item">
+                                <i class="fas fa-circle service-list-icon"></i>
+                                <span>التسويق الرقمي للفعاليات</span>
+                            </li>
+                            <li class="service-list-item">
+                                <i class="fas fa-circle service-list-icon"></i>
+                                <span>إدارة العلاقات الإعلامية</span>
+                            </li>
+                            <li class="service-list-item">
+                                <i class="fas fa-circle service-list-icon"></i>
+                                <span>تصميم الهوية البصرية</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card hover-card">
+                        <div class="service-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 class="service-title">الخدمات اللوجستية</h3>
+                        <p>توفير الخدمات اللوجستية المتكاملة للفعاليات، من النقل والإقامة إلى التجهيزات التقنية والضيافة.</p>
+                        <ul class="service-list">
+                            <li class="service-list-item">
+                                <i class="fas fa-circle service-list-icon"></i>
+                                <span>توفير خدمات النقل والإقامة</span>
+                            </li>
+                            <li class="service-list-item">
+                                <i class="fas fa-circle service-list-icon"></i>
+                                <span>تجهيز المعدات التقنية</span>
+                            </li>
+                            <li class="service-list-item">
+                                <i class="fas fa-circle service-list-icon"></i>
+                                <span>خدمات الضيافة والتموين</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center mt-8">
+                    <div class="service-scroll-dots">
+                        <span class="service-dot active"></span>
+                        <span class="service-dot"></span>
+                        <span class="service-dot"></span>
+                        <span class="service-dot"></span>
+                        <span class="service-dot"></span>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-12">
+                    <a href="#contact" class="btn btn-primary">احصل على عرض سعر</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Arabic Divider -->
+        <div class="section-separator">
+            <div class="separator-top"></div>
+            <div class="separator-bottom"></div>
+        </div>
+        
+        <!-- Vision 2030 Section -->
+        <section id="vision" class="py-16 arabic-pattern">
+            <div class="container mx-auto px-4">
+                <div class="section-header">
+                    <h2 class="section-title fade-in-heading arabic-decoration" data-text="رؤية 2030">رؤية 2030</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-subtitle">نحن نعمل بتوافق تام مع رؤية المملكة العربية السعودية 2030، ونسعى لتحقيق أهدافها من خلال خدماتنا في مجال تنظيم وإدارة الفعاليات.</p>
+                </div>
+                
+                <div class="vision-cards">
+                    <div class="vision-card hover-card">
+                        <div class="vision-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="vision-title">مجتمع حيوي</h3>
+                        <p>نساهم في بناء مجتمع حيوي من خلال تنظيم فعاليات تعزز القيم الإسلامية والهوية الوطنية، وتحسن نمط الحياة، وتعزز الفخر بالتراث السعودي.</p>
+                    </div>
+                    
+                    <div class="vision-card hover-card">
+                        <div class="vision-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="vision-title">اقتصاد مزدهر</h3>
+                        <p>نسهم في تنمية الاقتصاد من خلال خلق فرص عمل، ودعم الشركات المحلية، وجذب الاستثمارات، وتطوير قطاع السياحة والترفيه.</p>
+                    </div>
+                    
+                    <div class="vision-card hover-card">
+                        <div class="vision-icon">
+                            <i class="fas fa-flag"></i>
+                        </div>
+                        <h3 class="vision-title">وطن طموح</h3>
+                        <p>نعمل على تعزيز الوطن الطموح من خلال تبني أفضل الممارسات العالمية، وتطبيق معايير الجودة، وتعزيز الشفافية والمسؤولية المجتمعية.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-20">
+                    <h3 class="text-3xl font-bold text-primary mb-10 text-center fade-in-heading">مساهمتنا في تحقيق أهداف رؤية 2030</h3>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-icon"></div>
+                            <h4 class="text-xl font-bold text-primary mb-2">تعزيز قطاع السياحة والترفيه</h4>
+                            <p>نساهم في تعزيز قطاع السياحة والترفيه من خلال تنظيم فعاليات تجذب السياح المحليين والدوليين، وتثري تجربتهم في المملكة.</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-icon"></div>
+                            <h4 class="text-xl font-bold text-primary mb-2">المساهمة في تنمية الاقتصاد</h4>
+                            <p>نسهم في تنويع مصادر الدخل وتنمية الاقتصاد من خلال خلق فرص عمل، ودعم الشركات المحلية، وجذب الاستثمارات.</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-icon"></div>
+                            <h4 class="text-xl font-bold text-primary mb-2">تعزيز الهوية الوطنية</h4>
+                            <p>نعمل على تعزيز الهوية الوطنية والفخر بالتراث السعودي من خلال تنظيم فعاليات تبرز الثقافة والتراث السعودي.</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-icon"></div>
+                            <h4 class="text-xl font-bold text-primary mb-2">تحسين جودة الحياة</h4>
+                            <p>نساهم في تحسين جودة الحياة من خلال تنظيم فعاليات متنوعة تلبي احتياجات مختلف شرائح المجتمع وتثري حياتهم.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-20 bg-primary rounded-xl shadow-lg overflow-hidden">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/2 p-8 text-white">
+                            <h3 class="text-3xl font-bold mb-6">نتعاون مع صندوق الفعاليات الاستثماري</h3>
+                            <p class="mb-6">نحن نتعاون مع صندوق الفعاليات الاستثماري الذي يهدف إلى تحقيق مستهدفات رؤية 2030 بتنويع مصادر الدخل غير النفطية للمملكة، وزيادة المساهمة في الناتج المحلي الإجمالي.</p>
+                            <a href="#contact" class="btn btn-primary bg-white text-primary hover:bg-accent hover:text-white">تواصل معنا للمزيد</a>
+                        </div>
+                        <div class="md:w-1/2">
+                            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="صندوق الفعاليات الاستثماري" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Arabic Divider -->
+        <div class="section-separator separator-dark">
+            <div class="separator-top"></div>
+            <div class="separator-bottom"></div>
+        </div>
+        
+        <!-- Projects Section -->
+        <section id="projects" class="py-16 bg-gray-50 arabic-pattern">
+            <div class="container mx-auto px-4">
+                <div class="section-header">
+                    <h2 class="section-title fade-in-heading arabic-decoration" data-text="مشاريعنا">مشاريعنا</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-subtitle">نفخر بتنظيم وإدارة مجموعة متنوعة من الفعاليات الناجحة في مختلف أنحاء المملكة، والتي أثرت تجربة المشاركين وتركت انطباعًا إيجابيًا لديهم.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 card-container">
+                    <div class="project-card hover-card">
+                        <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="مؤتمر الابتكار" class="project-image">
+                        <div class="project-content">
+                            <h3 class="project-title">مؤتمر الابتكار السعودي</h3>
+                            <p class="project-desc">تنظيم مؤتمر الابتكار السعودي بمشاركة أكثر من 2000 شخص، وحضور نخبة من المتحدثين المحليين والدوليين.</p>
+                            <div class="project-meta">
+                                <span class="project-tag">مؤتمر</span>
+                                <span class="project-location">الرياض</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card hover-card">
+                        <img src="https://images.unsplash.com/photo-1501281668745-f7e10975bc17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="مهرجان الفنون" class="project-image">
+                        <div class="project-content">
+                            <h3 class="project-title">مهرجان الفنون السعودي</h3>
+                            <p class="project-desc">تنظيم مهرجان الفنون السعودي الذي استمر لمدة أسبوع، وشهد مشاركة أكثر من 100 فنان وحضور أكثر من 50,000 زائر.</p>
+                            <div class="project-meta">
+                                <span class="project-tag">مهرجان</span>
+                                <span class="project-location">جدة</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card hover-card">
+                        <img src="https://images.unsplash.com/photo-1560439513-74b037a25d84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="معرض تجاري" class="project-image">
+                        <div class="project-content">
+                            <h3 class="project-title">معرض التجارة الإلكترونية</h3>
+                            <p class="project-desc">تنظيم معرض التجارة الإلكترونية بمشاركة أكثر من 200 شركة محلية ودولية، وحضور أكثر من 30,000 زائر.</p>
+                            <div class="project-meta">
+                                <span class="project-tag">معرض</span>
+                                <span class="project-location">الدمام</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card hover-card">
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="حفل إطلاق منتج" class="project-image">
+                        <div class="project-content">
+                            <h3 class="project-title">حفل إطلاق منتج تقني</h3>
+                            <p class="project-desc">تنظيم حفل إطلاق منتج تقني لإحدى الشركات الكبرى، بحضور نخبة من الشخصيات وتغطية إعلامية واسعة.</p>
+                            <div class="project-meta">
+                                <span class="project-tag">حفل إطلاق</span>
+                                <span class="project-location">الرياض</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card hover-card">
+                        <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1046&q=80" alt="مؤتمر طبي" class="project-image">
+                        <div class="project-content">
+                            <h3 class="project-title">المؤتمر الطبي السعودي</h3>
+                            <p class="project-desc">تنظيم المؤتمر الطبي السعودي بمشاركة أكثر من 1500 طبيب ومتخصص، وحضور نخبة من المتحدثين العالميين.</p>
+                            <div class="project-meta">
+                                <span class="project-tag">مؤتمر</span>
+                                <span class="project-location">جدة</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card hover-card">
+                        <img src="https://images.unsplash.com/photo-1472653431158-6364773b2a56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1069&q=80" alt="مهرجان ثقافي" class="project-image">
+                        <div class="project-content">
+                            <h3 class="project-title">مهرجان التراث السعودي</h3>
+                            <p class="project-desc">تنظيم مهرجان التراث السعودي الذي أبرز جماليات التراث السعودي، وشهد حضور أكثر من 40,000 زائر.</p>
+                            <div class="project-meta">
+                                <span class="project-tag">مهرجان</span>
+                                <span class="project-location">الرياض</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Arabic Divider -->
+        <div class="section-separator">
+            <div class="separator-top"></div>
+            <div class="separator-bottom"></div>
+        </div>
+        
+        <!-- Testimonials Section -->
+        <section class="py-16 arabic-pattern">
+            <div class="container mx-auto px-4">
+                <div class="section-header section-header-decorated">
+                    <div class="corner-ornament corner-top-right"></div>
+                    <div class="corner-ornament corner-top-left"></div>
+                    <div class="corner-ornament corner-bottom-right"></div>
+                    <div class="corner-ornament corner-bottom-left"></div>
+                    <h2 class="section-title fade-in-heading arabic-decoration" data-text="آراء عملائنا">آراء عملائنا</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-subtitle">نفخر بثقة عملائنا بنا وبالخدمات التي نقدمها، وهذه بعض آرائهم في تجربتهم معنا.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 card-container">
+                    <div class="testimonial-card hover-card arabic-card">
+                        <div class="flex items-center mb-4">
+                            <div class="testimonial-avatar">
+                                <span>أ</span>
+                            </div>
+                            <div>
+                                <h4 class="testimonial-name">أحمد السالم</h4>
+                                <p class="testimonial-position">مدير التسويق - شركة تقنية</p>
+                            </div>
+                        </div>
+                        <p class="mb-4 arabic-quote">"تعاملنا مع شركة Elite Arabia في تنظيم مؤتمرنا السنوي، وكانت التجربة رائعة من حيث الاحترافية والتنظيم والاهتمام بالتفاصيل، مما أدى إلى نجاح المؤتمر بشكل كبير."</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card hover-card arabic-card">
+                        <div class="flex items-center mb-4">
+                            <div class="testimonial-avatar">
+                                <span>س</span>
+                            </div>
+                            <div>
+                                <h4 class="testimonial-name">سارة الفهد</h4>
+                                <p class="testimonial-position">مدير الفعاليات - جامعة سعودية</p>
+                            </div>
+                        </div>
+                        <p class="mb-4 arabic-quote">"استعنا بخدمات Elite Arabia في تنظيم فعاليات أسبوع الابتكار في الجامعة، وكان التنظيم على أعلى مستوى من الاحترافية، والتزموا بكافة المواعيد والمتطلبات."</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card hover-card arabic-card">
+                        <div class="flex items-center mb-4">
+                            <div class="testimonial-avatar">
+                                <span>م</span>
+                            </div>
+                            <div>
+                                <h4 class="testimonial-name">محمد العتيبي</h4>
+                                <p class="testimonial-position">مدير عام - شركة استثمارية</p>
+                            </div>
+                        </div>
+                        <p class="mb-4 arabic-quote">"أشكر فريق Elite Arabia على تنظيمهم الرائع لحفل إطلاق مشروعنا الجديد، لقد كانوا محترفين في كل شيء، من التخطيط إلى التنفيذ، وساهموا في إنجاح الحفل بشكل كبير."</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="arabic-divider mt-16">
+                    <div class="arabic-divider-symbol"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Arabic Divider -->
+        <div class="section-separator separator-dark">
+            <div class="separator-top"></div>
+            <div class="separator-bottom"></div>
+        </div>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 bg-gray-50 arabic-pattern">
+            <div class="container mx-auto px-4">
+                <div class="section-header">
+                    <h2 class="section-title fade-in-heading arabic-decoration" data-text="تواصل معنا">تواصل معنا</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-subtitle">نحن هنا لمساعدتك في تنظيم فعاليتك القادمة. تواصل معنا اليوم للحصول على استشارة مجانية وعرض سعر مخصص.</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="md:w-1/2">
+                        <div class="contact-info-card">
+                            <h3 class="text-2xl font-bold text-primary mb-6">معلومات التواصل</h3>
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="contact-title">العنوان</h4>
+                                        <p>جدة، المملكة العربية السعودية</p>
+                                        <p>طريق الملك عبد العزيز، حي الشاطئ</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="contact-title">الهاتف</h4>
+                                        <p>+966 12 XXX XXXX</p>
+                                        <p>+966 5X XXX XXXX</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="contact-title">البريد الإلكتروني</h4>
+                                        <p>info@events-ksa.com</p>
+                                        <p>support@events-ksa.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3 class="text-2xl font-bold text-primary mb-6 mt-8">تابعنا على</h3>
+                            <div class="social-links">
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2">
+                        <div class="contact-form-card">
+                            <h3 class="text-2xl font-bold text-primary mb-6">ارسل رسالة</h3>
+                            <form>
+                                <div class="form-group">
+                                    <label for="name" class="form-label">الاسم الكامل</label>
+                                    <input type="text" id="name" class="form-control">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email" class="form-label">البريد الإلكتروني</label>
+                                    <input type="email" id="email" class="form-control">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phone" class="form-label">رقم الهاتف</label>
+                                    <input type="tel" id="phone" class="form-control">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="service" class="form-label">نوع الخدمة</label>
+                                    <select id="service" class="form-control">
+                                        <option value="">اختر الخدمة</option>
+                                        <option value="conference">تنظيم مؤتمر</option>
+                                        <option value="exhibition">تنظيم معرض</option>
+                                        <option value="event">تنظيم فعالية</option>
+                                        <option value="corporate">فعالية شركات</option>
+                                        <option value="marketing">تسويق وعلاقات عامة</option>
+                                        <option value="logistics">خدمات لوجستية</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="message" class="form-label">الرسالة</label>
+                                    <textarea id="message" rows="5" class="form-control"></textarea>
+                                </div>
+                                <div class="text-center">
+                                <button type="submit" class="btn btn-primary submit-btn">
+                                    <span class="btn-text">إرسال الرسالة</span>
+                                    <span class="btn-loading">
+                                        <span class="loading-dot"></span>
+                                        <span class="loading-dot"></span>
+                                        <span class="loading-dot"></span>
+                                    </span>
+                                </button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-pattern"></div>
+        <div class="container mx-auto px-4">
+            <div class="footer-decoration">
+                <div class="footer-symbol"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="footer-column-title">Elite Arabia</h3>
+                    <p class="mb-4">شركة سعودية متخصصة في تنظيم وإدارة الفعاليات بمختلف أنواعها، نعمل بتوافق مع رؤية المملكة 2030.</p>
+                    <div class="social-links mt-4">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-column-title">روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#home">الرئيسية</a></li>
+                        <li class="footer-link"><a href="#about">من نحن</a></li>
+                        <li class="footer-link"><a href="#services">خدماتنا</a></li>
+                        <li class="footer-link"><a href="#vision">رؤية 2030</a></li>
+                        <li class="footer-link"><a href="#projects">مشاريعنا</a></li>
+                        <li class="footer-link"><a href="#contact">تواصل معنا</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-column-title">خدماتنا</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#services">تنظيم المؤتمرات</a></li>
+                        <li class="footer-link"><a href="#services">تنظيم المعارض</a></li>
+                        <li class="footer-link"><a href="#services">الفعاليات الكبرى</a></li>
+                        <li class="footer-link"><a href="#services">فعاليات الشركات</a></li>
+                        <li class="footer-link"><a href="#services">التسويق والعلاقات العامة</a></li>
+                        <li class="footer-link"><a href="#services">الخدمات اللوجستية</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-column-title">تواصل معنا</h3>
+                    <ul class="footer-links contact-links">
+                        <li class="footer-contact-item">
+                            <i class="fas fa-map-marker-alt footer-contact-icon"></i>
+                            <span>جدة، المملكة العربية السعودية</span>
+                        </li>
+                        <li class="footer-contact-item">
+                            <i class="fas fa-phone-alt footer-contact-icon"></i>
+                            <span>+966 12 XXX XXXX</span>
+                        </li>
+                        <li class="footer-contact-item">
+                            <i class="fas fa-envelope footer-contact-icon"></i>
+                            <span>info@events-ksa.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-divider"></div>
+                <p>&copy; 2024 Elite Arabia. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <div class="back-to-top-icon">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const closeMenu = document.querySelector('.mobile-menu-close');
+        
+        if (menuToggle && mobileMenu && closeMenu) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.add('active');
+            });
+            
+            closeMenu.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        }
+        
+        // Scrolled header
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
