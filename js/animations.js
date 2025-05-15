@@ -52,20 +52,20 @@ document.addEventListener('DOMContentLoaded', function() {
         // Enhanced hero animations
         const heroTl = gsap.timeline();
         
-        heroTl.from('.hero-title', {
-            opacity: 0,
-            y: 50,
+    heroTl.from('.hero-title', {
+        opacity: 0,
+        y: 50,
             duration: 1,
             ease: "power3.out"
-        });
-        
-        heroTl.from('.hero-text', {
-            opacity: 0,
-            y: 30,
-            duration: 0.8,
-            ease: "power2.out"
-        }, "-=0.6");
-        
+    });
+    
+    heroTl.from('.hero-text', {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: "power2.out"
+    }, "-=0.6");
+    
         heroTl.from('.btn', {
             opacity: 0,
             y: 20,
@@ -75,10 +75,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }, "-=0.4");
         
         heroTl.from('.hero-image-container', {
-            opacity: 0,
+        opacity: 0,
             scale: 0.9,
             duration: 1.2,
-            ease: "power2.out"
+        ease: "power2.out"
         }, "-=1");
         
         heroTl.from('.hero-badge', {
@@ -115,8 +115,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 y: index % 2 === 0 ? 15 : 10,
                 rotation: gsap.utils.random(-3, 3),
                 duration: gsap.utils.random(2, 3),
-                repeat: -1,
-                yoyo: true,
+        repeat: -1,
+        yoyo: true,
                 ease: "sine.inOut",
                 delay: index * 0.2
             });
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 onEnter: function() {
                     gsap.to(counter, {
                         innerHTML: target,
-                        duration: 2,
+        duration: 2,
                         snap: { innerHTML: 1 },
                         ease: "power2.out",
                         onUpdate: function() {
@@ -227,11 +227,11 @@ document.addEventListener('DOMContentLoaded', function() {
             y: 15,
             rotation: 2,
             duration: 6,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut"
-        });
-        
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut"
+    });
+    
         gsap.to('.hero-badge', {
             y: -15,
             rotation: -5,
@@ -365,15 +365,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const target = document.querySelector(this.getAttribute('href'));
             const offset = 80; // Navbar height offset
             
-            gsap.to(window, {
+                gsap.to(window, {
                 duration: 1,
-                scrollTo: {
+                    scrollTo: {
                     y: target,
                     offsetY: offset
-                },
-                ease: "power3.inOut"
-            });
-            
+                    },
+                    ease: "power3.inOut"
+                });
+                
             // Close mobile menu if open
             const mobileMenu = document.querySelector('.mobile-menu');
             if (mobileMenu && mobileMenu.classList.contains('active')) {

@@ -2,7 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#00917C">
     <title>Elite Arabia | تنظيم وإدارة الفعاليات في السعودية</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
@@ -23,20 +24,154 @@
     <script src="js/page-transitions.js"></script>
     <script src="js/particles.js"></script>
     <script src="js/magnetic-buttons.js"></script>
+    <style>
+        /* Enhanced responsive styles for Swiper */
+        .swiper-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            height: auto;
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+            box-sizing: border-box;
+        }
+        
+        .swiper-slide {
+            height: auto !important;
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+            transition-property: transform, box-shadow, opacity;
+            transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+            will-change: transform, box-shadow, opacity;
+            box-sizing: border-box;
+        }
+        
+        /* Ensure all slides maintain same height */
+        .service-card, .testimonial-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .service-list {
+            margin-top: auto;
+        }
+        
+        /* Make sure pagination is visible on all backgrounds */
+        .swiper-pagination-bullet {
+            background: var(--primary-color);
+            opacity: 0.5;
+            width: 10px;
+            height: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: var(--primary-color);
+            opacity: 1;
+            width: 20px;
+            border-radius: 10px;
+        }
+        
+        /* Enhanced navigation buttons for better touch targets */
+        .swiper-button-next, .swiper-button-prev {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        
+        .swiper-button-next:after, .swiper-button-prev:after {
+            content: none;
+        }
+        
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            background-color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        
+        .swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+        }
+        
+        .services-swiper:hover .swiper-button-next,
+        .services-swiper:hover .swiper-button-prev,
+        .testimonials-swiper:hover .swiper-button-next,
+        .testimonials-swiper:hover .swiper-button-prev {
+            opacity: 0.8;
+        }
+
+        /* Handle mobile touch better */
+        @media (hover: none) {
+            .swiper-button-next, .swiper-button-prev {
+                opacity: 0.8;
+            }
+        }
+        
+        /* Ensure heights are consistent across breakpoints */
+        @media (max-width: 767px) {
+            .services-swiper, .testimonials-swiper {
+                padding-bottom: 50px;
+            }
+            
+            .swiper-button-next, .swiper-button-prev {
+                display: none;
+            }
+        }
+
+        /* Fix container overflow issues */
+        .services-swiper, .testimonials-swiper {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Prevent slide content from overflowing */
+        .service-card-content, .testimonial-card-content {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Ensure cards maintain proper width */
+        .service-card, .testimonial-card {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Ensure Swiper wrapper stays within bounds */
+        .swiper-wrapper {
+            box-sizing: border-box;
+            display: flex;
+        }
+    </style>
 </head>
 <body>
     <!-- Preloader -->
     <div class="preloader">
         <div class="preloader-logo">
-            <div class="arabic-symbol"></div>
+            <div class="arabic-symbol">
+
+                <img src="images/elite-logo.png" alt="Elite Arabia Logo" class="preloader-logo-image" >
+            </div>
             <span>Elite Arabia</span>
-        </div>
+                    </div>
         <div class="preloader-container">
             <div class="preloader-progress"></div>
         </div>
         <div class="preloader-pattern"></div>
-    </div>
-
+                </div>
+                
     <!-- Header -->
     <header id="header">
         <div class="container mx-auto px-4">
@@ -51,8 +186,9 @@
                     <a href="#projects" class="nav-link navbar-item">مشاريعنا</a>
                     <a href="#contact" class="nav-link navbar-item">تواصل معنا</a>
                 </nav>
-               
-                <button class="menu-toggle">
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="menu-toggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="mobile-menu">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -60,22 +196,38 @@
     </header>
     
     <!-- Mobile Menu -->
-    <div class="mobile-menu">
-        <button class="mobile-menu-close">
+    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+        <button class="mobile-menu-close" aria-label="إغلاق القائمة">
             <i class="fas fa-times"></i>
         </button>
-        <a href="#home" class="nav-link">الرئيسية</a>
-        <a href="#about" class="nav-link">من نحن</a>
-        <a href="#services" class="nav-link">خدماتنا</a>
-        <a href="#vision" class="nav-link">رؤية 2030</a>
-        <a href="#projects" class="nav-link">مشاريعنا</a>
-        <a href="#contact" class="nav-link">تواصل معنا</a>
+        
+        <div class="mobile-menu-logo">
+            <div class="mobile-symbol"></div>
+            <span>Elite Arabia</span>
+        </div>
+        
+        <nav class="mobile-menu-links">
+            <a href="#home" class="nav-link" aria-label="الرئيسية">الرئيسية</a>
+            <a href="#about" class="nav-link" aria-label="من نحن">من نحن</a>
+            <a href="#services" class="nav-link" aria-label="خدماتنا">خدماتنا</a>
+            <a href="#vision" class="nav-link" aria-label="رؤية 2030">رؤية 2030</a>
+            <a href="#projects" class="nav-link" aria-label="مشاريعنا">مشاريعنا</a>
+            <a href="#contact" class="nav-link" aria-label="تواصل معنا">تواصل معنا</a>
+        </nav>
+        
+        <div class="mobile-menu-social">
+            <a href="#" class="mobile-social-link" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="mobile-social-link" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="mobile-social-link" aria-label="انستقرام"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="mobile-social-link" aria-label="لينكد إن"><i class="fab fa-linkedin-in"></i></a>
+        </div>
     </div>
-    
+            
     <main>
         <!-- Hero Section -->
         <section id="home" class="hero-section">
             <div class="hero-overlay"></div>
+            <div class="arabic-pattern-overlay"></div>
             
             <!-- Parallax Background -->
             <div class="parallax-bg"></div>
@@ -104,40 +256,40 @@
             <div class="container mx-auto px-4">
                 <div class="flex flex-col md:flex-row items-center justify-between">
                     <div class="md:w-1/2 mb-10 md:mb-0 hero-content">
-                        <h1 class="hero-title">نصنع لكم فعاليات تفوق التوقعات</h1>
-                        <p class="hero-text">نقدم حلولًا متكاملة للفعاليات بدمج التفكير الإبداعي، التخطيط الاستراتيجي، والتنفيذ الاحترافي لضمان ذكرى تدوم طويلاً.</p>
-                        <div class="flex space-x-4 space-x-reverse mt-8">
-                            <a href="#contact" class="btn btn-primary">تواصل معنا</a>
-                            <a href="#services" class="btn btn-outline">اكتشف خدماتنا</a>
+                        <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl">نصنع لكم فعاليات تفوق التوقعات</h1>
+                        <p class="hero-text text-sm sm:text-base">نقدم حلولًا متكاملة للفعاليات بدمج التفكير الإبداعي، التخطيط الاستراتيجي، والتنفيذ الاحترافي لضمان ذكرى تدوم طويلاً.</p>
+                        <div class="flex flex-wrap sm:flex-nowrap space-x-2 sm:space-x-4 space-x-reverse mt-8">
+                            <a href="#contact" class="btn btn-primary text-sm sm:text-base my-1 w-full sm:w-auto">تواصل معنا</a>
+                            <a href="#services" class="btn btn-outline text-sm sm:text-base my-1 w-full sm:w-auto">اكتشف خدماتنا</a>
                         </div>
                     </div>
                     <div class="md:w-1/2 hero-image">
                         <div class="hero-image-container floating-element">
                             <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="فعالية في السعودية" class="w-full">
                             <div class="hero-badge floating-element">
-                                <p class="font-bold">نجاح فعالياتكم هو هدفنا</p>
+                                    <p class="font-bold">نجاح فعالياتكم هو هدفنا</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 
                 <!-- Stats Counter -->
-                <div class="flex flex-wrap justify-center mt-20 gap-8">
-                    <div class="text-center text-white bg-white bg-opacity-10 p-6 rounded-lg">
-                        <div class="text-4xl font-bold counter mb-2" data-target="200">0</div>
-                        <p>مشروع ناجح</p>
+                <div class="flex flex-wrap justify-center mt-12 md:mt-20 gap-3 sm:gap-4 md:gap-8">
+                    <div class="w-5/12 sm:w-auto text-center text-white bg-white bg-opacity-10 p-3 sm:p-4 md:p-6 rounded-lg">
+                        <div class="text-2xl sm:text-3xl md:text-4xl font-bold counter mb-1 md:mb-2" data-target="200">0</div>
+                        <p class="text-xs sm:text-sm md:text-base">مشروع ناجح</p>
                     </div>
-                    <div class="text-center text-white bg-white bg-opacity-10 p-6 rounded-lg">
-                        <div class="text-4xl font-bold counter mb-2" data-target="50">0</div>
-                        <p>شركة عميلة</p>
+                    <div class="w-5/12 sm:w-auto text-center text-white bg-white bg-opacity-10 p-3 sm:p-4 md:p-6 rounded-lg">
+                        <div class="text-2xl sm:text-3xl md:text-4xl font-bold counter mb-1 md:mb-2" data-target="50">0</div>
+                        <p class="text-xs sm:text-sm md:text-base">شركة عميلة</p>
                     </div>
-                    <div class="text-center text-white bg-white bg-opacity-10 p-6 rounded-lg">
-                        <div class="text-4xl font-bold counter mb-2" data-target="10">0</div>
-                        <p>سنوات خبرة</p>
+                    <div class="w-5/12 sm:w-auto text-center text-white bg-white bg-opacity-10 p-3 sm:p-4 md:p-6 rounded-lg">
+                        <div class="text-2xl sm:text-3xl md:text-4xl font-bold counter mb-1 md:mb-2" data-target="10">0</div>
+                        <p class="text-xs sm:text-sm md:text-base">سنوات خبرة</p>
                     </div>
-                    <div class="text-center text-white bg-white bg-opacity-10 p-6 rounded-lg">
-                        <div class="text-4xl font-bold counter mb-2" data-target="15">0</div>
-                        <p>جائزة مرموقة</p>
+                    <div class="w-5/12 sm:w-auto text-center text-white bg-white bg-opacity-10 p-3 sm:p-4 md:p-6 rounded-lg">
+                        <div class="text-2xl sm:text-3xl md:text-4xl font-bold counter mb-1 md:mb-2" data-target="15">0</div>
+                        <p class="text-xs sm:text-sm md:text-base">جائزة مرموقة</p>
                     </div>
                 </div>
                 
@@ -256,6 +408,7 @@
         
         <!-- Services Section -->
         <section id="services" class="py-16 bg-gray-50 arabic-pattern">
+            <div class="arabic-pattern-overlay"></div>
             <div class="container mx-auto px-4">
                 <div class="section-header section-header-decorated">
                     <div class="corner-ornament corner-top-right"></div>
@@ -271,164 +424,183 @@
                 <div class="swiper services-swiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <div class="service-card hover-card arabic-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-calendar-alt"></i>
+                            <div class="service-card hover-card arabic-card swiper-lazy">
+                    
+                                <div class="service-card-content h-full">
+                                    <div class="service-icon">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </div>
+                                    <h3 class="service-title">تنظيم المؤتمرات</h3>
+                                    <p>تنظيم وإدارة المؤتمرات المحلية والدولية بمختلف أحجامها، مع توفير كافة التجهيزات والخدمات اللوجستية.</p>
+                                    <ul class="service-list">
+                                        <li class="service-list-item">
+                                            <i class="fas fa-circle service-list-icon"></i>
+                                    <span>إدارة التسجيل والحضور</span>
+                                </li>
+                                        <li class="service-list-item">
+                                            <i class="fas fa-circle service-list-icon"></i>
+                                    <span>توفير أنظمة الصوت والإضاءة</span>
+                                </li>
+                                        <li class="service-list-item">
+                                            <i class="fas fa-circle service-list-icon"></i>
+                                    <span>توفير خدمات الترجمة الفورية</span>
+                                </li>
+                                    </ul>
                                 </div>
-                                <h3 class="service-title">تنظيم المؤتمرات</h3>
-                                <p>تنظيم وإدارة المؤتمرات المحلية والدولية بمختلف أحجامها، مع توفير كافة التجهيزات والخدمات اللوجستية.</p>
-                                <ul class="service-list">
-                                    <li class="service-list-item">
-                                        <i class="fas fa-circle service-list-icon"></i>
-                                        <span>إدارة التسجيل والحضور</span>
-                                    </li>
-                                    <li class="service-list-item">
-                                        <i class="fas fa-circle service-list-icon"></i>
-                                        <span>توفير أنظمة الصوت والإضاءة</span>
-                                    </li>
-                                    <li class="service-list-item">
-                                        <i class="fas fa-circle service-list-icon"></i>
-                                        <span>توفير خدمات الترجمة الفورية</span>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                         
-                        <div class="swiper-slide">
-                            <div class="service-card hover-card arabic-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-store"></i>
+                            <div class="swiper-slide">
+                                <div class="service-card hover-card arabic-card swiper-lazy">
+                                    <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                                    <div class="service-card-content h-full">
+                                        <div class="service-icon">
+                                            <i class="fas fa-store"></i>
+                                        </div>
+                                        <h3 class="service-title">تنظيم المعارض</h3>
+                                        <p>تصميم وتنفيذ وإدارة المعارض التجارية والفنية والثقافية بمختلف أحجامها وأنواعها.</p>
+                                        <ul class="service-list">
+                                            <li class="service-list-item">
+                                                <i class="fas fa-circle service-list-icon"></i>
+                                    <span>تصميم وبناء الأجنحة</span>
+                                </li>
+                                            <li class="service-list-item">
+                                                <i class="fas fa-circle service-list-icon"></i>
+                                    <span>إدارة المساحات والمشاركين</span>
+                                </li>
+                                            <li class="service-list-item">
+                                                <i class="fas fa-circle service-list-icon"></i>
+                                    <span>توفير الخدمات اللوجستية</span>
+                                </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <h3 class="service-title">تنظيم المعارض</h3>
-                                <p>تصميم وتنفيذ وإدارة المعارض التجارية والفنية والثقافية بمختلف أحجامها وأنواعها.</p>
-                                <ul class="service-list">
-                                    <li class="service-list-item">
-                                        <i class="fas fa-circle service-list-icon"></i>
-                                        <span>تصميم وبناء الأجنحة</span>
-                                    </li>
-                                    <li class="service-list-item">
-                                        <i class="fas fa-circle service-list-icon"></i>
-                                        <span>إدارة المساحات والمشاركين</span>
-                                    </li>
-                                    <li class="service-list-item">
-                                        <i class="fas fa-circle service-list-icon"></i>
-                                        <span>توفير الخدمات اللوجستية</span>
-                                    </li>
-                                </ul>
+                            </div>
+                        
+                            <div class="swiper-slide">
+                                <div class="service-card hover-card arabic-card swiper-lazy">
+                                    <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                                    <div class="service-card-content h-full">
+                                        <div class="service-icon">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        <h3 class="service-title">الفعاليات الكبرى</h3>
+                                        <p>تنظيم وإدارة الفعاليات الكبرى مثل المهرجانات، والفعاليات الثقافية، والفعاليات الترفيهية.</p>
+                                        <ul class="service-list">
+                                            <li class="service-list-item">
+                                                <i class="fas fa-circle service-list-icon"></i>
+                                    <span>التخطيط الشامل للفعاليات</span>
+                                </li>
+                                            <li class="service-list-item">
+                                                <i class="fas fa-circle service-list-icon"></i>
+                                    <span>إدارة الحشود والسلامة</span>
+                                </li>
+                                            <li class="service-list-item">
+                                                <i class="fas fa-circle service-list-icon"></i>
+                                    <span>توفير الأنشطة والفقرات</span>
+                                </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="swiper-slide">
+                                <div class="service-card hover-card arabic-card swiper-lazy">
+                                    <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                                    <div class="service-card-content h-full">
+                                        <div class="service-icon">
+                                            <i class="fas fa-building"></i>
+                                        </div>
+                                        <h3 class="service-title">فعاليات الشركات</h3>
+                                        <p>تنظيم الفعاليات الخاصة بالشركات مثل إطلاق المنتجات، والاحتفالات السنوية، والمناسبات الخاصة.</p>
+                                        <ul class="service-list">
+                                            <li class="service-list-item">
+                                                <i class="fas fa-circle service-list-icon"></i>
+                                    <span>تخطيط وتنفيذ الفعاليات</span>
+                                </li>
+                                            <li class="service-list-item">
+                                                <i class="fas fa-circle service-list-icon"></i>
+                                    <span>تصميم الديكورات والأجواء</span>
+                                </li>
+                                            <li class="service-list-item">
+                                                <i class="fas fa-circle service-list-icon"></i>
+                                    <span>توفير خدمات الضيافة</span>
+                                </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="swiper-slide">
+                                <div class="service-card hover-card arabic-card swiper-lazy">
+                                    <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                                    <div class="service-card-content h-full">
+                                        <div class="service-icon">
+                                            <i class="fas fa-bullhorn"></i>
+                                        </div>
+                                        <h3 class="service-title">التسويق والعلاقات العامة</h3>
+                                        <p>تقديم خدمات التسويق والعلاقات العامة للفعاليات، وإدارة الحملات الإعلامية والتواصل مع وسائل الإعلام.</p>
+                                        <ul class="service-list">
+                                            <li class="service-list-item">
+                                                <i class="fas fa-circle service-list-icon"></i>
+                                    <span>التسويق الرقمي للفعاليات</span>
+                                </li>
+                                            <li class="service-list-item">
+                                                <i class="fas fa-circle service-list-icon"></i>
+                                    <span>إدارة العلاقات الإعلامية</span>
+                                </li>
+                                            <li class="service-list-item">
+                                                <i class="fas fa-circle service-list-icon"></i>
+                                    <span>تصميم الهوية البصرية</span>
+                                </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="swiper-slide">
+                                <div class="service-card hover-card arabic-card swiper-lazy">
+                                    <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                                    <div class="service-card-content h-full">
+                                        <div class="service-icon">
+                                            <i class="fas fa-cogs"></i>
+                                        </div>
+                                        <h3 class="service-title">الخدمات اللوجستية</h3>
+                                        <p>توفير الخدمات اللوجستية المتكاملة للفعاليات، من النقل والإقامة إلى التجهيزات التقنية والضيافة.</p>
+                                        <ul class="service-list">
+                                            <li class="service-list-item">
+                                                <i class="fas fa-circle service-list-icon"></i>
+                                    <span>توفير خدمات النقل والإقامة</span>
+                                </li>
+                                            <li class="service-list-item">
+                                                <i class="fas fa-circle service-list-icon"></i>
+                                    <span>تجهيز المعدات التقنية</span>
+                                </li>
+                                            <li class="service-list-item">
+                                                <i class="fas fa-circle service-list-icon"></i>
+                                    <span>خدمات الضيافة والتموين</span>
+                                </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
-                        <div class="swiper-slide">
-                            <div class="service-card hover-card arabic-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-users"></i>
-                                </div>
-                                <h3 class="service-title">الفعاليات الكبرى</h3>
-                                <p>تنظيم وإدارة الفعاليات الكبرى مثل المهرجانات، والفعاليات الثقافية، والفعاليات الترفيهية.</p>
-                                <ul class="service-list">
-                                    <li class="service-list-item">
-                                        <i class="fas fa-circle service-list-icon"></i>
-                                        <span>التخطيط الشامل للفعاليات</span>
-                                    </li>
-                                    <li class="service-list-item">
-                                        <i class="fas fa-circle service-list-icon"></i>
-                                        <span>إدارة الحشود والسلامة</span>
-                                    </li>
-                                    <li class="service-list-item">
-                                        <i class="fas fa-circle service-list-icon"></i>
-                                        <span>توفير الأنشطة والفقرات</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination services-pagination"></div>
                         
-                        <div class="swiper-slide">
-                            <div class="service-card hover-card arabic-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-building"></i>
-                                </div>
-                                <h3 class="service-title">فعاليات الشركات</h3>
-                                <p>تنظيم الفعاليات الخاصة بالشركات مثل إطلاق المنتجات، والاحتفالات السنوية، والمناسبات الخاصة.</p>
-                                <ul class="service-list">
-                                    <li class="service-list-item">
-                                        <i class="fas fa-circle service-list-icon"></i>
-                                        <span>تخطيط وتنفيذ الفعاليات</span>
-                                    </li>
-                                    <li class="service-list-item">
-                                        <i class="fas fa-circle service-list-icon"></i>
-                                        <span>تصميم الديكورات والأجواء</span>
-                                    </li>
-                                    <li class="service-list-item">
-                                        <i class="fas fa-circle service-list-icon"></i>
-                                        <span>توفير خدمات الضيافة</span>
-                                    </li>
-                                </ul>
-                            </div>
+                        <!-- Add Navigation -->
+                        <div class="swiper-button-next services-button-next">
+                            <i class="fas fa-chevron-right"></i>
                         </div>
-                        
-                        <div class="swiper-slide">
-                            <div class="service-card hover-card arabic-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-bullhorn"></i>
-                                </div>
-                                <h3 class="service-title">التسويق والعلاقات العامة</h3>
-                                <p>تقديم خدمات التسويق والعلاقات العامة للفعاليات، وإدارة الحملات الإعلامية والتواصل مع وسائل الإعلام.</p>
-                                <ul class="service-list">
-                                    <li class="service-list-item">
-                                        <i class="fas fa-circle service-list-icon"></i>
-                                        <span>التسويق الرقمي للفعاليات</span>
-                                    </li>
-                                    <li class="service-list-item">
-                                        <i class="fas fa-circle service-list-icon"></i>
-                                        <span>إدارة العلاقات الإعلامية</span>
-                                    </li>
-                                    <li class="service-list-item">
-                                        <i class="fas fa-circle service-list-icon"></i>
-                                        <span>تصميم الهوية البصرية</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="swiper-slide">
-                            <div class="service-card hover-card arabic-card">
-                                <div class="service-icon">
-                                    <i class="fas fa-cogs"></i>
-                                </div>
-                                <h3 class="service-title">الخدمات اللوجستية</h3>
-                                <p>توفير الخدمات اللوجستية المتكاملة للفعاليات، من النقل والإقامة إلى التجهيزات التقنية والضيافة.</p>
-                                <ul class="service-list">
-                                    <li class="service-list-item">
-                                        <i class="fas fa-circle service-list-icon"></i>
-                                        <span>توفير خدمات النقل والإقامة</span>
-                                    </li>
-                                    <li class="service-list-item">
-                                        <i class="fas fa-circle service-list-icon"></i>
-                                        <span>تجهيز المعدات التقنية</span>
-                                    </li>
-                                    <li class="service-list-item">
-                                        <i class="fas fa-circle service-list-icon"></i>
-                                        <span>خدمات الضيافة والتموين</span>
-                                    </li>
-                                </ul>
-                            </div>
+                        <div class="swiper-button-prev services-button-prev">
+                            <i class="fas fa-chevron-left"></i>
                         </div>
                     </div>
                     
-                    <!-- Add Pagination -->
-                    <div class="swiper-pagination services-pagination"></div>
-                    
-                    <!-- Add Navigation -->
-                    <div class="swiper-button-next services-button-next">
-                        <i class="fas fa-chevron-right"></i>
+                    <div class="text-center mt-12">
+                        <a href="#contact" class="btn btn-primary">احصل على عرض سعر</a>
                     </div>
-                    <div class="swiper-button-prev services-button-prev">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                </div>
-                
-                <div class="text-center mt-12">
-                    <a href="#contact" class="btn btn-primary">احصل على عرض سعر</a>
                 </div>
             </div>
         </section>
@@ -441,6 +613,7 @@
         
         <!-- Vision 2030 Section -->
         <section id="vision" class="py-16 arabic-pattern">
+            <div class="arabic-pattern-overlay"></div>
             <div class="container mx-auto px-4">
                 <div class="section-header">
                     <h2 class="section-title fade-in-heading arabic-decoration" data-text="رؤية 2030">رؤية 2030</h2>
@@ -452,25 +625,25 @@
                     <div class="vision-card hover-card">
                         <div class="vision-icon">
                             <i class="fas fa-users"></i>
-                        </div>
+                            </div>
                         <h3 class="vision-title">مجتمع حيوي</h3>
-                        <p>نساهم في بناء مجتمع حيوي من خلال تنظيم فعاليات تعزز القيم الإسلامية والهوية الوطنية، وتحسن نمط الحياة، وتعزز الفخر بالتراث السعودي.</p>
+                            <p>نساهم في بناء مجتمع حيوي من خلال تنظيم فعاليات تعزز القيم الإسلامية والهوية الوطنية، وتحسن نمط الحياة، وتعزز الفخر بالتراث السعودي.</p>
                     </div>
                     
                     <div class="vision-card hover-card">
                         <div class="vision-icon">
                             <i class="fas fa-chart-line"></i>
-                        </div>
+                            </div>
                         <h3 class="vision-title">اقتصاد مزدهر</h3>
-                        <p>نسهم في تنمية الاقتصاد من خلال خلق فرص عمل، ودعم الشركات المحلية، وجذب الاستثمارات، وتطوير قطاع السياحة والترفيه.</p>
+                            <p>نسهم في تنمية الاقتصاد من خلال خلق فرص عمل، ودعم الشركات المحلية، وجذب الاستثمارات، وتطوير قطاع السياحة والترفيه.</p>
                     </div>
                     
                     <div class="vision-card hover-card">
                         <div class="vision-icon">
                             <i class="fas fa-flag"></i>
-                        </div>
+                            </div>
                         <h3 class="vision-title">وطن طموح</h3>
-                        <p>نعمل على تعزيز الوطن الطموح من خلال تبني أفضل الممارسات العالمية، وتطبيق معايير الجودة، وتعزيز الشفافية والمسؤولية المجتمعية.</p>
+                            <p>نعمل على تعزيز الوطن الطموح من خلال تبني أفضل الممارسات العالمية، وتطبيق معايير الجودة، وتعزيز الشفافية والمسؤولية المجتمعية.</p>
                     </div>
                 </div>
                 
@@ -480,39 +653,39 @@
                     <div class="timeline">
                         <div class="timeline-item">
                             <div class="timeline-icon"></div>
-                            <h4 class="text-xl font-bold text-primary mb-2">تعزيز قطاع السياحة والترفيه</h4>
-                            <p>نساهم في تعزيز قطاع السياحة والترفيه من خلال تنظيم فعاليات تجذب السياح المحليين والدوليين، وتثري تجربتهم في المملكة.</p>
-                        </div>
-                        
+                                <h4 class="text-xl font-bold text-primary mb-2">تعزيز قطاع السياحة والترفيه</h4>
+                                <p>نساهم في تعزيز قطاع السياحة والترفيه من خلال تنظيم فعاليات تجذب السياح المحليين والدوليين، وتثري تجربتهم في المملكة.</p>
+                            </div>
+                            
                         <div class="timeline-item">
                             <div class="timeline-icon"></div>
-                            <h4 class="text-xl font-bold text-primary mb-2">المساهمة في تنمية الاقتصاد</h4>
-                            <p>نسهم في تنويع مصادر الدخل وتنمية الاقتصاد من خلال خلق فرص عمل، ودعم الشركات المحلية، وجذب الاستثمارات.</p>
-                        </div>
-                        
+                                <h4 class="text-xl font-bold text-primary mb-2">المساهمة في تنمية الاقتصاد</h4>
+                                <p>نسهم في تنويع مصادر الدخل وتنمية الاقتصاد من خلال خلق فرص عمل، ودعم الشركات المحلية، وجذب الاستثمارات.</p>
+                            </div>
+                            
                         <div class="timeline-item">
                             <div class="timeline-icon"></div>
-                            <h4 class="text-xl font-bold text-primary mb-2">تعزيز الهوية الوطنية</h4>
-                            <p>نعمل على تعزيز الهوية الوطنية والفخر بالتراث السعودي من خلال تنظيم فعاليات تبرز الثقافة والتراث السعودي.</p>
-                        </div>
-                        
+                                <h4 class="text-xl font-bold text-primary mb-2">تعزيز الهوية الوطنية</h4>
+                                <p>نعمل على تعزيز الهوية الوطنية والفخر بالتراث السعودي من خلال تنظيم فعاليات تبرز الثقافة والتراث السعودي.</p>
+                            </div>
+                            
                         <div class="timeline-item">
                             <div class="timeline-icon"></div>
-                            <h4 class="text-xl font-bold text-primary mb-2">تحسين جودة الحياة</h4>
-                            <p>نساهم في تحسين جودة الحياة من خلال تنظيم فعاليات متنوعة تلبي احتياجات مختلف شرائح المجتمع وتثري حياتهم.</p>
+                                <h4 class="text-xl font-bold text-primary mb-2">تحسين جودة الحياة</h4>
+                                <p>نساهم في تحسين جودة الحياة من خلال تنظيم فعاليات متنوعة تلبي احتياجات مختلف شرائح المجتمع وتثري حياتهم.</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="mt-20 bg-primary rounded-xl shadow-lg overflow-hidden">
                     <div class="flex flex-col md:flex-row">
-                        <div class="md:w-1/2 p-8 text-white">
-                            <h3 class="text-3xl font-bold mb-6">نتعاون مع صندوق الفعاليات الاستثماري</h3>
+                    <div class="md:w-1/2 p-8 text-white">
+                        <h3 class="text-3xl font-bold mb-6">نتعاون مع صندوق الفعاليات الاستثماري</h3>
                             <p class="mb-6">نحن نتعاون مع صندوق الفعاليات الاستثماري الذي يهدف إلى تحقيق مستهدفات رؤية 2030 بتنويع مصادر الدخل غير النفطية للمملكة، وزيادة المساهمة في الناتج المحلي الإجمالي.</p>
                             <a href="#contact" class="btn btn-primary bg-white text-primary hover:bg-accent hover:text-white">تواصل معنا للمزيد</a>
-                        </div>
-                        <div class="md:w-1/2">
-                            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="صندوق الفعاليات الاستثماري" class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-1/2">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="صندوق الفعاليات الاستثماري" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -618,6 +791,7 @@
         
         <!-- Testimonials Section -->
         <section class="py-16 arabic-pattern">
+            <div class="arabic-pattern-overlay"></div>
             <div class="container mx-auto px-4">
                 <div class="section-header section-header-decorated">
                     <div class="corner-ornament corner-top-right"></div>
@@ -633,67 +807,76 @@
                 <div class="swiper testimonials-swiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <div class="testimonial-card hover-card arabic-card">
-                                <div class="flex items-center mb-4">
-                                    <div class="testimonial-avatar">
-                                        <span>أ</span>
+                            <div class="testimonial-card hover-card arabic-card swiper-lazy">
+                                <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                                <div class="testimonial-card-content h-full">
+                                    <div class="flex items-center mb-4">
+                                        <div class="testimonial-avatar">
+                                            <span>أ</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="testimonial-name">أحمد السالم</h4>
+                                            <p class="testimonial-position">مدير التسويق - شركة تقنية</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h4 class="testimonial-name">أحمد السالم</h4>
-                                        <p class="testimonial-position">مدير التسويق - شركة تقنية</p>
+                                    <p class="mb-4 arabic-quote">"تعاملنا مع شركة Elite Arabia في تنظيم مؤتمرنا السنوي، وكانت التجربة رائعة من حيث الاحترافية والتنظيم والاهتمام بالتفاصيل، مما أدى إلى نجاح المؤتمر بشكل كبير."</p>
+                                    <div class="testimonial-rating mt-auto">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
                                     </div>
-                                </div>
-                                <p class="mb-4 arabic-quote">"تعاملنا مع شركة Elite Arabia في تنظيم مؤتمرنا السنوي، وكانت التجربة رائعة من حيث الاحترافية والتنظيم والاهتمام بالتفاصيل، مما أدى إلى نجاح المؤتمر بشكل كبير."</p>
-                                <div class="testimonial-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="swiper-slide">
                             <div class="testimonial-card hover-card arabic-card">
-                                <div class="flex items-center mb-4">
-                                    <div class="testimonial-avatar">
-                                        <span>س</span>
+                                <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                                <div class="testimonial-card-content h-full">
+                                    <div class="flex items-center mb-4">
+                                        <div class="testimonial-avatar">
+                                            <span>س</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="testimonial-name">سارة الفهد</h4>
+                                            <p class="testimonial-position">مدير الفعاليات - جامعة سعودية</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h4 class="testimonial-name">سارة الفهد</h4>
-                                        <p class="testimonial-position">مدير الفعاليات - جامعة سعودية</p>
+                                    <p class="mb-4 arabic-quote">"استعنا بخدمات Elite Arabia في تنظيم فعاليات أسبوع الابتكار في الجامعة، وكان التنظيم على أعلى مستوى من الاحترافية، والتزموا بكافة المواعيد والمتطلبات."</p>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
                                     </div>
-                                </div>
-                                <p class="mb-4 arabic-quote">"استعنا بخدمات Elite Arabia في تنظيم فعاليات أسبوع الابتكار في الجامعة، وكان التنظيم على أعلى مستوى من الاحترافية، والتزموا بكافة المواعيد والمتطلبات."</p>
-                                <div class="testimonial-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="swiper-slide">
                             <div class="testimonial-card hover-card arabic-card">
-                                <div class="flex items-center mb-4">
-                                    <div class="testimonial-avatar">
-                                        <span>م</span>
+                                <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                                <div class="testimonial-card-content h-full">
+                                    <div class="flex items-center mb-4">
+                                        <div class="testimonial-avatar">
+                                            <span>م</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="testimonial-name">محمد العتيبي</h4>
+                                            <p class="testimonial-position">مدير عام - شركة استثمارية</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h4 class="testimonial-name">محمد العتيبي</h4>
-                                        <p class="testimonial-position">مدير عام - شركة استثمارية</p>
+                                    <p class="mb-4 arabic-quote">"أشكر فريق Elite Arabia على تنظيمهم الرائع لحفل إطلاق مشروعنا الجديد، لقد كانوا محترفين في كل شيء، من التخطيط إلى التنفيذ، وساهموا في إنجاح الحفل بشكل كبير."</p>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
                                     </div>
-                                </div>
-                                <p class="mb-4 arabic-quote">"أشكر فريق Elite Arabia على تنظيمهم الرائع لحفل إطلاق مشروعنا الجديد، لقد كانوا محترفين في كل شيء، من التخطيط إلى التنفيذ، وساهموا في إنجاح الحفل بشكل كبير."</p>
-                                <div class="testimonial-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
                                 </div>
                             </div>
                         </div>
@@ -701,44 +884,50 @@
                         <!-- إضافة شهادات إضافية لتعزيز التمرير -->
                         <div class="swiper-slide">
                             <div class="testimonial-card hover-card arabic-card">
-                                <div class="flex items-center mb-4">
-                                    <div class="testimonial-avatar">
-                                        <span>ن</span>
+                                <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                                <div class="testimonial-card-content h-full">
+                                    <div class="flex items-center mb-4">
+                                        <div class="testimonial-avatar">
+                                            <span>ن</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="testimonial-name">نورة القحطاني</h4>
+                                            <p class="testimonial-position">مديرة التسويق - شركة عقارية</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h4 class="testimonial-name">نورة القحطاني</h4>
-                                        <p class="testimonial-position">مديرة التسويق - شركة عقارية</p>
+                                    <p class="mb-4 arabic-quote">"تعاملنا مع شركة Elite Arabia في تنظيم معرضنا العقاري، وكان المستوى أكثر من رائع. الفريق متعاون ومحترف والنتائج تجاوزت توقعاتنا."</p>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
                                     </div>
-                                </div>
-                                <p class="mb-4 arabic-quote">"تعاملنا مع شركة Elite Arabia في تنظيم معرضنا العقاري، وكان المستوى أكثر من رائع. الفريق متعاون ومحترف والنتائج تجاوزت توقعاتنا."</p>
-                                <div class="testimonial-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="swiper-slide">
                             <div class="testimonial-card hover-card arabic-card">
-                                <div class="flex items-center mb-4">
-                                    <div class="testimonial-avatar">
-                                        <span>ع</span>
+                                <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
+                                <div class="testimonial-card-content h-full">
+                                    <div class="flex items-center mb-4">
+                                        <div class="testimonial-avatar">
+                                            <span>ع</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="testimonial-name">عبدالله الشمري</h4>
+                                            <p class="testimonial-position">مؤسس - شركة ناشئة</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h4 class="testimonial-name">عبدالله الشمري</h4>
-                                        <p class="testimonial-position">مؤسس - شركة ناشئة</p>
+                                    <p class="mb-4 arabic-quote">"ببساطة، فريق Elite Arabia هم أفضل منظمي فعاليات تعاملت معهم. محترفون ومبدعون ويعملون بروح الفريق. أوصي بهم بشدة لأي فعالية مهمة."</p>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
                                     </div>
-                                </div>
-                                <p class="mb-4 arabic-quote">"ببساطة، فريق Elite Arabia هم أفضل منظمي فعاليات تعاملت معهم. محترفون ومبدعون ويعملون بروح الفريق. أوصي بهم بشدة لأي فعالية مهمة."</p>
-                                <div class="testimonial-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
                                 </div>
                             </div>
                         </div>
@@ -777,11 +966,11 @@
                     <p class="section-subtitle">نحن هنا لمساعدتك في تنظيم فعاليتك القادمة. تواصل معنا اليوم للحصول على استشارة مجانية وعرض سعر مخصص.</p>
                 </div>
                 
-                <div class="flex flex-col md:flex-row gap-8">
-                    <div class="md:w-1/2">
-                        <div class="contact-info-card">
-                            <h3 class="text-2xl font-bold text-primary mb-6">معلومات التواصل</h3>
-                            <div class="space-y-6">
+                <div class="flex flex-col md:flex-row gap-4 md:gap-8">
+                    <div class="w-full md:w-1/2">
+                        <div class="contact-info-card rounded-md md:rounded-lg">
+                            <h3 class="text-xl md:text-2xl font-bold text-primary mb-4 md:mb-6">معلومات التواصل</h3>
+                            <div class="space-y-4 md:space-y-6">
                                 <div class="flex items-start">
                                     <div class="contact-icon">
                                         <i class="fas fa-map-marker-alt"></i>
@@ -834,28 +1023,28 @@
                         </div>
                     </div>
                     
-                    <div class="md:w-1/2">
-                        <div class="contact-form-card">
-                            <h3 class="text-2xl font-bold text-primary mb-6">ارسل رسالة</h3>
+                    <div class="w-full md:w-1/2">
+                        <div class="contact-form-card rounded-md md:rounded-lg">
+                            <h3 class="text-xl md:text-2xl font-bold text-primary mb-4 md:mb-6">ارسل رسالة</h3>
                             <form>
                                 <div class="form-group">
                                     <label for="name" class="form-label">الاسم الكامل</label>
-                                    <input type="text" id="name" class="form-control">
+                                    <input type="text" id="name" class="form-control" name="name" autocomplete="name">
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="email" class="form-label">البريد الإلكتروني</label>
-                                    <input type="email" id="email" class="form-control">
+                                    <input type="email" id="email" class="form-control" name="email" autocomplete="email">
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="phone" class="form-label">رقم الهاتف</label>
-                                    <input type="tel" id="phone" class="form-control">
+                                    <input type="tel" id="phone" class="form-control" name="phone" autocomplete="tel">
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="service" class="form-label">نوع الخدمة</label>
-                                    <select id="service" class="form-control">
+                                    <select id="service" class="form-control" name="service">
                                         <option value="">اختر الخدمة</option>
                                         <option value="conference">تنظيم مؤتمر</option>
                                         <option value="exhibition">تنظيم معرض</option>
@@ -868,7 +1057,7 @@
                                 
                                 <div class="form-group">
                                     <label for="message" class="form-label">الرسالة</label>
-                                    <textarea id="message" rows="5" class="form-control"></textarea>
+                                    <textarea id="message" rows="4" class="form-control" name="message"></textarea>
                                 </div>
                                 <div class="text-center">
                                 <button type="submit" class="btn btn-primary submit-btn">
@@ -975,18 +1164,99 @@
     <script>
         // Initializing Swiper for Services
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
+            // Smooth scrolling for all anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 70, // Adjust for header height
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Back to top button functionality
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (backToTopButton) {
+                // Initially hide the button
+                backToTopButton.style.opacity = '0';
+                backToTopButton.style.visibility = 'hidden';
+                
+                window.addEventListener('scroll', () => {
+                    if (window.pageYOffset > 300) {
+                        backToTopButton.style.opacity = '1';
+                        backToTopButton.style.visibility = 'visible';
+                    } else {
+                        backToTopButton.style.opacity = '0';
+                        backToTopButton.style.visibility = 'hidden';
+                    }
+                });
+                
+                backToTopButton.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+            
+            // Mobile menu toggle with enhanced accessibility
             const menuToggle = document.querySelector('.menu-toggle');
             const mobileMenu = document.querySelector('.mobile-menu');
             const closeMenu = document.querySelector('.mobile-menu-close');
+            const mobileLinks = document.querySelectorAll('.mobile-menu-links .nav-link');
+            
+            function openMobileMenu() {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent body scrolling
+                menuToggle.setAttribute('aria-expanded', 'true');
+                mobileMenu.setAttribute('aria-hidden', 'false');
+                
+                // Focus trap within mobile menu
+                setTimeout(() => {
+                    closeMenu.focus();
+                }, 100);
+            }
+            
+            function closeMobileMenu() {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = ''; // Allow body scrolling again
+                menuToggle.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                
+                // Return focus to menu toggle
+                setTimeout(() => {
+                    menuToggle.focus();
+                }, 100);
+            }
             
             if (menuToggle && mobileMenu && closeMenu) {
-                menuToggle.addEventListener('click', () => {
-                    mobileMenu.classList.add('active');
+                menuToggle.addEventListener('click', openMobileMenu);
+                
+                closeMenu.addEventListener('click', closeMobileMenu);
+                
+                // Close menu when clicking a link
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', closeMobileMenu);
                 });
                 
-                closeMenu.addEventListener('click', () => {
-                    mobileMenu.classList.remove('active');
+                // Close menu when pressing Escape key
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                        closeMobileMenu();
+                    }
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (mobileMenu.classList.contains('active') && 
+                        !mobileMenu.contains(event.target) && 
+                        !menuToggle.contains(event.target)) {
+                        closeMobileMenu();
+                    }
                 });
             }
             
@@ -1002,78 +1272,375 @@
 
             // Initialize Services Swiper
             const servicesSwiper = new Swiper('.services-swiper', {
-                slidesPerView: 1,
-                spaceBetween: 30,
+                slidesPerView: 'auto',
+                centeredSlides: false,
+                spaceBetween: 20,
                 grabCursor: true,
                 loop: true,
+                preloadImages: true,
+                lazy: {
+                    loadPrevNext: true,
+                    loadPrevNextAmount: 2
+                },
+                speed: 800,
                 autoplay: {
                     delay: 5000,
                     disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
                 },
                 pagination: {
                     el: '.services-pagination',
                     clickable: true,
+                    dynamicBullets: true,
+                    dynamicMainBullets: 3,
                 },
                 navigation: {
                     nextEl: '.services-button-next',
                     prevEl: '.services-button-prev',
                 },
+                observer: true,
+                observeParents: true,
+                observeSlideChildren: true,
+                resizeObserver: true,
                 breakpoints: {
-                    640: {
+                    320: {
                         slidesPerView: 1,
-                        spaceBetween: 20,
+                        spaceBetween: 10,
+                    },
+                    540: {
+                        slidesPerView: 1,
+                        spaceBetween: 15,
                     },
                     768: {
                         slidesPerView: 2,
-                        spaceBetween: 30,
+                        spaceBetween: 20,
                     },
                     1024: {
                         slidesPerView: 3,
-                        spaceBetween: 40,
+                        spaceBetween: 20,
                     },
+                    1366: {
+                        slidesPerView: 3,
+                        spaceBetween: 20,
+                    }
+                },
+                // Better touch handling for mobile
+                touchRatio: 1,
+                touchAngle: 45,
+                threshold: 5,
+                touchStartPreventDefault: false,
+                simulateTouch: true,
+                watchSlidesProgress: true,
+                watchSlidesVisibility: true,
+                updateOnWindowResize: true,
+                preventInteractionOnTransition: true,
+                on: {
+                    init: function() {
+                        // Initialize all slides to be visible
+                        setTimeout(() => {
+                            this.updateSize();
+                            this.updateSlides();
+                        }, 300);
+                    },
+                    resize: function() {
+                        // Force update on resize
+                        setTimeout(() => {
+                            this.updateSize();
+                            this.updateSlides();
+                        }, 300);
+                    },
+                    beforeTransitionStart: function() {
+                        // Ensure smooth animation
+                        const slides = this.slides;
+                        for (let i = 0; i < slides.length; i++) {
+                            slides[i].style.transition = 'all ' + this.params.speed + 'ms ease';
+                        }
+                    }
                 }
             });
 
             // Initialize Testimonials Swiper
             const testimonialsSwiper = new Swiper('.testimonials-swiper', {
-                slidesPerView: 1,
-                spaceBetween: 30,
+                slidesPerView: 'auto',
+                centeredSlides: false,
+                spaceBetween: 20,
                 grabCursor: true,
                 loop: true,
-                effect: 'coverflow',
-                coverflowEffect: {
-                    rotate: 0,
-                    stretch: 0,
-                    depth: 100,
-                    modifier: 2,
-                    slideShadows: false,
+                preloadImages: true,
+                lazy: {
+                    loadPrevNext: true,
+                    loadPrevNextAmount: 2
                 },
+                speed: 800,
+                effect: 'slide', // Changed from coverflow to slide for better stability
                 autoplay: {
                     delay: 6000,
                     disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
                 },
                 pagination: {
                     el: '.testimonials-pagination',
                     clickable: true,
+                    dynamicBullets: true,
+                    dynamicMainBullets: 3,
                 },
                 navigation: {
                     nextEl: '.testimonials-button-next',
                     prevEl: '.testimonials-button-prev',
                 },
+                observer: true,
+                observeParents: true,
+                observeSlideChildren: true,
+                resizeObserver: true,
                 breakpoints: {
-                    640: {
+                    320: {
                         slidesPerView: 1,
-                        spaceBetween: 20,
+                        spaceBetween: 10,
+                        effect: 'slide',
+                    },
+                    540: {
+                        slidesPerView: 1,
+                        spaceBetween: 15,
                     },
                     768: {
                         slidesPerView: 2,
-                        spaceBetween: 30,
+                        spaceBetween: 20,
                     },
                     1024: {
                         slidesPerView: 3,
-                        spaceBetween: 40,
+                        spaceBetween: 20,
                     },
+                    1366: {
+                        slidesPerView: 3,
+                        spaceBetween: 20,
+                    }
+                },
+                // Better touch handling for mobile
+                touchRatio: 1,
+                touchAngle: 45,
+                threshold: 5,
+                touchStartPreventDefault: false,
+                simulateTouch: true,
+                watchSlidesProgress: true,
+                watchSlidesVisibility: true,
+                updateOnWindowResize: true,
+                preventInteractionOnTransition: true,
+                on: {
+                    init: function() {
+                        // Initialize all slides to be visible
+                        setTimeout(() => {
+                            this.updateSize();
+                            this.updateSlides();
+                        }, 300);
+                    },
+                    resize: function() {
+                        // Force update on resize
+                        setTimeout(() => {
+                            this.updateSize();
+                            this.updateSlides();
+                        }, 300);
+                    },
+                    beforeTransitionStart: function() {
+                        // Ensure smooth animation
+                        const slides = this.slides;
+                        for (let i = 0; i < slides.length; i++) {
+                            slides[i].style.transition = 'all ' + this.params.speed + 'ms ease';
+                        }
+                    }
                 }
+            });
+            
+            // Add responsive font size for headings based on screen width
+            function updateResponsiveFonts() {
+                const width = window.innerWidth;
+                const headings = document.querySelectorAll('.section-title');
+                
+                if (width < 640) {
+                    headings.forEach(heading => {
+                        heading.style.fontSize = '1.75rem';
+                    });
+                } else if (width < 768) {
+                    headings.forEach(heading => {
+                        heading.style.fontSize = '2rem';
+                    });
+                } else {
+                    headings.forEach(heading => {
+                        heading.style.fontSize = '2.5rem';
+                    });
+                }
+            }
+            
+            // Run on page load and when the window is resized
+            updateResponsiveFonts();
+            window.addEventListener('resize', updateResponsiveFonts);
+            
+            // Handle orientation change
+            window.addEventListener('orientationchange', function() {
+                // Small delay to ensure the browser has completed the orientation change
+                setTimeout(function() {
+                    updateResponsiveFonts();
+                    
+                    // Force Swiper update to handle new dimensions
+                    if (servicesSwiper) servicesSwiper.update();
+                    if (testimonialsSwiper) testimonialsSwiper.update();
+                    
+                    // Adjust form elements for better readability after orientation change
+                    const formControls = document.querySelectorAll('.form-control');
+                    formControls.forEach(control => {
+                        // Temporarily focus and blur to ensure proper rendering
+                        control.blur();
+                    });
+                }, 200);
+            });
+            
+            // Enhanced handling for swiper height management
+            function updateSwiperHeight() {
+                // For services swiper
+                const serviceSlides = document.querySelectorAll('.services-swiper .swiper-slide');
+                if (serviceSlides.length > 0) {
+                    // Reset heights first
+                    serviceSlides.forEach(slide => {
+                        const card = slide.querySelector('.service-card');
+                        if (card) card.style.height = '';
+                    });
+                    
+                    // Only equalize heights on larger screens
+                    if (window.innerWidth >= 768) {
+                        // Get tallest slide for current view
+                        let maxHeight = 0;
+                        serviceSlides.forEach(slide => {
+                            if (slide.clientHeight > maxHeight && !slide.classList.contains('swiper-slide-duplicate')) {
+                                maxHeight = slide.clientHeight;
+                            }
+                        });
+                        
+                        // Apply equal height to all visible slides
+                        if (maxHeight > 0) {
+                            serviceSlides.forEach(slide => {
+                                const card = slide.querySelector('.service-card');
+                                if (card) card.style.height = maxHeight + 'px';
+                            });
+                        }
+                    }
+                }
+                
+                // For testimonials swiper
+                const testimonialSlides = document.querySelectorAll('.testimonials-swiper .swiper-slide');
+                if (testimonialSlides.length > 0) {
+                    // Reset heights first
+                    testimonialSlides.forEach(slide => {
+                        const card = slide.querySelector('.testimonial-card');
+                        if (card) card.style.height = '';
+                    });
+                    
+                    // Only equalize heights on larger screens
+                    if (window.innerWidth >= 768) {
+                        // Get tallest slide for current view
+                        let maxHeight = 0;
+                        testimonialSlides.forEach(slide => {
+                            if (slide.clientHeight > maxHeight && !slide.classList.contains('swiper-slide-duplicate')) {
+                                maxHeight = slide.clientHeight;
+                            }
+                        });
+                        
+                        // Apply equal height to all visible slides
+                        if (maxHeight > 0) {
+                            testimonialSlides.forEach(slide => {
+                                const card = slide.querySelector('.testimonial-card');
+                                if (card) card.style.height = maxHeight + 'px';
+                            });
+                        }
+                    }
+                }
+                
+                // Ensure swipers are properly contained
+                document.querySelectorAll('.swiper').forEach(swiper => {
+                    // Force containment and prevent overflow
+                    swiper.style.maxWidth = '100%';
+                    swiper.style.overflowX = 'hidden';
+                });
+            }
+            
+            // Add resize observer for accurate height updates
+            if ('ResizeObserver' in window) {
+                const resizeObserver = new ResizeObserver(entries => {
+                    updateSwiperHeight();
+                });
+                
+                // Observe the swiper containers
+                const swiperContainers = document.querySelectorAll('.swiper');
+                swiperContainers.forEach(container => {
+                    resizeObserver.observe(container);
+                });
+            } else {
+                // Fallback for browsers without ResizeObserver
+                window.addEventListener('resize', updateSwiperHeight);
+            }
+            
+            // Initial height update
+            setTimeout(updateSwiperHeight, 500);
+            
+            // Update heights after images load to prevent layout shifts
+            window.addEventListener('load', () => {
+                updateSwiperHeight();
+                
+                // Refresh swipers after all content is loaded
+                if (servicesSwiper) {
+                    servicesSwiper.update();
+                    servicesSwiper.updateSize();
+                    servicesSwiper.updateSlides();
+                }
+                
+                if (testimonialsSwiper) {
+                    testimonialsSwiper.update();
+                    testimonialsSwiper.updateSize();
+                    testimonialsSwiper.updateSlides();
+                }
+            });
+            
+            // Set up event listeners for auto-swap transitions
+            function setupSwiperListeners(swiper, slidesSelector) {
+                if (!swiper) return;
+                
+                // Listen for auto-swap transitions
+                swiper.on('slideChangeTransitionStart', function() {
+                    const currentSlide = this.slides[this.activeIndex];
+                    if (!currentSlide) return;
+                    
+                    // Pre-render the next slide for smoother transitions
+                    if (this.slides[this.activeIndex + 1]) {
+                        this.slides[this.activeIndex + 1].style.visibility = 'visible';
+                    }
+                    
+                    // Handle height adjustments during transitions
+                    updateSwiperHeight();
+                });
+                
+                // Ensure heights are recalculated after all transitions
+                swiper.on('slideChangeTransitionEnd', function() {
+                    updateSwiperHeight();
+                });
+                
+                // Manual touch handling - synchronize heights after touch
+                swiper.on('touchEnd', function() {
+                    setTimeout(updateSwiperHeight, 300);
+                });
+            }
+            
+            // Set up event listeners for both swipers
+            setupSwiperListeners(servicesSwiper, '.services-swiper .swiper-slide');
+            setupSwiperListeners(testimonialsSwiper, '.testimonials-swiper .swiper-slide');
+            
+            // Enhance form input for touch devices
+            const formControls = document.querySelectorAll('.form-control');
+            formControls.forEach(control => {
+                control.addEventListener('focus', function() {
+                    this.style.fontSize = '16px'; // Prevents iOS zoom on focus
+                });
+                
+                control.addEventListener('blur', function() {
+                    this.style.fontSize = ''; // Reset to default on blur
+                });
             });
         });
     </script>
