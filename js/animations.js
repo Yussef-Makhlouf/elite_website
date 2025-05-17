@@ -152,16 +152,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Animate Arabic decorations
         gsap.utils.toArray('.arabic-decoration').forEach(element => {
-            gsap.from(element, {
-                scrollTrigger: {
-                    trigger: element,
-                    start: "top 85%"
-                },
-                scale: 0.9,
-                opacity: 0,
-                duration: 1,
-                ease: "back.out(1.5)"
-            });
+            // Remove the animation for arabic-decoration elements
+            element.style.opacity = '1';
+            element.style.transform = 'none';
         });
         
         // Animate section separators

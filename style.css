@@ -833,8 +833,14 @@ section {
     margin-bottom: 1rem;
     position: relative;
     display: inline-block;
-    opacity: 1; /* Remove any initial opacity settings */
-    transform: none; /* Remove any initial transform */
+    opacity: 1;
+}
+
+/* Remove the fade-in-heading animation class and replace with simple styles */
+.fade-in-heading {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
 }
 
 .section-title::after {
@@ -847,12 +853,6 @@ section {
     font-size: 110%;
     z-index: -1;
     white-space: nowrap;
-}
-
-/* Remove any existing fade-in-heading animations if they exist */
-.fade-in-heading {
-    opacity: 1;
-    transform: none;
 }
 
 .section-subtitle {
