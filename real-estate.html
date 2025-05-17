@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#00917C">
+    <title>Elite Arabia | خدمات العقار المتميزة</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./image/favicon.png">
+    <!-- GSAP Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollToPlugin.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/page-transitions.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/magnetic-buttons.js"></script>
+    <style>
+        /* Enhanced responsive styles for Swiper */
+        .swiper-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            height: auto;
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+            box-sizing: border-box;
+        }
+        
+        .swiper-slide {
+            height: auto !important;
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+            transition-property: transform, box-shadow, opacity;
+            transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+            will-change: transform, box-shadow, opacity;
+            box-sizing: border-box;
+        }
+        
+        /* Ensure all slides maintain same height */
+        .property-card, .testimonial-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .property-features {
+            margin-top: auto;
+        }
+        
+        /* Property type label */
+        .property-type {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 1;
+        }
+        
+        /* Property card styling */
+        .property-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .property-card-image {
+            position: relative;
+        }
+        
+        .property-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .property-location {
+            display: flex;
+            align-items: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .property-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        /* Make sure pagination is visible on all backgrounds */
+        .swiper-pagination-bullet {
+            background: var(--primary-color);
+            opacity: 0.5;
+            width: 10px;
+            height: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: var(--primary-color);
+            opacity: 1;
+            width: 20px;
+            border-radius: 10px;
+        }
+        
+        /* Enhanced navigation buttons for better touch targets */
+        .swiper-button-next, .swiper-button-prev {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        
+        .swiper-button-next:after, .swiper-button-prev:after {
+            content: none;
+        }
+        
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            background-color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        
+        .swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled {
+            opacity: 0.2;
+            cursor: not-allowed;
+        }
+        
+        .properties-swiper:hover .swiper-button-next,
+        .properties-swiper:hover .swiper-button-prev {
+            opacity: 0.8;
+        }
+
+        /* Floating Contact Buttons */
+        .floating-contact-buttons {
+            position: fixed;
+            bottom: 30px;
+            left: 20px;
+            z-index: 99;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .floating-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            color: white;
+            font-size: 24px;
+        }
+
+        .floating-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+        }
+
+        .whatsapp-button {
+            background-color: #25D366;
+        }
+
+        .call-button {
+            background-color: var(--primary-color);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-logo">
+            <div class="arabic-symbol">
+                <img src="./image/logo2.png" alt="Elite Arabia Logo" class="preloader-logo-image" >
+            </div>
+            <span>Elite Arabia</span>
+        </div>
+        <div class="preloader-container">
+            <div class="preloader-progress"></div>
+        </div>
+        <div class="preloader-pattern"></div>
+    </div>
+                
+    <!-- Header -->
+    <header id="header" class="header-transparent">
+        <div class="container mx-auto px-4">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="./image/logo.png" alt="Elite Arabia Logo" class="h-12 w-auto bg-white rounded-full p-2">
+                </div>
+                
+                <nav class="nav-links hidden md:flex">
+                    <a href="index.html#home" class="nav-link navbar-item">الرئيسية</a>
+                    <a href="index.html#about" class="nav-link navbar-item">من نحن</a>
+                    <a href="index.html#services" class="nav-link navbar-item">خدماتنا</a>
+                    <a href="real-estate.html" class="nav-link navbar-item active">العقارات</a>
+                    <a href="index.html#vision" class="nav-link navbar-item">رؤية 2030</a>
+                    <a href="index.html#projects" class="nav-link navbar-item">مشاريعنا</a>
+                    <a href="index.html#contact" class="nav-link navbar-item">تواصل معنا</a>
+                </nav>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="menu-toggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+        <button class="mobile-menu-close" aria-label="إغلاق القائمة">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="mobile-menu-logo">
+            <div class="mobile-symbol"></div>
+            <span>Elite Arabia</span>
+        </div>
+        
+        <nav class="mobile-menu-links">
+            <a href="index.html#home" class="nav-link" aria-label="الرئيسية">الرئيسية</a>
+            <a href="index.html#about" class="nav-link" aria-label="من نحن">من نحن</a>
+            <a href="index.html#services" class="nav-link" aria-label="خدماتنا">خدماتنا</a>
+            <a href="real-estate.html" class="nav-link active" aria-label="العقارات">العقارات</a>
+            <a href="index.html#vision" class="nav-link" aria-label="رؤية 2030">رؤية 2030</a>
+            <a href="index.html#projects" class="nav-link" aria-label="مشاريعنا">مشاريعنا</a>
+            <a href="index.html#contact" class="nav-link" aria-label="تواصل معنا">تواصل معنا</a>
+        </nav>
+        
+        <div class="mobile-menu-social">
+            <a href="#" class="mobile-social-link" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="mobile-social-link" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="mobile-social-link" aria-label="انستقرام"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="mobile-social-link" aria-label="لينكد إن"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+    
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="arabic-pattern-overlay"></div>
+            
+            <!-- Parallax Background -->
+            <div class="parallax-bg"></div>
+            
+            <!-- Animated Background Shapes -->
+            <div class="animated-bg">
+                <div class="bg-shape bg-shape-1"></div>
+                <div class="bg-shape bg-shape-2"></div>
+                <div class="bg-shape bg-shape-3"></div>
+            </div>
+            
+            <!-- Particles -->
+            <div class="particles-container">
+                <div class="particle particle-1 floating-element"></div>
+                <div class="particle particle-2 floating-element"></div>
+                <div class="particle particle-3 floating-element"></div>
+                <div class="particle particle-4 floating-element"></div>
+                <div class="particle particle-5 floating-element"></div>
+                <div class="particle particle-6 floating-element"></div>
+                <div class="particle particle-7 floating-element"></div>
+                <div class="particle particle-8 floating-element"></div>
+                <div class="particle particle-9 floating-element"></div>
+                <div class="particle particle-10 floating-element"></div>
+            </div>
+            
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="md:w-1/2 mb-10 md:mb-0 hero-content">
+                        <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl">حلول عقارية راقية تناسب تطلعاتكم</h1>
+                        <p class="hero-text text-sm sm:text-base">نقدم لكم خدمات عقارية متكاملة بمعايير عالمية، مستندين على رؤية المملكة 2030 لتوفير بيئة استثمارية مستدامة تعزز من جودة الحياة.</p>
+                       
+                        <!-- Direct Contact Buttons -->
+                        <div class="flex flex-wrap sm:flex-nowrap space-x-3 sm:space-x-5 space-x-reverse mt-5 gap-3">
+                            <a href="tel:+966543900088" class="btn-contact text-sm sm:text-base my-1 flex-1 sm:flex-none text-center">
+                                <i class="fas fa-phone-alt ml-2"></i>
+                                <span>0543900088</span>
+                            </a>
+                            <a href="https://wa.me/966543900088" class="btn-whatsapp text-sm sm:text-base my-1 flex-1 sm:flex-none text-center" target="_blank">
+                                <i class="fab fa-whatsapp ml-2"></i>
+                                <span>واتساب</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 hero-image">
+                        <div class="hero-image-container floating-element">
+                            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="عقارات فاخرة في السعودية" class="w-full">
+                            <div class="hero-badge floating-element">
+                                <p class="font-bold">استثمارات عقارية آمنة</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stats Counter -->
+                <div class="flex flex-wrap justify-center mt-12 md:mt-20 gap-3 sm:gap-4 md:gap-8">
+                    <div class="w-5/12 sm:w-auto text-center text-white bg-white bg-opacity-10 p-3 sm:p-4 md:p-6 rounded-lg">
+                        <div class="text-2xl sm:text-3xl md:text-4xl font-bold counter mb-1 md:mb-2" data-target="500">0</div>
+                        <p class="text-xs sm:text-sm md:text-base">عقار متنوع</p>
+                    </div>
+                    <div class="w-5/12 sm:w-auto text-center text-white bg-white bg-opacity-10 p-3 sm:p-4 md:p-6 rounded-lg">
+                        <div class="text-2xl sm:text-3xl md:text-4xl font-bold counter mb-1 md:mb-2" data-target="300">0</div>
+                        <p class="text-xs sm:text-sm md:text-base">عميل راضٍ</p>
+                    </div>
+                    <div class="w-5/12 sm:w-auto text-center text-white bg-white bg-opacity-10 p-3 sm:p-4 md:p-6 rounded-lg">
+                        <div class="text-2xl sm:text-3xl md:text-4xl font-bold counter mb-1 md:mb-2" data-target="15">0</div>
+                        <p class="text-xs sm:text-sm md:text-base">مشروع إسكاني</p>
+                    </div>
+                    <div class="w-5/12 sm:w-auto text-center text-white bg-white bg-opacity-10 p-3 sm:p-4 md:p-6 rounded-lg">
+                        <div class="text-2xl sm:text-3xl md:text-4xl font-bold counter mb-1 md:mb-2" data-target="10">0</div>
+                        <p class="text-xs sm:text-sm md:text-base">سنوات خبرة</p>
+                    </div>
+                </div>
+                
+                <!-- Scroll Indicator -->
+                <div class="scroll-indicator">
+                    <div class="scroll-indicator-text">اسكرول للأسفل</div>
+                    <div class="scroll-indicator-icon">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Arabic Divider -->
+        <div class="section-separator">
+            <div class="separator-top"></div>
+            <div class="separator-bottom"></div>
+        </div>
+        
+        <!-- About Real Estate Section -->
+        <section id="about-real-estate" class="py-16 md:py-24">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <span class="section-subtitle">نبذة تعريفية</span>
+                    <h2 class="section-title">خدماتنا العقارية</h2>
+                    <div class="section-title-separator"></div>
+                </div>
+                
+                <div class="flex flex-col lg:flex-row items-center">
+                    <div class="lg:w-1/2 lg:pr-10 mb-10 lg:mb-0 about-content">
+                        <p class="mb-6 paragraph-lg">تقدم إيليت عربية حلولاً عقارية متكاملة تشمل التطوير والاستثمار والتسويق العقاري، من خلال فريق من الخبراء المتخصصين في السوق العقاري السعودي.</p>
+                        
+                        <p class="mb-6 paragraph-lg">نهدف إلى تحقيق أعلى مستويات الجودة والشفافية في معاملاتنا العقارية، مع مراعاة احتياجات عملائنا وتقديم الاستشارات المتخصصة.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                            <div class="feature-item">
+                                <i class="fas fa-home feature-icon"></i>
+                                <h3 class="feature-title">تطوير عقاري</h3>
+                                <p class="feature-text">مشاريع سكنية وتجارية متميزة بتصاميم عصرية</p>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <i class="fas fa-chart-line feature-icon"></i>
+                                <h3 class="feature-title">استثمار آمن</h3>
+                                <p class="feature-text">فرص استثمارية مجدية بعائد ربحي مضمون</p>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <i class="fas fa-handshake feature-icon"></i>
+                                <h3 class="feature-title">وساطة عقارية</h3>
+                                <p class="feature-text">إتمام صفقات البيع والشراء بكل احترافية</p>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <i class="fas fa-file-signature feature-icon"></i>
+                                <h3 class="feature-title">استشارات قانونية</h3>
+                                <p class="feature-text">خدمات قانونية لإتمام العقود وصياغتها</p>
+                            </div>
+                        </div>
+                        
+                        <a href="#contact" class="btn-primary">تواصل معنا</a>
+                    </div>
+                    
+                    <div class="lg:w-1/2 about-images">
+                        <div class="about-images-container">
+                            <div class="about-image-1">
+                                <img src="https://images.unsplash.com/photo-1560184897-502a475f7a0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="مشروع عقاري فاخر" class="rounded-lg shadow-xl">
+                                <div class="about-image-1-badge">
+                                    <span>جودة عالية</span>
+                                </div>
+                            </div>
+                            
+                            <div class="about-image-2">
+                                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="فيلا سكنية فاخرة" class="rounded-lg shadow-xl">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Arabic Divider -->
+        <div class="section-separator">
+            <div class="separator-top"></div>
+            <div class="separator-bottom"></div>
+        </div>
+    </main>
+</body>
+</html> 
