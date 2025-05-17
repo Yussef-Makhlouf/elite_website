@@ -159,7 +159,11 @@
         }
         
         .properties-swiper:hover .swiper-button-next,
-        .properties-swiper:hover .swiper-button-prev {
+        .properties-swiper:hover .swiper-button-prev,
+        .testimonials-swiper:hover .swiper-button-next,
+        .testimonials-swiper:hover .swiper-button-prev,
+        .gallery-swiper:hover .swiper-button-next,
+        .gallery-swiper:hover .swiper-button-prev {
             opacity: 0.8;
         }
 
@@ -200,7 +204,523 @@
         .call-button {
             background-color: var(--primary-color);
         }
-
+        
+        /* Testimonials styling */
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 25px;
+            position: relative;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .testimonial-content {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .testimonial-content:before {
+            content: '\f10d';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            top: -10px;
+            right: -5px;
+            font-size: 40px;
+            color: rgba(0, 145, 124, 0.1);
+            z-index: 0;
+        }
+        
+        .testimonial-rating {
+            color: #FFD700;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: #666;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-left: 15px;
+            border: 3px solid var(--primary-color);
+        }
+        
+        .testimonial-author-info h4 {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 3px;
+            color: var(--dark-color);
+        }
+        
+        .testimonial-author-info p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* FAQ Styling */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--dark-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            color: var(--primary-color);
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            line-height: 1.6;
+            color: #666;
+        }
+        
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+        
+        /* Team Members styling */
+        .team-member {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .team-member-image {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-member-image img {
+            transition: transform 0.5s ease;
+        }
+        
+        .team-member:hover .team-member-image img {
+            transform: scale(1.1);
+        }
+        
+        .team-member-content {
+            padding: 20px;
+            text-align: center;
+            background-color: white;
+        }
+        
+        .team-member-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 5px;
+        }
+        
+        .team-member-position {
+            font-size: 14px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .team-member-social {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .team-social-link {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-color);
+            transition: all 0.3s ease;
+        }
+        
+        .team-social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Enhanced Contact Section */
+        .contact-enhanced {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        @media (min-width: 768px) {
+            .contact-enhanced {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .contact-enhanced {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .contact-card-enhanced {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 250px;
+        }
+        
+        .contact-card-enhanced:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,145,124,0.1) 0%, rgba(255,255,255,0) 60%);
+            z-index: -1;
+        }
+        
+        .contact-card-enhanced:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .contact-icon-enhanced {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0,145,124,0.3);
+        }
+        
+        .contact-title-enhanced {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+        
+        .contact-info-enhanced {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .contact-action {
+            margin-top: auto;
+        }
+        
+        /* Arabic Pattern backgrounds */
+        .arabic-bg-light {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .arabic-bg-light:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
+            background-size: 400px;
+            opacity: 0.05;
+            z-index: -1;
+        }
+        
+        .arabic-bg-dark {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .arabic-bg-dark:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
+            background-size: 400px;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        /* Decorative elements */
+        .arabic-ornament {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-image: url('https://www.freepnglogos.com/uploads/islamic-png/islamic-png-transparent-images-islamic-vector-31.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.08;
+            z-index: -1;
+        }
+        
+        .ornament-top-right {
+            top: -50px;
+            right: -50px;
+            transform: rotate(45deg);
+        }
+        
+        .ornament-bottom-left {
+            bottom: -50px;
+            left: -50px;
+            transform: rotate(-135deg);
+        }
+        
+        /* Gallery styling */
+        .gallery-image {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            height: 250px;
+        }
+        
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-image:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-image:hover .gallery-image-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            transform: scale(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-image:hover .gallery-icon {
+            transform: scale(1);
+        }
+        
+        /* Investment benefits styling */
+        .benefit-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(0,145,124,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: var(--primary-color);
+            margin: 0 auto 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover .benefit-icon {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,145,124,0.3);
+        }
+        
+        /* News/Blog styling */
+        .news-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .news-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .news-card:hover .news-image img {
+            transform: scale(1.1);
+        }
+        
+        .news-date {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .news-card:hover .news-title {
+            color: var(--primary-color);
+        }
+        
+        .news-excerpt {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 14px;
+        }
+        
         @keyframes pulse {
             0% {
                 transform: scale(1);
@@ -214,6 +734,43 @@
                 transform: scale(1);
                 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             }
+        }
+        
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .fade-in-delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .fade-in-delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .fade-in-delay-3 {
+            animation-delay: 0.6s;
+        }
+        
+        .fade-in-delay-4 {
+            animation-delay: 0.8s;
+        }
+        
+        .fade-in-delay-5 {
+            animation-delay: 1s;
         }
     </style>
 </head>
@@ -768,6 +1325,400 @@
             <div class="separator-top"></div>
             <div class="separator-bottom"></div>
         </div>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 md:py-24 bg-pattern">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <span class="section-subtitle">تواصل معنا</span>
+                    <h2 class="section-title">دعنا نساعدك في إيجاد العقار المناسب</h2>
+                    <div class="section-title-separator"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                    <div class="contact-info">
+                        <div class="contact-card mb-8">
+                            <h3 class="contact-title">معلومات التواصل</h3>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>العنوان</h4>
+                                    <p>جدة، المملكة العربية السعودية</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>اتصل بنا</h4>
+                                    <p>0543900088</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>البريد الإلكتروني</h4>
+                                    <p>ceo@elitearabia.sa</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>ساعات العمل</h4>
+                                    <p>الأحد - الخميس: 9 صباحاً - 5 مساءً</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="follow-us">
+                            <h3 class="follow-title">تابعنا على وسائل التواصل</h3>
+                            <div class="social-links mt-4">
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-container">
+                        <form class="contact-form">
+                            <div class="form-group">
+                                <label for="name">الاسم الكامل</label>
+                                <input type="text" id="name" class="form-control" placeholder="أدخل اسمك الكامل" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">البريد الإلكتروني</label>
+                                <input type="email" id="email" class="form-control" placeholder="أدخل بريدك الإلكتروني" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">رقم الهاتف</label>
+                                <input type="tel" id="phone" class="form-control" placeholder="أدخل رقم هاتفك" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="property-type">نوع العقار</label>
+                                <select id="property-type" class="form-control" required>
+                                    <option value="" disabled selected>اختر نوع العقار</option>
+                                    <option value="villa">فيلا</option>
+                                    <option value="apartment">شقة</option>
+                                    <option value="land">أرض</option>
+                                    <option value="commercial">عقار تجاري</option>
+                                    <option value="other">أخرى</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">الرسالة</label>
+                                <textarea id="message" class="form-control" rows="5" placeholder="اكتب رسالتك هنا..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn-submit">إرسال الطلب</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-pattern"></div>
+        <div class="container mx-auto px-4">
+            <div class="footer-decoration">
+                <div class="footer-symbol"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="footer-column-title">Elite Arabia</h3>
+                    <p class="mb-4">شركة سعودية متخصصة في مجال العقار والخدمات العقارية المتكاملة، نعمل بتوافق مع رؤية المملكة 2030.</p>
+                    <div class="social-links mt-4">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-column-title">روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index.html#home">الرئيسية</a></li>
+                        <li class="footer-link"><a href="index.html#about">من نحن</a></li>
+                        <li class="footer-link"><a href="index.html#services">خدماتنا</a></li>
+                        <li class="footer-link"><a href="real-estate.html">العقارات</a></li>
+                        <li class="footer-link"><a href="index.html#vision">رؤية 2030</a></li>
+                        <li class="footer-link"><a href="index.html#projects">مشاريعنا</a></li>
+                        <li class="footer-link"><a href="index.html#contact">تواصل معنا</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-column-title">خدماتنا العقارية</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#featured-properties">العقارات المميزة</a></li>
+                        <li class="footer-link"><a href="#real-estate-services">بيع وشراء العقارات</a></li>
+                        <li class="footer-link"><a href="#real-estate-services">التطوير العقاري</a></li>
+                        <li class="footer-link"><a href="#real-estate-services">الاستثمار العقاري</a></li>
+                        <li class="footer-link"><a href="#real-estate-services">الاستشارات القانونية</a></li>
+                        <li class="footer-link"><a href="#real-estate-services">إدارة الأملاك</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-column-title">تواصل معنا</h3>
+                    <ul class="footer-links contact-links">
+                        <li class="footer-contact-item">
+                            <i class="fas fa-map-marker-alt footer-contact-icon"></i>
+                            <span>جدة، المملكة العربية السعودية</span>
+                        </li>
+                        <li class="footer-contact-item">
+                            <i class="fas fa-phone-alt footer-contact-icon"></i>
+                            <span>0543900088</span>
+                        </li>
+                        <li class="footer-contact-item">
+                            <i class="fas fa-envelope footer-contact-icon"></i>
+                            <span>ceo@elitearabia.sa</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-divider"></div>
+                <p>&copy; 2024 Elite Arabia. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <div class="back-to-top-icon">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+    </div>
+
+    <!-- Floating Contact Buttons -->
+    <div class="floating-contact-buttons">
+        <a href="https://wa.me/966543900088" class="floating-button whatsapp-button" target="_blank" aria-label="تواصل معنا عبر واتساب">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+966543900088" class="floating-button call-button" aria-label="اتصل بنا">
+            <i class="fas fa-phone-alt"></i>
+        </a>
+    </div>
+
+    <script>
+        // Initialize Swiper for Properties
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Properties Swiper
+            const propertiesSwiper = new Swiper('.properties-swiper', {
+                slidesPerView: 'auto',
+                centeredSlides: false,
+                spaceBetween: 20,
+                grabCursor: true,
+                loop: true,
+                preloadImages: true,
+                lazy: {
+                    loadPrevNext: true,
+                    loadPrevNextAmount: 2
+                },
+                speed: 800,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                },
+                pagination: {
+                    el: '.properties-pagination',
+                    clickable: true,
+                    dynamicBullets: true,
+                    dynamicMainBullets: 3,
+                },
+                navigation: {
+                    nextEl: '.properties-button-next',
+                    prevEl: '.properties-button-prev',
+                },
+                observer: true,
+                observeParents: true,
+                observeSlideChildren: true,
+                resizeObserver: true,
+                breakpoints: {
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                    },
+                    540: {
+                        slidesPerView: 1,
+                        spaceBetween: 15,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 20,
+                    },
+                    1366: {
+                        slidesPerView: 4,
+                        spaceBetween: 20,
+                    }
+                }
+            });
+            
+            // Smooth scrolling for all anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 70, // Adjust for header height
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Back to top button functionality
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (backToTopButton) {
+                // Initially hide the button
+                backToTopButton.style.opacity = '0';
+                backToTopButton.style.visibility = 'hidden';
+                
+                window.addEventListener('scroll', () => {
+                    if (window.pageYOffset > 300) {
+                        backToTopButton.style.opacity = '1';
+                        backToTopButton.style.visibility = 'visible';
+                    } else {
+                        backToTopButton.style.opacity = '0';
+                        backToTopButton.style.visibility = 'hidden';
+                    }
+                });
+                
+                backToTopButton.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+            
+            // Mobile menu toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const closeMenu = document.querySelector('.mobile-menu-close');
+            const mobileLinks = document.querySelectorAll('.mobile-menu-links .nav-link');
+            
+            function openMobileMenu() {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent body scrolling
+                menuToggle.setAttribute('aria-expanded', 'true');
+                mobileMenu.setAttribute('aria-hidden', 'false');
+            }
+            
+            function closeMobileMenu() {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = ''; // Allow body scrolling again
+                menuToggle.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+            }
+            
+            if (menuToggle && mobileMenu && closeMenu) {
+                menuToggle.addEventListener('click', openMobileMenu);
+                closeMenu.addEventListener('click', closeMobileMenu);
+                
+                // Close menu when clicking a link
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', closeMobileMenu);
+                });
+            }
+            
+            // Scrolled header
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Form validation
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Here you would normally send the form data to a server
+                    alert('شكراً لتواصلك معنا! سيتم الرد عليك في أقرب وقت ممكن.');
+                    contactForm.reset();
+                });
+            }
+            
+            // Animation for counters
+            const counters = document.querySelectorAll('.counter');
+            const speed = 200;
+            
+            function animateCounter() {
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const increment = target / speed;
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(animateCounter, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                });
+            }
+            
+            // Start counter animation when in viewport
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            if (counters.length > 0) {
+                observer.observe(counters[0].parentElement.parentElement);
+            }
+        });
+    </script>
 </body>
 </html> 
