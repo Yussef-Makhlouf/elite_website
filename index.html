@@ -1503,56 +1503,60 @@
             position: relative;
             overflow: hidden;
             border-radius: 12px;
-            height: 350px;
+            background-color: rgba(15, 15, 15, 0.85);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
         }
-        
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2);
+        }
+
+        .project-image-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
         .project-image {
-            transition: all 0.5s ease;
+            width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
         }
-        
+
         .project-card:hover .project-image {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
-        
+
         .project-content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
             padding: 1.5rem;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 50%, transparent 100%);
-            transform: translateY(40px);
-            transition: all 0.4s ease;
+            background-color: rgba(15, 15, 15, 0.95);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
         }
-        
-        .project-card:hover .project-content {
-            transform: translateY(0);
-        }
-        
+
         .project-title {
-            margin-bottom: 0.5rem;
+            color: var(--text-gold);
             font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
-        
+
         .project-desc {
+            color: var(--text-light);
             margin-bottom: 1rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.4s ease 0.1s;
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
-        
-        .project-card:hover .project-desc {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
+
         .project-meta {
             display: flex;
             justify-content: space-between;
         }
-        
+
         .project-tag, .project-location {
             display: inline-block;
             padding: 0.3rem 0.8rem;
@@ -1758,24 +1762,166 @@
                 opacity: 1;
             }
         }
+
+        /* Preloader Styles - Dark Theme with Gold Accents */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #050505;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .preloader.fade-out {
+            opacity: 0;
+        }
+        
+        .preloader-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .arabic-symbol {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: pulse-gold 2s infinite ease-in-out;
+        }
+        
+        .arabic-symbol::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            animation: spin-slow 10s linear infinite;
+        }
+        
+        .arabic-symbol::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 1px dashed rgba(212, 175, 55, 0.2);
+            border-radius: 50%;
+            animation: spin-reverse 15s linear infinite;
+        }
+        
+        .preloader-logo-image {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            border: 2px solid var(--primary-color);
+            background-color: white;
+            z-index: 1;
+        }
+        
+        .preloader-logo span {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--primary-color);
+            margin-top: 0.5rem;
+        }
+        
+        .preloader-container {
+            width: 250px;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .preloader-progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, 
+                rgba(212, 175, 55, 0.5) 0%, 
+                rgba(242, 215, 105, 0.8) 50%, 
+                rgba(212, 175, 55, 0.5) 100%);
+            background-size: 200% auto;
+            border-radius: 10px;
+            animation: loading 2s ease forwards, shine 2s linear infinite;
+        }
+        
+        .preloader-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5h30v30H30zM0 5h30v30H0z' fill='none' stroke='%23d4af37' stroke-opacity='0.1' stroke-width='1'/%3E%3Cpath d='M30 35h30v30H30zM0 35h30v30H0z' fill='none' stroke='%23d4af37' stroke-opacity='0.1' stroke-width='1'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            z-index: -1;
+        }
+        
+        @keyframes loading {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+        
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes spin-reverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+        
+        /* Remove preloader after loading */
+        body.loaded .preloader {
+            opacity: 0;
+            visibility: hidden;
+        }
     </style>
 </head>
 
 <body>
     <!-- Preloader -->
-    <!-- <div class="preloader">
+    <div class="preloader">
         <div class="preloader-logo">
             <div class="arabic-symbol">
-
                 <img src="./image/logo2.png" alt="Elite Arabia Logo" class="preloader-logo-image">
             </div>
-            <span>Elite Arabia</span>
+            <span class="gold-shimmer">Elite Arabia</span>
         </div>
         <div class="preloader-container">
             <div class="preloader-progress"></div>
         </div>
         <div class="preloader-pattern"></div>
-    </div> -->
+    </div>
 
     <!-- Header -->
     <header id="header" class="header-transparent">
@@ -2276,13 +2422,15 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 card-container">
                     <div class="project-card hover-card">
-                        <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
-                            alt="مؤتمر الابتكار" class="project-image">
-                        <div class="project-content">
-                            <h3 class="project-title">مؤتمر الابتكار السعودي</h3>
-                            <p class="project-desc text-white">تنظيم مؤتمر الابتكار السعودي بمشاركة أكثر من 2000 شخص، وحضور نخبة من
+                        <div class="project-image-container overflow-hidden rounded-t-xl">
+                            <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
+                                alt="مؤتمر الابتكار" class="project-image w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                        </div>
+                        <div class="project-content p-5 bg-gray-900">
+                            <h3 class="project-title mb-2">مؤتمر الابتكار السعودي</h3>
+                            <p class="project-desc text-white text-sm mb-3">تنظيم مؤتمر الابتكار السعودي بمشاركة أكثر من 2000 شخص، وحضور نخبة من
                                 المتحدثين المحليين والدوليين.</p>
-                            <div class="project-meta">
+                            <div class="project-meta flex justify-between">
                                 <span class="project-tag">مؤتمر</span>
                                 <span class="project-location">جدة</span>
                             </div>
@@ -2290,13 +2438,15 @@
                     </div>
 
                     <div class="project-card hover-card">
-                        <img src="./image/event.jpg"
-                            alt="مهرجان الفنون" class="project-image">
-                        <div class="project-content">
-                            <h3 class="project-title">مهرجان الفنون السعودي</h3>
-                            <p class="project-desc text-white">تنظيم مهرجان الفنون السعودي الذي استمر لمدة أسبوع، وشهد مشاركة أكثر
+                        <div class="project-image-container overflow-hidden rounded-t-xl">
+                            <img src="./image/event.jpg"
+                                alt="مهرجان الفنون" class="project-image w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                        </div>
+                        <div class="project-content p-5 bg-gray-900">
+                            <h3 class="project-title mb-2">مهرجان الفنون السعودي</h3>
+                            <p class="project-desc text-white text-sm mb-3">تنظيم مهرجان الفنون السعودي الذي استمر لمدة أسبوع، وشهد مشاركة أكثر
                                 من 100 فنان وحضور أكثر من 50,000 زائر.</p>
-                            <div class="project-meta">
+                            <div class="project-meta flex justify-between">
                                 <span class="project-tag">مهرجان</span>
                                 <span class="project-location">جدة</span>
                             </div>
@@ -2304,13 +2454,15 @@
                     </div>
 
                     <div class="project-card hover-card">
-                        <img src="https://images.unsplash.com/photo-1560439513-74b037a25d84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
-                            alt="معرض تجاري" class="project-image">
-                        <div class="project-content">
-                            <h3 class="project-title">معرض التجارة الإلكترونية</h3>
-                            <p class="project-desc text-white"></p>تنظيم معرض التجارة الإلكترونية بمشاركة أكثر من 200 شركة محلية
+                        <div class="project-image-container overflow-hidden rounded-t-xl">
+                            <img src="https://images.unsplash.com/photo-1560439513-74b037a25d84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
+                                alt="معرض تجاري" class="project-image w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                        </div>
+                        <div class="project-content p-5 bg-gray-900">
+                            <h3 class="project-title mb-2">معرض التجارة الإلكترونية</h3>
+                            <p class="project-desc text-white text-sm mb-3">تنظيم معرض التجارة الإلكترونية بمشاركة أكثر من 200 شركة محلية
                                 ودولية، وحضور أكثر من 30,000 زائر.</p>
-                            <div class="project-meta">
+                            <div class="project-meta flex justify-between">
                                 <span class="project-tag">معرض</span>
                                 <span class="project-location">الدمام</span>
                             </div>
@@ -2318,13 +2470,15 @@
                     </div>
 
                     <div class="project-card hover-card">
-                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
-                            alt="حفل إطلاق منتج" class="project-image">
-                        <div class="project-content">
-                            <h3 class="project-title">حفل إطلاق منتج تقني</h3>
-                            <p class="project-desc text-white">تنظيم حفل إطلاق منتج تقني لإحدى الشركات الكبرى، بحضور نخبة من
+                        <div class="project-image-container overflow-hidden rounded-t-xl">
+                            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
+                                alt="حفل إطلاق منتج" class="project-image w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                        </div>
+                        <div class="project-content p-5 bg-gray-900">
+                            <h3 class="project-title mb-2">حفل إطلاق منتج تقني</h3>
+                            <p class="project-desc text-white text-sm mb-3">تنظيم حفل إطلاق منتج تقني لإحدى الشركات الكبرى، بحضور نخبة من
                                 الشخصيات وتغطية إعلامية واسعة.</p>
-                            <div class="project-meta">
+                            <div class="project-meta flex justify-between">
                                 <span class="project-tag">حفل إطلاق</span>
                                 <span class="project-location">جدة</span>
                             </div>
@@ -2332,13 +2486,15 @@
                     </div>
 
                     <div class="project-card hover-card">
-                        <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1046&q=80"
-                            alt="مؤتمر طبي" class="project-image">
-                        <div class="project-content">
-                            <h3 class="project-title">المؤتمر الطبي السعودي</h3>
-                            <p class="project-desc text-white">تنظيم المؤتمر الطبي السعودي بمشاركة أكثر من 1500 طبيب ومتخصص، وحضور
+                        <div class="project-image-container overflow-hidden rounded-t-xl">
+                            <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1046&q=80"
+                                alt="مؤتمر طبي" class="project-image w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                        </div>
+                        <div class="project-content p-5 bg-gray-900">
+                            <h3 class="project-title mb-2">المؤتمر الطبي السعودي</h3>
+                            <p class="project-desc text-white text-sm mb-3">تنظيم المؤتمر الطبي السعودي بمشاركة أكثر من 1500 طبيب ومتخصص، وحضور
                                 نخبة من المتحدثين العالميين.</p>
-                            <div class="project-meta">
+                            <div class="project-meta flex justify-between">
                                 <span class="project-tag">مؤتمر</span>
                                 <span class="project-location">جدة</span>
                             </div>
@@ -2346,13 +2502,15 @@
                     </div>
 
                     <div class="project-card hover-card">
-                        <img src="./image/cover.png"
-                            alt="مهرجان ثقافي" class="project-image">
-                        <div class="project-content">
-                            <h3 class="project-title">مهرجان التراث السعودي</h3>
-                            <p class="project-desc text-white">تنظيم مهرجان التراث السعودي الذي أبرز جماليات التراث السعودي، وشهد
+                        <div class="project-image-container overflow-hidden rounded-t-xl">
+                            <img src="./image/cover.png"
+                                alt="مهرجان ثقافي" class="project-image w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                        </div>
+                        <div class="project-content p-5 bg-gray-900">
+                            <h3 class="project-title mb-2">مهرجان التراث السعودي</h3>
+                            <p class="project-desc text-white text-sm mb-3">تنظيم مهرجان التراث السعودي الذي أبرز جماليات التراث السعودي، وشهد
                                 حضور أكثر من 40,000 زائر.</p>
-                            <div class="project-meta">
+                            <div class="project-meta flex justify-between">
                                 <span class="project-tag">مهرجان</span>
                                 <span class="project-location">جدة</span>
                             </div>
@@ -3325,6 +3483,35 @@
                 item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(item);
             });
+        });
+
+        // Preloader script
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get preloader element
+            const preloader = document.querySelector('.preloader');
+            const preloaderProgress = document.querySelector('.preloader-progress');
+            
+            // Simulate loading progress
+            let width = 0;
+            const interval = setInterval(function() {
+                width += Math.floor(Math.random() * 10) + 1;
+                if (width > 100) width = 100;
+                preloaderProgress.style.width = width + '%';
+                
+                if (width === 100) {
+                    clearInterval(interval);
+                    // Add small delay before hiding preloader
+                    setTimeout(() => {
+                        preloader.classList.add('fade-out');
+                        document.body.classList.add('loaded');
+                        
+                        // Remove preloader from DOM after transition
+                        setTimeout(() => {
+                            preloader.style.display = 'none';
+                        }, 500);
+                    }, 500);
+                }
+            }, 100);
         });
     </script>
 </body>
