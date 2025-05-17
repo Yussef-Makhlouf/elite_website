@@ -253,6 +253,69 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Enhanced section title animations with stagger effect
+    gsap.utils.toArray('.section-title').forEach((title, index) => {
+        // Set initial state
+        gsap.set(title, {
+            opacity: 0,
+            y: 30,
+            scale: 0.95
+        });
+
+        // Create the animation
+        gsap.to(title, {
+            scrollTrigger: {
+                trigger: title,
+                start: "top 85%",
+                end: "bottom 15%",
+                toggleActions: "play none none reverse"
+            },
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 1,
+            ease: "power3.out",
+            onStart: () => {
+                // Animate the decorative text shadow
+                if (title.hasAttribute('data-text')) {
+                    const shadow = title.querySelector('::after');
+                    if (shadow) {
+                        gsap.fromTo(shadow, {
+                            opacity: 0,
+                            scale: 1.2,
+                            x: 20,
+                            y: -20
+                        }, {
+                            opacity: 0.1,
+                            scale: 1,
+                            x: 0,
+                            y: 0,
+                            duration: 1.2,
+                            ease: "power2.out"
+                        });
+                    }
+                }
+            }
+        });
+
+        // Add a subtle hover effect
+        title.addEventListener('mouseenter', () => {
+            gsap.to(title, {
+                scale: 1.02,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
+
+        title.addEventListener('mouseleave', () => {
+            gsap.to(title, {
+                scale: 1,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
+    });
+    
     // Section headers reveal with staggered elements
     gsap.utils.toArray('.section-header').forEach(header => {
         const title = header.querySelector('.section-title');
