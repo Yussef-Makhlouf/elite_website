@@ -1,12 +1,12 @@
 :root {
     /* Enhanced color palette based on traditional Saudi/Arabic colors */
-    --primary-color: #00917C; /* Rich teal */
-    --primary-light: #46CAD7; /* Light teal */
-    --primary-dark: #007666; /* Dark teal */
+    --primary-color: #a4895f; /* Rich teal */
+    --primary-light: #b99d76; /* Light teal */
+    --primary-dark: #b99d76; /* Dark teal */
     --secondary-color: #FE5E41; /* Vibrant coral/orange */
     --secondary-light: #FFA06A; /* Light coral */
-    --accent-color: #F8D458; /* Gold/yellow */
-    --accent-dark: #EAAE21; /* Dark gold */
+    --accent-color: #1f3250 ; /* Gold/yellow */
+    --accent-dark: #1f3250 ; /* Dark gold */
     --neutral-dark: #2F394B; /* Dark blue-gray */
     --neutral-light: #F9F8F4; /* Warm white */
     --gray-100: #f8f9fa;
@@ -147,6 +147,7 @@ img {
 .preloader-logo-image {
     width: 100px;
     height: 100px;
+    object-fit: cover;
 }
 .preloader-logo span {
     font-size: 2.5rem;
