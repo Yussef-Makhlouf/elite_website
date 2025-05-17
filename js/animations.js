@@ -416,25 +416,34 @@ document.addEventListener('DOMContentLoaded', function() {
     // Smooth scroll for navigation links
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
+            // Get the href attribute
+            const href = this.getAttribute('href');
             
-            const target = document.querySelector(this.getAttribute('href'));
-            const offset = 80; // Navbar height offset
-            
-                gsap.to(window, {
-                duration: 1,
-                    scrollTo: {
-                    y: target,
-                    offsetY: offset
-                    },
-                    ease: "power3.inOut"
-                });
+            // Only handle anchor links (#something)
+            if (href.startsWith('#')) {
+                e.preventDefault();
                 
-            // Close mobile menu if open
-            const mobileMenu = document.querySelector('.mobile-menu');
-            if (mobileMenu && mobileMenu.classList.contains('active')) {
-                mobileMenu.classList.remove('active');
+                const target = document.querySelector(href);
+                if (target) {
+                    const offset = 80; // Navbar height offset
+                    
+                    gsap.to(window, {
+                        duration: 1,
+                        scrollTo: {
+                            y: target,
+                            offsetY: offset
+                        },
+                        ease: "power3.inOut"
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.querySelector('.mobile-menu');
+                    if (mobileMenu && mobileMenu.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                    }
+                }
             }
+            // For non-anchor links (like "./index.html"), let the browser handle navigation normally
         });
     });
     

@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#00917C">
+    <title>Elite Arabia | من نحن</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./image/favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollToPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="js/animations.js"></script>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-logo">
+            <div class="arabic-symbol">
+                <img src="./image/logo2.png" alt="Elite Arabia Logo" class="preloader-logo-image">
+            </div>
+            <span>Elite Arabia</span>
+        </div>
+        <div class="preloader-container">
+            <div class="preloader-progress"></div>
+        </div>
+        <div class="preloader-pattern"></div>
+    </div>
+
+    <!-- Header -->
+    <header id="header" class="header-transparent">
+        <div class="container mx-auto px-4">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="./image/logo.png" alt="Elite Arabia Logo" class="h-12 w-auto bg-white rounded-full p-2">
+                </div>
+
+                <nav class="nav-links hidden md:flex">
+                    <a href="index.html#home" class="nav-link navbar-item">الرئيسية</a>
+                    <a href="about-us.html" class="nav-link navbar-item">من نحن</a>
+                    <a href="index.html#services" class="nav-link navbar-item">خدماتنا</a>
+                    <a href="index.html#vision" class="nav-link navbar-item">رؤية 2030</a>
+                    <a href="index.html#projects" class="nav-link navbar-item">مشاريعنا</a>
+                    <a href="real-estate.html" class="nav-link navbar-item">المقاولات</a>
+                    <a href="index.html#contact" class="nav-link navbar-item">تواصل معنا</a>
+                </nav>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="menu-toggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+        <button class="mobile-menu-close" aria-label="إغلاق القائمة">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <div class="mobile-menu-logo">
+            <div class="mobile-symbol"></div>
+            <span>Elite Arabia</span>
+        </div>
+
+        <nav class="mobile-menu-links">
+            <a href="index.html#home" class="nav-link" aria-label="الرئيسية">الرئيسية</a>
+            <a href="about-us.html" class="nav-link" aria-label="من نحن">من نحن</a>
+            <a href="index.html#services" class="nav-link" aria-label="خدماتنا">خدماتنا</a>
+            <a href="index.html#vision" class="nav-link" aria-label="رؤية 2030">رؤية 2030</a>
+            <a href="index.html#projects" class="nav-link" aria-label="مشاريعنا">مشاريعنا</a>
+            <a href="real-estate.html" class="nav-link" aria-label="العقارات">العقارات</a>
+            <a href="index.html#contact" class="nav-link" aria-label="تواصل معنا">تواصل معنا</a>
+        </nav>
+
+        <div class="mobile-menu-social">
+            <a href="#" class="mobile-social-link" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="mobile-social-link" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="mobile-social-link" aria-label="انستقرام"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="mobile-social-link" aria-label="لينكد إن"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </div>
+
+    <main> <!-- Hero Section - New Full-width Design -->
+
+        <!-- About Us Main Section - Timeline Style -->
+        <section id="about-main" class="py-20 relative bg-white"> <!-- Decorative Elements -->
+            <div
+                class="absolute left-0 top-0 h-64 w-64 rounded-full bg-primary bg-opacity-5 -translate-x-1/2 -translate-y-1/2">
+            </div>
+            <div
+                class="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-accent bg-opacity-5 translate-x-1/3 translate-y-1/3">
+            </div>
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="flex flex-col items-center mb-16 text-center">
+                    <div class="inline-block mb-4 text-accent"> <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
+                                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                        </svg> </div>
+                    <h2 class="text-4xl font-bold text-neutral-dark mb-4 relative"> قصة نجاحنا <span
+                            class="absolute -bottom-3 left-1/2 w-24 h-1 bg-accent transform -translate-x-1/2"></span>
+                    </h2>
+                    <p class="text-xl max-w-3xl mt-6">نهتم في شركة إليت أرابيا بتقديم أفضل الخدمات في مجال تنظيم
+                        الفعاليات والمقاولات بأعلى معايير الجودة</p>
+                </div> <!-- Image with Overlapping Content Box -->
+                <div class="relative mb-24">
+                    <div class="relative h-96 overflow-hidden rounded-2xl shadow-2xl"> <img
+                            src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
+                            alt="فريق إليت أرابيا" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-neutral-dark to-transparent opacity-60">
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white rounded-xl shadow-xl p-8 md:p-10 max-w-3xl mx-auto md:mr-12 relative md:absolute md:top-1/2 md:transform md:-translate-y-1/2 md:right-8 mt-4 md:mt-0">
+                        <h3 class="text-2xl font-bold text-primary-dark mb-4 border-r-4 border-accent pr-4">من نحن</h3>
+                        <p class="mb-6 text-gray-700">شركة إليت أرابيا، هي شركة سعودية متخصصة في تنظيم وإدارة الفعاليات
+                            بمختلف أنواعها، وتقديم خدمات المقاولات الشاملة. تأسست الشركة منذ أكثر من 10 سنوات بهدف تطوير
+                            صناعة الفعاليات في المملكة العربية السعودية وخدمة رؤية 2030.</p>
+                        <p class="text-gray-700">نعمل مع نخبة من الخبراء في مجالات تنظيم الفعاليات والمقاولات، ونتميز
+                            بتقديم حلول متكاملة وإبداعية تلبي احتياجات عملائنا من القطاعين الحكومي والخاص، بما يضمن نجاح
+                            فعالياتهم ومشاريعهم.</p>
+                    </div>
+                </div> <!-- Features in Horizontal Layout -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div
+                        class="bg-gradient-to-br from-neutral-dark to-primary-dark text-white p-6 rounded-xl transform transition-all hover:-translate-y-2 hover:shadow-xl">
+                        <div
+                            class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-award text-2xl"></i> </div>
+                        <h4 class="text-xl font-bold mb-2">خبرة واسعة</h4>
+                        <p class="opacity-80">أكثر من 10 سنوات من الخبرة في إدارة وتنظيم الفعاليات وتنفيذ المشاريع</p>
+                    </div>
+                    <div
+                        class="bg-gradient-to-br from-neutral-dark to-primary-dark text-white p-6 rounded-xl transform transition-all hover:-translate-y-2 hover:shadow-xl">
+                        <div
+                            class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-users text-2xl"></i> </div>
+                        <h4 class="text-xl font-bold mb-2">فريق محترف</h4>
+                        <p class="opacity-80">كوادر متخصصة تتميز بالإبداع والكفاءة العالية لتقديم أفضل الخدمات</p>
+                    </div>
+                    <div
+                        class="bg-gradient-to-br from-neutral-dark to-primary-dark text-white p-6 rounded-xl transform transition-all hover:-translate-y-2 hover:shadow-xl">
+                        <div
+                            class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-handshake text-2xl"></i> </div>
+                        <h4 class="text-xl font-bold mb-2">شراكات ناجحة</h4>
+                        <p class="opacity-80">شراكات استراتيجية مع الجهات الحكومية والشركات الخاصة</p>
+                    </div>
+                    <div
+                        class="bg-gradient-to-br from-neutral-dark to-primary-dark text-white p-6 rounded-xl transform transition-all hover:-translate-y-2 hover:shadow-xl">
+                        <div
+                            class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-shield-alt text-2xl"></i> </div>
+                        <h4 class="text-xl font-bold mb-2">موثوقية وأمان</h4>
+                        <p class="opacity-80">تقديم خدمات ذات جودة عالية وفق أفضل المعايير العالمية</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Arabic Divider -->
+        <div class="section-separator">
+            <div class="separator-top"></div>
+            <div class="separator-bottom"></div>
+        </div>
+
+        <!-- Events Services Section - Horizontal Accordion Style -->
+        <section id="events-services" class="py-20 relative bg-gradient-to-br from-accent to-secondary bg-opacity-5">
+            <!-- Wave Pattern Overlay -->
+            <div class="absolute inset-0 opacity-5">
+                <svg viewBox="0 0 1100 800" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                    <path fill="#ffffff"
+                        d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                    </path>
+                </svg>
+            </div>
+
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="text-center mb-16">
+                    <span
+                        class="inline-block px-4 py-1 rounded-full bg-white text-accent font-semibold mb-4 shadow-sm">خدماتنا
+                        المتميزة</span>
+                    <h2 class="text-4xl font-bold text-white mb-4">خدمات تنظيم الفعاليات</h2>
+                    <p class="text-white text-opacity-90 max-w-2xl mx-auto">نقدم حلول متكاملة لتنظيم وإدارة الفعاليات
+                        الخاصة والعامة بما يتوافق مع أهداف وتطلعات عملائنا</p>
+                </div>
+
+                <!-- Horizontal Tabs/Accordion -->
+                <div class="mb-16">
+                    <div class="flex flex-wrap md:flex-nowrap border-b border-white border-opacity-20">
+                        <button
+                            class="tab-button active py-3 px-6 flex-1 text-white text-opacity-80 hover:text-opacity-100 font-bold border-b-2 border-accent"
+                            onclick="openTab(event, 'tab1')">المؤتمرات والندوات</button>
+                        <button
+                            class="tab-button py-3 px-6 flex-1 text-white text-opacity-80 hover:text-opacity-100 font-bold"
+                            onclick="openTab(event, 'tab2')">المناسبات الاجتماعية</button>
+                        <button
+                            class="tab-button py-3 px-6 flex-1 text-white text-opacity-80 hover:text-opacity-100 font-bold"
+                            onclick="openTab(event, 'tab3')">المعارض التجارية</button>
+                        <button
+                            class="tab-button py-3 px-6 flex-1 text-white text-opacity-80 hover:text-opacity-100 font-bold"
+                            onclick="openTab(event, 'tab4')">الفعاليات الترفيهية</button>
+                        <button
+                            class="tab-button py-3 px-6 flex-1 text-white text-opacity-80 hover:text-opacity-100 font-bold"
+                            onclick="openTab(event, 'tab5')">الفعاليات المؤسسية</button>
+                        <button
+                            class="tab-button py-3 px-6 flex-1 text-white text-opacity-80 hover:text-opacity-100 font-bold"
+                            onclick="openTab(event, 'tab6')">الحملات التسويقية</button>
+                    </div>
+
+                    <!-- Tab Content -->
+                    <div id="tab1" class="tab-content active">
+                        <div
+                            class="flex flex-col md:flex-row p-8 bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-lg mt-6">
+                            <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center items-start">
+                                <div
+                                    class="h-48 w-48 rounded-full bg-white bg-opacity-20 flex items-center justify-center">
+                                    <i class="fas fa-calendar-check text-6xl text-white"></i>
+                                </div>
+                            </div>
+                            <div class="md:w-2/3">
+                                <h3 class="text-2xl font-bold text-white mb-4">المؤتمرات والندوات</h3>
+                                <p class="text-white text-opacity-90 mb-6">تنظيم المؤتمرات والندوات بمختلف أحجامها
+                                    وأنواعها، مع تجهيز قاعات المؤتمرات وتوفير التقنيات والمعدات اللازمة وخدمات الترجمة.
+                                </p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">التخطيط الاستراتيجي للمؤتمرات</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">تجهيز قاعات ومرافق المؤتمرات</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">استضافة المتحدثين والضيوف</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">خدمات الترجمة الفورية</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab2" class="tab-content hidden">
+                        <div
+                            class="flex flex-col md:flex-row p-8 bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-lg mt-6">
+                            <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center items-start">
+                                <div
+                                    class="h-48 w-48 rounded-full bg-white bg-opacity-20 flex items-center justify-center">
+                                    <i class="fas fa-glass-cheers text-6xl text-white"></i>
+                                </div>
+                            </div>
+                            <div class="md:w-2/3">
+                                <h3 class="text-2xl font-bold text-white mb-4">المناسبات الاجتماعية</h3>
+                                <p class="text-white text-opacity-90 mb-6">تنظيم المناسبات الاجتماعية والعائلية الخاصة
+                                    بأعلى مستويات الجودة والاهتمام بأدق التفاصيل لضمان نجاح المناسبة.</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">حفلات الزواج والمناسبات العائلية</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">حفلات التخرج والنجاح</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">حفلات استقبال المواليد</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">خدمات تصوير الفيديو والفوتوغراف</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab3" class="tab-content hidden">
+                        <!-- Similar content structure for المعارض التجارية -->
+                        <div
+                            class="flex flex-col md:flex-row p-8 bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-lg mt-6">
+                            <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center items-start">
+                                <div
+                                    class="h-48 w-48 rounded-full bg-white bg-opacity-20 flex items-center justify-center">
+                                    <i class="fas fa-store text-6xl text-white"></i>
+                                </div>
+                            </div>
+                            <div class="md:w-2/3">
+                                <h3 class="text-2xl font-bold text-white mb-4">المعارض التجارية</h3>
+                                <p class="text-white text-opacity-90 mb-6">تنظيم المعارض التجارية وتجهيز الأجنحة بتصاميم
+                                    مبتكرة، مع تقديم خدمات متكاملة لإدارة المعارض بكفاءة عالية.</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">تصميم وتنفيذ المعارض التجارية</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">تجهيز الأجنحة والمنصات العرض</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">تقديم خدمات الضيافة</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">تنظيم الزيارات وإدارة الحشود</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab4" class="tab-content hidden">
+                        <!-- الفعاليات الترفيهية content -->
+                        <div
+                            class="flex flex-col md:flex-row p-8 bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-lg mt-6">
+                            <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center items-start">
+                                <div
+                                    class="h-48 w-48 rounded-full bg-white bg-opacity-20 flex items-center justify-center">
+                                    <i class="fas fa-map-marked-alt text-6xl text-white"></i>
+                                </div>
+                            </div>
+                            <div class="md:w-2/3">
+                                <h3 class="text-2xl font-bold text-white mb-4">الفعاليات الترفيهية</h3>
+                                <p class="text-white text-opacity-90 mb-6">تنظيم الفعاليات الترفيهية والمهرجانات العامة،
+                                    مع توفير البرامج والأنشطة المناسبة لمختلف الفئات العمرية.</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">تنظيم المهرجانات والمناسبات الموسمية</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">إقامة الفعاليات الرياضية والثقافية</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">برامج ترفيهية للأطفال والعائلات</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">تنظيم الحفلات الموسيقية</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab5" class="tab-content hidden">
+                        <!-- الفعاليات المؤسسية content -->
+                        <div
+                            class="flex flex-col md:flex-row p-8 bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-lg mt-6">
+                            <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center items-start">
+                                <div
+                                    class="h-48 w-48 rounded-full bg-white bg-opacity-20 flex items-center justify-center">
+                                    <i class="fas fa-building text-6xl text-white"></i>
+                                </div>
+                            </div>
+                            <div class="md:w-2/3">
+                                <h3 class="text-2xl font-bold text-white mb-4">الفعاليات المؤسسية</h3>
+                                <p class="text-white text-opacity-90 mb-6">تنظيم الفعاليات المؤسسية بما فيها افتتاح
+                                    المشاريع والمقرات الجديدة، وإقامة حفلات تكريم الموظفين وورش العمل.</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">تنظيم حفلات افتتاح المشاريع</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">إدارة ورش العمل والدورات التدريبية</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">حفلات تكريم الموظفين</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">اجتماعات مجالس الإدارة السنوية</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab6" class="tab-content hidden">
+                        <!-- الحملات التسويقية content -->
+                        <div
+                            class="flex flex-col md:flex-row p-8 bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm rounded-lg mt-6">
+                            <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center items-start">
+                                <div
+                                    class="h-48 w-48 rounded-full bg-white bg-opacity-20 flex items-center justify-center">
+                                    <i class="fas fa-bullhorn text-6xl text-white"></i>
+                                </div>
+                            </div>
+                            <div class="md:w-2/3">
+                                <h3 class="text-2xl font-bold text-white mb-4">الحملات التسويقية</h3>
+                                <p class="text-white text-opacity-90 mb-6">تخطيط وتنفيذ الحملات التسويقية والترويجية،
+                                    بما في ذلك إطلاق المنتجات الجديدة وتنظيم الجولات التسويقية.</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">إطلاق المنتجات والخدمات الجديدة</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">تنظيم الجولات التسويقية</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">إدارة الحملات الإعلامية</span>
+                                    </div>
+                                    <div
+                                        class="flex items-center space-x-2 space-x-reverse bg-white bg-opacity-10 p-2 rounded">
+                                        <i class="fas fa-check text-accent"></i>
+                                        <span class="text-white">تنظيم المسابقات والعروض الترويجية</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Arabic Divider -->
+        <div class="section-separator">
+            <div class="separator-top"></div>
+            <div class="separator-bottom"></div>
+        </div>
+
+        <!-- Contracting Services Section - Modern Timeline Layout -->
+        <section id="contracting-services" class="py-20 bg-neutral-light relative overflow-hidden">
+            <!-- Decorative Elements -->
+            <div class="absolute -left-32 -top-32 w-64 h-64 rounded-full bg-primary bg-opacity-5"></div>
+            <div class="absolute -right-32 -bottom-32 w-96 h-96 rounded-full bg-accent bg-opacity-5"></div>
+            <div class="container mx-auto px-4 relative z-10"> <!-- Section Header -->
+                <div class="flex flex-col items-center text-center mb-16"> <span
+                        class="inline-block px-4 py-1 bg-primary-dark text-white rounded-full text-sm font-semibold mb-4">خدمات
+                        متكاملة</span>
+                    <h2 class="text-4xl font-bold text-neutral-dark mb-6 relative">خدمات المقاولات <span
+                            class="absolute bottom-0 left-1/2 transform -translate-x-1/2 -mb-3 w-16 h-1 bg-primary-dark"></span>
+                    </h2>
+                    <p class="text-gray-600 max-w-3xl mx-auto mt-6">نوفر مجموعة متكاملة من خدمات المقاولات بأعلى معايير
+                        الجودة والاحترافية لتلبية احتياجات عملائنا</p>
+                </div> <!-- Interactive Timeline -->
+                <div class="relative mb-20"> <!-- Timeline Line -->
+                    <div
+                        class="absolute h-full w-1 bg-neutral-dark bg-opacity-10 left-1/2 transform -translate-x-1/2 rounded-full">
+                    </div> <!-- Timeline Item 1 -->
+                    <div class="flex flex-col md:flex-row items-center mb-24 relative">
+                        <div class="hidden md:block w-1/2 pr-16 text-right">
+                            <h3 class="text-2xl font-bold text-primary-dark mb-4">التميز في خدمات المقاولات</h3>
+                            <p class="text-gray-600">تعتبر شركة إليت أرابيا من الشركات الرائدة في مجال المقاولات
+                                بالمملكة العربية السعودية، حيث نقدم خدمات متكاملة في مجال البناء والتشييد والتطوير
+                                العقاري، مع الالتزام بأعلى معايير الجودة والسلامة.</p>
+                        </div> <!-- Timeline Dot -->
+                        <div
+                            class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-primary-dark rounded-full flex items-center justify-center z-20 shadow-lg border-4 border-white">
+                            <i class="fas fa-hard-hat text-white"></i> </div> <!-- Image for Right Side (Desktop) -->
+                        <div class="hidden md:block w-1/2 pl-16">
+                            <div
+                                class="rounded-lg overflow-hidden shadow-xl transform hover:-translate-y-2 transition-transform duration-300">
+                                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
+                                    alt="خدمات المقاولات" class="w-full h-auto"> </div>
+                        </div> <!-- Mobile Content -->
+                        <div class="md:hidden w-full pt-16 pb-8 text-center">
+                            <h3 class="text-2xl font-bold text-primary-dark mb-4">التميز في خدمات المقاولات</h3>
+                            <p class="text-gray-600 mb-8">تعتبر شركة إليت أرابيا من الشركات الرائدة في مجال المقاولات
+                                بالمملكة العربية السعودية، حيث نقدم خدمات متكاملة في مجال البناء والتشييد والتطوير
+                                العقاري، مع الالتزام بأعلى معايير الجودة والسلامة.</p>
+                            <div class="rounded-lg overflow-hidden shadow-xl"> <img
+                                    src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
+                                    alt="خدمات المقاولات" class="w-full h-auto"> </div>
+                        </div>
+                    </div> <!-- Timeline Item 2 -->
+                    <div class="flex flex-col md:flex-row items-center mb-24 relative">
+                        <!-- Image for Left Side (Desktop) -->
+                        <div class="hidden md:block w-1/2 pr-16">
+                            <div
+                                class="rounded-lg overflow-hidden shadow-xl transform hover:-translate-y-2 transition-transform duration-300">
+                                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
+                                    alt="المباني السكنية" class="w-full h-auto"> </div>
+                        </div> <!-- Timeline Dot -->
+                        <div
+                            class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-primary-dark rounded-full flex items-center justify-center z-20 shadow-lg border-4 border-white">
+                            <i class="fas fa-home text-white"></i> </div>
+                        <div class="hidden md:block w-1/2 pl-16">
+                            <h3 class="text-2xl font-bold text-primary-dark mb-4">المباني السكنية</h3>
+                            <p class="text-gray-600 mb-6">بناء وتشييد المباني السكنية من الفلل الخاصة إلى المجمعات
+                                السكنية المتكاملة، مع الاهتمام بكافة التفاصيل.</p>
+                            <ul class="space-y-2">
+                                <li class="flex items-center space-x-2 space-x-reverse"> <i
+                                        class="fas fa-check-circle text-primary-dark"></i> <span>بناء الفلل والقصور
+                                        الخاصة</span> </li>
+                                <li class="flex items-center space-x-2 space-x-reverse"> <i
+                                        class="fas fa-check-circle text-primary-dark"></i> <span>تشييد المجمعات
+                                        السكنية</span> </li>
+                                <li class="flex items-center space-x-2 space-x-reverse"> <i
+                                        class="fas fa-check-circle text-primary-dark"></i> <span>بناء الشقق
+                                        السكنية</span> </li>
+                                <li class="flex items-center space-x-2 space-x-reverse"> <i
+                                        class="fas fa-check-circle text-primary-dark"></i> <span>ترميم وتجديد المباني
+                                        القديمة</span> </li>
+                            </ul>
+                        </div> <!-- Mobile Content -->
+                        <div class="md:hidden w-full pt-16 pb-8 text-center">
+                            <h3 class="text-2xl font-bold text-primary-dark mb-4">المباني السكنية</h3>
+                            <p class="text-gray-600 mb-6">بناء وتشييد المباني السكنية من الفلل الخاصة إلى المجمعات
+                                السكنية المتكاملة، مع الاهتمام بكافة التفاصيل.</p>
+                            <div class="rounded-lg overflow-hidden shadow-xl mb-6"> <img
+                                    src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
+                                    alt="المباني السكنية" class="w-full h-auto"> </div>
+                            <ul class="space-y-2 text-right">
+                                <li class="flex items-center space-x-2 space-x-reverse"> <i
+                                        class="fas fa-check-circle text-primary-dark"></i> <span>بناء الفلل والقصور
+                                        الخاصة</span> </li>
+                                <li class="flex items-center space-x-2 space-x-reverse"> <i
+                                        class="fas fa-check-circle text-primary-dark"></i> <span>تشييد المجمعات
+                                        السكنية</span> </li>
+                                <li class="flex items-center space-x-2 space-x-reverse"> <i
+                                        class="fas fa-check-circle text-primary-dark"></i> <span>بناء الشقق
+                                        السكنية</span> </li>
+                                <li class="flex items-center space-x-2 space-x-reverse"> <i
+                                        class="fas fa-check-circle text-primary-dark"></i> <span>ترميم وتجديد المباني
+                                        القديمة</span> </li>
+                            </ul>
+                        </div>
+                    </div> <!-- Timeline Item 3 -->
+                    <div class="flex flex-col md:flex-row items-center relative">
+                        <div class="hidden md:block w-1/2 pr-16 text-right">
+                            <h3 class="text-2xl font-bold text-primary-dark mb-4">أعمال التشطيب</h3>
+                            <p class="text-gray-600 mb-6">تنفيذ أعمال التشطيب الداخلي والخارجي للمباني بمختلف أنواعها،
+                                باستخدام مواد عالية الجودة وبتصاميم متميزة.</p>
+                            <ul class="space-y-2">
+                                <li class="flex items-center justify-end space-x-2 space-x-reverse"> <i
+                                        class="fas fa-check-circle text-primary-dark"></i> <span>التشطيبات
+                                        الداخلية</span> </li>
+                                <li class="flex items-center justify-end space-x-2 space-x-reverse"> <i
+                                        class="fas fa-check-circle text-primary-dark"></i> <span>الديكورات
+                                        الحديثة</span> </li>
+                                <li class="flex items-center justify-end space-x-2 space-x-reverse"> <i
+                                        class="fas fa-check-circle text-primary-dark"></i> <span>أعمال الدهانات
+                                        والجبس</span> </li>
+                                <li class="flex items-center justify-end space-x-2 space-x-reverse"> <i
+                                        class="fas fa-check-circle text-primary-dark"></i> <span>تركيب الأرضيات
+                                        والسيراميك</span> </li>
+                            </ul>
+                        </div> <!-- Timeline Dot -->
+                        <div
+                            class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-primary-dark rounded-full flex items-center justify-center z-20 shadow-lg border-4 border-white">
+                            <i class="fas fa-paint-roller text-white"></i> </div>
+                        <div class="hidden md:block w-1/2 pl-16">
+                            <div
+                                class="rounded-lg overflow-hidden shadow-xl transform hover:-translate-y-2 transition-transform duration-300">
+                                <img src="https://images.unsplash.com/photo-1618219878829-8afd92751bed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
+                                    alt="أعمال التشطيب" class="w-full h-auto"> </div>
+                        </div> <!-- Mobile Content -->
+                        <div class="md:hidden w-full pt-16 pb-8 text-center">
+                            <h3 class="text-2xl font-bold text-primary-dark mb-4">أعمال التشطيب</h3>
+                            <p class="text-gray-600 mb-6">تنفيذ أعمال التشطيب الداخلي والخارجي للمباني بمختلف أنواعها،
+                                باستخدام مواد عالية الجودة وبتصاميم متميزة.</p>
+                            <div class="rounded-lg overflow-hidden shadow-xl mb-6"> <img
+                                    src="https://images.unsplash.com/photo-1618219878829-8afd92751bed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
+                                    alt="أعمال التشطيب" class="w-full h-auto"> </div>
+                            <ul class="space-y-2 text-right">
+                                <li class="flex items-center space-x-2 space-x-reverse"> <i
+                                        class="fas fa-check-circle text-primary-dark"></i> <span>التشطيبات
+                                        الداخلية</span> </li>
+                                <li class="flex items-center space-x-2 space-x-reverse"> <i
+                                        class="fas fa-check-circle text-primary-dark"></i> <span>الديكورات
+                                        الحديثة</span> </li>
+                                <li class="flex items-center space-x-2 space-x-reverse"> <i
+                                        class="fas fa-check-circle text-primary-dark"></i> <span>أعمال الدهانات
+                                        والجبس</span> </li>
+                                <li class="flex items-center space-x-2 space-x-reverse"> <i
+                                        class="fas fa-check-circle text-primary-dark"></i> <span>تركيب الأرضيات
+                                        والسيراميك</span> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> <!-- CTA Section -->
+                <div class="text-center"> <a href="real-estate.html"
+                        class="inline-block px-8 py-4 bg-primary-dark text-white rounded-lg shadow-lg transform transition-transform hover:-translate-y-1 hover:shadow-xl">
+                        <span class="flex items-center"> <span class="mr-2">استكشف المزيد من خدمات المقاولات</span> <i
+                                class="fas fa-arrow-left"></i> </span> </a> </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Floating Contact Menu -->
+        <div class="fixed bottom-10 left-10 z-50">
+            <div class="relative"> <!-- Main Button --> <button id="menuToggle"
+                    class="w-16 h-16 bg-gradient-to-r from-primary-dark to-accent rounded-full shadow-lg flex items-center justify-center text-white text-2xl focus:outline-none transform transition-transform hover:scale-110 hover:rotate-12">
+                    <i class="fas fa-plus"></i> </button> <!-- Floating Menu Items -->
+                <div id="floatingMenu"
+                    class="absolute bottom-full mb-4 left-0 flex flex-col gap-3 opacity-0 scale-95 pointer-events-none transform transition-all duration-300">
+                    <a href="https://wa.me/966543900088"
+                        class="w-12 h-12 bg-green-500 rounded-full shadow-lg flex items-center justify-center text-white transform transition-transform hover:scale-110"
+                        target="_blank" aria-label="تواصل عبر واتساب"> <i class="fab fa-whatsapp"></i> </a> <a
+                        href="tel:+966543900088"
+                        class="w-12 h-12 bg-blue-500 rounded-full shadow-lg flex items-center justify-center text-white transform transition-transform hover:scale-110"
+                        aria-label="اتصل بنا"> <i class="fas fa-phone-alt"></i> </a> <a
+                        href="mailto:info@elitearabia.com"
+                        class="w-12 h-12 bg-red-500 rounded-full shadow-lg flex items-center justify-center text-white transform transition-transform hover:scale-110"
+                        aria-label="راسلنا عبر البريد الإلكتروني"> <i class="fas fa-envelope"></i> </a> </div>
+            </div>
+        </div> <!-- Modern Back To Top Button --> <a href="#"
+            class="back-to-top hidden opacity-0 fixed bottom-10 right-10 w-12 h-12 flex items-center justify-center bg-white text-primary-dark rounded-full shadow-xl transform transition-all hover:scale-110 z-40">
+            <i class="fas fa-chevron-up"></i> </a>
+        <script>            // Floating Menu Toggle Script            document.addEventListener('DOMContentLoaded', function() {                const menuToggle = document.getElementById('menuToggle');                const floatingMenu = document.getElementById('floatingMenu');                                menuToggle.addEventListener('click', function() {                    if (floatingMenu.classList.contains('opacity-0')) {                        floatingMenu.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');                        floatingMenu.classList.add('opacity-100', 'scale-100', 'pointer-events-auto');                        menuToggle.querySelector('i').classList.remove('fa-plus');                        menuToggle.querySelector('i').classList.add('fa-times');                    } else {                        floatingMenu.classList.add('opacity-0', 'scale-95', 'pointer-events-none');                        floatingMenu.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');                        menuToggle.querySelector('i').classList.add('fa-plus');                        menuToggle.querySelector('i').classList.remove('fa-times');                    }                });            });        </script>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-neutral-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="footer-pattern"></div>
+            <div class="footer-decoration"></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="footer-column">
+                    <div class="footer-symbol"></div>
+                    <h3 class="footer-column-title">إليت أرابيا</h3>
+                    <p class="mt-4 mb-6">شركة سعودية متخصصة في تنظيم الفعاليات والمقاولات بأعلى معايير الجودة
+                        والاحترافية، نسعى دائماً لتحقيق رضا عملائنا وتجاوز توقعاتهم.</p>
+                    <div class="social-links mt-4 flex space-x-3 space-x-reverse">
+                        <a href="#" class="social-link" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="انستقرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="لينكد إن"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3 class="footer-column-title">روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index.html#home">الرئيسية</a></li>
+                        <li class="footer-link"><a href="about-us.html">من نحن</a></li>
+                        <li class="footer-link"><a href="index.html#services">خدماتنا</a></li>
+                        <li class="footer-link"><a href="index.html#projects">مشاريعنا</a></li>
+                        <li class="footer-link"><a href="real-estate.html">المقاولات</a></li>
+                        <li class="footer-link"><a href="index.html#contact">تواصل معنا</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3 class="footer-column-title">خدماتنا</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#events-services">تنظيم المؤتمرات والمعارض</a></li>
+                        <li class="footer-link"><a href="#events-services">الفعاليات الترفيهية والمناسبات</a></li>
+                        <li class="footer-link"><a href="#events-services">الحملات التسويقية</a></li>
+                        <li class="footer-link"><a href="#contracting-services">خدمات المقاولات</a></li>
+                        <li class="footer-link"><a href="#contracting-services">المباني السكنية والتجارية</a></li>
+                        <li class="footer-link"><a href="#contracting-services">أعمال التشطيب</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3 class="footer-column-title">تواصل معنا</h3>
+                    <ul class="contact-links">
+                        <li class="footer-contact-item">
+                            <div class="footer-contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <span>حي الروضة، جدة، المملكة العربية السعودية</span>
+                        </li>
+                        <li class="footer-contact-item">
+                            <div class="footer-contact-icon"><i class="fas fa-phone-alt"></i></div>
+                            <span>+966 54 390 0088</span>
+                        </li>
+                        <li class="footer-contact-item">
+                            <div class="footer-contact-icon"><i class="fas fa-envelope"></i></div>
+                            <span>info@elitearabia.com</span>
+                        </li>
+                        <li class="footer-contact-item">
+                            <div class="footer-contact-icon"><i class="fas fa-clock"></i></div>
+                            <span>الأحد - الخميس: 9:00 ص - 5:00 م</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-divider my-8"></div>
+
+            <div class="footer-bottom flex flex-col md:flex-row justify-between items-center">
+                <p class="mb-4 md:mb-0">© 2023 إليت أرابيا. جميع الحقوق محفوظة.</p>
+                <p>متوافق مع رؤية المملكة 2030</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuClose = document.querySelector('.mobile-menu-close');
+
+            menuToggle.addEventListener('click', function () {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            mobileMenuClose.addEventListener('click', function () {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Header Scroll Effect
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Back to Top Button
+            const backToTopButton = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
+            });
+
+            backToTopButton.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Preloader
+            const preloader = document.querySelector('.preloader');
+            const preloaderProgress = document.querySelector('.preloader-progress');
+
+            let loadingProgress = 0;
+            const loadingInterval = setInterval(function () {
+                loadingProgress += Math.floor(Math.random() * 10) + 5;
+                if (loadingProgress >= 100) {
+                    loadingProgress = 100;
+                    clearInterval(loadingInterval);
+                    setTimeout(function () {
+                        preloader.style.opacity = '0';
+                        document.body.style.overflow = '';
+                        setTimeout(function () {
+                            preloader.style.display = 'none';
+                        }, 500);
+                    }, 500);
+                }
+                preloaderProgress.style.width = loadingProgress + '%';
+            }, 200);
+
+            // Tab Functionality
+            window.openTab = function (evt, tabId) {
+                // Hide all tab contents
+                const tabContents = document.getElementsByClassName('tab-content');
+                for (let i = 0; i < tabContents.length; i++) {
+                    tabContents[i].classList.add('hidden');
+                    tabContents[i].classList.remove('active');
+                }
+
+                // Remove active class from all tab buttons
+                const tabButtons = document.getElementsByClassName('tab-button');
+                for (let i = 0; i < tabButtons.length; i++) {
+                    tabButtons[i].classList.remove('active');
+                    tabButtons[i].classList.remove('border-accent');
+                }
+
+                // Show the specific tab content
+                document.getElementById(tabId).classList.add('active');
+                document.getElementById(tabId).classList.remove('hidden');
+
+                // Add active class to the button that opened the tab
+                evt.currentTarget.classList.add('active');
+                evt.currentTarget.classList.add('border-accent');
+            }
+        });
+    </script>
+</body>
+
+</html>
