@@ -1741,7 +1741,7 @@ footer {
 }
 
 .social-link:hover {
-    color: var(--neutral-dark);
+    color: var(--neutral-light);
     transform: translateY(-5px) rotate(360deg);
 }
 

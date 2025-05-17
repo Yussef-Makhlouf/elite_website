@@ -48,7 +48,7 @@
         }
         
         /* Ensure all slides maintain same height */
-        .property-card, .testimonial-card {
+        .property-card {
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -84,6 +84,7 @@
         .property-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            animation: pulse-border 1.5s infinite;
         }
         
         .property-card-image {
@@ -160,8 +161,6 @@
         
         .properties-swiper:hover .swiper-button-next,
         .properties-swiper:hover .swiper-button-prev,
-        .testimonials-swiper:hover .swiper-button-next,
-        .testimonials-swiper:hover .swiper-button-prev,
         .gallery-swiper:hover .swiper-button-next,
         .gallery-swiper:hover .swiper-button-prev {
             opacity: 0.8;
@@ -205,81 +204,7 @@
             background-color: var(--primary-color);
         }
         
-        /* Testimonials styling */
-        .testimonial-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            padding: 25px;
-            position: relative;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-        
-        .testimonial-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-        
-        .testimonial-content {
-            position: relative;
-            padding-bottom: 15px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .testimonial-content:before {
-            content: '\f10d';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            position: absolute;
-            top: -10px;
-            right: -5px;
-            font-size: 40px;
-            color: rgba(0, 145, 124, 0.1);
-            z-index: 0;
-        }
-        
-        .testimonial-rating {
-            color: #FFD700;
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            color: #666;
-            line-height: 1.6;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-        
-        .testimonial-author-image {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-left: 15px;
-            border: 3px solid var(--primary-color);
-        }
-        
-        .testimonial-author-info h4 {
-            font-weight: 700;
-            font-size: 16px;
-            margin-bottom: 3px;
-            color: var(--dark-color);
-        }
-        
-        .testimonial-author-info p {
-            font-size: 14px;
-            color: #666;
-        }
+
         
         /* FAQ Styling */
         .faq-container {
@@ -536,7 +461,7 @@
             position: absolute;
             width: 200px;
             height: 200px;
-            background-image: url('https://www.freepnglogos.com/uploads/islamic-png/islamic-png-transparent-images-islamic-vector-31.png');
+            background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -595,6 +520,7 @@
             opacity: 1;
         }
         
+        /* Gallery icon */
         .gallery-icon {
             width: 50px;
             height: 50px;
@@ -613,164 +539,440 @@
             transform: scale(1);
         }
         
-        /* Investment benefits styling */
-        .benefit-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-        
-        .benefit-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-        
-        .benefit-icon {
-            width: 70px;
-            height: 70px;
-            background-color: rgba(0,145,124,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            color: var(--primary-color);
-            margin: 0 auto 20px;
-            transition: all 0.3s ease;
-        }
-        
-        .benefit-card:hover .benefit-icon {
-            background-color: var(--primary-color);
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,145,124,0.3);
-        }
-        
-        /* News/Blog styling */
-        .news-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-        
-        .news-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-        
-        .news-image {
-            position: relative;
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .news-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .news-card:hover .news-image img {
-            transform: scale(1.1);
-        }
-        
-        .news-date {
+        /* Gallery image badges */
+        .gallery-image-badge {
             position: absolute;
-            top: 15px;
+            bottom: 15px;
             right: 15px;
             background-color: var(--primary-color);
             color: white;
-            padding: 5px 15px;
+            padding: 5px 12px;
             border-radius: 20px;
             font-size: 14px;
             font-weight: 500;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease;
         }
         
-        .news-content {
-            padding: 20px;
+        .gallery-image:hover .gallery-image-badge {
+            opacity: 1;
+            transform: translateY(0);
         }
         
-        .news-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--dark-color);
-            margin-bottom: 10px;
-            transition: color 0.3s ease;
+        /* Enhanced buttons and interactive elements */
+        .btn-primary, .btn-secondary, .btn-whatsapp, .btn-primary-outline {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
         }
         
-        .news-card:hover .news-title {
+        .btn-primary:after, .btn-secondary:after, .btn-whatsapp:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: width 0.6s ease, height 0.6s ease, opacity 0.6s ease;
+        }
+        
+        .btn-primary:hover:after, .btn-secondary:hover:after, .btn-whatsapp:hover:after {
+            width: 300px;
+            height: 300px;
+            opacity: 1;
+        }
+        
+        .btn-primary:hover, .btn-secondary:hover, .btn-whatsapp:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Enhanced filter buttons */
+        .filter-btn {
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .filter-btn:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary-color);
+            transition: width 0.4s ease;
+            z-index: -1;
+        }
+        
+        .filter-btn:hover:before, .filter-btn.active:before {
+            width: 100%;
+        }
+        
+        .filter-btn.active {
             color: var(--primary-color);
+            font-weight: 700;
         }
         
-        .news-excerpt {
-            color: #666;
+        /* Pulsating effect for property cards */
+        @keyframes pulse-border {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 145, 124, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(0, 145, 124, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 145, 124, 0);
+            }
+        }
+        
+        .property-card:hover {
+            animation: pulse-border 1.5s infinite;
+        }
+        
+        /* Real Estate Tips Section */
+        .real-estate-tips-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 30px;
+        }
+        
+        @media (min-width: 640px) {
+            .real-estate-tips-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .real-estate-tips-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .tip-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            height: 100%;
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .tip-card-header {
+            position: relative;
+            padding-top: 75%; /* 4:3 aspect ratio */
+            overflow: hidden;
+        }
+        
+        .tip-card-header img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .tip-card:hover .tip-card-header img {
+            transform: scale(1.1);
+        }
+        
+        .tip-card-body {
+            padding: 25px;
+            position: relative;
+        }
+        
+        .tip-card-icon {
+            position: absolute;
+            top: -30px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(0,145,124,0.3);
+            z-index: 2;
+        }
+        
+        .tip-card-title {
+            font-size: 20px;
+            font-weight: 700;
             margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .tip-card-text {
+            color: #666;
+            margin-bottom: 20px;
             line-height: 1.6;
         }
         
-        .news-meta {
+        .tip-card-footer {
             display: flex;
             justify-content: space-between;
-            color: #888;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tip-card-category {
             font-size: 14px;
+            color: var(--primary-color);
+            font-weight: 600;
         }
         
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            }
-            70% {
-                transform: scale(1.05);
-                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            }
+        .tip-card-readmore {
+            font-size: 14px;
+            color: var(--dark-color);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
         }
         
-        /* Fade-in animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .tip-card-readmore i {
+            margin-right: 5px;
+            transition: transform 0.3s ease;
         }
         
-        .fade-in {
+        .tip-card:hover .tip-card-readmore {
+            color: var(--primary-color);
+        }
+        
+        .tip-card:hover .tip-card-readmore i {
+            transform: translateX(-5px);
+        }
+        
+        /* Lightbox caption */
+        .lightbox-caption {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            opacity: 0.8;
+        }
+        
+        /* Lightbox styles */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
             opacity: 0;
-            animation: fadeIn 1s ease forwards;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(5px);
         }
         
-        .fade-in-delay-1 {
-            animation-delay: 0.2s;
+        .lightbox.show {
+            opacity: 1;
         }
         
-        .fade-in-delay-2 {
-            animation-delay: 0.4s;
+        .lightbox.show .lightbox-content {
+            transform: translateY(0) scale(1);
+            opacity: 1;
         }
         
-        .fade-in-delay-3 {
-            animation-delay: 0.6s;
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            transform: translateY(20px) scale(0.97);
+            opacity: 0;
         }
         
-        .fade-in-delay-4 {
-            animation-delay: 0.8s;
+        .lightbox-image {
+            display: block;
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 4px;
+            transition: transform 0.3s ease;
         }
         
-        .fade-in-delay-5 {
-            animation-delay: 1s;
+        .lightbox-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            transform: scale(0);
+            animation: scaleIn 0.3s forwards 0.2s;
+        }
+        
+        @keyframes scaleIn {
+            0% { transform: scale(0); }
+            70% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .lightbox-close:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+        
+        .lightbox-caption {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            padding: 10px 15px;
+            margin-top: 15px;
+            font-size: 16px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 4px;
+            max-width: 90%;
+            transform: translateY(10px);
+            opacity: 0;
+            animation: fadeInUp 0.5s forwards 0.3s;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .loading-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            z-index: 1;
+        }
+        
+        .loading-indicator i {
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Add this CSS to the style section */
+        .tip-card-contact {
+            display: flex;
+            gap: 10px;
+        }
+
+        .tip-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .tip-btn-call {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .tip-btn-call:hover {
+            background-color: #007e6c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 145, 124, 0.3);
+        }
+
+        .tip-btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .tip-btn-whatsapp:hover {
+            background-color: #20bd5a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(37, 211, 102, 0.3);
+        }
+
+        /* Update the tip-card-footer to accommodate the buttons */
+        .tip-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        @media (max-width: 480px) {
+            .tip-card-footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .tip-card-contact {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: space-between;
+            }
         }
     </style>
 </head>
@@ -850,6 +1052,10 @@
             <div class="hero-overlay"></div>
             <div class="arabic-pattern-overlay"></div>
             
+            <!-- Enhanced Arabic Decorative Background -->
+            <div class="arabic-ornament ornament-top-right"></div>
+            <div class="arabic-ornament ornament-bottom-left"></div>
+            
             <!-- Parallax Background -->
             <div class="parallax-bg"></div>
             
@@ -858,6 +1064,8 @@
                 <div class="bg-shape bg-shape-1"></div>
                 <div class="bg-shape bg-shape-2"></div>
                 <div class="bg-shape bg-shape-3"></div>
+                <div class="bg-shape bg-shape-4"></div>
+                <div class="bg-shape bg-shape-5"></div>
             </div>
             
             <!-- Particles -->
@@ -872,14 +1080,36 @@
                 <div class="particle particle-8 floating-element"></div>
                 <div class="particle particle-9 floating-element"></div>
                 <div class="particle particle-10 floating-element"></div>
+                <div class="particle particle-11 floating-element"></div>
+                <div class="particle particle-12 floating-element"></div>
+                <div class="particle particle-13 floating-element"></div>
+                <div class="particle particle-14 floating-element"></div>
+                <div class="particle particle-15 floating-element"></div>
             </div>
             
             <div class="container mx-auto px-4">
                 <div class="flex flex-col md:flex-row items-center justify-between">
-                    <div class="md:w-1/2 mb-10 md:mb-0 hero-content">
-                        <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl">حلول عقارية راقية تناسب تطلعاتكم</h1>
-                        <p class="hero-text text-sm sm:text-base">نقدم لكم خدمات عقارية متكاملة بمعايير عالمية، مستندين على رؤية المملكة 2030 لتوفير بيئة استثمارية مستدامة تعزز من جودة الحياة.</p>
+                    <div class="md:w-1/2 mb-10 md:mb-0 hero-content fade-in">
+                        <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl">حلول عقارية راقية تناسب تطلعاتكم</h1>
+                        <p class="hero-text text-sm sm:text-base md:text-lg mt-4">نقدم لكم خدمات عقارية متكاملة بمعايير عالمية، مستندين على رؤية المملكة 2030 لتوفير بيئة استثمارية مستدامة تعزز من جودة الحياة.</p>
                        
+                        <div class="hero-features my-6">
+                            <div class="flex flex-wrap gap-4">
+                                <div class="hero-feature-item">
+                                    <i class="fas fa-check-circle mr-2"></i>
+                                    <span>استثمارات آمنة</span>
+                                </div>
+                                <div class="hero-feature-item">
+                                    <i class="fas fa-check-circle mr-2"></i>
+                                    <span>تمويل عقاري</span>
+                                </div>
+                                <div class="hero-feature-item">
+                                    <i class="fas fa-check-circle mr-2"></i>
+                                    <span>خبرة استشارية</span>
+                                </div>
+                            </div>
+                        </div>
+                        
                         <!-- Direct Contact Buttons -->
                         <div class="flex flex-wrap sm:flex-nowrap space-x-3 sm:space-x-5 space-x-reverse mt-5 gap-3">
                             <a href="tel:+966543900088" class="btn-contact text-sm sm:text-base my-1 flex-1 sm:flex-none text-center">
@@ -892,9 +1122,9 @@
                             </a>
                         </div>
                     </div>
-                    <div class="md:w-1/2 hero-image">
+                    <div class="md:w-1/2 hero-image fade-in fade-in-delay-1">
                         <div class="hero-image-container floating-element">
-                            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="عقارات فاخرة في السعودية" class="w-full">
+                            <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="عقارات فاخرة في السعودية" class="w-full rounded-lg">
                             <div class="hero-badge floating-element">
                                 <p class="font-bold">استثمارات عقارية آمنة</p>
                             </div>
@@ -902,22 +1132,22 @@
                     </div>
                 </div>
                 
-                <!-- Stats Counter -->
-                <div class="flex flex-wrap justify-center mt-12 md:mt-20 gap-3 sm:gap-4 md:gap-8">
-                    <div class="w-5/12 sm:w-auto text-center text-white bg-white bg-opacity-10 p-3 sm:p-4 md:p-6 rounded-lg">
-                        <div class="text-2xl sm:text-3xl md:text-4xl font-bold counter mb-1 md:mb-2" data-target="500">0</div>
+                <!-- Stats Counter with enhanced styles -->
+                <div class="flex flex-wrap justify-center mt-12 md:mt-20 gap-3 sm:gap-4 md:gap-8 fade-in fade-in-delay-2">
+                    <div class="w-5/12 sm:w-auto text-center text-white bg-white bg-opacity-10 p-4 sm:p-5 md:p-6 rounded-lg backdrop-filter backdrop-blur-sm border border-white border-opacity-10">
+                        <div class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold counter mb-1 md:mb-2" data-target="650">0</div>
                         <p class="text-xs sm:text-sm md:text-base">عقار متنوع</p>
                     </div>
-                    <div class="w-5/12 sm:w-auto text-center text-white bg-white bg-opacity-10 p-3 sm:p-4 md:p-6 rounded-lg">
-                        <div class="text-2xl sm:text-3xl md:text-4xl font-bold counter mb-1 md:mb-2" data-target="300">0</div>
+                    <div class="w-5/12 sm:w-auto text-center text-white bg-white bg-opacity-10 p-4 sm:p-5 md:p-6 rounded-lg backdrop-filter backdrop-blur-sm border border-white border-opacity-10">
+                        <div class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold counter mb-1 md:mb-2" data-target="420">0</div>
                         <p class="text-xs sm:text-sm md:text-base">عميل راضٍ</p>
                     </div>
-                    <div class="w-5/12 sm:w-auto text-center text-white bg-white bg-opacity-10 p-3 sm:p-4 md:p-6 rounded-lg">
-                        <div class="text-2xl sm:text-3xl md:text-4xl font-bold counter mb-1 md:mb-2" data-target="15">0</div>
+                    <div class="w-5/12 sm:w-auto text-center text-white bg-white bg-opacity-10 p-4 sm:p-5 md:p-6 rounded-lg backdrop-filter backdrop-blur-sm border border-white border-opacity-10">
+                        <div class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold counter mb-1 md:mb-2" data-target="25">0</div>
                         <p class="text-xs sm:text-sm md:text-base">مشروع إسكاني</p>
                     </div>
-                    <div class="w-5/12 sm:w-auto text-center text-white bg-white bg-opacity-10 p-3 sm:p-4 md:p-6 rounded-lg">
-                        <div class="text-2xl sm:text-3xl md:text-4xl font-bold counter mb-1 md:mb-2" data-target="10">0</div>
+                    <div class="w-5/12 sm:w-auto text-center text-white bg-white bg-opacity-10 p-4 sm:p-5 md:p-6 rounded-lg backdrop-filter backdrop-blur-sm border border-white border-opacity-10">
+                        <div class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold counter mb-1 md:mb-2" data-target="15">0</div>
                         <p class="text-xs sm:text-sm md:text-base">سنوات خبرة</p>
                     </div>
                 </div>
@@ -939,60 +1169,68 @@
         </div>
         
         <!-- About Real Estate Section -->
-        <section id="about-real-estate" class="py-16 md:py-24">
+        <section id="about-real-estate" class="py-16 md:py-20 lg:py-24 arabic-bg-light overflow-hidden relative">
+            <!-- Decorative elements for modern look -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-primary bg-opacity-5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-80 h-80 bg-primary bg-opacity-5 rounded-full -ml-40 -mb-40 blur-3xl"></div>
+            
             <div class="container mx-auto px-4">
-                <div class="text-center mb-16">
-                    <span class="section-subtitle">نبذة تعريفية</span>
-                    <h2 class="section-title">خدماتنا العقارية</h2>
-                    <div class="section-title-separator"></div>
+                <div class="text-center mb-12 md:mb-16">
+                    <span class="section-subtitle inline-block transform hover:scale-105 transition-transform duration-300">نبذة تعريفية</span>
+                    <h2 class="section-title text-2xl md:text-3xl lg:text-4xl mb-3">خدماتنا العقارية</h2>
+                    <div class="section-title-separator mx-auto"></div>
                 </div>
                 
-                <div class="flex flex-col lg:flex-row items-center">
-                    <div class="lg:w-1/2 lg:pr-10 mb-10 lg:mb-0 about-content">
-                        <p class="mb-6 paragraph-lg">تقدم إيليت عربية حلولاً عقارية متكاملة تشمل التطوير والاستثمار والتسويق العقاري، من خلال فريق من الخبراء المتخصصين في السوق العقاري السعودي.</p>
+                <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+                    <div class="lg:w-1/2 lg:pr-6 mb-10 lg:mb-0 about-content fade-in">
+                        <p class="mb-6 paragraph-lg text-base md:text-lg leading-relaxed">تقدم إيليت عربية حلولاً عقارية متكاملة تشمل التطوير والاستثمار والتسويق العقاري، من خلال فريق من الخبراء المتخصصين في السوق العقاري السعودي.</p>
                         
-                        <p class="mb-6 paragraph-lg">نهدف إلى تحقيق أعلى مستويات الجودة والشفافية في معاملاتنا العقارية، مع مراعاة احتياجات عملائنا وتقديم الاستشارات المتخصصة.</p>
+                        <p class="mb-8 paragraph-lg text-base md:text-lg leading-relaxed">نهدف إلى تحقيق أعلى مستويات الجودة والشفافية في معاملاتنا العقارية، مع مراعاة احتياجات عملائنا وتقديم الاستشارات المتخصصة.</p>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                            <div class="feature-item">
-                                <i class="fas fa-home feature-icon"></i>
-                                <h3 class="feature-title">تطوير عقاري</h3>
-                                <p class="feature-text">مشاريع سكنية وتجارية متميزة بتصاميم عصرية</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
+                            <div class="feature-item hover-translate bg-white bg-opacity-70 backdrop-filter backdrop-blur-sm p-5 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-r-4 border-primary">
+                                <i class="fas fa-home feature-icon text-primary text-2xl mb-3"></i>
+                                <h3 class="feature-title text-lg font-bold mb-2">تطوير عقاري</h3>
+                                <p class="feature-text text-gray-600">مشاريع سكنية وتجارية متميزة بتصاميم عصرية</p>
                             </div>
                             
-                            <div class="feature-item">
-                                <i class="fas fa-chart-line feature-icon"></i>
-                                <h3 class="feature-title">استثمار آمن</h3>
-                                <p class="feature-text">فرص استثمارية مجدية بعائد ربحي مضمون</p>
+                            <div class="feature-item hover-translate bg-white bg-opacity-70 backdrop-filter backdrop-blur-sm p-5 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-r-4 border-primary">
+                                <i class="fas fa-chart-line feature-icon text-primary text-2xl mb-3"></i>
+                                <h3 class="feature-title text-lg font-bold mb-2">استثمار آمن</h3>
+                                <p class="feature-text text-gray-600">فرص استثمارية مجدية بعائد ربحي مضمون</p>
                             </div>
                             
-                            <div class="feature-item">
-                                <i class="fas fa-handshake feature-icon"></i>
-                                <h3 class="feature-title">وساطة عقارية</h3>
-                                <p class="feature-text">إتمام صفقات البيع والشراء بكل احترافية</p>
+                            <div class="feature-item hover-translate bg-white bg-opacity-70 backdrop-filter backdrop-blur-sm p-5 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-r-4 border-primary">
+                                <i class="fas fa-handshake feature-icon text-primary text-2xl mb-3"></i>
+                                <h3 class="feature-title text-lg font-bold mb-2">وساطة عقارية</h3>
+                                <p class="feature-text text-gray-600">إتمام صفقات البيع والشراء بكل احترافية</p>
                             </div>
                             
-                            <div class="feature-item">
-                                <i class="fas fa-file-signature feature-icon"></i>
-                                <h3 class="feature-title">استشارات قانونية</h3>
-                                <p class="feature-text">خدمات قانونية لإتمام العقود وصياغتها</p>
+                            <div class="feature-item hover-translate bg-white bg-opacity-70 backdrop-filter backdrop-blur-sm p-5 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-r-4 border-primary">
+                                <i class="fas fa-file-signature feature-icon text-primary text-2xl mb-3"></i>
+                                <h3 class="feature-title text-lg font-bold mb-2">استشارات قانونية</h3>
+                                <p class="feature-text text-gray-600">خدمات قانونية لإتمام العقود وصياغتها</p>
                             </div>
                         </div>
                         
-                        <a href="#contact" class="btn-primary">تواصل معنا</a>
+                        <a href="#contact" class="btn-primary inline-block px-8 py-3 rounded-full text-white font-bold transform hover:scale-105 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">تواصل معنا</a>
                     </div>
                     
-                    <div class="lg:w-1/2 about-images">
-                        <div class="about-images-container">
-                            <div class="about-image-1">
-                                <img src="https://images.unsplash.com/photo-1560184897-502a475f7a0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="مشروع عقاري فاخر" class="rounded-lg shadow-xl">
-                                <div class="about-image-1-badge">
+                    <div class="lg:w-1/2 about-images fade-in fade-in-delay-1">
+                        <div class="about-images-container relative">
+                            <div class="about-image-1 transform hover:translate-y-2 transition-transform duration-500">
+                                <img src="https://images.unsplash.com/photo-1560184897-502a475f7a0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="مشروع عقاري فاخر" class="rounded-2xl shadow-2xl object-cover w-full h-full">
+                                <div class="about-image-1-badge absolute top-5 right-5 bg-primary text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
                                     <span>جودة عالية</span>
                                 </div>
                             </div>
                             
-                            <div class="about-image-2">
-                                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="فيلا سكنية فاخرة" class="rounded-lg shadow-xl">
+                            <div class="about-image-2 absolute top-1/4 left-1/4 w-2/3 h-auto z-10 transform -translate-y-1/4 -translate-x-1/4 hover:translate-y-[-22%] hover:translate-x-[-22%] transition-transform duration-500">
+                                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="فيلا سكنية فاخرة" class="rounded-2xl shadow-2xl object-cover w-full h-full">
+                            </div>
+                            
+                            <div class="about-image-3 absolute bottom-0 right-0 w-1/2 h-auto z-20 transform translate-y-1/4 translate-x-1/4 hover:translate-y-[22%] hover:translate-x-[22%] transition-transform duration-500">
+                                <img src="https://images.unsplash.com/photo-1613553497126-a44624272024?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="مشروع عقاري حديث" class="rounded-2xl shadow-2xl object-cover w-full h-full">
                             </div>
                         </div>
                     </div>
@@ -1006,20 +1244,129 @@
             <div class="separator-bottom"></div>
         </div>
         
+        <!-- Investment Benefits Section -->
+        <section id="investment-benefits" class="py-16 md:py-24 overflow-hidden relative">
+            <!-- Modern background elements -->
+            <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 opacity-70 z-0"></div>
+            <div class="absolute -top-32 -right-32 w-96 h-96 bg-primary opacity-5 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-primary opacity-5 rounded-full blur-3xl"></div>
+            <div class="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-full h-32 bg-gradient-to-r from-transparent via-primary/5 to-transparent"></div>
+            
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="text-center mb-16 fade-in">
+                    <span class="section-subtitle relative inline-block pb-2 before:content-[''] before:absolute before:bottom-0 before:right-1/4 before:w-1/2 before:h-0.5 before:bg-primary/70">لماذا الاستثمار العقاري</span>
+                    <h2 class="section-title text-3xl md:text-4xl lg:text-5xl mt-3 font-bold">مميزات الاستثمار مع إيليت عربية</h2>
+                    <div class="section-title-separator mx-auto"></div>
+                    <p class="max-w-3xl mx-auto mt-6 text-lg leading-relaxed">الاستثمار العقاري في المملكة العربية السعودية أحد أكثر الخيارات الاستثمارية أماناً وربحية، خاصة في ظل المشاريع التنموية الكبرى ورؤية 2030</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10">
+                    <!-- Benefit 1 -->
+                    <div class="benefit-card group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 text-center relative overflow-hidden fade-in fade-in-delay-1 transform hover:-translate-y-2">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-primary opacity-5 rounded-full -mt-10 -mr-10 transition-transform duration-500 group-hover:scale-150"></div>
+                        <div class="benefit-icon-wrapper relative mb-6 mx-auto w-20 h-20 flex items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-primary/20 transition-all duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 rounded-full bg-white opacity-60"></div>
+                            <i class="fas fa-shield-alt text-primary text-3xl relative z-10"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">استثمار آمن ومستقر</h3>
+                        <p class="text-gray-600 leading-relaxed">العقار يعتبر من أكثر الاستثمارات أماناً واستقراراً، ويوفر حماية من التضخم والتقلبات الاقتصادية على المدى الطويل.</p>
+                    </div>
+                    
+                    <!-- Benefit 2 -->
+                    <div class="benefit-card group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 text-center relative overflow-hidden fade-in fade-in-delay-1 transform hover:-translate-y-2">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-primary opacity-5 rounded-full -mt-10 -mr-10 transition-transform duration-500 group-hover:scale-150"></div>
+                        <div class="benefit-icon-wrapper relative mb-6 mx-auto w-20 h-20 flex items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-primary/20 transition-all duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 rounded-full bg-white opacity-60"></div>
+                            <i class="fas fa-money-bill-wave text-primary text-3xl relative z-10"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">عوائد مالية مجزية</h3>
+                        <p class="text-gray-600 leading-relaxed">يقدم الاستثمار العقاري عوائد مالية مجزية سواء من خلال الإيجار السنوي أو من خلال ارتفاع قيمة العقار مع مرور الوقت.</p>
+                    </div>
+                    
+                    <!-- Benefit 3 -->
+                    <div class="benefit-card group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 text-center relative overflow-hidden fade-in fade-in-delay-1 transform hover:-translate-y-2">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-primary opacity-5 rounded-full -mt-10 -mr-10 transition-transform duration-500 group-hover:scale-150"></div>
+                        <div class="benefit-icon-wrapper relative mb-6 mx-auto w-20 h-20 flex items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-primary/20 transition-all duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 rounded-full bg-white opacity-60"></div>
+                            <i class="fas fa-chart-line text-primary text-3xl relative z-10"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">نمو مستمر</h3>
+                        <p class="text-gray-600 leading-relaxed">السوق العقاري في المملكة في نمو مستمر بفضل المشاريع التنموية والسياحية الضخمة والزيادة المستمرة في الطلب.</p>
+                    </div>
+                    
+                    <!-- Benefit 4 -->
+                    <div class="benefit-card group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 text-center relative overflow-hidden fade-in fade-in-delay-2 transform hover:-translate-y-2">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-primary opacity-5 rounded-full -mt-10 -mr-10 transition-transform duration-500 group-hover:scale-150"></div>
+                        <div class="benefit-icon-wrapper relative mb-6 mx-auto w-20 h-20 flex items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-primary/20 transition-all duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 rounded-full bg-white opacity-60"></div>
+                            <i class="fas fa-hand-holding-usd text-primary text-3xl relative z-10"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">التمويل العقاري</h3>
+                        <p class="text-gray-600 leading-relaxed">نوفر حلولاً تمويلية ميسرة بالتعاون مع البنوك والمؤسسات المالية لتسهيل عملية الاستثمار العقاري وفق أحكام الشريعة الإسلامية.</p>
+                    </div>
+                    
+                    <!-- Benefit 5 -->
+                    <div class="benefit-card group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 text-center relative overflow-hidden fade-in fade-in-delay-2 transform hover:-translate-y-2">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-primary opacity-5 rounded-full -mt-10 -mr-10 transition-transform duration-500 group-hover:scale-150"></div>
+                        <div class="benefit-icon-wrapper relative mb-6 mx-auto w-20 h-20 flex items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-primary/20 transition-all duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 rounded-full bg-white opacity-60"></div>
+                            <i class="fas fa-file-contract text-primary text-3xl relative z-10"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">شفافية وموثوقية</h3>
+                        <p class="text-gray-600 leading-relaxed">نعمل بأعلى معايير الشفافية والمصداقية في كافة تعاملاتنا العقارية لضمان حقوق المستثمرين والعملاء.</p>
+                    </div>
+                    
+                    <!-- Benefit 6 -->
+                    <div class="benefit-card group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 text-center relative overflow-hidden fade-in fade-in-delay-2 transform hover:-translate-y-2">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-primary opacity-5 rounded-full -mt-10 -mr-10 transition-transform duration-500 group-hover:scale-150"></div>
+                        <div class="benefit-icon-wrapper relative mb-6 mx-auto w-20 h-20 flex items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-primary/20 transition-all duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 rounded-full bg-white opacity-60"></div>
+                            <i class="fas fa-users text-primary text-3xl relative z-10"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">خبرة استشارية متميزة</h3>
+                        <p class="text-gray-600 leading-relaxed">نمتلك فريق من المستشارين العقاريين ذوي الخبرة الطويلة لمساعدتك في اتخاذ القرار الاستثماري الصحيح.</p>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-14 md:mt-16">
+                    <a href="#contact" class="btn-primary inline-block px-8 py-4 rounded-full text-white font-bold transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 bg-gradient-to-l from-primary to-primary/90 relative overflow-hidden group fade-in fade-in-delay-3">
+                        <span class="relative z-10 text-white">استشارة مجانية</span>
+                        <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Arabic Divider -->
+        <div class="section-separator">
+            <div class="separator-top"></div>
+            <div class="separator-bottom"></div>
+        </div>
+        
         <!-- Featured Properties Section -->
-        <section id="featured-properties" class="py-16 md:py-24 bg-pattern">
+        <section id="featured-properties" class="py-16 md:py-24 bg-pattern arabic-bg-dark">
             <div class="container mx-auto px-4">
-                <div class="text-center mb-16">
+                <div class="text-center mb-16 fade-in">
                     <span class="section-subtitle">عقارات مميزة</span>
                     <h2 class="section-title">أحدث مشاريعنا العقارية</h2>
                     <div class="section-title-separator"></div>
+                    <p class="max-w-3xl mx-auto mt-6">نقدم لكم مجموعة متنوعة من العقارات المميزة التي تناسب مختلف الاحتياجات والميزانيات، بدءًا من الفلل الفاخرة وحتى الشقق العصرية والمكاتب التجارية</p>
+                </div>
+                
+                <!-- Properties Filter -->
+                <div class="properties-filter mb-10 flex flex-wrap justify-center gap-3 fade-in">
+                    <button class="filter-btn active" data-filter="all">جميع العقارات</button>
+                    <button class="filter-btn" data-filter="sale">للبيع</button>
+                    <button class="filter-btn" data-filter="rent">للإيجار</button>
+                    <button class="filter-btn" data-filter="commercial">تجاري</button>
+                    <button class="filter-btn" data-filter="residential">سكني</button>
                 </div>
                 
                 <!-- Swiper -->
-                <div class="properties-swiper swiper">
+                <div class="properties-swiper swiper fade-in fade-in-delay-1">
                     <div class="swiper-wrapper">
                         <!-- Property 1 -->
-                        <div class="swiper-slide">
+                        <div class="swiper-slide" data-category="sale residential">
                             <div class="property-card">
                                 <div class="property-card-image">
                                     <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="فيلا فاخرة" class="w-full h-auto rounded-t-lg">
@@ -1058,13 +1405,12 @@
                                             <span>حديقة</span>
                                         </li>
                                     </ul>
-                                    <a href="#" class="btn-primary-outline w-full mt-4">عرض التفاصيل</a>
                                 </div>
                             </div>
                         </div>
                         
                         <!-- Property 2 -->
-                        <div class="swiper-slide">
+                        <div class="swiper-slide" data-category="rent residential">
                             <div class="property-card">
                                 <div class="property-card-image">
                                     <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="شقة دوبلكس" class="w-full h-auto rounded-t-lg">
@@ -1103,13 +1449,12 @@
                                             <span>أمن 24/7</span>
                                         </li>
                                     </ul>
-                                    <a href="#" class="btn-primary-outline w-full mt-4">عرض التفاصيل</a>
                                 </div>
                             </div>
                         </div>
                         
                         <!-- Property 3 -->
-                        <div class="swiper-slide">
+                        <div class="swiper-slide" data-category="sale commercial">
                             <div class="property-card">
                                 <div class="property-card-image">
                                     <img src="https://images.unsplash.com/photo-1606314301286-240827f542b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="مكتب تجاري" class="w-full h-auto rounded-t-lg">
@@ -1148,13 +1493,12 @@
                                             <span>إنترنت عالي</span>
                                         </li>
                                     </ul>
-                                    <a href="#" class="btn-primary-outline w-full mt-4">عرض التفاصيل</a>
                                 </div>
                             </div>
                         </div>
                         
                         <!-- Property 4 -->
-                        <div class="swiper-slide">
+                        <div class="swiper-slide" data-category="sale residential">
                             <div class="property-card">
                                 <div class="property-card-image">
                                     <img src="https://images.unsplash.com/photo-1628744876497-eb30460be9f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="قطعة أرض" class="w-full h-auto rounded-t-lg">
@@ -1193,7 +1537,94 @@
                                             <span>خدمات متكاملة</span>
                                         </li>
                                     </ul>
-                                    <a href="#" class="btn-primary-outline w-full mt-4">عرض التفاصيل</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Property 5 (NEW) -->
+                        <div class="swiper-slide" data-category="rent commercial">
+                            <div class="property-card">
+                                <div class="property-card-image">
+                                    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="معرض تجاري" class="w-full h-auto rounded-t-lg">
+                                    <div class="property-type">للإيجار</div>
+                                </div>
+                                <div class="property-card-content p-6">
+                                    <h3 class="property-title">معرض تجاري فاخر</h3>
+                                    <div class="property-location">
+                                        <i class="fas fa-map-marker-alt text-primary mr-2"></i>
+                                        <span>الرياض، طريق الملك فهد</span>
+                                    </div>
+                                    <div class="property-price">350,000 ر.س/سنوياً</div>
+                                    <ul class="property-features grid grid-cols-3 gap-3 mt-4">
+                                        <li>
+                                            <i class="fas fa-ruler-combined text-primary mr-2"></i>
+                                            <span>320 م²</span>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-car text-primary mr-2"></i>
+                                            <span>5 مواقف</span>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-warehouse text-primary mr-2"></i>
+                                            <span>مستودع</span>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-door-open text-primary mr-2"></i>
+                                            <span>واجهة زجاجية</span>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-shield-alt text-primary mr-2"></i>
+                                            <span>أمن 24/7</span>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-map-marked-alt text-primary mr-2"></i>
+                                            <span>موقع مميز</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Property 6 (NEW) -->
+                        <div class="swiper-slide" data-category="sale residential">
+                            <div class="property-card">
+                                <div class="property-card-image">
+                                    <img src="https://images.unsplash.com/photo-1613553507747-5f8d62ad5904?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="فيلا مودرن" class="w-full h-auto rounded-t-lg">
+                                    <div class="property-type">للبيع</div>
+                                </div>
+                                <div class="property-card-content p-6">
+                                    <h3 class="property-title">فيلا مودرن بتصميم فاخر</h3>
+                                    <div class="property-location">
+                                        <i class="fas fa-map-marker-alt text-primary mr-2"></i>
+                                        <span>الرياض، حي الياسمين</span>
+                                    </div>
+                                    <div class="property-price">5,800,000 ر.س</div>
+                                    <ul class="property-features grid grid-cols-3 gap-3 mt-4">
+                                        <li>
+                                            <i class="fas fa-bed text-primary mr-2"></i>
+                                            <span>6 غرف نوم</span>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-bath text-primary mr-2"></i>
+                                            <span>7 حمامات</span>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-car text-primary mr-2"></i>
+                                            <span>3 مواقف</span>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-ruler-combined text-primary mr-2"></i>
+                                            <span>550 م²</span>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-swimming-pool text-primary mr-2"></i>
+                                            <span>مسبح</span>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-home text-primary mr-2"></i>
+                                            <span>ملحق خارجي</span>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -1210,10 +1641,7 @@
                         <i class="fas fa-chevron-right"></i>
                     </div>
                 </div>
-                
-                <div class="text-center mt-12">
-                    <a href="#" class="btn-primary">استعراض جميع العقارات</a>
-                </div>
+        
             </div>
         </section>
         
@@ -1224,97 +1652,433 @@
         </div>
         
         <!-- Real Estate Services -->
-        <section id="real-estate-services" class="py-16 md:py-24">
-            <div class="container mx-auto px-4">
-                <div class="text-center mb-16">
-                    <span class="section-subtitle">خدماتنا المتميزة</span>
-                    <h2 class="section-title">خدمات العقار التي نقدمها</h2>
-                    <div class="section-title-separator"></div>
+        <section id="real-estate-services" class="py-16 md:py-24 relative overflow-hidden">
+            <!-- Modern background elements -->
+            <div class="absolute inset-0 bg-gradient-to-b from-white to-gray-50"></div>
+            <div class="absolute left-0 top-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute right-0 bottom-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+            
+            <!-- Decorative elements -->
+            <div class="absolute left-5 top-20 w-20 h-20 border-2 border-primary/10 rounded-lg rotate-12 hidden lg:block"></div>
+            <div class="absolute right-10 bottom-40 w-10 h-10 bg-primary/10 rounded-full hidden lg:block"></div>
+            <div class="absolute left-1/2 top-1/3 w-40 h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+            
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="text-center mb-16 fade-in">
+                    <span class="section-subtitle relative inline-block pb-2 before:content-[''] before:absolute before:bottom-0 before:right-1/4 before:w-1/2 before:h-0.5 before:bg-primary/70">خدماتنا المتميزة</span>
+                    <h2 class="section-title text-3xl md:text-4xl lg:text-5xl mt-3 font-bold">خدمات العقار التي نقدمها</h2>
+                    <div class="section-title-separator mx-auto"></div>
+                    <p class="max-w-3xl mx-auto mt-6 leading-relaxed">نوفر باقة متكاملة من الخدمات العقارية المتميزة التي تلبي احتياجات عملائنا بأعلى معايير الجودة والاحترافية</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Services content - Clean list layout -->
+                <div class="services-list relative py-4">
+                    
                     <!-- Service 1 -->
-                    <div class="service-box hover-translate">
-                        <div class="service-icon">
-                            <i class="fas fa-search-location"></i>
+                    <div class="service-item mb-16 fade-in fade-in-delay-1">
+                        <div class="border-b border-primary/20 pb-8">
+                            <div class="flex items-start">
+                                <div class="service-icon flex items-center justify-center w-16 h-16 bg-primary/10 rounded-lg">
+                                    <i class="fas fa-search-location text-primary text-2xl"></i>
+                                </div>
+                                <div class="mr-6 flex-1">
+                                    <h3 class="service-title text-xl font-bold mb-4 text-gray-800">البحث عن العقارات</h3>
+                                    <p class="service-text text-gray-600 mb-6">نساعدك في العثور على العقار المناسب حسب احتياجاتك وميزانيتك من خلال قاعدة بيانات واسعة من الخيارات المتنوعة.</p>
+                                    
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                        <div class="feature-item flex items-center gap-2">
+                                            <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                            <span>تحديد العقارات المناسبة</span>
+                                        </div>
+                                        <div class="feature-item flex items-center gap-2">
+                                            <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                            <span>زيارة الموقع ومعاينة العقار</span>
+                                        </div>
+                                        <div class="feature-item flex items-center gap-2">
+                                            <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                            <span>تقرير تفصيلي عن العقار</span>
+                                        </div>
+                                        <div class="feature-item flex items-center gap-2">
+                                            <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                            <span>تحليل مميزات وعيوب الموقع</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="service-title">البحث عن العقارات</h3>
-                        <p class="service-text">نساعدك في العثور على العقار المناسب حسب احتياجاتك وميزانيتك من خلال قاعدة بيانات واسعة من الخيارات المتنوعة.</p>
-                        <ul class="service-list">
-                            <li>تحديد العقارات المناسبة</li>
-                            <li>زيارة الموقع ومعاينة العقار</li>
-                            <li>تقرير تفصيلي عن العقار</li>
-                        </ul>
                     </div>
                     
                     <!-- Service 2 -->
-                    <div class="service-box hover-translate">
-                        <div class="service-icon">
-                            <i class="fas fa-handshake"></i>
+                    <div class="service-item mb-16 fade-in fade-in-delay-1">
+                        <div class="border-b border-primary/20 pb-8">
+                            <div class="flex items-start">
+                                <div class="service-icon flex items-center justify-center w-16 h-16 bg-primary/10 rounded-lg">
+                                    <i class="fas fa-handshake text-primary text-2xl"></i>
+                                </div>
+                                <div class="mr-6 flex-1">
+                                    <h3 class="service-title text-xl font-bold mb-4 text-gray-800">بيع وشراء العقارات</h3>
+                                    <p class="service-text text-gray-600 mb-6">نقدم خدمات وساطة عقارية احترافية تضمن إتمام الصفقات بأفضل الأسعار وأكثر الطرق أماناً وفقاً للأنظمة.</p>
+                                    
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                        <div class="feature-item flex items-center gap-2">
+                                            <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                            <span>تقييم العقار بسعر السوق</span>
+                                        </div>
+                                        <div class="feature-item flex items-center gap-2">
+                                            <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                            <span>تسويق العقار بأحدث الوسائل</span>
+                                        </div>
+                                        <div class="feature-item flex items-center gap-2">
+                                            <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                            <span>إدارة المفاوضات والعقود</span>
+                                        </div>
+                                        <div class="feature-item flex items-center gap-2">
+                                            <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                            <span>متابعة إجراءات نقل الملكية</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="service-title">بيع وشراء العقارات</h3>
-                        <p class="service-text">نقدم خدمات وساطة عقارية احترافية تضمن إتمام الصفقات بأفضل الأسعار وأكثر الطرق أماناً وفقاً للأنظمة.</p>
-                        <ul class="service-list">
-                            <li>تقييم العقار بسعر السوق</li>
-                            <li>تسويق العقار بأحدث الوسائل</li>
-                            <li>إدارة المفاوضات والعقود</li>
-                        </ul>
                     </div>
                     
-                    <!-- Service 3 -->
-                    <div class="service-box hover-translate">
-                        <div class="service-icon">
-                            <i class="fas fa-chart-line"></i>
+                    <!-- Featured Service -->
+                    <div class="service-item mb-16 fade-in fade-in-delay-2">
+                        <div class="border-b border-primary/20 pb-8">
+                            <div class="flex items-start">
+                                <div class="service-icon flex items-center justify-center w-16 h-16 bg-primary rounded-lg">
+                                    <i class="fas fa-chart-line text-white text-2xl"></i>
+                                </div>
+                                <div class="mr-6 flex-1">
+                                    <h3 class="service-title text-xl font-bold mb-4 text-gray-800">الاستثمار العقاري</h3>
+                                    <p class="service-text text-gray-600 mb-6">نوفر فرص استثمارية عقارية متنوعة ذات عوائد مجزية ومخاطر منخفضة من خلال دراسات جدوى دقيقة.</p>
+                                    
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                        <div class="feature-item flex items-center gap-2">
+                                            <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                            <span>تحليل السوق والفرص الاستثمارية</span>
+                                        </div>
+                                        <div class="feature-item flex items-center gap-2">
+                                            <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                            <span>إدارة المحافظ العقارية</span>
+                                        </div>
+                                        <div class="feature-item flex items-center gap-2">
+                                            <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                            <span>استثمارات محلية وعالمية</span>
+                                        </div>
+                                        <div class="feature-item flex items-center gap-2">
+                                            <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                            <span>متابعة نمو الاستثمار وتقييمه</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="service-title">الاستثمار العقاري</h3>
-                        <p class="service-text">نوفر فرص استثمارية عقارية متنوعة ذات عوائد مجزية ومخاطر منخفضة من خلال دراسات جدوى دقيقة.</p>
-                        <ul class="service-list">
-                            <li>تحليل السوق والفرص الاستثمارية</li>
-                            <li>إدارة المحافظ العقارية</li>
-                            <li>استثمارات محلية وعالمية</li>
-                        </ul>
                     </div>
                     
-                    <!-- Service 4 -->
-                    <div class="service-box hover-translate">
-                        <div class="service-icon">
-                            <i class="fas fa-building"></i>
+                    <!-- Additional Services Display -->
+                    <div class="additional-services grid grid-cols-1 gap-8 fade-in fade-in-delay-3">
+                        <!-- Service 4 -->
+                        <div class="service-item">
+                            <div class="border-b border-primary/20 pb-8">
+                                <div class="flex items-start">
+                                    <div class="service-icon flex items-center justify-center w-16 h-16 bg-primary/10 rounded-lg">
+                                        <i class="fas fa-building text-primary text-xl"></i>
+                                    </div>
+                                    <div class="mr-6 flex-1">
+                                        <h3 class="service-title text-xl font-bold mb-4 text-gray-800">التطوير العقاري</h3>
+                                        <p class="service-text text-gray-600 mb-6">نعمل على تطوير مشاريع عقارية متكاملة تلبي احتياجات السوق مع الالتزام بأعلى معايير الجودة.</p>
+                                        
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                            <div class="feature-item flex items-center gap-2">
+                                                <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                                <span>تصميم المشاريع السكنية والتجارية</span>
+                                            </div>
+                                            <div class="feature-item flex items-center gap-2">
+                                                <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                                <span>إدارة مشاريع البناء والتشييد</span>
+                                            </div>
+                                            <div class="feature-item flex items-center gap-2">
+                                                <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                                <span>تنفيذ المشاريع حسب رؤية 2030</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="service-title">التطوير العقاري</h3>
-                        <p class="service-text">نعمل على تطوير مشاريع عقارية متكاملة تلبي احتياجات السوق مع الالتزام بأعلى معايير الجودة والاستدامة.</p>
-                        <ul class="service-list">
-                            <li>تصميم المشاريع السكنية والتجارية</li>
-                            <li>إدارة مشاريع البناء والتشييد</li>
-                            <li>تطوير المجمعات السكنية</li>
-                        </ul>
+                        
+                        <!-- Service 5 -->
+                        <div class="service-item">
+                            <div class="border-b border-primary/20 pb-8">
+                                <div class="flex items-start">
+                                    <div class="service-icon flex items-center justify-center w-16 h-16 bg-primary/10 rounded-lg">
+                                        <i class="fas fa-balance-scale text-primary text-xl"></i>
+                                    </div>
+                                    <div class="mr-6 flex-1">
+                                        <h3 class="service-title text-xl font-bold mb-4 text-gray-800">الاستشارات القانونية</h3>
+                                        <p class="service-text text-gray-600 mb-6">نقدم استشارات قانونية متكاملة في المجال العقاري لضمان سلامة التعاملات وحفظ الحقوق.</p>
+                                        
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                            <div class="feature-item flex items-center gap-2">
+                                                <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                                <span>صياغة وتدقيق العقود</span>
+                                            </div>
+                                            <div class="feature-item flex items-center gap-2">
+                                                <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                                <span>دراسة الصكوك والمستندات</span>
+                                            </div>
+                                            <div class="feature-item flex items-center gap-2">
+                                                <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                                <span>حل النزاعات العقارية بالتراضي</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Service 6 -->
+                        <div class="service-item">
+                            <div class="border-b border-primary/20 pb-8">
+                                <div class="flex items-start">
+                                    <div class="service-icon flex items-center justify-center w-16 h-16 bg-primary/10 rounded-lg">
+                                        <i class="fas fa-home text-primary text-xl"></i>
+                                    </div>
+                                    <div class="mr-6 flex-1">
+                                        <h3 class="service-title text-xl font-bold mb-4 text-gray-800">إدارة الأملاك</h3>
+                                        <p class="service-text text-gray-600 mb-6">نتولى إدارة العقارات نيابة عن المالكين بما يحقق أعلى عائد استثماري مع المحافظة على قيمة الأصول.</p>
+                                        
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                            <div class="feature-item flex items-center gap-2">
+                                                <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                                <span>تحصيل الإيجارات والمتابعة</span>
+                                            </div>
+                                            <div class="feature-item flex items-center gap-2">
+                                                <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                                <span>إدارة الصيانة والخدمات</span>
+                                            </div>
+                                            <div class="feature-item flex items-center gap-2">
+                                                <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+                                                <span>تقارير دورية عن أداء العقار</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-16 fade-in fade-in-delay-3">
+                    <a href="#contact" class="btn-primary inline-block px-8 py-4 rounded-full text-white font-bold transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 bg-gradient-to-l from-primary to-primary/90 relative overflow-hidden group">
+                        <span class="relative z-10 text-white">استشارة مجانية</span>
+                        <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Arabic Divider -->
+        <div class="section-separator">
+            <div class="separator-top"></div>
+            <div class="separator-bottom"></div>
+        </div>
+        
+        <!-- Property Gallery Section -->
+        <section id="property-gallery" class="py-16 md:py-24 bg-pattern arabic-bg-dark">
+            <div class="arabic-ornament ornament-top-right"></div>
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16 fade-in">
+                    <span class="section-subtitle">معرض الصور</span>
+                    <h2 class="section-title">صور من مشاريعنا العقارية</h2>
+                    <div class="section-title-separator"></div>
+                    <p class="max-w-3xl mx-auto mt-6">نقدم لكم مجموعة من الصور المميزة لعقاراتنا ومشاريعنا المختلفة التي تعكس جودة وفخامة منتجاتنا العقارية</p>
+                </div>
+                
+                <!-- Gallery Filter -->
+                <div class="gallery-filter mb-10 flex flex-wrap justify-center gap-3 fade-in">
+                    <button class="filter-btn active" data-filter="all">جميع الصور</button>
+                    <button class="filter-btn" data-filter="exterior">واجهات خارجية</button>
+                    <button class="filter-btn" data-filter="interior">تصاميم داخلية</button>
+                    <button class="filter-btn" data-filter="commercial">مشاريع تجارية</button>
+                </div>
+                
+                <!-- Gallery Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 fade-in fade-in-delay-1">
+                    <!-- Gallery Item 1 -->
+                    <div class="gallery-image cursor-pointer" data-category="exterior">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="فيلا فاخرة" loading="lazy">
+                        <div class="gallery-image-overlay">
+                            <div class="gallery-icon">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-image-badge">واجهة خارجية</div>
                     </div>
                     
-                    <!-- Service 5 -->
-                    <div class="service-box hover-translate">
-                        <div class="service-icon">
-                            <i class="fas fa-balance-scale"></i>
+                    <!-- Gallery Item 2 -->
+                    <div class="gallery-image cursor-pointer" data-category="interior">
+                        <img src="https://images.unsplash.com/photo-1618219944342-824e40a13285?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="تصميم داخلي فاخر" loading="lazy">
+                        <div class="gallery-image-overlay">
+                            <div class="gallery-icon">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
                         </div>
-                        <h3 class="service-title">الاستشارات القانونية</h3>
-                        <p class="service-text">نقدم استشارات قانونية متكاملة في المجال العقاري لضمان سلامة التعاملات وحفظ الحقوق لجميع الأطراف.</p>
-                        <ul class="service-list">
-                            <li>صياغة وتدقيق العقود</li>
-                            <li>دراسة الصكوك والمستندات</li>
-                            <li>تسجيل العقارات والإفراغات</li>
-                        </ul>
+                        <div class="gallery-image-badge">تصميم داخلي</div>
                     </div>
                     
-                    <!-- Service 6 -->
-                    <div class="service-box hover-translate">
-                        <div class="service-icon">
-                            <i class="fas fa-home"></i>
+                    <!-- Gallery Item 3 -->
+                    <div class="gallery-image cursor-pointer" data-category="commercial">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="مكتب تجاري" loading="lazy">
+                        <div class="gallery-image-overlay">
+                            <div class="gallery-icon">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
                         </div>
-                        <h3 class="service-title">إدارة الأملاك</h3>
-                        <p class="service-text">نتولى إدارة العقارات نيابة عن المالكين بما يحقق أعلى عائد استثماري مع المحافظة على قيمة الأصول العقارية.</p>
-                        <ul class="service-list">
-                            <li>تحصيل الإيجارات والمتابعة</li>
-                            <li>إدارة الصيانة والخدمات</li>
-                            <li>تقارير دورية عن أداء العقار</li>
-                        </ul>
+                        <div class="gallery-image-badge">مشروع تجاري</div>
+                    </div>
+                    
+                    <!-- Gallery Item 4 -->
+                    <div class="gallery-image cursor-pointer" data-category="exterior">
+                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="منزل عصري" loading="lazy">
+                        <div class="gallery-image-overlay">
+                            <div class="gallery-icon">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-image-badge">واجهة خارجية</div>
+                    </div>
+                    
+                    <!-- Gallery Item 5 -->
+                    <div class="gallery-image cursor-pointer" data-category="interior">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="غرفة معيشة" loading="lazy">
+                        <div class="gallery-image-overlay">
+                            <div class="gallery-icon">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-image-badge">تصميم داخلي</div>
+                    </div>
+                    
+                    <!-- Gallery Item 6 -->
+                    <div class="gallery-image cursor-pointer" data-category="commercial">
+                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="مجمع سكني" loading="lazy">
+                        <div class="gallery-image-overlay">
+                            <div class="gallery-icon">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-image-badge">مشروع تجاري</div>
+                    </div>
+                    
+                    <!-- Gallery Item 7 -->
+                    <div class="gallery-image cursor-pointer" data-category="exterior">
+                        <img src="https://images.unsplash.com/photo-1613553497126-a44624272024?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="فيلا مودرن" loading="lazy">
+                        <div class="gallery-image-overlay">
+                            <div class="gallery-icon">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-image-badge">واجهة خارجية</div>
+                    </div>
+                    
+                    <!-- Gallery Item 8 -->
+                    <div class="gallery-image cursor-pointer" data-category="interior">
+                        <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="مطبخ فاخر" loading="lazy">
+                        <div class="gallery-image-overlay">
+                            <div class="gallery-icon">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-image-badge">تصميم داخلي</div>
+                    </div>
+                </div>
+            </div>
+            <div class="arabic-ornament ornament-bottom-left"></div>
+        </section>
+        
+        <!-- Arabic Divider -->
+        <div class="section-separator">
+            <div class="separator-top"></div>
+            <div class="separator-bottom"></div>
+        </div>
+        
+        <!-- FAQ Section -->
+        <section id="faq" class="py-16 md:py-24 arabic-bg-light">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16 fade-in">
+                    <span class="section-subtitle">الأسئلة الشائعة</span>
+                    <h2 class="section-title">أسئلة يكثر طرحها</h2>
+                    <div class="section-title-separator"></div>
+                    <p class="max-w-3xl mx-auto mt-6">نجيب على استفساراتكم الشائعة حول خدماتنا العقارية والاستثمارية</p>
+                </div>
+                
+                <div class="faq-container fade-in fade-in-delay-1">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item active">
+                        <div class="faq-question">
+                            <span>ما هي أفضل مناطق الاستثمار العقاري في المملكة حالياً؟</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>تعد مدن الرياض وجدة والدمام من أفضل المناطق للاستثمار العقاري حالياً، خاصة مع المشاريع التنموية الضخمة مثل مشروع نيوم والقدية ومشاريع الترفيه والسياحة. كما أن المناطق القريبة من المشاريع الحكومية الكبرى مثل وسط الرياض وضاحية الملك عبدالله المالية تشهد طلباً استثمارياً متزايداً.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>كيف يمكنني الحصول على تمويل عقاري لشراء منزل؟</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>يمكنك الحصول على تمويل عقاري من خلال البنوك والمؤسسات المالية المرخصة في المملكة. نحن في إيليت عربية نوفر خدمة مساعدة العملاء في الحصول على التمويل المناسب بأفضل الشروط، حيث نتعاون مع عدة بنوك ومؤسسات تمويلية لتقديم حلول تمويلية متوافقة مع الشريعة الإسلامية وبأسعار تنافسية.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>ما هي الأوراق والمستندات المطلوبة لشراء عقار؟</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>المستندات الأساسية المطلوبة لشراء عقار تشمل: الهوية الوطنية أو الإقامة، صك الملكية الأصلي، رخصة البناء، شهادة إتمام البناء، تقرير مساحي معتمد، موافقة ولي الأمر للقاصرين، وفي حال التمويل يتم طلب مستندات إضافية مثل تعريف بالراتب وكشف حساب بنكي. يمكن أن تختلف المتطلبات حسب نوع العقار والمنطقة.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 4 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>كم تبلغ رسوم السعي (العمولة) في صفقات العقار؟</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>تبلغ رسوم السعي (العمولة) القانونية في المملكة العربية السعودية 2.5% من قيمة العقار، يدفعها كل من البائع والمشتري، أي 1.25% على كل طرف. وقد تختلف النسبة في بعض الحالات حسب الاتفاق بين الأطراف والوسيط العقاري.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 5 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>هل يمكن للأجانب شراء عقارات في المملكة؟</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>نعم، يمكن للأجانب المقيمين إقامة نظامية شراء عقارات للسكن الخاص بشرط الحصول على ترخيص من وزارة الداخلية. أما بالنسبة للمستثمرين الأجانب، فيمكنهم الاستثمار في العقارات التجارية والسكنية وفق ضوابط معينة. كما تتيح مناطق محددة مثل مكة والمدينة حق التملك للمسلمين فقط.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 6 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>ما هي خدمة إدارة الأملاك التي تقدمونها؟</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>خدمة إدارة الأملاك هي خدمة متكاملة نقدمها للملاك الذين يرغبون في إدارة عقاراتهم بشكل احترافي، وتشمل: تسويق العقار وتأجيره، تحصيل الإيجارات، متابعة الصيانة الدورية والطارئة، التعامل مع المستأجرين، إعداد تقارير مالية دورية، والمتابعة القانونية. هدفنا هو تحقيق أعلى عائد استثماري للمالك مع المحافظة على قيمة العقار.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1327,117 +2091,315 @@
         </div>
         
         <!-- Contact Section -->
-        <section id="contact" class="py-16 md:py-24 bg-pattern">
+        <section id="contact" class="py-16 md:py-24 bg-pattern arabic-bg-dark">
+            <div class="arabic-ornament ornament-top-right"></div>
             <div class="container mx-auto px-4">
-                <div class="text-center mb-16">
+                <div class="text-center mb-16 fade-in">
                     <span class="section-subtitle">تواصل معنا</span>
                     <h2 class="section-title">دعنا نساعدك في إيجاد العقار المناسب</h2>
                     <div class="section-title-separator"></div>
+                    <p class="max-w-3xl mx-auto mt-6">فريقنا من الخبراء العقاريين في خدمتكم، تواصلوا معنا عبر أحد قنوات الاتصال التالية</p>
                 </div>
                 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                    <div class="contact-info">
-                        <div class="contact-card mb-8">
-                            <h3 class="contact-title">معلومات التواصل</h3>
-                            
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h4>العنوان</h4>
-                                    <p>جدة، المملكة العربية السعودية</p>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-phone-alt"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h4>اتصل بنا</h4>
-                                    <p>0543900088</p>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h4>البريد الإلكتروني</h4>
-                                    <p>ceo@elitearabia.sa</p>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-clock"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h4>ساعات العمل</h4>
-                                    <p>الأحد - الخميس: 9 صباحاً - 5 مساءً</p>
-                                </div>
+                <div class="contact-enhanced fade-in fade-in-delay-1">
+                    <!-- Contact Card 1 -->
+                    <div class="contact-card-enhanced">
+                        <div class="contact-icon-enhanced">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3 class="contact-title-enhanced">اتصل بنا مباشرة</h3>
+                        <p class="contact-info-enhanced">متاح للرد على استفساراتكم طوال أيام الأسبوع من الساعة 9 صباحاً وحتى 10 مساءً</p>
+                        <div class="contact-action">
+                            <a href="tel:+966543900088" class="btn-primary p-3 rounded-2xl ">
+                                <i class="fas fa-phone-alt ml-2 text-white bg-primary rounded-full p-2"></i>
+                                <span class="text-white">0543900088</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Card 2 -->
+                    <div class="contact-card-enhanced">
+                        <div class="contact-icon-enhanced">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h3 class="contact-title-enhanced">واتساب</h3>
+                        <p class="contact-info-enhanced">تواصل معنا عبر الواتساب للحصول على رد سريع ومباشر من فريق خدمة العملاء</p>
+                        <div class="contact-action">
+                            <a href="https://wa.me/966543900088" class="btn-whatsapp" target="_blank">
+                                <i class="fab fa-whatsapp ml-2"></i>
+                                ارسل رسالة واتساب
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Card 3 -->
+                    <div class="contact-card-enhanced">
+                        <div class="contact-icon-enhanced">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3 class="contact-title-enhanced">البريد الإلكتروني</h3>
+                        <p class="contact-info-enhanced">راسلنا عبر البريد الإلكتروني وسنقوم بالرد عليكم خلال 24 ساعة كحد أقصى</p>
+                        <div class="contact-action">
+                            <a href="mailto:ceo@elitearabia.sa" class="btn-primary-outline">
+                                <i class="fas fa-envelope ml-2"></i>
+                                ceo@elitearabia.sa
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Contact Information -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 fade-in fade-in-delay-2">
+                    <!-- Working Hours -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold mb-4 text-center">ساعات العمل</h3>
+                        <ul class="space-y-3">
+                            <li class="flex justify-between">
+                                <span class="font-medium">الأحد - الخميس</span>
+                                <span>9:00 ص - 5:00 م</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span class="font-medium">الجمعة</span>
+                                <span>مغلق</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span class="font-medium">السبت</span>
+                                <span>10:00 ص - 3:00 م</span>
+                            </li>
+                        </ul>
+                        <div class="mt-6 p-4 bg-gray-100 rounded-lg">
+                            <p class="text-center">متاح للطوارئ العقارية على مدار الساعة</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Office Location -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold mb-4 text-center">مكتبنا الرئيسي</h3>
+                        <div class="flex justify-center mb-4">
+                            <div class="h-12 w-12 rounded-full bg-primary-light flex items-center justify-center text-primary">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
                             </div>
                         </div>
-                        
-                        <div class="follow-us">
-                            <h3 class="follow-title">تابعنا على وسائل التواصل</h3>
-                            <div class="social-links mt-4">
-                                <a href="#" class="social-link">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#" class="social-link">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#" class="social-link">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                                <a href="#" class="social-link">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
+                        <address class="text-center not-italic mb-4">
+                            المملكة العربية السعودية، جدة<br>
+                            طريق الملك عبدالعزيز، حي النهضة<br>
+                            برج إيليت، الطابق 14
+                        </address>
+                        <div class="text-center">
+                            <a href="https://goo.gl/maps/JuQTkGSGqaE2" target="_blank" class="btn-primary-outline inline-block">
+                                <i class="fas fa-directions ml-2"></i>
+                                احصل على الاتجاهات
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Social Media Links -->
+                <div class="text-center mt-16 fade-in fade-in-delay-3">
+                    <h3 class="text-xl font-bold mb-6 text-[#1f3250 ]">تابعنا على وسائل التواصل الاجتماعي</h3>
+                    <div class="flex justify-center gap-6">
+                        <a href="#" class="social-link-lg" aria-label="تويتر">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link-lg" aria-label="فيسبوك">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link-lg" aria-label="انستقرام">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link-lg" aria-label="لينكد إن">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link-lg" aria-label="يوتيوب">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="arabic-ornament ornament-bottom-left"></div>
+        </section>
+        
+        <!-- Arabic Divider -->
+        <div class="section-separator">
+            <div class="separator-top"></div>
+            <div class="separator-bottom"></div>
+        </div>
+        
+        <!-- Real Estate Investment Tips Section (replacing Team Section) -->
+        <section id="investment-tips" class="py-16 md:py-24 arabic-bg-light">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16 fade-in">
+                    <span class="section-subtitle">نصائح استثمارية</span>
+                    <h2 class="section-title">أفضل نصائح الاستثمار العقاري</h2>
+                    <div class="section-title-separator"></div>
+                    <p class="max-w-3xl mx-auto mt-6">نقدم لكم مجموعة من النصائح والإرشادات المهمة التي ستساعدكم على اتخاذ القرارات الاستثمارية العقارية الصحيحة، مستندة على خبرة فريقنا في السوق العقاري السعودي</p>
+                </div>
+                
+                <div class="real-estate-tips-grid">
+                    <!-- Tip 1 -->
+                    <div class="tip-card fade-in fade-in-delay-1">
+                        <div class="tip-card-header">
+                            <img src="https://images.unsplash.com/photo-1555085506-89e676591a9f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="اختيار الموقع المناسب">
+                        </div>
+                        <div class="tip-card-body">
+                            <div class="tip-card-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h3 class="tip-card-title">اختيار الموقع المناسب</h3>
+                            <p class="tip-card-text">الموقع هو العامل الأكثر أهمية في الاستثمار العقاري. ابحث عن المناطق القريبة من المرافق الأساسية مثل المدارس والمستشفيات والمراكز التجارية، وكذلك المناطق التي تشهد تطويراً مستقبلياً وفقاً لرؤية 2030.</p>
+                            <div class="tip-card-footer">
+                                <span class="tip-card-category">استثمار سكني</span>
+                                <div class="tip-card-contact">
+                                    <a href="tel:+966543900088" class="tip-btn tip-btn-call">
+                                        <i class="fas fa-phone-alt ml-2"></i>
+                                        اتصل
+                                    </a>
+                                    <a href="https://wa.me/966543900088" target="_blank" class="tip-btn tip-btn-whatsapp">
+                                        <i class="fab fa-whatsapp ml-2"></i>
+                                        واتساب
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="contact-form-container">
-                        <form class="contact-form">
-                            <div class="form-group">
-                                <label for="name">الاسم الكامل</label>
-                                <input type="text" id="name" class="form-control" placeholder="أدخل اسمك الكامل" required>
+                    <!-- Tip 2 -->
+                    <div class="tip-card fade-in fade-in-delay-1">
+                        <div class="tip-card-header">
+                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="دراسة الجدوى الاقتصادية">
+                        </div>
+                        <div class="tip-card-body">
+                            <div class="tip-card-icon">
+                                <i class="fas fa-chart-pie"></i>
                             </div>
-                            
-                            <div class="form-group">
-                                <label for="email">البريد الإلكتروني</label>
-                                <input type="email" id="email" class="form-control" placeholder="أدخل بريدك الإلكتروني" required>
+                            <h3 class="tip-card-title">دراسة الجدوى الاقتصادية</h3>
+                            <p class="tip-card-text">قبل الشروع في أي استثمار عقاري، يجب إجراء دراسة جدوى اقتصادية شاملة تتضمن تكاليف الشراء والصيانة والضرائب والعائد المتوقع. احرص على حساب معدل العائد على الاستثمار (ROI) ومقارنته بالاستثمارات البديلة.</p>
+                            <div class="tip-card-footer">
+                                <span class="tip-card-category">تحليل مالي</span>
+                                <div class="tip-card-contact">
+                                    <a href="tel:+966543900088" class="tip-btn tip-btn-call">
+                                        <i class="fas fa-phone-alt ml-2"></i>
+                                        اتصل
+                                    </a>
+                                    <a href="https://wa.me/966543900088" target="_blank" class="tip-btn tip-btn-whatsapp">
+                                        <i class="fab fa-whatsapp ml-2"></i>
+                                        واتساب
+                                    </a>
+                                </div>
                             </div>
-                            
-                            <div class="form-group">
-                                <label for="phone">رقم الهاتف</label>
-                                <input type="tel" id="phone" class="form-control" placeholder="أدخل رقم هاتفك" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Tip 3 -->
+                    <div class="tip-card fade-in fade-in-delay-1">
+                        <div class="tip-card-header">
+                            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21ed6c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="خيارات التمويل العقاري">
+                        </div>
+                        <div class="tip-card-body">
+                            <div class="tip-card-icon">
+                                <i class="fas fa-hand-holding-usd"></i>
                             </div>
-                            
-                            <div class="form-group">
-                                <label for="property-type">نوع العقار</label>
-                                <select id="property-type" class="form-control" required>
-                                    <option value="" disabled selected>اختر نوع العقار</option>
-                                    <option value="villa">فيلا</option>
-                                    <option value="apartment">شقة</option>
-                                    <option value="land">أرض</option>
-                                    <option value="commercial">عقار تجاري</option>
-                                    <option value="other">أخرى</option>
-                                </select>
+                            <h3 class="tip-card-title">خيارات التمويل العقاري</h3>
+                            <p class="tip-card-text">تعرف على الخيارات التمويلية المتاحة واختر ما يناسبك. ابحث عن أفضل معدلات الفائدة وشروط السداد، وتأكد من إمكانية تحمل الأقساط الشهرية دون إرهاق ميزانيتك. استفد من برامج الدعم الحكومي مثل برنامج سكني.</p>
+                            <div class="tip-card-footer">
+                                <span class="tip-card-category">تمويل</span>
+                                <div class="tip-card-contact">
+                                    <a href="tel:+966543900088" class="tip-btn tip-btn-call">
+                                        <i class="fas fa-phone-alt ml-2"></i>
+                                        اتصل
+                                    </a>
+                                    <a href="https://wa.me/966543900088" target="_blank" class="tip-btn tip-btn-whatsapp">
+                                        <i class="fab fa-whatsapp ml-2"></i>
+                                        واتساب
+                                    </a>
+                                </div>
                             </div>
-                            
-                            <div class="form-group">
-                                <label for="message">الرسالة</label>
-                                <textarea id="message" class="form-control" rows="5" placeholder="اكتب رسالتك هنا..." required></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Tip 4 -->
+                    <div class="tip-card fade-in fade-in-delay-2">
+                        <div class="tip-card-header">
+                            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="التحقق القانوني">
+                        </div>
+                        <div class="tip-card-body">
+                            <div class="tip-card-icon">
+                                <i class="fas fa-gavel"></i>
                             </div>
-                            
-                            <button type="submit" class="btn-submit">إرسال الطلب</button>
-                        </form>
+                            <h3 class="tip-card-title">التحقق القانوني</h3>
+                            <p class="tip-card-text">تأكد من سلامة الوضع القانوني للعقار قبل الشراء. تحقق من صك الملكية والتصاريح والمخططات، وتأكد من عدم وجود منازعات أو رهونات أو التزامات قانونية على العقار. استعن بمستشار قانوني متخصص لمراجعة جميع الوثائق.</p>
+                            <div class="tip-card-footer">
+                                <span class="tip-card-category">قانوني</span>
+                                <div class="tip-card-contact">
+                                    <a href="tel:+966543900088" class="tip-btn tip-btn-call">
+                                        <i class="fas fa-phone-alt ml-2"></i>
+                                        اتصل
+                                    </a>
+                                    <a href="https://wa.me/966543900088" target="_blank" class="tip-btn tip-btn-whatsapp">
+                                        <i class="fab fa-whatsapp ml-2"></i>
+                                        واتساب
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tip 5 -->
+                    <div class="tip-card fade-in fade-in-delay-2">
+                        <div class="tip-card-header">
+                            <img src="https://images.unsplash.com/photo-1561501900-3701fa6a0864?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="تنويع المحفظة العقارية">
+                        </div>
+                        <div class="tip-card-body">
+                            <div class="tip-card-icon">
+                                <i class="fas fa-random"></i>
+                            </div>
+                            <h3 class="tip-card-title">تنويع المحفظة العقارية</h3>
+                            <p class="tip-card-text">لا تضع كل استثماراتك في عقار واحد أو منطقة واحدة. قم بتنويع محفظتك العقارية لتشمل أنواعاً مختلفة من العقارات (سكنية، تجارية، أراضي) ومناطق مختلفة لتقليل المخاطر وزيادة فرص تحقيق عوائد متوازنة.</p>
+                            <div class="tip-card-footer">
+                                <span class="tip-card-category">استراتيجية</span>
+                                <div class="tip-card-contact">
+                                    <a href="tel:+966543900088" class="tip-btn tip-btn-call">
+                                        <i class="fas fa-phone-alt ml-2"></i>
+                                        اتصل
+                                    </a>
+                                    <a href="https://wa.me/966543900088" target="_blank" class="tip-btn tip-btn-whatsapp">
+                                        <i class="fab fa-whatsapp ml-2"></i>
+                                        واتساب
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tip 6 -->
+                    <div class="tip-card fade-in fade-in-delay-2">
+                        <div class="tip-card-header">
+                            <img src="https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="متابعة السوق العقاري">
+                        </div>
+                        <div class="tip-card-body">
+                            <div class="tip-card-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <h3 class="tip-card-title">متابعة السوق العقاري</h3>
+                            <p class="tip-card-text">اطلع باستمرار على تطورات السوق العقاري، وتابع مؤشرات الأسعار والطلب. تعرف على مشاريع التطوير الجديدة وخطط الدولة المستقبلية للبنية التحتية والمشاريع الكبرى، واستفد منها في اتخاذ قراراتك الاستثمارية.</p>
+                            <div class="tip-card-footer">
+                                <span class="tip-card-category">دراسة السوق</span>
+                                <div class="tip-card-contact">
+                                    <a href="tel:+966543900088" class="tip-btn tip-btn-call">
+                                        <i class="fas fa-phone-alt ml-2"></i>
+                                        اتصل
+                                    </a>
+                                    <a href="https://wa.me/966543900088" target="_blank" class="tip-btn tip-btn-whatsapp">
+                                        <i class="fab fa-whatsapp ml-2"></i>
+                                        واتساب
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                
+               
             </div>
         </section>
     </main>
@@ -1538,7 +2500,7 @@
     </div>
 
     <script>
-        // Initialize Swiper for Properties
+        // Initialize Swipers
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize Properties Swiper
             const propertiesSwiper = new Swiper('.properties-swiper', {
@@ -1594,6 +2556,225 @@
                         spaceBetween: 20,
                     }
                 }
+            });
+            
+
+            
+            // Property Filtering
+            const filterButtons = document.querySelectorAll('.properties-filter .filter-btn');
+            const propertyItems = document.querySelectorAll('.properties-swiper .swiper-slide');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to the clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    propertyItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category').includes(filter)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                    
+                    // Update swiper after filtering
+                    propertiesSwiper.update();
+                    propertiesSwiper.updateSize();
+                    propertiesSwiper.updateSlides();
+                });
+            });
+            
+            // Gallery Filtering
+            const galleryFilterButtons = document.querySelectorAll('.gallery-filter .filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-image');
+            
+            galleryFilterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    galleryFilterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to the clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    galleryItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Gallery Lightbox
+            const galleryImages = document.querySelectorAll('.gallery-image');
+            
+            galleryImages.forEach(image => {
+                image.addEventListener('click', function() {
+                    const imgSrc = this.querySelector('img').getAttribute('src');
+                    const imgAlt = this.querySelector('img').getAttribute('alt');
+                    
+                    // Create lightbox elements
+                    const lightbox = document.createElement('div');
+                    lightbox.className = 'lightbox';
+                    
+                    const lightboxContent = document.createElement('div');
+                    lightboxContent.className = 'lightbox-content';
+                    
+                    const lightboxClose = document.createElement('span');
+                    lightboxClose.className = 'lightbox-close';
+                    lightboxClose.innerHTML = '&times;';
+                    
+                    const lightboxImage = document.createElement('img');
+                    lightboxImage.className = 'lightbox-image';
+                    lightboxImage.src = imgSrc;
+                    lightboxImage.alt = imgAlt;
+                    
+                    // Add loading indicator and handle image loading
+                    const loadingIndicator = document.createElement('div');
+                    loadingIndicator.className = 'loading-indicator';
+                    loadingIndicator.innerHTML = '<i class="fas fa-spinner fa-spin fa-3x"></i>';
+                    
+                    // Preload image
+                    const preloadImage = new Image();
+                    preloadImage.src = imgSrc;
+                    lightboxContent.appendChild(loadingIndicator);
+                    
+                    preloadImage.onload = function() {
+                        // Once image is loaded, add it to lightbox
+                        lightboxContent.removeChild(loadingIndicator);
+                        lightboxContent.appendChild(lightboxImage);
+                        
+                        // Add caption
+                        const lightboxCaption = document.createElement('div');
+                        lightboxCaption.className = 'lightbox-caption';
+                        lightboxCaption.textContent = imgAlt;
+                        lightboxContent.appendChild(lightboxCaption);
+                    };
+                    
+                    // Append elements
+                    lightboxContent.appendChild(lightboxClose);
+                    lightbox.appendChild(lightboxContent);
+                    document.body.appendChild(lightbox);
+                    
+                    // Add class to trigger fade in
+                    requestAnimationFrame(() => {
+                        lightbox.classList.add('show');
+                    });
+                    
+                    // Prevent body scrolling
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Close lightbox with animation
+                    function closeLightbox() {
+                        lightbox.classList.remove('show');
+                        setTimeout(() => {
+                            if (document.body.contains(lightbox)) {
+                                document.body.removeChild(lightbox);
+                            }
+                            document.body.style.overflow = '';
+                        }, 300);
+                        
+                        // Remove event listeners when lightbox is closed
+                        document.removeEventListener('keydown', keyHandler);
+                        lightbox.removeEventListener('touchstart', handleTouchStart);
+                        lightbox.removeEventListener('touchmove', handleTouchMove);
+                        lightbox.removeEventListener('touchend', handleTouchEnd);
+                    }
+                    
+                    // Close lightbox events
+                    lightboxClose.addEventListener('click', closeLightbox);
+                    
+                    lightbox.addEventListener('click', function(e) {
+                        if (e.target === lightbox) {
+                            closeLightbox();
+                        }
+                    });
+                    
+                    // Keyboard navigation for lightbox
+                    function keyHandler(e) {
+                        if (e.key === 'Escape') {
+                            closeLightbox();
+                        }
+                    }
+                    
+                    document.addEventListener('keydown', keyHandler);
+                    
+                    // Touch support for swiping to close
+                    let touchStartY = 0;
+                    let touchEndY = 0;
+                    let touchStartX = 0;
+                    let touchEndX = 0;
+                    
+                    function handleTouchStart(e) {
+                        touchStartY = e.touches[0].clientY;
+                        touchStartX = e.touches[0].clientX;
+                    }
+                    
+                    function handleTouchMove(e) {
+                        touchEndY = e.touches[0].clientY;
+                        touchEndX = e.touches[0].clientX;
+                        
+                        // Calculate vertical distance moved
+                        const yDiff = touchEndY - touchStartY;
+                        
+                        // If swiping down, apply transform to lightbox
+                        if (yDiff > 0 && e.target === lightbox) {
+                            const opacity = Math.max(0.3, 1 - (yDiff / 300));
+                            lightbox.style.opacity = opacity.toString();
+                            lightboxContent.style.transform = `translateY(${yDiff}px)`;
+                        }
+                    }
+                    
+                    function handleTouchEnd(e) {
+                        const yDiff = touchEndY - touchStartY;
+                        const xDiff = touchEndX - touchStartX;
+                        
+                        // Reset styles regardless of action
+                        lightbox.style.opacity = '';
+                        lightboxContent.style.transform = '';
+                        
+                        // Check if swipe down distance is significant or if it's a diagonal swipe
+                        if ((yDiff > 100 && Math.abs(xDiff) < Math.abs(yDiff)) || yDiff > 150) {
+                            closeLightbox();
+                        }
+                        
+                        // Reset values
+                        touchStartY = 0;
+                        touchEndY = 0;
+                        touchStartX = 0;
+                        touchEndX = 0;
+                    }
+                    
+                    // Add touch event listeners
+                    lightbox.addEventListener('touchstart', handleTouchStart, {passive: true});
+                    lightbox.addEventListener('touchmove', handleTouchMove, {passive: true});
+                    lightbox.addEventListener('touchend', handleTouchEnd);
+                });
+            });
+            
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle active class
+                    item.classList.toggle('active');
+                });
             });
             
             // Smooth scrolling for all anchor links
@@ -1675,17 +2856,6 @@
                 }
             });
             
-            // Form validation
-            const contactForm = document.querySelector('.contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    // Here you would normally send the form data to a server
-                    alert('شكراً لتواصلك معنا! سيتم الرد عليك في أقرب وقت ممكن.');
-                    contactForm.reset();
-                });
-            }
-            
             // Animation for counters
             const counters = document.querySelectorAll('.counter');
             const speed = 200;
@@ -1705,18 +2875,42 @@
                 });
             }
             
+            // Fade-in animations
+            const fadeInElements = document.querySelectorAll('.fade-in');
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const fadeInObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        fadeInObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            fadeInElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                fadeInObserver.observe(element);
+            });
+            
             // Start counter animation when in viewport
-            const observer = new IntersectionObserver((entries) => {
+            const counterObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         animateCounter();
-                        observer.unobserve(entry.target);
+                        counterObserver.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.1 });
             
             if (counters.length > 0) {
-                observer.observe(counters[0].parentElement.parentElement);
+                counterObserver.observe(counters[0].parentElement.parentElement);
             }
         });
     </script>
