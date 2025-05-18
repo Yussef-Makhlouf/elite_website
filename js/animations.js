@@ -1,504 +1,506 @@
 /**
- * Elite Website Animations
- * Enhanced Animation System using GSAP
+ * Elite Arabia - Animation & Interactions Script
+ * This file handles all animations, scroll effects, and interactive elements
  */
 
+// Wait until the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize GSAP with more plugins
-    gsap.registerPlugin(ScrollTrigger, TextPlugin, ScrollToPlugin);
+    // Initialize animations when page loads
+    initAnimations();
     
-    // Preloader with fancy reveal
-    const preloader = document.querySelector('.preloader');
-    if (preloader) {
-        const preloaderTl = gsap.timeline();
-        preloaderTl.to('.preloader-progress', {
-            width: '100%',
-            duration: 1.5,
-            ease: "power2.inOut"
-        });
-        preloaderTl.to('.preloader', {
-            y: '-100%',
-            duration: 0.8,
-            ease: "power2.inOut"
-        });
-        
-        // Start the main page animations after preloader
-        preloaderTl.call(initPageAnimations);
-    } else {
-        // If no preloader, start animations immediately
-        initPageAnimations();
-    }
+    // Handle scroll events for various effects
+    window.addEventListener('scroll', handleScroll);
     
-    function initPageAnimations() {
-        // Enhanced navbar animation
-        const navbarItems = document.querySelectorAll('.navbar-item');
-        gsap.set(navbarItems, { opacity: 0, y: -20 });
-        gsap.to(navbarItems, {
-            opacity: 1,
-            y: 0,
-            stagger: 0.1,
-            duration: 0.6,
-            ease: "back.out(1.5)"
-        });
-        
-        // Animate logo
-        gsap.from('.logo', {
-            opacity: 0,
-            x: -30,
-            duration: 0.8,
-            ease: "power2.out"
-        });
-        
-        // Enhanced hero animations
-        const heroTl = gsap.timeline();
-        
-    heroTl.from('.hero-title', {
-        opacity: 0,
-        y: 50,
-            duration: 1,
-            ease: "power3.out"
-    });
+    // Initialize mobile menu functionality
+    initMobileMenu();
     
-    heroTl.from('.hero-text', {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: "power2.out"
-    }, "-=0.6");
+    // Initialize FAQ accordion
+    initFaqAccordion();
     
-        heroTl.from('.btn', {
-            opacity: 0,
-            y: 20,
-            stagger: 0.2,
-            duration: 0.8,
-            ease: "back.out(1.7)"
-        }, "-=0.4");
-        
-        heroTl.from('.hero-image-container', {
-        opacity: 0,
-            scale: 0.9,
-            duration: 1.2,
-        ease: "power2.out"
-        }, "-=1");
-        
-        heroTl.from('.hero-badge', {
-            opacity: 0,
-            scale: 0,
-            duration: 0.8,
-            ease: "back.out(1.7)"
-        }, "-=0.5");
-        
-        // Animated particles with better randomization
-        gsap.utils.toArray('.particle').forEach(particle => {
-            // Random starting positions
-            gsap.set(particle, {
-                x: gsap.utils.random(-20, 20),
-                y: gsap.utils.random(-20, 20)
-            });
-            
-            // Continuous random movement animation
-            gsap.to(particle, {
-                x: `random(-50, 50)`,
-                y: `random(-50, 50)`,
-                duration: gsap.utils.random(3, 8),
-                ease: "sine.inOut",
-                repeat: -1,
-                yoyo: true,
-                repeatRefresh: true // New random values on each repeat
-            });
-        });
-        
-        // Enhanced floating animation for elements
-        gsap.utils.toArray('.floating-element').forEach((element, index) => {
-            // Staggered, slightly different animations for each element
-            gsap.to(element, {
-                y: index % 2 === 0 ? 15 : 10,
-                rotation: gsap.utils.random(-3, 3),
-                duration: gsap.utils.random(2, 3),
-        repeat: -1,
-        yoyo: true,
-                ease: "sine.inOut",
-                delay: index * 0.2
-            });
-        });
-        
-        // Counter animation with visual bounce
-        gsap.utils.toArray('.counter').forEach(counter => {
-            const target = parseInt(counter.getAttribute('data-target'));
-            
-            ScrollTrigger.create({
-                trigger: counter,
-                start: "top 90%",
-                onEnter: function() {
-                    gsap.to(counter, {
-                        innerHTML: target,
-        duration: 2,
-                        snap: { innerHTML: 1 },
-                        ease: "power2.out",
-                        onUpdate: function() {
-                            if (parseInt(counter.innerHTML) % 5 === 0) {
-                                gsap.to(counter, {
-                                    scale: 1.1,
-                                    duration: 0.1,
-                                    yoyo: true,
-                                    repeat: 1
-                                });
-                            }
-                        }
-                    });
-                }
-            });
-        });
-        
-        // Animate Arabic decorations
-        gsap.utils.toArray('.arabic-decoration').forEach(element => {
-            // Remove the animation for arabic-decoration elements
-            element.style.opacity = '1';
-            element.style.transform = 'none';
-        });
-        
-        // Animate section separators
-        gsap.utils.toArray('.section-separator').forEach(separator => {
-            const topPart = separator.querySelector('.separator-top');
-            const bottomPart = separator.querySelector('.separator-bottom');
-            
-            gsap.from(topPart, {
-                scrollTrigger: {
-                    trigger: separator,
-                    start: "top 95%"
-                },
-                scaleX: 0,
-                duration: 1.2,
-                ease: "power3.out"
-            });
-            
-            gsap.from(bottomPart, {
-                scrollTrigger: {
-                    trigger: separator,
-                    start: "top 95%"
-                },
-                scaleX: 0,
-                duration: 1.2,
-                ease: "power3.out",
-                delay: 0.1
-            });
-        });
-        
-        // Vision cards animation
-        gsap.utils.toArray('.vision-card').forEach((card, index) => {
-            gsap.from(card, {
-                scrollTrigger: {
-                    trigger: card,
-                    start: "top 85%"
-                },
-                y: 50,
-                opacity: 0,
-                duration: 0.8,
-                delay: index * 0.2,
-                ease: "back.out(1.2)"
-            });
-        });
-        
-        // Animate background shapes
-        const heroBgShapes = document.querySelectorAll('.bg-shape');
-        heroBgShapes.forEach((shape, index) => {
-            gsap.to(shape, {
-                x: gsap.utils.random(-30, 30),
-                y: gsap.utils.random(-30, 30),
-                scale: gsap.utils.random(0.9, 1.1),
-                rotation: gsap.utils.random(-15, 15),
-                duration: gsap.utils.random(20, 30),
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut",
-                delay: index * 2
-            });
-        });
-        
-        // Add subtle continuous animations to hero elements
-        gsap.to('.hero-image-container', {
-            y: 15,
-            rotation: 2,
-            duration: 6,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut"
-    });
+    // Initialize lightbox for gallery
+    initLightbox();
     
-        gsap.to('.hero-badge', {
-            y: -15,
-            rotation: -5,
-            duration: 5,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-            delay: 1
-        });
-        
-        // Add subtle text glow animation to hero title
-        gsap.to('.hero-title', {
-            textShadow: "0 0 15px rgba(248, 212, 88, 0.5)",
-            color: "rgba(249, 248, 244, 1)",
-            duration: 2,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut"
-        });
-    }
+    // Initialize property swiper
+    initPropertySwiper();
     
-    // Enhanced section title animations with stagger effect
-    gsap.utils.toArray('.section-title').forEach((title, index) => {
-        // Set initial state
-        gsap.set(title, {
-            opacity: 0,
-            y: 30,
-            scale: 0.95
-        });
-
-        // Create the animation
-        gsap.to(title, {
-            scrollTrigger: {
-                trigger: title,
-                start: "top 85%",
-                end: "bottom 15%",
-                toggleActions: "play none none reverse"
-            },
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 1,
-            ease: "power3.out",
-            onStart: () => {
-                // Animate the decorative text shadow
-                if (title.hasAttribute('data-text')) {
-                    const shadow = title.querySelector('::after');
-                    if (shadow) {
-                        gsap.fromTo(shadow, {
-                            opacity: 0,
-                            scale: 1.2,
-                            x: 20,
-                            y: -20
-                        }, {
-                            opacity: 0.1,
-                            scale: 1,
-                            x: 0,
-                            y: 0,
-                            duration: 1.2,
-                            ease: "power2.out"
-                        });
-                    }
-                }
-            }
-        });
-
-        // Add a subtle hover effect
-        title.addEventListener('mouseenter', () => {
-            gsap.to(title, {
-                scale: 1.02,
-                duration: 0.3,
-                ease: "power2.out"
-            });
-        });
-
-        title.addEventListener('mouseleave', () => {
-            gsap.to(title, {
-                scale: 1,
-                duration: 0.3,
-                ease: "power2.out"
-            });
-        });
-    });
+    // Initialize smooth scrolling for anchor links
+    initSmoothScrolling();
     
-    // Section headers reveal with staggered elements
-    gsap.utils.toArray('.section-header').forEach(header => {
-        const title = header.querySelector('.section-title');
-        const divider = header.querySelector('.section-divider');
-        const subtitle = header.querySelector('.section-subtitle');
-        
-        const headerTl = gsap.timeline({
-            scrollTrigger: {
-                trigger: header,
-                start: "top 85%"
-            }
-        });
-        
-        headerTl.from(title, {
-            y: 30,
-            opacity: 0,
-            duration: 0.8,
-            ease: "back.out(1.7)"
-        });
-        
-        headerTl.from(divider, {
-            scaleX: 0,
-            duration: 0.6,
-            ease: "power2.out"
-        }, "-=0.3");
-        
-        headerTl.from(subtitle, {
-            y: 20,
-            opacity: 0,
-            duration: 0.7,
-            ease: "power2.out"
-        }, "-=0.2");
-    });
+    // Initialize back-to-top button
+    initBackToTop();
     
-    // Service cards scroll interaction
-    const serviceContainer = document.querySelector('.service-cards-container');
-    if (serviceContainer) {
-        const serviceDots = document.querySelectorAll('.service-dot');
-        const serviceCards = serviceContainer.querySelectorAll('.service-card');
-        
-        // Initialize cards animation
-        gsap.from(serviceCards, {
-            scrollTrigger: {
-                trigger: serviceContainer,
-                start: "top 80%"
-            },
-            x: 100,
-            opacity: 0,
-            stagger: 0.15,
-            duration: 0.8,
-            ease: "back.out(1.2)"
-        });
-        
-        // Setup dot navigation
-        serviceDots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                // Update active dot
-                serviceDots.forEach(d => d.classList.remove('active'));
-                dot.classList.add('active');
-                
-                // Scroll to card
-                const cardWidth = serviceCards[0].offsetWidth + 16; // Width + gap
-                serviceContainer.scrollTo({
-                    left: index * cardWidth,
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // Update dots on scroll
-        serviceContainer.addEventListener('scroll', () => {
-            const scrollPosition = serviceContainer.scrollLeft;
-            const cardWidth = serviceCards[0].offsetWidth + 16;
-            const activeIndex = Math.round(scrollPosition / cardWidth);
-            
-            serviceDots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === activeIndex);
-            });
-        });
-    }
+    // Initialize counter animations
+    initCounters();
     
-    // Hover card animations
-    document.querySelectorAll('.hover-card').forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            gsap.to(card, {
-                y: -10,
-                scale: 1.02,
-                boxShadow: "0 15px 30px rgba(0,0,0,0.15)",
-                duration: 0.3,
-                ease: "power2.out"
-            });
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            gsap.to(card, {
-                y: 0,
-                scale: 1,
-                boxShadow: "0 4px 6px rgba(47, 57, 75, 0.1)",
-                duration: 0.3,
-                ease: "power2.out"
-            });
-        });
-    });
-    
-    // Smooth scroll for navigation links
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-            // Get the href attribute
-            const href = this.getAttribute('href');
-            
-            // Only handle anchor links (#something)
-            if (href.startsWith('#')) {
-                e.preventDefault();
-                
-                const target = document.querySelector(href);
-                if (target) {
-                    const offset = 80; // Navbar height offset
-                    
-                    gsap.to(window, {
-                        duration: 1,
-                        scrollTo: {
-                            y: target,
-                            offsetY: offset
-                        },
-                        ease: "power3.inOut"
-                    });
-                    
-                    // Close mobile menu if open
-                    const mobileMenu = document.querySelector('.mobile-menu');
-                    if (mobileMenu && mobileMenu.classList.contains('active')) {
-                        mobileMenu.classList.remove('active');
-                    }
-                }
-            }
-            // For non-anchor links (like "./index.html"), let the browser handle navigation normally
-        });
-    });
-    
-    // Back to top button
-    const backToTop = document.querySelector('.back-to-top');
-    if (backToTop) {
-        // Initially hide
-        gsap.set(backToTop, { opacity: 0, visibility: 'hidden' });
-        
-        // Show when scrolled down
-        ScrollTrigger.create({
-            start: 300,
-            onEnter: () => {
-                gsap.to(backToTop, { opacity: 1, visibility: 'visible', duration: 0.3 });
-            },
-            onLeaveBack: () => {
-                gsap.to(backToTop, { opacity: 0, visibility: 'hidden', duration: 0.3 });
-            }
-        });
-        
-        // Scroll to top when clicked
-        backToTop.addEventListener('click', (e) => {
-            e.preventDefault();
-            gsap.to(window, { duration: 1, scrollTo: 0, ease: "power3.inOut" });
-        });
-    }
-    
-    // Add scroll progress indicator 
-    function initScrollProgress() {
-        // Create a progress bar element if it doesn't exist
-        if (!document.querySelector('.scroll-progress')) {
-            const progressBar = document.createElement('div');
-            progressBar.className = 'scroll-progress';
-            document.body.appendChild(progressBar);
-            
-            // Style the progress bar
-            progressBar.style.position = 'fixed';
-            progressBar.style.top = '0';
-            progressBar.style.left = '0';
-            progressBar.style.width = '0%';
-            progressBar.style.height = '4px';
-            progressBar.style.background = `linear-gradient(to right, ${getComputedStyle(document.documentElement).getPropertyValue('--primary-color')}, ${getComputedStyle(document.documentElement).getPropertyValue('--accent-color')})`;
-            progressBar.style.zIndex = '9999';
-            progressBar.style.transition = 'width 0.1s ease-out';
-        }
-
-        // Update progress bar on scroll
-        window.addEventListener('scroll', () => {
-            const scrollProgress = document.querySelector('.scroll-progress');
-            const totalHeight = document.body.scrollHeight - window.innerHeight;
-            const progress = (window.pageYOffset / totalHeight) * 100;
-            scrollProgress.style.width = `${progress}%`;
-        });
-    }
-
-    // Initialize scroll progress
-    initScrollProgress();
+    // Add fluid shape elements to specified sections
+    addFluidShapes();
 });
+
+/**
+ * Initialize fade-in animations and visibility observer
+ */
+function initAnimations() {
+    // Add visible class to initial elements that should animate in
+    document.querySelectorAll('.fade-in').forEach(function(element) {
+        if (isElementInViewport(element)) {
+            element.classList.add('visible');
+        }
+    });
+    
+    // Set up intersection observer for elements that should animate on scroll
+    const fadeElements = document.querySelectorAll('.fade-in:not(.visible)');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Unobserve element after it has appeared
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    fadeElements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
+/**
+ * Handle scroll events for header, parallax effects, etc.
+ */
+function handleScroll() {
+    // Header background on scroll
+    const header = document.getElementById('header');
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+    
+    // Check for fade-in elements (fallback for browsers without IntersectionObserver)
+    if (!('IntersectionObserver' in window)) {
+        document.querySelectorAll('.fade-in:not(.visible)').forEach(function(element) {
+            if (isElementInViewport(element)) {
+                element.classList.add('visible');
+            }
+        });
+    }
+}
+
+/**
+ * Initialize mobile menu functionality
+ */
+function initMobileMenu() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const closeMenu = document.querySelector('.mobile-menu-close');
+    const mobileLinks = document.querySelectorAll('.mobile-menu-links .nav-link');
+    
+    if (!menuToggle || !mobileMenu || !closeMenu) return;
+    
+    function openMobileMenu() {
+        mobileMenu.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent body scrolling
+        menuToggle.setAttribute('aria-expanded', 'true');
+        mobileMenu.setAttribute('aria-hidden', 'false');
+    }
+    
+    function closeMobileMenu() {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = ''; // Allow body scrolling again
+        menuToggle.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+    }
+    
+    menuToggle.addEventListener('click', openMobileMenu);
+    closeMenu.addEventListener('click', closeMobileMenu);
+    
+    // Close menu when clicking a link
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+    });
+}
+
+/**
+ * Initialize FAQ accordion functionality
+ */
+function initFaqAccordion() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+            // Close all other items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item && otherItem.classList.contains('active')) {
+                    otherItem.classList.remove('active');
+                }
+            });
+            
+            // Toggle active class
+            item.classList.toggle('active');
+        });
+    });
+}
+
+/**
+ * Initialize lightbox for gallery images
+ */
+function initLightbox() {
+    const galleryImages = document.querySelectorAll('.gallery-image');
+    
+    galleryImages.forEach(image => {
+        image.addEventListener('click', function() {
+            const imgSrc = this.querySelector('img').getAttribute('src');
+            const imgAlt = this.querySelector('img').getAttribute('alt');
+            
+            // Create lightbox elements
+            const lightbox = document.createElement('div');
+            lightbox.className = 'lightbox';
+            
+            const lightboxContent = document.createElement('div');
+            lightboxContent.className = 'lightbox-content';
+            
+            const lightboxClose = document.createElement('span');
+            lightboxClose.className = 'lightbox-close';
+            lightboxClose.innerHTML = '&times;';
+            
+            const lightboxImage = document.createElement('img');
+            lightboxImage.className = 'lightbox-image';
+            lightboxImage.src = imgSrc;
+            lightboxImage.alt = imgAlt;
+            
+            // Add loading indicator
+            const loadingIndicator = document.createElement('div');
+            loadingIndicator.className = 'loading-indicator';
+            loadingIndicator.innerHTML = '<i class="fas fa-spinner fa-spin fa-3x"></i>';
+            
+            // Preload image
+            const preloadImage = new Image();
+            preloadImage.src = imgSrc;
+            lightboxContent.appendChild(loadingIndicator);
+            
+            preloadImage.onload = function() {
+                // Once image is loaded, add it to lightbox
+                lightboxContent.removeChild(loadingIndicator);
+                lightboxContent.appendChild(lightboxImage);
+                
+                // Add caption
+                const lightboxCaption = document.createElement('div');
+                lightboxCaption.className = 'lightbox-caption';
+                lightboxCaption.textContent = imgAlt;
+                lightboxContent.appendChild(lightboxCaption);
+            };
+            
+            // Append elements
+            lightboxContent.appendChild(lightboxClose);
+            lightbox.appendChild(lightboxContent);
+            document.body.appendChild(lightbox);
+            
+            // Add class to trigger fade in
+            requestAnimationFrame(() => {
+                lightbox.classList.add('show');
+            });
+            
+            // Prevent body scrolling
+            document.body.style.overflow = 'hidden';
+            
+            // Close lightbox with animation
+            function closeLightbox() {
+                lightbox.classList.remove('show');
+                setTimeout(() => {
+                    if (document.body.contains(lightbox)) {
+                        document.body.removeChild(lightbox);
+                    }
+                    document.body.style.overflow = '';
+                }, 300);
+                
+                // Remove event listeners when lightbox is closed
+                document.removeEventListener('keydown', keyHandler);
+                lightbox.removeEventListener('touchstart', handleTouchStart);
+                lightbox.removeEventListener('touchmove', handleTouchMove);
+                lightbox.removeEventListener('touchend', handleTouchEnd);
+            }
+            
+            // Close lightbox events
+            lightboxClose.addEventListener('click', closeLightbox);
+            
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+            
+            // Keyboard navigation for lightbox
+            function keyHandler(e) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+            }
+            
+            document.addEventListener('keydown', keyHandler);
+            
+            // Touch support for swiping to close
+            let touchStartY = 0;
+            let touchEndY = 0;
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            function handleTouchStart(e) {
+                touchStartY = e.touches[0].clientY;
+                touchStartX = e.touches[0].clientX;
+            }
+            
+            function handleTouchMove(e) {
+                touchEndY = e.touches[0].clientY;
+                touchEndX = e.touches[0].clientX;
+                
+                // Calculate vertical distance moved
+                const yDiff = touchEndY - touchStartY;
+                
+                // If swiping down, apply transform to lightbox
+                if (yDiff > 0 && e.target === lightbox) {
+                    const opacity = Math.max(0.3, 1 - (yDiff / 300));
+                    lightbox.style.opacity = opacity.toString();
+                    lightboxContent.style.transform = `translateY(${yDiff}px)`;
+                }
+            }
+            
+            function handleTouchEnd(e) {
+                const yDiff = touchEndY - touchStartY;
+                const xDiff = touchEndX - touchStartX;
+                
+                // Reset styles regardless of action
+                lightbox.style.opacity = '';
+                lightboxContent.style.transform = '';
+                
+                // Check if swipe down distance is significant
+                if ((yDiff > 100 && Math.abs(xDiff) < Math.abs(yDiff)) || yDiff > 150) {
+                    closeLightbox();
+                }
+                
+                // Reset values
+                touchStartY = 0;
+                touchEndY = 0;
+                touchStartX = 0;
+                touchEndX = 0;
+            }
+            
+            // Add touch event listeners
+            lightbox.addEventListener('touchstart', handleTouchStart, {passive: true});
+            lightbox.addEventListener('touchmove', handleTouchMove, {passive: true});
+            lightbox.addEventListener('touchend', handleTouchEnd);
+        });
+    });
+}
+
+/**
+ * Initialize Swiper for property cards
+ */
+function initPropertySwiper() {
+    if (typeof Swiper === 'undefined' || !document.querySelector('.properties-swiper')) return;
+    
+    const propertiesSwiper = new Swiper('.properties-swiper', {
+        slidesPerView: 'auto',
+        centeredSlides: false,
+        spaceBetween: 20,
+        grabCursor: true,
+        loop: true,
+        preloadImages: true,
+        lazy: {
+            loadPrevNext: true,
+            loadPrevNextAmount: 2
+        },
+        speed: 800,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+        },
+        pagination: {
+            el: '.properties-pagination',
+            clickable: true,
+            dynamicBullets: true,
+            dynamicMainBullets: 3,
+        },
+        navigation: {
+            nextEl: '.properties-button-next',
+            prevEl: '.properties-button-prev',
+        },
+        breakpoints: {
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+            },
+            540: {
+                slidesPerView: 1,
+                spaceBetween: 15,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+            },
+            1366: {
+                slidesPerView: 4,
+                spaceBetween: 20,
+            }
+        }
+    });
+    
+    // Property Filtering
+    const filterButtons = document.querySelectorAll('.properties-filter .filter-btn');
+    const propertyItems = document.querySelectorAll('.properties-swiper .swiper-slide');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to the clicked button
+            this.classList.add('active');
+            
+            const filter = this.getAttribute('data-filter');
+            
+            propertyItems.forEach(item => {
+                if (filter === 'all' || item.getAttribute('data-category').includes(filter)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Update swiper after filtering
+            propertiesSwiper.update();
+            propertiesSwiper.updateSize();
+            propertiesSwiper.updateSlides();
+        });
+    });
+}
+
+/**
+ * Initialize smooth scrolling for anchor links
+ */
+function initSmoothScrolling() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (!target) return;
+            
+            e.preventDefault();
+            
+            window.scrollTo({
+                top: target.offsetTop - 90, // Adjust for header height
+                behavior: 'smooth'
+            });
+            });
+        });
+    }
+
+/**
+ * Initialize back-to-top button
+ */
+function initBackToTop() {
+    const backToTopButton = document.querySelector('.back-to-top');
+    if (!backToTopButton) return;
+    
+    // Initially hide the button
+    backToTopButton.style.opacity = '0';
+    backToTopButton.style.visibility = 'hidden';
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopButton.style.opacity = '1';
+            backToTopButton.style.visibility = 'visible';
+        } else {
+            backToTopButton.style.opacity = '0';
+            backToTopButton.style.visibility = 'hidden';
+        }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+/**
+ * Initialize counter animations
+ */
+function initCounters() {
+    const counters = document.querySelectorAll('.counter');
+    if (!counters.length) return;
+    
+    const speed = 200;
+    
+    function animateCounter() {
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-count');
+            const count = +counter.innerText;
+            const increment = target / speed;
+            
+            if (count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(animateCounter, 1);
+            } else {
+                counter.innerText = target;
+            }
+        });
+    }
+    
+    // Start counter animation when in viewport
+    const counterSection = counters[0].closest('section');
+    if (!counterSection) return;
+    
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter();
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    counterObserver.observe(counterSection);
+}
+
+/**
+ * Add fluid shape elements to specified sections
+ */
+function addFluidShapes() {
+    const sections = document.querySelectorAll('section');
+    
+    sections.forEach((section, index) => {
+        if (index % 2 === 0) {
+            // Add fluid shape to even sections
+            const shape1 = document.createElement('div');
+            shape1.className = 'fluid-shape fluid-shape-1';
+            section.appendChild(shape1);
+        } else {
+            // Add fluid shape to odd sections
+            const shape2 = document.createElement('div');
+            shape2.className = 'fluid-shape fluid-shape-2';
+            section.appendChild(shape2);
+        }
+    });
+}
+
+/**
+ * Check if an element is in the viewport
+ */
+function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.bottom >= 0 &&
+        rect.left <= (window.innerWidth || document.documentElement.clientWidth) &&
+        rect.right >= 0
+    );
+}

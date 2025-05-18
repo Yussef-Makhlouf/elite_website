@@ -13,6 +13,7 @@
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="real-estate.css">
     <link rel="icon" href="./image/favicon.png">
     <!-- GSAP Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
@@ -26,960 +27,11 @@
     <!-- <script src="js/page-transitions.js"></script> -->
     <!-- <script src="js/particles.js"></script> -->
     <!-- <script src="js/magnetic-buttons.js"></script> -->
-    <style>
-        /* Enhanced responsive styles for Swiper */
-        .swiper-container {
-            overflow: hidden;
-            position: relative;
-            width: 100%;
-            height: auto;
-            backface-visibility: hidden;
-            transform-style: preserve-3d;
-            box-sizing: border-box;
-        }
-        
-        .swiper-slide {
-            height: auto !important;
-            backface-visibility: hidden;
-            transform-style: preserve-3d;
-            transition-property: transform, box-shadow, opacity;
-            transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
-            will-change: transform, box-shadow, opacity;
-            box-sizing: border-box;
-        }
-        
-        /* Ensure all slides maintain same height */
-        .property-card {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .property-features {
-            margin-top: auto;
-        }
-        
-        /* Property type label */
-        .property-type {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            z-index: 1;
-        }
-        
-        /* Property card styling */
-        .property-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .property-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            animation: pulse-border 1.5s infinite;
-        }
-        
-        .property-card-image {
-            position: relative;
-        }
-        
-        .property-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--dark-color);
-        }
-        
-        .property-location {
-            display: flex;
-            align-items: center;
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-        
-        .property-price {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        /* Make sure pagination is visible on all backgrounds */
-        .swiper-pagination-bullet {
-            background: var(--primary-color);
-            opacity: 0.5;
-            width: 10px;
-            height: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .swiper-pagination-bullet-active {
-            background: var(--primary-color);
-            opacity: 1;
-            width: 20px;
-            border-radius: 10px;
-        }
-        
-        /* Enhanced navigation buttons for better touch targets */
-        .swiper-button-next, .swiper-button-prev {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            transition: all 0.3s ease;
-            opacity: 0;
-        }
-        
-        .swiper-button-next:after, .swiper-button-prev:after {
-            content: none;
-        }
-        
-        .swiper-button-next:hover, .swiper-button-prev:hover {
-            background-color: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
-        
-        .swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled {
-            opacity: 0.2;
-            cursor: not-allowed;
-        }
-        
-        .properties-swiper:hover .swiper-button-next,
-        .properties-swiper:hover .swiper-button-prev,
-        .gallery-swiper:hover .swiper-button-next,
-        .gallery-swiper:hover .swiper-button-prev {
-            opacity: 0.8;
-        }
 
-        /* Floating Contact Buttons */
-        .floating-contact-buttons {
-            position: fixed;
-            bottom: 30px;
-            left: 20px;
-            z-index: 99;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .floating-button {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-            color: white;
-            font-size: 24px;
-        }
-
-        .floating-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
-        }
-
-        .whatsapp-button {
-            background-color: #25D366;
-        }
-
-        .call-button {
-            background-color: var(--primary-color);
-        }
-        
-
-        
-        /* FAQ Styling */
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .faq-item {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            margin-bottom: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .faq-item:hover {
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-        }
-        
-        .faq-question {
-            padding: 20px;
-            font-weight: 700;
-            font-size: 18px;
-            color: var(--dark-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .faq-question:hover {
-            color: var(--primary-color);
-        }
-        
-        .faq-question i {
-            transition: transform 0.3s ease;
-        }
-        
-        .faq-answer {
-            padding: 0 20px;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            line-height: 1.6;
-            color: #666;
-        }
-        
-        .faq-item.active .faq-question {
-            color: var(--primary-color);
-        }
-        
-        .faq-item.active .faq-question i {
-            transform: rotate(180deg);
-        }
-        
-        .faq-item.active .faq-answer {
-            padding: 0 20px 20px;
-            max-height: 500px;
-        }
-        
-        /* Team Members styling */
-        .team-member {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .team-member:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-        
-        .team-member-image {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .team-member-image img {
-            transition: transform 0.5s ease;
-        }
-        
-        .team-member:hover .team-member-image img {
-            transform: scale(1.1);
-        }
-        
-        .team-member-content {
-            padding: 20px;
-            text-align: center;
-            background-color: white;
-        }
-        
-        .team-member-name {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--dark-color);
-            margin-bottom: 5px;
-        }
-        
-        .team-member-position {
-            font-size: 14px;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-        
-        .team-member-social {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .team-social-link {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            background-color: #f5f5f5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--dark-color);
-            transition: all 0.3s ease;
-        }
-        
-        .team-social-link:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        /* Enhanced Contact Section */
-        .contact-enhanced {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-        }
-        
-        @media (min-width: 768px) {
-            .contact-enhanced {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .contact-enhanced {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        .contact-card-enhanced {
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            min-height: 250px;
-        }
-        
-        .contact-card-enhanced:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0,145,124,0.1) 0%, rgba(255,255,255,0) 60%);
-            z-index: -1;
-        }
-        
-        .contact-card-enhanced:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-        
-        .contact-icon-enhanced {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 20px rgba(0,145,124,0.3);
-        }
-        
-        .contact-title-enhanced {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--dark-color);
-            margin-bottom: 15px;
-        }
-        
-        .contact-info-enhanced {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-        
-        .contact-action {
-            margin-top: auto;
-        }
-        
-        /* Arabic Pattern backgrounds */
-        .arabic-bg-light {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .arabic-bg-light:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
-            background-size: 400px;
-            opacity: 0.05;
-            z-index: -1;
-        }
-        
-        .arabic-bg-dark {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .arabic-bg-dark:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
-            background-size: 400px;
-            opacity: 0.1;
-            z-index: -1;
-        }
-        
-        /* Decorative elements */
-        .arabic-ornament {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            opacity: 0.08;
-            z-index: -1;
-        }
-        
-        .ornament-top-right {
-            top: -50px;
-            right: -50px;
-            transform: rotate(45deg);
-        }
-        
-        .ornament-bottom-left {
-            bottom: -50px;
-            left: -50px;
-            transform: rotate(-135deg);
-        }
-        
-        /* Gallery styling */
-        .gallery-image {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            cursor: pointer;
-            height: 250px;
-        }
-        
-        .gallery-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .gallery-image:hover img {
-            transform: scale(1.1);
-        }
-        
-        .gallery-image-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .gallery-image:hover .gallery-image-overlay {
-            opacity: 1;
-        }
-        
-        /* Gallery icon */
-        .gallery-icon {
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-            transform: scale(0);
-            transition: transform 0.3s ease;
-        }
-        
-        .gallery-image:hover .gallery-icon {
-            transform: scale(1);
-        }
-        
-        /* Gallery image badges */
-        .gallery-image-badge {
-            position: absolute;
-            bottom: 15px;
-            right: 15px;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-            z-index: 1;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.4s ease;
-        }
-        
-        .gallery-image:hover .gallery-image-badge {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Enhanced buttons and interactive elements */
-        .btn-primary, .btn-secondary, .btn-whatsapp, .btn-primary-outline {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn-primary:after, .btn-secondary:after, .btn-whatsapp:after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: width 0.6s ease, height 0.6s ease, opacity 0.6s ease;
-        }
-        
-        .btn-primary:hover:after, .btn-secondary:hover:after, .btn-whatsapp:hover:after {
-            width: 300px;
-            height: 300px;
-            opacity: 1;
-        }
-        
-        .btn-primary:hover, .btn-secondary:hover, .btn-whatsapp:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        /* Enhanced filter buttons */
-        .filter-btn {
-            transition: all 0.4s ease;
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
-        }
-        
-        .filter-btn:before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background-color: var(--primary-color);
-            transition: width 0.4s ease;
-            z-index: -1;
-        }
-        
-        .filter-btn:hover:before, .filter-btn.active:before {
-            width: 100%;
-        }
-        
-        .filter-btn.active {
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-        
-        /* Pulsating effect for property cards */
-        @keyframes pulse-border {
-            0% {
-                box-shadow: 0 0 0 0 rgba(0, 145, 124, 0.4);
-            }
-            70% {
-                box-shadow: 0 0 0 10px rgba(0, 145, 124, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(0, 145, 124, 0);
-            }
-        }
-        
-        .property-card:hover {
-            animation: pulse-border 1.5s infinite;
-        }
-        
-        /* Real Estate Tips Section */
-        .real-estate-tips-grid {
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 30px;
-        }
-        
-        @media (min-width: 640px) {
-            .real-estate-tips-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .real-estate-tips-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        .tip-card {
-            background-color: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
-            position: relative;
-            height: 100%;
-        }
-        
-        .tip-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-        
-        .tip-card-header {
-            position: relative;
-            padding-top: 75%; /* 4:3 aspect ratio */
-            overflow: hidden;
-        }
-        
-        .tip-card-header img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-        
-        .tip-card:hover .tip-card-header img {
-            transform: scale(1.1);
-        }
-        
-        .tip-card-body {
-            padding: 25px;
-            position: relative;
-        }
-        
-        .tip-card-icon {
-            position: absolute;
-            top: -30px;
-            right: 25px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            box-shadow: 0 5px 15px rgba(0,145,124,0.3);
-            z-index: 2;
-        }
-        
-        .tip-card-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--dark-color);
-        }
-        
-        .tip-card-text {
-            color: #666;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-        
-        .tip-card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .tip-card-category {
-            font-size: 14px;
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-        
-        .tip-card-readmore {
-            font-size: 14px;
-            color: var(--dark-color);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-        
-        .tip-card-readmore i {
-            margin-right: 5px;
-            transition: transform 0.3s ease;
-        }
-        
-        .tip-card:hover .tip-card-readmore {
-            color: var(--primary-color);
-        }
-        
-        .tip-card:hover .tip-card-readmore i {
-            transform: translateX(-5px);
-        }
-        
-        /* Lightbox caption */
-        .lightbox-caption {
-            position: absolute;
-            bottom: -40px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            color: white;
-            padding: 10px;
-            font-size: 16px;
-            opacity: 0.8;
-        }
-        
-        /* Lightbox styles */
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-        
-        .lightbox.show {
-            opacity: 1;
-        }
-        
-        .lightbox.show .lightbox-content {
-            transform: translateY(0) scale(1);
-            opacity: 1;
-        }
-        
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 5px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.4s ease, opacity 0.4s ease;
-            transform: translateY(20px) scale(0.97);
-            opacity: 0;
-        }
-        
-        .lightbox-image {
-            display: block;
-            max-width: 100%;
-            max-height: 80vh;
-            object-fit: contain;
-            border-radius: 4px;
-            transition: transform 0.3s ease;
-        }
-        
-        .lightbox-image:hover {
-            transform: scale(1.02);
-        }
-        
-        .lightbox-close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.2);
-            color: white;
-            font-size: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease;
-            transform: scale(0);
-            animation: scaleIn 0.3s forwards 0.2s;
-        }
-        
-        @keyframes scaleIn {
-            0% { transform: scale(0); }
-            70% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        
-        .lightbox-close:hover {
-            background-color: rgba(255, 255, 255, 0.4);
-            transform: scale(1.1);
-        }
-        
-        .lightbox-caption {
-            position: relative;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            text-align: center;
-            color: white;
-            padding: 10px 15px;
-            margin-top: 15px;
-            font-size: 16px;
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 4px;
-            max-width: 90%;
-            transform: translateY(10px);
-            opacity: 0;
-            animation: fadeInUp 0.5s forwards 0.3s;
-        }
-        
-        @keyframes fadeInUp {
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        
-        .loading-indicator {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 24px;
-            z-index: 1;
-        }
-        
-        .loading-indicator i {
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Add this CSS to the style section */
-        .tip-card-contact {
-            display: flex;
-            gap: 10px;
-        }
-
-        .tip-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .tip-btn-call {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .tip-btn-call:hover {
-            background-color: #007e6c;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 145, 124, 0.3);
-        }
-
-        .tip-btn-whatsapp {
-            background-color: #25D366;
-            color: white;
-        }
-
-        .tip-btn-whatsapp:hover {
-            background-color: #20bd5a;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(37, 211, 102, 0.3);
-        }
-
-        /* Update the tip-card-footer to accommodate the buttons */
-        .tip-card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        @media (max-width: 480px) {
-            .tip-card-footer {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .tip-card-contact {
-                margin-top: 10px;
-                width: 100%;
-                justify-content: space-between;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Preloader -->
-    <div class="preloader">
+    <!-- <div class="preloader">
         <div class="preloader-logo">
             <div class="arabic-symbol">
                 <img src="./image/logo2.png" alt="Elite Arabia Logo" class="preloader-logo-image" >
@@ -991,7 +43,7 @@
         </div>
         <div class="preloader-pattern"></div>
     </div>
-                
+                 -->
     <!-- Header -->
     <header id="header" class="header-transparent">
         <div class="container mx-auto px-4">
@@ -1051,977 +103,1248 @@
     
     <main>
         <!-- Hero Section -->
-        <section id="home" class="hero-section">
-            <div class="hero-overlay"></div>
-            <div class="arabic-pattern-overlay"></div>
+        <section class="hero-section relative min-h-screen flex items-center overflow-hidden">
+            <!-- Enhanced background with layered elements -->
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] to-[#121212] z-0"></div>
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center opacity-20 z-0"></div>
             
-            <!-- Enhanced Arabic Decorative Background -->
-            <div class="arabic-ornament ornament-top-right"></div>
-            <div class="arabic-ornament ornament-bottom-left"></div>
+            <!-- Animated gradient overlay -->
+            <div class="absolute inset-0 bg-gradient-radial from-[#d4af37]/10 via-transparent to-transparent z-0 animate-pulse-slow"></div>
             
-            <!-- Parallax Background -->
-            <div class="parallax-bg"></div>
-            
-            <!-- Animated Background Shapes -->
-            <div class="animated-bg">
-                <div class="bg-shape bg-shape-1"></div>
-                <div class="bg-shape bg-shape-2"></div>
-                <div class="bg-shape bg-shape-3"></div>
-                <div class="bg-shape bg-shape-4"></div>
-                <div class="bg-shape bg-shape-5"></div>
+            <!-- Enhanced particles with blend modes -->
+            <div class="particles-container absolute inset-0 z-0">
+                <div class="particle particle-lg absolute top-1/4 left-1/5 w-48 h-48 rounded-full bg-[#d4af37]/5 mix-blend-overlay blur-3xl animate-float-slow"></div>
+                <div class="particle particle-md absolute bottom-1/3 right-1/4 w-32 h-32 rounded-full bg-[#d4af37]/10 mix-blend-overlay blur-2xl animate-float-medium"></div>
+                <div class="particle particle-sm absolute top-1/2 right-1/5 w-24 h-24 rounded-full bg-[#d4af37]/15 mix-blend-overlay blur-xl animate-float-fast"></div>
+                
+                <!-- Small floating particles -->
+                <div class="particle particle-1 absolute top-1/4 left-1/3 w-2 h-2 bg-[#d4af37]/50 rounded-full animate-float-xs"></div>
+                <div class="particle particle-2 absolute top-1/2 right-1/3 w-2 h-2 bg-[#d4af37]/50 rounded-full animate-float-sm"></div>
+                <div class="particle particle-3 absolute bottom-1/3 left-1/2 w-3 h-3 bg-[#d4af37]/40 rounded-full animate-float-md"></div>
+                <div class="particle particle-4 absolute top-2/3 right-1/4 w-1.5 h-1.5 bg-[#d4af37]/60 rounded-full animate-float-lg"></div>
+                <div class="particle particle-5 absolute bottom-1/4 right-1/2 w-2.5 h-2.5 bg-[#d4af37]/40 rounded-full animate-float-xl"></div>
             </div>
             
-            <!-- Particles -->
-            <div class="particles-container">
-                <div class="particle particle-1 floating-element"></div>
-                <div class="particle particle-2 floating-element"></div>
-                <div class="particle particle-3 floating-element"></div>
-                <div class="particle particle-4 floating-element"></div>
-                <div class="particle particle-5 floating-element"></div>
-                <div class="particle particle-6 floating-element"></div>
-                <div class="particle particle-7 floating-element"></div>
-                <div class="particle particle-8 floating-element"></div>
-                <div class="particle particle-9 floating-element"></div>
-                <div class="particle particle-10 floating-element"></div>
-                <div class="particle particle-11 floating-element"></div>
-                <div class="particle particle-12 floating-element"></div>
-                <div class="particle particle-13 floating-element"></div>
-                <div class="particle particle-14 floating-element"></div>
-                <div class="particle particle-15 floating-element"></div>
+            <!-- Decorative geometric elements -->
+            <div class="absolute top-10 left-10 w-20 h-20 border border-[#d4af37]/10 rounded-lg rotate-45 animate-rotate-slow"></div>
+            <div class="absolute bottom-20 right-10 w-32 h-32 border border-[#d4af37]/10 rounded-full animate-pulse-slow"></div>
+            <div class="absolute top-1/2 right-0 h-40 w-1 bg-gradient-to-b from-transparent via-[#d4af37]/20 to-transparent"></div>
+            <div class="absolute bottom-1/3 left-0 h-40 w-1 bg-gradient-to-b from-transparent via-[#d4af37]/20 to-transparent"></div>
+            
+            <!-- Main content -->
+            <div class="container mx-auto px-4 py-12 relative z-10">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+                    <!-- Left content -->
+                    <div class="lg:w-1/2 fade-in">
+                        <div class="relative">
+                            <!-- Decorative accent -->
+                            <div class="absolute -right-4 -top-4 w-20 h-20 border-t-2 border-r-2 border-[#d4af37]/40 rounded-tr-xl"></div>
+                            
+                            <!-- Hero content with improved typography -->
+                            <div class="hero-content p-2">
+                                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] via-[#f5d76e] to-[#d4af37] animate-gradient">خبرة استثنائية</span>
+                                    <span class="block text-white mt-2">في الإنشاء والتعمير</span>
+                                </h1>
+                                
+                                <p class="text-lg text-gray-300 mb-8 leading-relaxed max-w-xl">
+                                    نقدم خدمات متكاملة للإنشاء والتعمير بأعلى معايير الجودة والاحترافية، لتحويل أحلامك إلى واقع ملموس باستخدام أحدث التقنيات وأفضل المواد.
+                                </p>
+                                
+                                <!-- Enhanced feature list -->
+                                <div class="grid grid-cols-2 gap-4 mb-8">
+                                    <div class="hero-feature-item group flex items-center gap-3 p-3 rounded-lg border border-[#d4af37]/10 bg-black/20 backdrop-blur-sm transition-all duration-300 hover:border-[#d4af37]/30 hover:bg-black/30">
+                                        <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-[#d4af37]/10 group-hover:bg-[#d4af37]/20 transition-all duration-300">
+                                            <i class="fas fa-pencil-ruler text-[#d4af37]"></i>
+                                </div>
+                                        <span class="text-white group-hover:text-[#d4af37] transition-colors duration-300">تصميم معماري</span>
+                                </div>
+                                    
+                                    <div class="hero-feature-item group flex items-center gap-3 p-3 rounded-lg border border-[#d4af37]/10 bg-black/20 backdrop-blur-sm transition-all duration-300 hover:border-[#d4af37]/30 hover:bg-black/30">
+                                        <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-[#d4af37]/10 group-hover:bg-[#d4af37]/20 transition-all duration-300">
+                                            <i class="fas fa-building text-[#d4af37]"></i>
+                                </div>
+                                        <span class="text-white group-hover:text-[#d4af37] transition-colors duration-300">إنشاء وبناء</span>
+                                </div>
+                                    
+                                    <div class="hero-feature-item group flex items-center gap-3 p-3 rounded-lg border border-[#d4af37]/10 bg-black/20 backdrop-blur-sm transition-all duration-300 hover:border-[#d4af37]/30 hover:bg-black/30">
+                                        <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-[#d4af37]/10 group-hover:bg-[#d4af37]/20 transition-all duration-300">
+                                            <i class="fas fa-tools text-[#d4af37]"></i>
+                                        </div>
+                                        <span class="text-white group-hover:text-[#d4af37] transition-colors duration-300">ترميم وتجديد</span>
+                            </div>
+                            
+                                    <div class="hero-feature-item group flex items-center gap-3 p-3 rounded-lg border border-[#d4af37]/10 bg-black/20 backdrop-blur-sm transition-all duration-300 hover:border-[#d4af37]/30 hover:bg-black/30">
+                                        <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-[#d4af37]/10 group-hover:bg-[#d4af37]/20 transition-all duration-300">
+                                            <i class="fas fa-paint-roller text-[#d4af37]"></i>
+                            </div>
+                                        <span class="text-white group-hover:text-[#d4af37] transition-colors duration-300">تشطيبات فاخرة</span>
+                        </div>
+                    </div>
+                    
+                                <!-- Enhanced CTA buttons -->
+                                <div class="flex flex-wrap gap-4 mt-8">
+                                    <a href="#contact" class="cta-primary group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-gradient-to-r from-[#d4af37] to-[#e5c76a] px-8 py-4 font-bold text-black transition-all duration-300 hover:scale-105">
+                                        <span class="absolute inset-0 h-full w-full bg-gradient-to-br from-[#fff]/20 via-[#fff]/0 to-[#fff]/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
+                                        <span class="relative flex items-center gap-2">
+                                            <i class="fas fa-headset text-white"></i>
+                                         <span class="text-white">   تواصل معنا</span>
+                                        </span>
+                                    </a>
+                                    
+                                    <a href="https://wa.me/966543900088" class="cta-secondary relative inline-flex items-center justify-center overflow-hidden rounded-full bg-transparent border-2 border-[#d4af37] px-8 py-4 font-bold text-[#d4af37] transition-all duration-300 hover:text-black group">
+                                        <span class="absolute inset-0 h-0 w-full bg-[#d4af37] transition-all duration-300 group-hover:h-full"></span>
+                                        <span class="relative flex items-center gap-2">
+                                            <i class="fab fa-whatsapp text-white"></i>
+                                            <span class="text-white"></span>واتساب</span>
+                                        </span>
+                                    </a>
+                </div>
             </div>
             
-            <div class="container mx-auto px-4">
-                <div class="flex flex-col md:flex-row items-center justify-between">
-                    <div class="md:w-1/2 mb-10 md:mb-0 hero-content fade-in">
-                        <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl">خدمات مقاولات متميزة بأعلى المعايير</h1>
-                        <p class="hero-text text-sm sm:text-base md:text-lg mt-4">نقدم لكم حلول إنشائية متكاملة وخدمات مقاولات احترافية بمعايير عالمية، مستندين على رؤية المملكة 2030 لتطوير بنية تحتية مستدامة تعزز من جودة الحياة.</p>
-                       
-                        <div class="hero-features my-6">
-                            <div class="flex flex-wrap gap-4">
-                                <div class="hero-feature-item">
-                                    <i class="fas fa-check-circle mr-2"></i>
-                                    <span>جودة عالية</span>
-                                </div>
-                                <div class="hero-feature-item">
-                                    <i class="fas fa-check-circle mr-2"></i>
-                                    <span>فريق محترف</span>
-                                </div>
-                                <div class="hero-feature-item">
-                                    <i class="fas fa-check-circle mr-2"></i>
-                                    <span>التزام بالمواعيد</span>
+                            <!-- Decorative accent -->
+                            <div class="absolute -left-4 -bottom-4 w-20 h-20 border-b-2 border-l-2 border-[#d4af37]/40 rounded-bl-xl"></div>
+                </div>
+            </div>
+                    
+                    <!-- Right image and stats -->
+                    <div class="lg:w-1/2 fade-in-delay">
+                        <!-- Enhanced image container with perspective effect -->
+                        <div class="relative perspective transform transition-transform duration-500 hover:scale-[1.02]">
+                            <!-- Main showcase image with layered effect -->
+                            <div class="relative group rounded-2xl overflow-hidden transform-style-3d transition-all duration-700 hover:rotate-y-3 hover:rotate-x-2 shadow-[0_20px_80px_-10px_rgba(0,0,0,0.5)]">
+                                <!-- Image frame with golden border -->
+                                <div class="absolute inset-0 border-2 border-[#d4af37]/30 rounded-2xl z-20 pointer-events-none"></div>
+                                
+                                <!-- Main image with hover effect -->
+                                <img src="./image/services/building-1.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1486325212027-8081e485255e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80';" alt="مشروع عقاري حديث" class="w-full h-auto object-cover aspect-[4/3] rounded-2xl transform transition-all duration-700 group-hover:scale-[1.05]">
+                                
+                                <!-- Overlay gradient -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent rounded-2xl z-10"></div>
+                                
+                        
+                                
+                                <!-- Hover info panel -->
+                                <div class="absolute bottom-0 left-0 right-0 p-6 z-20 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                    <h3 class="text-xl font-bold text-white mb-2">فيلا سكنية فاخرة</h3>
+                                    <p class="text-sm text-gray-300">تم تنفيذ هذا المشروع بأعلى معايير الجودة باستخدام أفضل المواد وأحدث التقنيات</p>
+                    </div>
+                </div>
+                
+                            <!-- Floating secondary image -->
+                            <div class="absolute -bottom-10 -right-10 w-1/2 rounded-lg overflow-hidden shadow-xl z-40 transform-style-3d transition-all duration-700 hover:translate-z-10">
+                                <img src="./image/services/interior-1.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1618219740975-d40978bb7378?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80';" alt="تصميم داخلي" class="w-full h-auto aspect-video object-cover">
+                        </div>
+                        
+                            <!-- Stats cards with enhanced design -->
+                            <div class="mt-16 grid grid-cols-2 gap-6">
+                                <!-- Projects counter -->
+                     
+                                
+                          
+                                    </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- Direct Contact Buttons -->
-                        <div class="flex flex-wrap sm:flex-nowrap space-x-3 sm:space-x-5 space-x-reverse mt-5 gap-3">
-                            <a href="tel:+966543900088" class="btn-contact text-sm sm:text-base my-1 flex-1 sm:flex-none text-center">
-                                <i class="fas fa-phone-alt ml-2"></i>
-                                <span>0543900088</span>
-                            </a>
-                            <a href="https://wa.me/966543900088" class="btn-whatsapp text-sm sm:text-base my-1 flex-1 sm:flex-none text-center" target="_blank">
-                                <i class="fab fa-whatsapp ml-2"></i>
-                                <span>واتساب</span>
-                            </a>
+            <!-- Enhanced scroll indicator -->
+            <div class="scroll-indicator absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+                <div class="flex flex-col items-center">
+                    <span class="scroll-indicator-text text-[#d4af37] text-sm mb-2 animate-pulse">استكشف المزيد</span>
+                    <div class="scroll-indicator-icon w-10 h-16 border-2 border-[#d4af37]/50 rounded-full flex items-start justify-center">
+                        <div class="w-1 h-3 bg-[#d4af37] rounded-full mt-3 animate-scroll-down"></div>
                         </div>
                     </div>
-                    <div class="md:w-1/2 hero-image fade-in fade-in-delay-1">
-                        <div class="hero-image-container floating-element">
-                            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="مشاريع مقاولات متميزة في السعودية" class="w-full rounded-lg">
-                            <div class="hero-badge floating-element">
-                                <p class="font-bold">مقاولات بمعايير عالمية</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Stats Counter with enhanced styles -->
-                <div class="flex flex-wrap justify-center mt-12 md:mt-20 gap-3 sm:gap-4 md:gap-8 fade-in fade-in-delay-2">
-                    <div class="w-5/12 sm:w-auto text-center text-white bg-white bg-opacity-10 p-4 sm:p-5 md:p-6 rounded-lg backdrop-filter backdrop-blur-sm border border-white border-opacity-10">
-                        <div class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold counter mb-1 md:mb-2" data-target="75">0</div>
-                        <p class="text-xs sm:text-sm md:text-base">مشروع منجز</p>
-                    </div>
-                    <div class="w-5/12 sm:w-auto text-center text-white bg-white bg-opacity-10 p-4 sm:p-5 md:p-6 rounded-lg backdrop-filter backdrop-blur-sm border border-white border-opacity-10">
-                        <div class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold counter mb-1 md:mb-2" data-target="450">0</div>
-                        <p class="text-xs sm:text-sm md:text-base">عميل راضٍ</p>
-                    </div>
-                    <div class="w-5/12 sm:w-auto text-center text-white bg-white bg-opacity-10 p-4 sm:p-5 md:p-6 rounded-lg backdrop-filter backdrop-blur-sm border border-white border-opacity-10">
-                        <div class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold counter mb-1 md:mb-2" data-target="30">0</div>
-                        <p class="text-xs sm:text-sm md:text-base">مهندس محترف</p>
-                    </div>
-                    <div class="w-5/12 sm:w-auto text-center text-white bg-white bg-opacity-10 p-4 sm:p-5 md:p-6 rounded-lg backdrop-filter backdrop-blur-sm border border-white border-opacity-10">
-                        <div class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold counter mb-1 md:mb-2" data-target="15">0</div>
-                        <p class="text-xs sm:text-sm md:text-base">سنوات خبرة</p>
-                    </div>
-                </div>
-                
-                <!-- Scroll Indicator -->
-                <div class="scroll-indicator">
-                    <div class="scroll-indicator-text">اسكرول للأسفل</div>
-                    <div class="scroll-indicator-icon">
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                </div>
-            </div>
+                                    </div>
         </section>
         
+        <!-- Add these new animation styles to your existing CSS, or inline -->
+            <style>
+            @keyframes float-xs {
+                0%, 100% { transform: translateY(0) translateX(0); }
+                25% { transform: translateY(-5px) translateX(3px); }
+                50% { transform: translateY(-10px) translateX(-3px); }
+                75% { transform: translateY(-5px) translateX(-5px); }
+            }
+            @keyframes float-sm {
+                0%, 100% { transform: translateY(0) translateX(0); }
+                25% { transform: translateY(-10px) translateX(5px); }
+                50% { transform: translateY(-15px) translateX(-5px); }
+                75% { transform: translateY(-5px) translateX(-8px); }
+            }
+            @keyframes float-md {
+                0%, 100% { transform: translateY(0) translateX(0); }
+                25% { transform: translateY(-15px) translateX(8px); }
+                50% { transform: translateY(-25px) translateX(-8px); }
+                75% { transform: translateY(-10px) translateX(-12px); }
+            }
+            @keyframes float-lg {
+                0%, 100% { transform: translateY(0) translateX(0); }
+                25% { transform: translateY(-20px) translateX(10px); }
+                50% { transform: translateY(-30px) translateX(-10px); }
+                75% { transform: translateY(-15px) translateX(-15px); }
+            }
+            @keyframes float-xl {
+                0%, 100% { transform: translateY(0) translateX(0); }
+                25% { transform: translateY(-25px) translateX(15px); }
+                50% { transform: translateY(-40px) translateX(-15px); }
+                75% { transform: translateY(-20px) translateX(-20px); }
+            }
+            @keyframes rotate-slow {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+            @keyframes pulse-slow {
+                0%, 100% { opacity: 0.5; }
+                50% { opacity: 0.8; }
+            }
+            @keyframes gradient {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+            @keyframes scroll-down {
+                0% { opacity: 1; transform: translateY(0); }
+                50% { opacity: 1; }
+                100% { opacity: 0; transform: translateY(8px); }
+            }
+            
+            .animate-float-xs {
+                animation: float-xs 4s ease-in-out infinite;
+            }
+            .animate-float-sm {
+                animation: float-sm 5s ease-in-out infinite;
+            }
+            .animate-float-md {
+                animation: float-md 6s ease-in-out infinite;
+            }
+            .animate-float-lg {
+                animation: float-lg 7s ease-in-out infinite;
+            }
+            .animate-float-xl {
+                animation: float-xl 8s ease-in-out infinite;
+                }
+                .animate-float-slow {
+                animation: float-md 10s ease-in-out infinite;
+                }
+                .animate-float-medium {
+                animation: float-md 8s ease-in-out infinite;
+                }
+                .animate-float-fast {
+                animation: float-md 6s ease-in-out infinite;
+            }
+            .animate-rotate-slow {
+                animation: rotate-slow 20s linear infinite;
+            }
+            .animate-pulse-slow {
+                animation: pulse-slow 4s ease-in-out infinite;
+            }
+            .animate-gradient {
+                animation: gradient 8s ease infinite;
+                background-size: 200% 200%;
+            }
+            .animate-scroll-down {
+                animation: scroll-down 2s ease-in-out infinite;
+            }
+            
+                .perspective {
+                    perspective: 1000px;
+                }
+                .transform-style-3d {
+                    transform-style: preserve-3d;
+                }
+            .hover\:rotate-y-3:hover {
+                transform: rotateY(3deg);
+                }
+            .hover\:rotate-x-2:hover {
+                transform: rotateX(2deg);
+                }
+                .hover\:translate-z-10:hover {
+                    transform: translateZ(10px);
+                }
+            
+            .bg-gradient-radial {
+                background-image: radial-gradient(var(--tw-gradient-stops));
+            }
+            
+            .fade-in {
+                opacity: 0;
+                transform: translateY(20px);
+                animation: fadeInUp 1s ease forwards;
+            }
+            .fade-in-delay {
+                opacity: 0;
+                transform: translateY(20px);
+                animation: fadeInUp 1s ease 0.3s forwards;
+            }
+            
+            @keyframes fadeInUp {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+                }
+            </style>
+        
         <!-- Arabic Divider -->
-        <div class="section-separator">
-            <div class="separator-top"></div>
-            <div class="separator-bottom"></div>
-        </div>
+   
         
         <!-- About Contracting Section -->
-        <section id="about-contracting" class="py-16 md:py-20 lg:py-24 arabic-bg-light overflow-hidden relative">
-            <!-- Decorative elements for modern look -->
-            <div class="absolute top-0 right-0 w-64 h-64 bg-primary bg-opacity-5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
-            <div class="absolute bottom-0 left-0 w-80 h-80 bg-primary bg-opacity-5 rounded-full -ml-40 -mb-40 blur-3xl"></div>
+        <section id="about-contracting" class="py-20 md:py-28 relative overflow-hidden">
+            <!-- Dark gradient background -->
+            <div class="absolute inset-0 bg-[#080808] z-0"></div>
             
-            <div class="container mx-auto px-4">
-                <div class="text-center mb-12 md:mb-16">
-                    <span class="section-subtitle inline-block transform hover:scale-105 transition-transform duration-300">نبذة تعريفية</span>
-                    <h2 class="section-title text-2xl md:text-3xl lg:text-4xl mb-3">خدمات الانشاء والتعمير لدينا</h2>
-                    <div class="section-title-separator mx-auto"></div>
-                </div>
-                
-                <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
-                    <div class="lg:w-1/2 lg:pr-6 mb-10 lg:mb-0 about-content fade-in">
-                        <p class="mb-6 paragraph-lg text-base md:text-lg leading-relaxed">تقدم إيليت عربية خدمات مقاولات متكاملة تشمل الإنشاء والتشييد والتطوير العمراني، من خلال فريق من المهندسين والفنيين المتخصصين في مجال البناء والتشييد.</p>
-                        
-                        <p class="mb-8 paragraph-lg text-base md:text-lg leading-relaxed">نهدف إلى تحقيق أعلى مستويات الجودة والالتزام في تنفيذ مشاريعنا، مع مراعاة احتياجات عملائنا وتقديم الحلول الهندسية المبتكرة.</p>
-                        
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
-                            <div class="feature-item hover-translate bg-white bg-opacity-70 backdrop-filter backdrop-blur-sm p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-r-4 border-primary">
-                                <div class="flex items-center justify-between mb-3">
-                                    <h3 class="feature-title text-xl font-bold text-gray-800">مشاريع إنشائية</h3>
-                                    <i class="fas fa-building feature-icon text-primary text-2xl"></i>
-                                </div>
-                                <div class="border-t border-gray-100 pt-3">
-                                    <p class="feature-text text-gray-600 leading-relaxed">مباني سكنية وتجارية متميزة بتصاميم هندسية حديثة</p>
-                                </div>
-                            </div>
-                            
-                            <div class="feature-item hover-translate bg-white bg-opacity-70 backdrop-filter backdrop-blur-sm p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-r-4 border-primary">
-                                <div class="flex items-center justify-between mb-3">
-                                    <h3 class="feature-title text-xl font-bold text-gray-800">صيانة شاملة</h3>
-                                    <i class="fas fa-tools feature-icon text-primary text-2xl"></i>
-                                </div>
-                                <div class="border-t border-gray-100 pt-3">
-                                    <p class="feature-text text-gray-600 leading-relaxed">خدمات صيانة متكاملة للمباني والمنشآت بكفاءة عالية</p>
-                                </div>
-                            </div>
-                            
-                            <div class="feature-item hover-translate bg-white bg-opacity-70 backdrop-filter backdrop-blur-sm p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-r-4 border-primary">
-                                <div class="flex items-center justify-between mb-3">
-                                    <h3 class="feature-title text-xl font-bold text-gray-800">تصميم معماري</h3>
-                                    <i class="fas fa-pencil-ruler feature-icon text-primary text-2xl"></i>
-                                </div>
-                                <div class="border-t border-gray-100 pt-3">
-                                    <p class="feature-text text-gray-600 leading-relaxed">تصاميم هندسية مبتكرة تلبي تطلعات العملاء</p>
-                                </div>
-                            </div>
-                            
-                            <div class="feature-item hover-translate bg-white bg-opacity-70 backdrop-filter backdrop-blur-sm p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-r-4 border-primary">
-                                <div class="flex items-center justify-between mb-3">
-                                    <h3 class="feature-title text-xl font-bold text-gray-800">إدارة مشاريع</h3>
-                                    <i class="fas fa-hard-hat feature-icon text-primary text-2xl"></i>
-                                </div>
-                                <div class="border-t border-gray-100 pt-3">
-                                    <p class="feature-text text-gray-600 leading-relaxed">إدارة احترافية للمشاريع من التخطيط إلى التسليم</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <a href="#contact" class="btn-primary inline-block px-8 py-3 rounded-full text-white font-bold transform hover:scale-105 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">تواصل معنا</a>
-                    </div>
-                    
-                    <div class="lg:w-1/2 about-images fade-in fade-in-delay-1">
-                        <div class="about-images-container relative">
-                            <div class="about-image-1 transform hover:translate-y-2 transition-transform duration-500">
-                                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="مشروع إنشائي متميز" class="rounded-2xl shadow-2xl object-cover w-full h-full">
-                                <div class="about-image-1-badge absolute top-5 right-5 bg-primary text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                                    <span>جودة عالية</span>
-                                </div>
-                            </div>
-                            
-                            <div class="about-image-2 absolute top-1/4 left-1/4 w-2/3 h-auto z-10 transform -translate-y-1/4 -translate-x-1/4 hover:translate-y-[-22%] hover:translate-x-[-22%] transition-transform duration-500">
-                                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="مشروع بناء حديث" class="rounded-2xl shadow-2xl object-cover w-full h-full">
-                            </div>
-                            
-                            <div class="about-image-3 absolute bottom-0 right-0 w-1/2 h-auto z-20 transform translate-y-1/4 translate-x-1/4 hover:translate-y-[22%] hover:translate-x-[22%] transition-transform duration-500">
-                                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="مشروع إنشائي متميز" class="rounded-2xl shadow-2xl object-cover w-full h-full">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Arabic Divider -->
-        <div class="section-separator">
-            <div class="separator-top"></div>
-            <div class="separator-bottom"></div>
-        </div>
-        
-        <!-- Contracting Benefits Section -->
-        <section id="contracting-benefits" class="py-16 md:py-24 overflow-hidden relative">
-            <!-- Modern background elements -->
-            <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 opacity-70 z-0"></div>
-            <div class="absolute -top-32 -right-32 w-96 h-96 bg-primary opacity-5 rounded-full blur-3xl"></div>
-            <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-primary opacity-5 rounded-full blur-3xl"></div>
-            <div class="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-full h-32 bg-gradient-to-r from-transparent via-primary/5 to-transparent"></div>
+            <!-- Diagonal decorative elements -->
+            <div class="absolute top-0 right-0 w-full h-20 bg-gradient-to-l from-[#d4af37]/10 to-transparent skew-y-3 transform origin-right"></div>
+            <div class="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-r from-[#d4af37]/10 to-transparent -skew-y-3 transform origin-left"></div>
             
+            <!-- Subtle grid pattern -->
+            <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(#d4af37 1px, transparent 1px), linear-gradient(to right, #d4af37 1px, transparent 1px); background-size: 40px 40px;"></div>
+            
+            <!-- Geometric accents -->
+            <div class="absolute top-40 left-10 w-40 h-40 border border-[#d4af37]/20 rounded-full opacity-20"></div>
+            <div class="absolute bottom-40 right-10 w-60 h-60 border border-[#d4af37]/20 rounded-full opacity-20"></div>
+            <div class="absolute top-1/4 right-1/4 w-20 h-20 border-2 border-[#d4af37]/10 rotate-45 opacity-30"></div>
+            
+            <!-- Content container -->
             <div class="container mx-auto px-4 relative z-10">
-                <div class="text-center mb-16 fade-in">
-                    <span class="section-subtitle relative inline-block pb-2 before:content-[''] before:absolute before:bottom-0 before:right-1/4 before:w-1/2 before:h-0.5 before:bg-primary/70">لماذا تختار مقاولاتنا</span>
-                    <h2 class="section-title text-3xl md:text-4xl lg:text-5xl mt-3 font-bold">مميزات التعامل مع إيليت عربية</h2>
-                    <div class="section-title-separator mx-auto"></div>
-                    <p class="max-w-3xl mx-auto mt-6 text-lg leading-relaxed">نقدم خدمات مقاولات متكاملة بمعايير عالمية الجودة، مسايرين رؤية المملكة 2030 في التطوير العمراني والإنشائي المستدام</p>
+                <!-- Asymmetric heading -->
+                <div class="text-left md:text-right mb-16">
+                    <div class="relative inline-block mb-2">
+                        <span class="text-[#d4af37]/90 font-medium relative text-sm uppercase tracking-widest">خبراء البناء والتشييد</span>
+                        <div class="h-px w-0 md:w-40 bg-[#d4af37]/50 absolute -left-0 bottom-0 md:-left-44"></div>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10">
-                    <!-- Benefit 1 -->
-                    <div class="benefit-card group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 text-center relative overflow-hidden fade-in fade-in-delay-1 transform hover:-translate-y-2">
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-primary opacity-5 rounded-full -mt-10 -mr-10 transition-transform duration-500 group-hover:scale-150"></div>
-                        <div class="benefit-icon-wrapper relative mb-6 mx-auto w-20 h-20 flex items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-primary/20 transition-all duration-500 group-hover:scale-110">
-                            <div class="absolute inset-0 rounded-full bg-white opacity-60"></div>
-                            <i class="fas fa-award text-primary text-3xl relative z-10"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-4 text-gray-800">جودة التنفيذ</h3>
-                        <p class="text-gray-600 leading-relaxed">نلتزم بأعلى معايير الجودة في كافة مراحل المشروع، من التصميم الأولي وحتى التسليم النهائي، مع الاهتمام بأدق التفاصيل.</p>
-                    </div>
+                    <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight mb-4">
+                        <span class="block mb-2">خدمات <span class="text-[#d4af37]">الانشاء والتعمير</span></span>
+                        <span class="block">المتميزة والاحترافية</span>
+                    </h2>
                     
-                    <!-- Benefit 2 -->
-                    <div class="benefit-card group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 text-center relative overflow-hidden fade-in fade-in-delay-1 transform hover:-translate-y-2">
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-primary opacity-5 rounded-full -mt-10 -mr-10 transition-transform duration-500 group-hover:scale-150"></div>
-                        <div class="benefit-icon-wrapper relative mb-6 mx-auto w-20 h-20 flex items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-primary/20 transition-all duration-500 group-hover:scale-110">
-                            <div class="absolute inset-0 rounded-full bg-white opacity-60"></div>
-                            <i class="fas fa-clock text-primary text-3xl relative z-10"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-4 text-gray-800">الالتزام بالمواعيد</h3>
-                        <p class="text-gray-600 leading-relaxed">نلتزم بتسليم المشاريع في المواعيد المحددة دون تأخير، مما يوفر على عملائنا الوقت والتكاليف الإضافية المرتبطة بتأخير المشاريع.</p>
-                    </div>
-                    
-                    <!-- Benefit 3 -->
-                    <div class="benefit-card group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 text-center relative overflow-hidden fade-in fade-in-delay-1 transform hover:-translate-y-2">
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-primary opacity-5 rounded-full -mt-10 -mr-10 transition-transform duration-500 group-hover:scale-150"></div>
-                        <div class="benefit-icon-wrapper relative mb-6 mx-auto w-20 h-20 flex items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-primary/20 transition-all duration-500 group-hover:scale-110">
-                            <div class="absolute inset-0 rounded-full bg-white opacity-60"></div>
-                            <i class="fas fa-hard-hat text-primary text-3xl relative z-10"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-4 text-gray-800">فريق متخصص</h3>
-                        <p class="text-gray-600 leading-relaxed">يضم فريقنا نخبة من المهندسين والفنيين ذوي الخبرة والكفاءة العالية في مجال البناء والتشييد والإشراف الهندسي.</p>
-                    </div>
-                    
-                    <!-- Benefit 4 -->
-                    <div class="benefit-card group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 text-center relative overflow-hidden fade-in fade-in-delay-2 transform hover:-translate-y-2">
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-primary opacity-5 rounded-full -mt-10 -mr-10 transition-transform duration-500 group-hover:scale-150"></div>
-                        <div class="benefit-icon-wrapper relative mb-6 mx-auto w-20 h-20 flex items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-primary/20 transition-all duration-500 group-hover:scale-110">
-                            <div class="absolute inset-0 rounded-full bg-white opacity-60"></div>
-                            <i class="fas fa-tools text-primary text-3xl relative z-10"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-4 text-gray-800">أحدث التقنيات</h3>
-                        <p class="text-gray-600 leading-relaxed">نستخدم أحدث التقنيات والمعدات في مجال البناء والتشييد، مما يضمن تنفيذ المشاريع بكفاءة عالية وجودة فائقة.</p>
-                    </div>
-                    
-                    <!-- Benefit 5 -->
-                    <div class="benefit-card group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 text-center relative overflow-hidden fade-in fade-in-delay-2 transform hover:-translate-y-2">
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-primary opacity-5 rounded-full -mt-10 -mr-10 transition-transform duration-500 group-hover:scale-150"></div>
-                        <div class="benefit-icon-wrapper relative mb-6 mx-auto w-20 h-20 flex items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-primary/20 transition-all duration-500 group-hover:scale-110">
-                            <div class="absolute inset-0 rounded-full bg-white opacity-60"></div>
-                            <i class="fas fa-leaf text-primary text-3xl relative z-10"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-4 text-gray-800">بناء مستدام</h3>
-                        <p class="text-gray-600 leading-relaxed">نتبنى مبادئ البناء المستدام والصديق للبيئة، باستخدام مواد صديقة للبيئة وتوفير الطاقة والموارد وفق معايير الاستدامة العالمية.</p>
-                    </div>
-                    
-                    <!-- Benefit 6 -->
-                    <div class="benefit-card group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 text-center relative overflow-hidden fade-in fade-in-delay-2 transform hover:-translate-y-2">
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-primary opacity-5 rounded-full -mt-10 -mr-10 transition-transform duration-500 group-hover:scale-150"></div>
-                        <div class="benefit-icon-wrapper relative mb-6 mx-auto w-20 h-20 flex items-center justify-center rounded-full bg-gradient-to-br from-primary/10 to-primary/20 transition-all duration-500 group-hover:scale-110">
-                            <div class="absolute inset-0 rounded-full bg-white opacity-60"></div>
-                            <i class="fas fa-headset text-primary text-3xl relative z-10"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-4 text-gray-800">خدمة متكاملة</h3>
-                        <p class="text-gray-600 leading-relaxed">نقدم خدمة متكاملة من التصميم إلى التنفيذ والتسليم، مع دعم فني مستمر وخدمات صيانة دورية ما بعد التسليم لضمان رضا العملاء.</p>
-                    </div>
+                    <p class="text-gray-400 max-w-xl md:mr-0 md:ml-auto">
+                        نقدم مجموعة من الخدمات المتكاملة في مجال الإنشاء والتعمير بأعلى معايير الجودة والكفاءة
+                    </p>
                 </div>
                 
-                <div class="text-center mt-14 md:mt-16">
-                    <a href="#contact" class="btn-primary inline-block px-8 py-4 rounded-full text-white font-bold transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 bg-gradient-to-l from-primary to-primary/90 relative overflow-hidden group fade-in fade-in-delay-3">
-                        <span class="relative z-10 text-white">استشارة مجانية</span>
-                        <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
-                    </a>
+                <!-- Card-based design with diagonal arrangement -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
+                    <!-- Main feature card - spans 7 columns -->
+                    <div class="md:col-span-7 relative card-reveal overflow-hidden">
+                        <div class="bg-gradient-to-br from-[#161616] to-[#0a0a0a] rounded-3xl shadow-xl overflow-hidden p-8 md:p-10 border border-[#1a1a1a] h-full relative z-10 group">
+                            <!-- Card shine effect -->
+                            <div class="absolute inset-0 bg-gradient-to-br from-[#d4af37]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                            
+                            <div class="flex flex-col h-full">
+                                <div class="mb-8">
+                                    <div class="w-20 h-20 bg-gradient-to-br from-[#d4af37] to-[#e5c76a] rounded-2xl flex items-center justify-center mb-6 rotate-6 shadow-lg">
+                                        <i class="fas fa-building text-black text-3xl"></i>
+                                </div>
+                                    
+                                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">مشاريع إنشائية متميزة</h3>
+                                    <p class="text-gray-300 mb-6 md:text-lg leading-relaxed">
+                                        تقدم إيليت عربية خدمات مقاولات متكاملة تشمل الإنشاء والتشييد والتطوير العمراني، من خلال فريق من المهندسين والفنيين المتخصصين لتحقيق أعلى مستويات الجودة.
+                                    </p>
+                                    </div>
+                                
+                                <!-- Statistics with new design -->
+                                <div class="grid grid-cols-2 gap-6 mt-auto">
+                                    <div class="stat-item bg-[#111]/50 rounded-2xl p-5 border border-[#d4af37]/5">
+                                        <div class="stat-number text-[#d4af37] text-4xl font-bold mb-2 flex items-end">
+                                            <span class="counter-alt" data-count="150">0</span>
+                                            <span class="text-white/30 text-lg ml-1">+</span>
+                                </div>
+                                        <div class="stat-label text-white/60 text-sm">مشروع منجز</div>
+                            </div>
+                                    <div class="stat-item bg-[#111]/50 rounded-2xl p-5 border border-[#d4af37]/5">
+                                        <div class="stat-number text-[#d4af37] text-4xl font-bold mb-2 flex items-end">
+                                            <span class="counter-alt" data-count="12">0</span>
+                                            <span class="text-white/30 text-lg ml-1">+</span>
+                        </div>
+                                        <div class="stat-label text-white/60 text-sm">سنوات خبرة</div>
+                                </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    <!-- Features column - diagonal arrangement of 3 cards -->
+                    <div class="md:col-span-5 grid grid-cols-1 gap-6 md:gap-8">
+                        <!-- Feature card 1 -->
+                        <div class="feature-card group relative overflow-hidden">
+                            <div class="bg-gradient-to-br from-[#161616] to-[#0a0a0a] rounded-3xl shadow-lg p-6 border border-[#1a1a1a] md:translate-x-8 relative z-10">
+                                <!-- Card shine effect -->
+                                <div class="absolute inset-0 bg-gradient-to-tr from-[#d4af37]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                                
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 w-14 h-14 bg-[#111] rounded-xl flex items-center justify-center mr-5 group-hover:bg-[#d4af37]/10 transition-all duration-300">
+                                        <i class="fas fa-tools text-[#d4af37] text-xl"></i>
+                                </div>
+                                    <div class="flex-grow">
+                                        <h4 class="text-xl font-bold text-white mb-2 group-hover:text-[#d4af37] transition-colors duration-300">صيانة متكاملة</h4>
+                                        <p class="text-gray-400">خدمات صيانة شاملة للمباني والمنشآت بكفاءة عالية وجودة ممتازة</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Feature card 2 - middle offset -->
+                        <div class="feature-card group relative overflow-hidden">
+                            <div class="bg-gradient-to-br from-[#161616] to-[#0a0a0a] rounded-3xl shadow-lg p-6 border border-[#1a1a1a] relative z-10">
+                                <!-- Card shine effect -->
+                                <div class="absolute inset-0 bg-gradient-to-tr from-[#d4af37]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                                
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 w-14 h-14 bg-[#111] rounded-xl flex items-center justify-center mr-5 group-hover:bg-[#d4af37]/10 transition-all duration-300">
+                                        <i class="fas fa-pencil-ruler text-[#d4af37] text-xl"></i>
+                                </div>
+                                    <div class="flex-grow">
+                                        <h4 class="text-xl font-bold text-white mb-2 group-hover:text-[#d4af37] transition-colors duration-300">تصميم معماري</h4>
+                                        <p class="text-gray-400">تصاميم هندسية مبتكرة تلبي تطلعات العملاء وتحقق رؤيتهم</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Feature card 3 -->
+                        <div class="feature-card group relative overflow-hidden">
+                            <div class="bg-gradient-to-br from-[#161616] to-[#0a0a0a] rounded-3xl shadow-lg p-6 border border-[#1a1a1a] md:-translate-x-8 relative z-10">
+                                <!-- Card shine effect -->
+                                <div class="absolute inset-0 bg-gradient-to-tr from-[#d4af37]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                                
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 w-14 h-14 bg-[#111] rounded-xl flex items-center justify-center mr-5 group-hover:bg-[#d4af37]/10 transition-all duration-300">
+                                        <i class="fas fa-hard-hat text-[#d4af37] text-xl"></i>
+                                </div>
+                                    <div class="flex-grow">
+                                        <h4 class="text-xl font-bold text-white mb-2 group-hover:text-[#d4af37] transition-colors duration-300">إدارة المشاريع</h4>
+                                        <p class="text-gray-400">إدارة احترافية للمشاريع من التخطيط حتى التسليم النهائي</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                </div>
+                                    </div>
+                
+                <!-- Bottom section with image and CTA -->
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
+                    <!-- Image gallery card -->
+                    <div class="md:col-span-7 overflow-hidden rounded-3xl relative card-reveal h-[300px] md:h-[400px]">
+                        <!-- Main image -->
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" 
+                             alt="مشروع إنشائي متميز"
+                             class="w-full h-full object-cover">
+                        
+                        <!-- Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                        
+                        <!-- Caption -->
+                        <div class="absolute bottom-0 left-0 right-0 p-8">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-1 bg-[#d4af37]"></div>
+                                <p class="ml-3 text-[#d4af37] text-sm uppercase tracking-wider">مشاريعنا</p>
+                                </div>
+                            <h3 class="text-white text-2xl font-bold">التميز في كل تفاصيل العمل</h3>
+                            </div>
+                        
+                        <!-- Floating detail image -->
+                        <div class="absolute -top-10 -right-10 md:top-10 md:right-10 w-32 h-32 md:w-40 md:h-40 rounded-xl overflow-hidden border-4 border-[#080808] shadow-2xl transform rotate-6 z-20">
+                            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" 
+                                 alt="تفاصيل المشروع"
+                                 class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    
+                    <!-- CTA card -->
+                    <div class="md:col-span-5 card-reveal">
+                        <div class="bg-gradient-to-br from-[#d4af37] to-[#c5a22f] rounded-3xl shadow-xl overflow-hidden p-8 relative group">
+                            <!-- Card shine effect -->
+                            <div class="absolute inset-0 bg-gradient-to-tr from-white/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                            
+                            <h3 class="text-black text-2xl md:text-3xl font-bold mb-4">هل لديك مشروع؟</h3>
+                            <p class="text-black/80 mb-8 md:text-lg">دعنا نحول أفكارك إلى مشاريع واقعية متميزة بأعلى معايير الجودة</p>
+                            
+                            <a href="#contact" class="inline-flex items-center gap-3 bg-black text-white px-8 py-4 rounded-xl font-bold group-hover:bg-black/90 transition-all duration-300 shadow-lg group-hover:shadow-xl">
+                                <span>تواصل معنا</span>
+                                <i class="fas fa-arrow-left text-sm"></i>
+                            </a>
+                    </div>
+                    </div>
                 </div>
             </div>
-        </section>
-        
-        <!-- Arabic Divider -->
-        <div class="section-separator">
-            <div class="separator-top"></div>
-            <div class="separator-bottom"></div>
-        </div>
-        
-        <!-- Featured Projects Section -->
-        <section id="featured-projects" class="py-16 md:py-24 bg-pattern arabic-bg-dark">
-            <div class="container mx-auto px-4">
-                <div class="text-center mb-16 fade-in">
-                    <span class="section-subtitle">مشاريع مميزة</span>
-                    <h2 class="section-title">أحدث مشاريعنا الإنشائية</h2>
-                    <div class="section-title-separator"></div>
-                    <p class="max-w-3xl mx-auto mt-6">نقدم لكم مجموعة متنوعة من المشاريع الإنشائية المميزة التي نفذناها بأعلى معايير الجودة، بدءًا من المباني السكنية الفاخرة وحتى المجمعات التجارية والمنشآت الحكومية</p>
-                </div>
-                
-                <!-- Projects Filter -->
-                <div class="properties-filter mb-10 flex flex-wrap justify-center gap-3 fade-in">
-                    <button class="filter-btn active" data-filter="all">جميع المشاريع</button>
-                    <button class="filter-btn" data-filter="residential">سكني</button>
-                    <button class="filter-btn" data-filter="commercial">تجاري</button>
-                    <button class="filter-btn" data-filter="government">حكومي</button>
-                    <button class="filter-btn" data-filter="infrastructure">بنية تحتية</button>
-                </div>
-                
-                <!-- Swiper -->
-                <div class="properties-swiper swiper fade-in fade-in-delay-1">
-                    <div class="swiper-wrapper">
-                        <!-- Property 1 -->
-                        <div class="swiper-slide" data-category="sale residential">
-                            <div class="property-card">
-                                <div class="property-card-image">
-                                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="فيلا فاخرة" class="w-full h-auto rounded-t-lg">
-                                    <div class="property-type">للبيع</div>
-                                </div>
-                                <div class="property-card-content p-6">
-                                    <h3 class="property-title">فيلا فاخرة بحي الشاطئ</h3>
-                                    <div class="property-location">
-                                        <i class="fas fa-map-marker-alt text-primary mr-2"></i>
-                                        <span>جدة، حي الشاطئ</span>
-                                    </div>
-                                    <div class="property-price">4,500,000 ر.س</div>
-                                    <ul class="property-features grid grid-cols-3 gap-3 mt-4">
-                                        <li>
-                                            <i class="fas fa-bed text-primary mr-2"></i>
-                                            <span>5 غرف نوم</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-bath text-primary mr-2"></i>
-                                            <span>6 حمامات</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-car text-primary mr-2"></i>
-                                            <span>موقفين</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-ruler-combined text-primary mr-2"></i>
-                                            <span>450 م²</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-swimming-pool text-primary mr-2"></i>
-                                            <span>مسبح</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-tree text-primary mr-2"></i>
-                                            <span>حديقة</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Property 2 -->
-                        <div class="swiper-slide" data-category="rent residential">
-                            <div class="property-card">
-                                <div class="property-card-image">
-                                    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="شقة دوبلكس" class="w-full h-auto rounded-t-lg">
-                                    <div class="property-type">للإيجار</div>
-                                </div>
-                                <div class="property-card-content p-6">
-                                    <h3 class="property-title">شقة دوبلكس مفروشة</h3>
-                                    <div class="property-location">
-                                        <i class="fas fa-map-marker-alt text-primary mr-2"></i>
-                                        <span>الرياض، حي المروج</span>
-                                    </div>
-                                    <div class="property-price">110,000 ر.س/سنوياً</div>
-                                    <ul class="property-features grid grid-cols-3 gap-3 mt-4">
-                                        <li>
-                                            <i class="fas fa-bed text-primary mr-2"></i>
-                                            <span>3 غرف نوم</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-bath text-primary mr-2"></i>
-                                            <span>4 حمامات</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-car text-primary mr-2"></i>
-                                            <span>موقف</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-ruler-combined text-primary mr-2"></i>
-                                            <span>210 م²</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-couch text-primary mr-2"></i>
-                                            <span>مفروشة</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-shield-alt text-primary mr-2"></i>
-                                            <span>أمن 24/7</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Property 3 -->
-                        <div class="swiper-slide" data-category="sale commercial">
-                            <div class="property-card">
-                                <div class="property-card-image">
-                                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="فيلا فاخرة" class="w-full h-auto rounded-t-lg" alt="مكتب تجاري" class="w-full h-auto rounded-t-lg">
-                                    <div class="property-type">للبيع</div>
-                                </div>
-                                <div class="property-card-content p-6">
-                                    <h3 class="property-title">مكتب تجاري فاخر</h3>
-                                    <div class="property-location">
-                                        <i class="fas fa-map-marker-alt text-primary mr-2"></i>
-                                        <span>الدمام، حي الأعمال</span>
-                                    </div>
-                                    <div class="property-price">1,800,000 ر.س</div>
-                                    <ul class="property-features grid grid-cols-3 gap-3 mt-4">
-                                        <li>
-                                            <i class="fas fa-door-open text-primary mr-2"></i>
-                                            <span>4 غرف</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-bath text-primary mr-2"></i>
-                                            <span>2 حمامات</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-car text-primary mr-2"></i>
-                                            <span>3 مواقف</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-ruler-combined text-primary mr-2"></i>
-                                            <span>180 م²</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-building text-primary mr-2"></i>
-                                            <span>طابق 5</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-wifi text-primary mr-2"></i>
-                                            <span>إنترنت عالي</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Property 4 -->
-                        <div class="swiper-slide" data-category="sale residential">
-                            <div class="property-card">
-                                <div class="property-card-image">
-                                    <img src="https://images.unsplash.com/photo-1628744876497-eb30460be9f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="قطعة أرض" class="w-full h-auto rounded-t-lg">
-                                    <div class="property-type">للبيع</div>
-                                </div>
-                                <div class="property-card-content p-6">
-                                    <h3 class="property-title">أرض سكنية مميزة</h3>
-                                    <div class="property-location">
-                                        <i class="fas fa-map-marker-alt text-primary mr-2"></i>
-                                        <span>مكة، حي النسيم</span>
-                                    </div>
-                                    <div class="property-price">950,000 ر.س</div>
-                                    <ul class="property-features grid grid-cols-3 gap-3 mt-4">
-                                        <li>
-                                            <i class="fas fa-ruler-combined text-primary mr-2"></i>
-                                            <span>500 م²</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-road text-primary mr-2"></i>
-                                            <span>شارعين</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-compass text-primary mr-2"></i>
-                                            <span>شمالية</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-building text-primary mr-2"></i>
-                                            <span>سكني</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-check-circle text-primary mr-2"></i>
-                                            <span>مخططة</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-water text-primary mr-2"></i>
-                                            <span>خدمات متكاملة</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Property 5 (NEW) -->
-                        <div class="swiper-slide" data-category="rent commercial">
-                            <div class="property-card">
-                                <div class="property-card-image">
-                                    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="معرض تجاري" class="w-full h-auto rounded-t-lg">
-                                    <div class="property-type">للإيجار</div>
-                                </div>
-                                <div class="property-card-content p-6">
-                                    <h3 class="property-title">معرض تجاري فاخر</h3>
-                                    <div class="property-location">
-                                        <i class="fas fa-map-marker-alt text-primary mr-2"></i>
-                                        <span>الرياض، طريق الملك فهد</span>
-                                    </div>
-                                    <div class="property-price">350,000 ر.س/سنوياً</div>
-                                    <ul class="property-features grid grid-cols-3 gap-3 mt-4">
-                                        <li>
-                                            <i class="fas fa-ruler-combined text-primary mr-2"></i>
-                                            <span>320 م²</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-car text-primary mr-2"></i>
-                                            <span>5 مواقف</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-warehouse text-primary mr-2"></i>
-                                            <span>مستودع</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-door-open text-primary mr-2"></i>
-                                            <span>واجهة زجاجية</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-shield-alt text-primary mr-2"></i>
-                                            <span>أمن 24/7</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-map-marked-alt text-primary mr-2"></i>
-                                            <span>موقع مميز</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Property 6 (NEW) -->
-                        <div class="swiper-slide" data-category="sale residential">
-                            <div class="property-card">
-                                <div class="property-card-image">
-                                    <img src="https://images.unsplash.com/photo-1613553507747-5f8d62ad5904?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="فيلا مودرن" class="w-full h-auto rounded-t-lg">
-                                    <div class="property-type">للبيع</div>
-                                </div>
-                                <div class="property-card-content p-6">
-                                    <h3 class="property-title">فيلا مودرن بتصميم فاخر</h3>
-                                    <div class="property-location">
-                                        <i class="fas fa-map-marker-alt text-primary mr-2"></i>
-                                        <span>الرياض، حي الياسمين</span>
-                                    </div>
-                                    <div class="property-price">5,800,000 ر.س</div>
-                                    <ul class="property-features grid grid-cols-3 gap-3 mt-4">
-                                        <li>
-                                            <i class="fas fa-bed text-primary mr-2"></i>
-                                            <span>6 غرف نوم</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-bath text-primary mr-2"></i>
-                                            <span>7 حمامات</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-car text-primary mr-2"></i>
-                                            <span>3 مواقف</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-ruler-combined text-primary mr-2"></i>
-                                            <span>550 م²</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-swimming-pool text-primary mr-2"></i>
-                                            <span>مسبح</span>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-home text-primary mr-2"></i>
-                                            <span>ملحق خارجي</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Add Pagination -->
-                    <div class="properties-pagination swiper-pagination"></div>
-                    
-                    <!-- Add Navigation -->
-                    <div class="properties-button-next swiper-button-next">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                    <div class="properties-button-prev swiper-button-prev">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-        
-            </div>
-        </section>
-        
-        <!-- Arabic Divider -->
-        <div class="section-separator">
-            <div class="separator-top"></div>
-            <div class="separator-bottom"></div>
-        </div>
-        
-        <!-- Contracting Services -->
-        <section id="contracting-services" class="py-16 md:py-24 relative overflow-hidden">
-            <!-- Modern background elements -->
-            <div class="absolute inset-0 bg-gradient-to-b from-white to-gray-50"></div>
-            <div class="absolute left-0 top-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-            <div class="absolute right-0 bottom-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
             
-            <!-- Decorative elements -->
-            <div class="absolute left-5 top-20 w-20 h-20 border-2 border-primary/10 rounded-lg rotate-12 hidden lg:block"></div>
-            <div class="absolute right-10 bottom-40 w-10 h-10 bg-primary/10 rounded-full hidden lg:block"></div>
-            <div class="absolute left-1/2 top-1/3 w-40 h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+            <!-- Custom animations for this section -->
+            <style>
+                @keyframes slideUp {
+                    from { transform: translateY(20px); opacity: 0; }
+                    to { transform: translateY(0); opacity: 1; }
+                }
+                
+                .card-reveal {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                
+                .card-visible {
+                    animation: slideUp 0.8s ease forwards;
+                }
+            </style>
             
-            <div class="container mx-auto px-4 relative z-10">
-                <div class="text-center mb-16 fade-in">
-                    <span class="section-subtitle relative inline-block pb-2 before:content-[''] before:absolute before:bottom-0 before:right-1/4 before:w-1/2 before:h-0.5 before:bg-primary/70">خدماتنا المتميزة</span>
-                    <h2 class="section-title text-3xl md:text-4xl lg:text-5xl mt-3 font-bold">خدمات الانشاء والتعمير التي نقدمها</h2>
-                    <div class="section-title-separator mx-auto"></div>
-                    <p class="max-w-3xl mx-auto mt-6 leading-relaxed">نوفر باقة متكاملة من خدمات الانشاء والتعمير والبناء المتميزة التي تلبي احتياجات عملائنا بأعلى معايير الجودة والاحترافية</p>
-                </div>
-                
-                <!-- Services content - Clean list layout -->
-                <div class="services-list relative py-4">
+            <!-- Animation script -->
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const revealCards = document.querySelectorAll('.card-reveal');
                     
-                    <!-- Service 1 -->
-                    <div class="service-item mb-16 fade-in fade-in-delay-1">
-                        <div class="border-b border-primary/20 pb-8">
-                            <div class="flex items-start">
-                                <div class="service-icon flex items-center justify-center w-16 h-16 bg-primary/10 rounded-lg">
-                                    <i class="fas fa-building text-white text-2xl"></i>
-                                </div>
-                                <div class="mr-6 flex-1">
-                                    <h3 class="service-title text-xl font-bold mb-4 text-gray-800">التشييد والبناء</h3>
-                                    <p class="service-text text-gray-600 mb-6">نقدم خدمات التشييد والبناء المتكاملة للمباني السكنية والتجارية والحكومية وفق أحدث التقنيات ومعايير الجودة العالمية.</p>
-                                    
-                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                        <div class="feature-item flex items-center gap-2">
-                                            <i class="fas fa-layer-group text-primary"></i>
-                                            <span>بناء الهياكل الإنشائية</span>
-                                        </div>
-                                        <div class="feature-item flex items-center gap-2">
-                                            <i class="fas fa-paint-roller text-primary"></i>
-                                            <span>أعمال التشطيبات الداخلية والخارجية</span>
-                                        </div>
-                                        <div class="feature-item flex items-center gap-2">
-                                            <i class="fas fa-check-circle text-primary"></i>
-                                            <span>الالتزام بالمواصفات القياسية</span>
-                                        </div>
-                                        <div class="feature-item flex items-center gap-2">
-                                            <i class="fas fa-boxes text-primary"></i>
-                                            <span>استخدام أفضل المواد والخامات</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach((entry, index) => {
+                            if (entry.isIntersecting) {
+                                // Add delay based on index
+                                setTimeout(() => {
+                                    entry.target.classList.add('card-visible');
+                                }, index * 100);
+                                
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.1 });
                     
-                    <!-- Service 2 -->
-                    <div class="service-item mb-16 fade-in fade-in-delay-1">
-                        <div class="border-b border-primary/20 pb-8">
-                            <div class="flex items-start">
-                                <div class="service-icon flex items-center justify-center w-16 h-16 bg-primary/10 rounded-lg">
-                                    <i class="fas fa-drafting-compass text-white text-2xl"></i>
-                                </div>
-                                <div class="mr-6 flex-1">
-                                    <h3 class="service-title text-xl font-bold mb-4 text-gray-800">التصميم والهندسة</h3>
-                                    <p class="service-text text-gray-600 mb-6">نقدم خدمات التصميم المعماري والهندسي المبتكرة التي تجمع بين الإبداع والوظائف العملية مع مراعاة متطلبات العميل.</p>
-                                    
-                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                        <div class="feature-item flex items-center gap-2">
-                                            <i class="fas fa-pencil-ruler text-primary"></i>
-                                            <span>تصميم معماري إبداعي</span>
-                                        </div>
-                                        <div class="feature-item flex items-center gap-2">
-                                            <i class="fas fa-cubes text-primary"></i>
-                                            <span>تصميم إنشائي متين</span>
-                                        </div>
-                                        <div class="feature-item flex items-center gap-2">
-                                            <i class="fas fa-cogs text-primary"></i>
-                                            <span>تصميم الأنظمة الكهروميكانيكية</span>
-                                        </div>
-                                        <div class="feature-item flex items-center gap-2">
-                                            <i class="fas fa-couch text-primary"></i>
-                                            <span>تصميم داخلي عصري</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    revealCards.forEach(card => {
+                        observer.observe(card);
+                    });
                     
-                    <!-- Featured Service -->
-                    <div class="service-item mb-16 fade-in fade-in-delay-2">
-                        <div class="border-b border-primary/20 pb-8">
-                            <div class="flex items-start">
-                                <div class="service-icon flex items-center justify-center w-16 h-16 bg-primary rounded-lg">
-                                    <i class="fas fa-tasks text-white text-2xl"></i>
-                                </div>
-                                <div class="mr-6 flex-1">
-                                    <h3 class="service-title text-xl font-bold mb-4 text-gray-800">إدارة المشاريع</h3>
-                                    <p class="service-text text-gray-600 mb-6">نوفر خدمات إدارة المشاريع الاحترافية من مرحلة التخطيط حتى التسليم النهائي مع التركيز على الجودة والوقت والتكلفة.</p>
-                                    
-                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                        <div class="feature-item flex items-center gap-2">
-                                            <i class="fas fa-calendar-alt text-primary"></i>
-                                            <span>تخطيط وجدولة المشاريع</span>
-                                        </div>
-                                        <div class="feature-item flex items-center gap-2">
-                                            <i class="fas fa-coins text-primary"></i>
-                                            <span>إدارة الموارد والميزانية</span>
-                                        </div>
-                                        <div class="feature-item flex items-center gap-2">
-                                            <i class="fas fa-hard-hat text-primary"></i>
-                                            <span>الإشراف الهندسي المباشر</span>
-                                        </div>
-                                        <div class="feature-item flex items-center gap-2">
-                                            <i class="fas fa-chart-line text-primary"></i>
-                                            <span>تقارير تقدم العمل الدورية</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    // Counter animation
+                    const counters = document.querySelectorAll('.counter-alt');
+                    const counterObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                const target = +entry.target.getAttribute('data-count');
+                                const increment = target / 40;
+                                
+                                function updateCount() {
+                                    const currentCount = +entry.target.innerText;
+                                    if (currentCount < target) {
+                                        entry.target.innerText = Math.ceil(currentCount + increment);
+                                        setTimeout(updateCount, 30);
+                                    } else {
+                                        entry.target.innerText = target;
+                                    }
+                                }
+                                
+                                updateCount();
+                                counterObserver.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.5 });
                     
-                    <!-- Additional Services Display -->
-                    <div class="additional-services grid grid-cols-1 gap-8 fade-in fade-in-delay-3">
-                        <!-- Service 4 -->
-                        <div class="service-item">
-                            <div class="border-b border-primary/20 pb-8">
-                                <div class="flex items-start">
-                                    <div class="service-icon flex items-center justify-center w-16 h-16 bg-primary/10 rounded-lg">
-                                        <i class="fas fa-city text-white text-xl"></i>
-                                    </div>
-                                    <div class="mr-6 flex-1">
-                                        <h3 class="service-title text-xl font-bold mb-4 text-gray-800">التطوير العقاري</h3>
-                                        <p class="service-text text-gray-600 mb-6">نعمل على تطوير مشاريع عقارية متكاملة تلبي احتياجات السوق مع الالتزام بأعلى معايير الجودة.</p>
-                                        
-                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                            <div class="feature-item flex items-center gap-2">
-                                                <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
-                                                <span>تصميم المشاريع السكنية والتجارية</span>
-                                            </div>
-                                            <div class="feature-item flex items-center gap-2">
-                                                <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
-                                                <span>إدارة مشاريع البناء والتشييد</span>
-                                            </div>
-                                            <div class="feature-item flex items-center gap-2">
-                                                <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
-                                                <span>تنفيذ المشاريع حسب رؤية 2030</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Service 5 -->
-                        <div class="service-item">
-                            <div class="border-b border-primary/20 pb-8">
-                                <div class="flex items-start">
-                                    <div class="service-icon flex items-center justify-center w-16 h-16 bg-primary/10 rounded-lg">
-                                        <i class="fas fa-balance-scale text-white text-xl"></i>
-                                    </div>
-                                    <div class="mr-6 flex-1">
-                                        <h3 class="service-title text-xl font-bold mb-4 text-gray-800">الاستشارات القانونية</h3>
-                                        <p class="service-text text-gray-600 mb-6">نقدم استشارات قانونية متكاملة في المجال العقاري لضمان سلامة التعاملات وحفظ الحقوق.</p>
-                                        
-                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                            <div class="feature-item flex items-center gap-2">
-                                                <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
-                                                <span>صياغة وتدقيق العقود</span>
-                                            </div>
-                                            <div class="feature-item flex items-center gap-2">
-                                                <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
-                                                <span>دراسة الصكوك والمستندات</span>
-                                            </div>
-                                            <div class="feature-item flex items-center gap-2">
-                                                <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
-                                                <span>حل النزاعات العقارية بالتراضي</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Service 6 -->
-                        <div class="service-item">
-                            <div class="border-b border-primary/20 pb-8">
-                                <div class="flex items-start">
-                                    <div class="service-icon flex items-center justify-center w-16 h-16 bg-primary/10 rounded-lg">
-                                            <i class="fas fa-home text-white text-xl"></i>
-                                    </div>
-                                    <div class="mr-6 flex-1">
-                                        <h3 class="service-title text-xl font-bold mb-4 text-gray-800">إدارة الأملاك</h3>
-                                        <p class="service-text text-gray-600 mb-6">نتولى إدارة العقارات نيابة عن المالكين بما يحقق أعلى عائد استثماري مع المحافظة على قيمة الأصول.</p>
-                                        
-                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                            <div class="feature-item flex items-center gap-2">
-                                                <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
-                                                <span>تحصيل الإيجارات والمتابعة</span>
-                                            </div>
-                                            <div class="feature-item flex items-center gap-2">
-                                                <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
-                                                <span>إدارة الصيانة والخدمات</span>
-                                            </div>
-                                            <div class="feature-item flex items-center gap-2">
-                                                <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
-                                                <span>تقارير دورية عن أداء العقار</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="text-center mt-16 fade-in fade-in-delay-3">
-                    <a href="#contact" class="btn-primary inline-block px-8 py-4 rounded-full text-white font-bold transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 bg-gradient-to-l from-primary to-primary/90 relative overflow-hidden group">
-                        <span class="relative z-10 text-white">استشارة مجانية</span>
-                        <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
-                    </a>
-                </div>
-            </div>
+                    counters.forEach(counter => {
+                        counterObserver.observe(counter);
+                    });
+                });
+            </script>
         </section>
         
-        <!-- Arabic Divider -->
-        <div class="section-separator">
-            <div class="separator-top"></div>
-            <div class="separator-bottom"></div>
-        </div>
-        
+  
+
         <!-- Projects Gallery Section -->
-        <section id="projects-gallery" class="py-16 md:py-24 bg-pattern arabic-bg-dark">
-            <div class="arabic-ornament ornament-top-right"></div>
-            <div class="container mx-auto px-4">
+        <section id="projects-gallery" class="py-20 md:py-28 relative overflow-hidden">
+            <!-- Dark gradient background with subtle patterns -->
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] to-[#050505] z-0"></div>
+            <div class="absolute inset-0 opacity-5 z-0" style="background-image: linear-gradient(#d4af37 1px, transparent 1px), linear-gradient(to right, #d4af37 1px, transparent 1px); background-size: 30px 30px;"></div>
+            
+            <!-- Decorative geometric elements -->
+            <div class="absolute top-20 left-10 w-40 h-40 border border-[#d4af37]/10 rounded-full opacity-20"></div>
+            <div class="absolute bottom-40 right-20 w-64 h-64 border border-[#d4af37]/10 rounded-full opacity-20"></div>
+            <div class="absolute top-1/3 right-1/4 w-20 h-20 border-2 border-[#d4af37]/5 rotate-45 opacity-30"></div>
+            
+            <div class="container mx-auto px-4 relative z-10">
+                <!-- Enhanced section header -->
                 <div class="text-center mb-16 fade-in">
-                    <span class="section-subtitle">معرض الصور</span>
-                    <h2 class="section-title">صور من مشاريعنا الإنشائية</h2>
-                    <div class="section-title-separator"></div>
-                    <p class="max-w-3xl mx-auto mt-6">نقدم لكم مجموعة من الصور المميزة لمشاريعنا الإنشائية المختلفة التي تعكس جودة وتميز أعمالنا في مجال الانشاء والتعمير والبناء</p>
+                    <span class="inline-block text-[#d4af37] font-medium text-sm uppercase tracking-widest mb-2">معرض الصور</span>
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">
+                        <span class="block mb-2">صور من <span class="text-[#d4af37]">مشاريعنا</span></span>
+                        <span class="block">الإنشائية المتميزة</span>
+                    </h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-[#d4af37]/30 via-[#d4af37] to-[#d4af37]/30 mx-auto mb-8"></div>
+                    <p class="max-w-3xl mx-auto text-gray-400 leading-relaxed">نقدم لكم مجموعة من الصور المميزة لمشاريعنا الإنشائية المختلفة التي تعكس جودة وتميز أعمالنا في مجال الانشاء والتعمير والبناء</p>
                 </div>
                 
-                <!-- Gallery Filter -->
-                <div class="gallery-filter mb-10 flex flex-wrap justify-center gap-3 fade-in">
-                    <button class="filter-btn active" data-filter="all">جميع الصور</button>
-                    <button class="filter-btn" data-filter="residential">مشاريع سكنية</button>
-                    <button class="filter-btn" data-filter="commercial">مشاريع تجارية</button>
-                    <button class="filter-btn" data-filter="government">مشاريع حكومية</button>
+                <!-- Enhanced Gallery Filter -->
+                <div class="mb-12 flex flex-wrap justify-center gap-4 fade-in">
+                    <button class="gallery-filter-btn active" data-filter="all">
+                        <span>جميع الصور</span>
+                    </button>
+                    <button class="gallery-filter-btn" data-filter="residential">
+                        <span>مشاريع سكنية</span>
+                    </button>
+                    <button class="gallery-filter-btn" data-filter="commercial">
+                        <span>مشاريع تجارية</span>
+                    </button>
+                    <button class="gallery-filter-btn" data-filter="government">
+                        <span>مشاريع حكومية</span>
+                    </button>
                 </div>
                 
-                <!-- Gallery Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 fade-in fade-in-delay-1">
+                <!-- Enhanced Gallery Grid with improved card design -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 fade-in fade-in-delay-1">
                     <!-- Gallery Item 1 -->
-                    <div class="gallery-image cursor-pointer" data-category="exterior">
-                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="فيلا فاخرة" loading="lazy">
-                        <div class="gallery-image-overlay">
-                            <div class="gallery-icon">
-                                <i class="fas fa-search-plus"></i>
+                    <div class="gallery-card group" data-category="exterior">
+                        <div class="gallery-card-inner">
+                            <div class="gallery-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="فيلا فاخرة" loading="lazy" class="gallery-image">
+                                <div class="gallery-overlay">
+                                    <div class="gallery-icon-wrapper">
+                                        <i class="fas fa-search-plus gallery-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-content">
+                                <h3 class="gallery-title">فيلا فاخرة</h3>
+                                <div class="gallery-badge">واجهة خارجية</div>
                             </div>
                         </div>
-                        <div class="gallery-image-badge">واجهة خارجية</div>
                     </div>
                     
                     <!-- Gallery Item 2 -->
-                    <div class="gallery-image cursor-pointer" data-category="interior">
-                        <img src="https://images.unsplash.com/photo-1618219944342-824e40a13285?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="تصميم داخلي فاخر" loading="lazy">
-                        <div class="gallery-image-overlay">
-                            <div class="gallery-icon">
-                                <i class="fas fa-search-plus"></i>
+                    <div class="gallery-card group" data-category="interior">
+                        <div class="gallery-card-inner">
+                            <div class="gallery-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1618219944342-824e40a13285?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="تصميم داخلي فاخر" loading="lazy" class="gallery-image">
+                                <div class="gallery-overlay">
+                                    <div class="gallery-icon-wrapper">
+                                        <i class="fas fa-search-plus gallery-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-content">
+                                <h3 class="gallery-title">تصميم داخلي فاخر</h3>
+                                <div class="gallery-badge">تصميم داخلي</div>
                             </div>
                         </div>
-                        <div class="gallery-image-badge">تصميم داخلي</div>
                     </div>
                     
                     <!-- Gallery Item 3 -->
-                    <div class="gallery-image cursor-pointer" data-category="commercial">
-                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="مكتب تجاري" loading="lazy">
-                        <div class="gallery-image-overlay">
-                            <div class="gallery-icon">
-                                <i class="fas fa-search-plus"></i>
+                    <div class="gallery-card group" data-category="commercial">
+                        <div class="gallery-card-inner">
+                            <div class="gallery-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="مكتب تجاري" loading="lazy" class="gallery-image">
+                                <div class="gallery-overlay">
+                                    <div class="gallery-icon-wrapper">
+                                        <i class="fas fa-search-plus gallery-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-content">
+                                <h3 class="gallery-title">مكتب تجاري</h3>
+                                <div class="gallery-badge">مشروع تجاري</div>
                             </div>
                         </div>
-                        <div class="gallery-image-badge">مشروع تجاري</div>
                     </div>
                     
                     <!-- Gallery Item 4 -->
-                    <div class="gallery-image cursor-pointer" data-category="exterior">
-                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="منزل عصري" loading="lazy">
-                        <div class="gallery-image-overlay">
-                            <div class="gallery-icon">
-                                <i class="fas fa-search-plus"></i>
+                    <div class="gallery-card group" data-category="exterior">
+                        <div class="gallery-card-inner">
+                            <div class="gallery-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="منزل عصري" loading="lazy" class="gallery-image">
+                                <div class="gallery-overlay">
+                                    <div class="gallery-icon-wrapper">
+                                        <i class="fas fa-search-plus gallery-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-content">
+                                <h3 class="gallery-title">منزل عصري</h3>
+                                <div class="gallery-badge">واجهة خارجية</div>
                             </div>
                         </div>
-                        <div class="gallery-image-badge">واجهة خارجية</div>
                     </div>
                     
                     <!-- Gallery Item 5 -->
-                    <div class="gallery-image cursor-pointer" data-category="interior">
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="غرفة معيشة" loading="lazy">
-                        <div class="gallery-image-overlay">
-                            <div class="gallery-icon">
-                                <i class="fas fa-search-plus"></i>
+                    <div class="gallery-card group" data-category="interior">
+                        <div class="gallery-card-inner">
+                            <div class="gallery-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="غرفة معيشة" loading="lazy" class="gallery-image">
+                                <div class="gallery-overlay">
+                                    <div class="gallery-icon-wrapper">
+                                        <i class="fas fa-search-plus gallery-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-content">
+                                <h3 class="gallery-title">غرفة معيشة</h3>
+                                <div class="gallery-badge">تصميم داخلي</div>
                             </div>
                         </div>
-                        <div class="gallery-image-badge">تصميم داخلي</div>
                     </div>
                     
                     <!-- Gallery Item 6 -->
-                    <div class="gallery-image cursor-pointer" data-category="commercial">
-                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="مجمع سكني" loading="lazy">
-                        <div class="gallery-image-overlay">
-                            <div class="gallery-icon">
-                                <i class="fas fa-search-plus"></i>
+                    <div class="gallery-card group" data-category="commercial">
+                        <div class="gallery-card-inner">
+                            <div class="gallery-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="مجمع سكني" loading="lazy" class="gallery-image">
+                                <div class="gallery-overlay">
+                                    <div class="gallery-icon-wrapper">
+                                        <i class="fas fa-search-plus gallery-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-content">
+                                <h3 class="gallery-title">مجمع سكني</h3>
+                                <div class="gallery-badge">مشروع تجاري</div>
                             </div>
                         </div>
-                        <div class="gallery-image-badge">مشروع تجاري</div>
                     </div>
                     
                     <!-- Gallery Item 7 -->
-                    <div class="gallery-image cursor-pointer" data-category="exterior">
-                        <img src="https://images.unsplash.com/photo-1613553497126-a44624272024?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="فيلا مودرن" loading="lazy">
-                        <div class="gallery-image-overlay">
-                            <div class="gallery-icon">
-                                <i class="fas fa-search-plus"></i>
+                    <div class="gallery-card group" data-category="exterior">
+                        <div class="gallery-card-inner">
+                            <div class="gallery-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1613553497126-a44624272024?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="فيلا مودرن" loading="lazy" class="gallery-image">
+                                <div class="gallery-overlay">
+                                    <div class="gallery-icon-wrapper">
+                                        <i class="fas fa-search-plus gallery-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-content">
+                                <h3 class="gallery-title">فيلا مودرن</h3>
+                                <div class="gallery-badge">واجهة خارجية</div>
                             </div>
                         </div>
-                        <div class="gallery-image-badge">واجهة خارجية</div>
                     </div>
                     
                     <!-- Gallery Item 8 -->
-                    <div class="gallery-image cursor-pointer" data-category="interior">
-                        <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="مطبخ فاخر" loading="lazy">
-                        <div class="gallery-image-overlay">
-                            <div class="gallery-icon">
-                                <i class="fas fa-search-plus"></i>
+                    <div class="gallery-card group" data-category="interior">
+                        <div class="gallery-card-inner">
+                            <div class="gallery-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="مطبخ فاخر" loading="lazy" class="gallery-image">
+                                <div class="gallery-overlay">
+                                    <div class="gallery-icon-wrapper">
+                                        <i class="fas fa-search-plus gallery-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-content">
+                                <h3 class="gallery-title">مطبخ فاخر</h3>
+                                <div class="gallery-badge">تصميم داخلي</div>
                             </div>
                         </div>
-                        <div class="gallery-image-badge">تصميم داخلي</div>
                     </div>
                 </div>
             </div>
-            <div class="arabic-ornament ornament-bottom-left"></div>
+            
+            <!-- Add gallery styles -->
+            <style>
+                /* Gallery Filter Button Styles */
+                .gallery-filter-btn {
+                    position: relative;
+                    padding: 0.75rem 1.5rem;
+                    border-radius: 0.5rem;
+                    font-weight: 500;
+                    color: #9ca3af;
+                    background-color: rgba(17, 17, 17, 0.5);
+                    border: 1px solid rgba(212, 175, 55, 0.1);
+                    transition: all 0.3s ease;
+                    overflow: hidden;
+                }
+                
+                .gallery-filter-btn::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 0;
+                    height: 100%;
+                    background-color: rgba(212, 175, 55, 0.1);
+                    transition: width 0.4s ease;
+                    z-index: 1;
+                }
+                
+                .gallery-filter-btn:hover::before {
+                    width: 100%;
+                }
+                
+                .gallery-filter-btn:hover {
+                    color: #d4af37;
+                    border-color: rgba(212, 175, 55, 0.3);
+                }
+                
+                .gallery-filter-btn.active {
+                    color: #d4af37;
+                    background-color: rgba(17, 17, 17, 0.8);
+                    border-color: rgba(212, 175, 55, 0.4);
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                }
+                
+                .gallery-filter-btn span {
+                    position: relative;
+                    z-index: 2;
+                }
+                
+                /* Gallery Card Styles */
+                .gallery-card {
+                    perspective: 1000px;
+                    cursor: pointer;
+                }
+                
+                .gallery-card-inner {
+                    position: relative;
+                    border-radius: 0.75rem;
+                    overflow: hidden;
+                    background-color: #0d0d0d;
+                    border: 1px solid rgba(212, 175, 55, 0.1);
+                    transform-style: preserve-3d;
+                    transition: transform 0.5s ease;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+                }
+                
+                .gallery-card:hover .gallery-card-inner {
+                    transform: translateY(-8px);
+                    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+                    border-color: rgba(212, 175, 55, 0.3);
+                }
+                
+                .gallery-image-wrapper {
+                    position: relative;
+                    overflow: hidden;
+                    aspect-ratio: 16/9;
+                }
+                
+                .gallery-image {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transform: scale(1);
+                    transition: transform 0.7s ease;
+                }
+                
+                .gallery-card:hover .gallery-image {
+                    transform: scale(1.05);
+                }
+                
+                .gallery-overlay {
+                    position: absolute;
+                    inset: 0;
+                    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0) 100%);
+                    opacity: 0;
+                    transition: opacity 0.4s ease;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                
+                .gallery-card:hover .gallery-overlay {
+                    opacity: 1;
+                }
+                
+                .gallery-icon-wrapper {
+                    width: 50px;
+                    height: 50px;
+                    background-color: rgba(212, 175, 55, 0.8);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transform: translateY(20px);
+                    opacity: 0;
+                    transition: all 0.4s ease 0.1s;
+                }
+                
+                .gallery-card:hover .gallery-icon-wrapper {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+                
+                .gallery-icon {
+                    color: #000;
+                    font-size: 1.25rem;
+                }
+                
+                .gallery-content {
+                    padding: 1.25rem;
+                }
+                
+                .gallery-title {
+                    color: white;
+                    font-weight: 600;
+                    font-size: 1.125rem;
+                    margin-bottom: 0.5rem;
+                    transition: color 0.3s ease;
+                }
+                
+                .gallery-card:hover .gallery-title {
+                    color: #d4af37;
+                }
+                
+                .gallery-badge {
+                    display: inline-block;
+                    padding: 0.25rem 0.75rem;
+                    border-radius: 9999px;
+                    font-size: 0.75rem;
+                    background-color: rgba(212, 175, 55, 0.1);
+                    color: #d4af37;
+                    border: 1px solid rgba(212, 175, 55, 0.2);
+                }
+            </style>
         </section>
         
-        <!-- Arabic Divider -->
-        <div class="section-separator">
-            <div class="separator-top"></div>
-            <div class="separator-bottom"></div>
+        <!-- Lightbox Modal for Gallery Images -->
+        <div id="gallery-lightbox" class="lightbox-modal">
+            <div class="lightbox-content">
+                <button class="lightbox-close">&times;</button>
+                <div class="lightbox-navigation">
+                    <button class="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="lightbox-container">
+                    <img src="" alt="" class="lightbox-image">
+                    <div class="lightbox-caption"></div>
+                </div>
+                <div class="lightbox-counter"></div>
+            </div>
         </div>
+
+        <!-- Add Lightbox Styles -->
+        <style>
+            /* Lightbox Styles */
+            .lightbox-modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: rgba(0, 0, 0, 0.95);
+                z-index: 9999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease, visibility 0.3s ease;
+            }
+            
+            .lightbox-modal.active {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .lightbox-content {
+                position: relative;
+                max-width: 90%;
+                max-height: 90%;
+                overflow: hidden;
+                box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+                transform: scale(0.9);
+                opacity: 0;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+            }
+            
+            .lightbox-modal.active .lightbox-content {
+                transform: scale(1);
+                opacity: 1;
+            }
+            
+            .lightbox-container {
+                position: relative;
+                text-align: center;
+            }
+            
+            .lightbox-image {
+                max-width: 100%;
+                max-height: 85vh;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+                border: 1px solid rgba(212, 175, 55, 0.3);
+            }
+            
+            .lightbox-close {
+                position: absolute;
+                top: -40px;
+                right: 0;
+                width: 30px;
+                height: 30px;
+                background-color: rgba(212, 175, 55, 0.8);
+                border: none;
+                border-radius: 50%;
+                color: #000;
+                font-size: 24px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+                z-index: 10;
+            }
+            
+            .lightbox-close:hover {
+                background-color: #d4af37;
+                transform: scale(1.1);
+            }
+            
+            .lightbox-navigation {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                right: 0;
+                transform: translateY(-50%);
+                display: flex;
+                justify-content: space-between;
+                z-index: 10;
+                padding: 0 20px;
+            }
+            
+            .lightbox-prev,
+            .lightbox-next {
+                width: 40px;
+                height: 40px;
+                background-color: rgba(212, 175, 55, 0.6);
+                border: none;
+                border-radius: 50%;
+                color: #000;
+                font-size: 16px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+                opacity: 0.7;
+            }
+            
+            .lightbox-prev:hover,
+            .lightbox-next:hover {
+                background-color: rgba(212, 175, 55, 0.9);
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            
+            .lightbox-caption {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 15px;
+                background-color: rgba(0, 0, 0, 0.7);
+                color: white;
+                text-align: center;
+                font-size: 16px;
+                opacity: 0;
+                transform: translateY(100%);
+                transition: all 0.3s ease;
+            }
+            
+            .lightbox-modal.active .lightbox-caption {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .lightbox-counter {
+                position: absolute;
+                bottom: -30px;
+                left: 0;
+                right: 0;
+                text-align: center;
+                color: #d4af37;
+                font-size: 14px;
+            }
+            
+            /* Loading animation */
+            .lightbox-loading {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 50px;
+                height: 50px;
+                border: 3px solid rgba(212, 175, 55, 0.3);
+                border-radius: 50%;
+                border-top-color: #d4af37;
+                animation: spin 1s ease-in-out infinite;
+            }
+            
+            @keyframes spin {
+                to { transform: translate(-50%, -50%) rotate(360deg); }
+            }
+        </style>
+
+        <!-- Add Gallery Lightbox Script -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Gallery Lightbox functionality
+                const galleryCards = document.querySelectorAll('.gallery-card');
+                const lightbox = document.getElementById('gallery-lightbox');
+                const lightboxImage = lightbox.querySelector('.lightbox-image');
+                const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+                const lightboxClose = lightbox.querySelector('.lightbox-close');
+                const lightboxPrev = lightbox.querySelector('.lightbox-prev');
+                const lightboxNext = lightbox.querySelector('.lightbox-next');
+                const lightboxCounter = lightbox.querySelector('.lightbox-counter');
+                
+                let currentIndex = 0;
+                const images = [];
+                
+                // Collect all gallery images data
+                galleryCards.forEach((card, index) => {
+                    const img = card.querySelector('.gallery-image');
+                    const title = card.querySelector('.gallery-title').textContent;
+                    const badge = card.querySelector('.gallery-badge').textContent;
+                    
+                    images.push({
+                        src: img.getAttribute('src'),
+                        alt: img.getAttribute('alt'),
+                        title: title,
+                        badge: badge
+                    });
+                    
+                    // Add click event to each card
+                    card.addEventListener('click', function() {
+                        openLightbox(index);
+                    });
+                });
+                
+                // Open lightbox with specific image
+                function openLightbox(index) {
+                    currentIndex = index;
+                    updateLightboxContent();
+                    
+                    // Show lightbox with animation
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                    
+                    // Add temporary loading animation
+                    const loadingIndicator = document.createElement('div');
+                    loadingIndicator.className = 'lightbox-loading';
+                    lightbox.querySelector('.lightbox-container').appendChild(loadingIndicator);
+                    
+                    // Preload image
+                    const preloadImage = new Image();
+                    preloadImage.src = images[currentIndex].src;
+                    
+                    preloadImage.onload = function() {
+                        // Remove loading indicator once image is loaded
+                        if (loadingIndicator.parentNode) {
+                            loadingIndicator.parentNode.removeChild(loadingIndicator);
+                        }
+                    };
+                }
+                
+                // Update lightbox content based on current index
+                function updateLightboxContent() {
+                    const image = images[currentIndex];
+                    
+                    // Update image and caption
+                    lightboxImage.src = image.src;
+                    lightboxImage.alt = image.alt;
+                    lightboxCaption.textContent = `${image.title} - ${image.badge}`;
+                    
+                    // Update counter
+                    lightboxCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+                    
+                    // Toggle navigation visibility
+                    lightboxPrev.style.visibility = currentIndex > 0 ? 'visible' : 'hidden';
+                    lightboxNext.style.visibility = currentIndex < images.length - 1 ? 'visible' : 'hidden';
+                }
+                
+                // Navigate to previous image
+                lightboxPrev.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                        updateLightboxContent();
+                    }
+                });
+                
+                // Navigate to next image
+                lightboxNext.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    if (currentIndex < images.length - 1) {
+                        currentIndex++;
+                        updateLightboxContent();
+                    }
+                });
+                
+                // Close lightbox
+                function closeLightbox() {
+                    lightbox.classList.remove('active');
+                    setTimeout(() => {
+                        document.body.style.overflow = ''; // Allow scrolling again
+                    }, 300);
+                }
+                
+                lightboxClose.addEventListener('click', closeLightbox);
+                
+                // Close lightbox when clicking outside the image
+                lightbox.addEventListener('click', function(e) {
+                    if (e.target === lightbox) {
+                        closeLightbox();
+                    }
+                });
+                
+                // Keyboard navigation
+                document.addEventListener('keydown', function(e) {
+                    if (!lightbox.classList.contains('active')) return;
+                    
+                    if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                        currentIndex--;
+                        updateLightboxContent();
+                    } else if (e.key === 'ArrowRight' && currentIndex < images.length - 1) {
+                        currentIndex++;
+                        updateLightboxContent();
+                    } else if (e.key === 'Escape') {
+                        closeLightbox();
+                    }
+                });
+                
+                // Handle swipe gestures on mobile
+                let touchStartX = 0;
+                let touchEndX = 0;
+                
+                lightbox.addEventListener('touchstart', function(e) {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, false);
+                
+                lightbox.addEventListener('touchend', function(e) {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                }, false);
+                
+                function handleSwipe() {
+                    const swipeThreshold = 50;
+                    
+                    if (touchEndX < touchStartX - swipeThreshold) {
+                        // Swipe left - next image
+                        if (currentIndex < images.length - 1) {
+                            currentIndex++;
+                            updateLightboxContent();
+                        }
+                    } else if (touchEndX > touchStartX + swipeThreshold) {
+                        // Swipe right - previous image
+                        if (currentIndex > 0) {
+                            currentIndex--;
+                            updateLightboxContent();
+                        }
+                    }
+                }
+                
+                // Update gallery filter buttons to work with new classes
+                const galleryFilterButtons = document.querySelectorAll('.gallery-filter-btn');
+                
+                galleryFilterButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        // Remove active class from all buttons
+                        galleryFilterButtons.forEach(btn => btn.classList.remove('active'));
+                        // Add active class to the clicked button
+                        this.classList.add('active');
+                        
+                        const filter = this.getAttribute('data-filter');
+                        
+                        galleryCards.forEach(card => {
+                            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+            });
+        </script>
         
         <!-- FAQ Section -->
         <section id="faq" class="py-16 md:py-24 arabic-bg-light">
@@ -2102,149 +1425,6 @@
                 </div>
             </div>
         </section>
-        
-        <!-- Arabic Divider -->
-        <div class="section-separator">
-            <div class="separator-top"></div>
-            <div class="separator-bottom"></div>
-        </div>
-        
-        <!-- Contact Section -->
-        <section id="contact" class="py-16 md:py-24 bg-pattern arabic-bg-dark">
-            <div class="arabic-ornament ornament-top-right"></div>
-            <div class="container mx-auto px-4">
-                <div class="text-center mb-16 fade-in">
-                    <span class="section-subtitle">تواصل معنا</span>
-                    <h2 class="section-title">دعنا نساعدك في إيجاد العقار المناسب</h2>
-                    <div class="section-title-separator"></div>
-                    <p class="max-w-3xl mx-auto mt-6">فريقنا من الخبراء العقاريين في خدمتكم، تواصلوا معنا عبر أحد قنوات الاتصال التالية</p>
-                </div>
-                
-                <div class="contact-enhanced fade-in fade-in-delay-1">
-                    <!-- Contact Card 1 -->
-                    <div class="contact-card-enhanced">
-                        <div class="contact-icon-enhanced">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <h3 class="contact-title-enhanced">اتصل بنا مباشرة</h3>
-                        <p class="contact-info-enhanced">متاح للرد على استفساراتكم طوال أيام الأسبوع من الساعة 9 صباحاً وحتى 10 مساءً</p>
-                        <div class="contact-action">
-                            <a href="tel:+966543900088" class="btn-primary p-3 rounded-2xl ">
-                                <i class="fas fa-phone-alt ml-2 text-white bg-primary rounded-full p-2"></i>
-                                <span class="text-white">0543900088</span>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- Contact Card 2 -->
-                    <div class="contact-card-enhanced">
-                        <div class="contact-icon-enhanced">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <h3 class="contact-title-enhanced">واتساب</h3>
-                        <p class="contact-info-enhanced">تواصل معنا عبر الواتساب للحصول على رد سريع ومباشر من فريق خدمة العملاء</p>
-                        <div class="contact-action">
-                            <a href="https://wa.me/966543900088" class="btn-whatsapp" target="_blank">
-                                <i class="fab fa-whatsapp ml-2"></i>
-                                ارسل رسالة واتساب
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- Contact Card 3 -->
-                    <div class="contact-card-enhanced">
-                        <div class="contact-icon-enhanced">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <h3 class="contact-title-enhanced">البريد الإلكتروني</h3>
-                        <p class="contact-info-enhanced">راسلنا عبر البريد الإلكتروني وسنقوم بالرد عليكم خلال 24 ساعة كحد أقصى</p>
-                        <div class="contact-action">
-                            <a href="mailto:ceo@elitearabia.sa" class="btn-primary-outline">
-                                <i class="fas fa-envelope ml-2"></i>
-                                ceo@elitearabia.sa
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Additional Contact Information -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 fade-in fade-in-delay-2">
-                    <!-- Working Hours -->
-                    <div class="bg-white p-8 rounded-lg shadow-lg">
-                        <h3 class="text-xl font-bold mb-4 text-center">ساعات العمل</h3>
-                        <ul class="space-y-3">
-                            <li class="flex justify-between">
-                                <span class="font-medium">الأحد - الخميس</span>
-                                <span>9:00 ص - 5:00 م</span>
-                            </li>
-                            <li class="flex justify-between">
-                                <span class="font-medium">الجمعة</span>
-                                <span>مغلق</span>
-                            </li>
-                            <li class="flex justify-between">
-                                <span class="font-medium">السبت</span>
-                                <span>10:00 ص - 3:00 م</span>
-                            </li>
-                        </ul>
-                        <div class="mt-6 p-4 bg-gray-100 rounded-lg">
-                            <p class="text-center">متاح للطوارئ العقارية على مدار الساعة</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Office Location -->
-                    <div class="bg-white p-8 rounded-lg shadow-lg">
-                        <h3 class="text-xl font-bold mb-4 text-center">مكتبنا الرئيسي</h3>
-                        <div class="flex justify-center mb-4">
-                            <div class="h-12 w-12 rounded-full bg-primary-light flex items-center justify-center text-primary">
-                                <i class="fas fa-map-marker-alt text-xl"></i>
-                            </div>
-                        </div>
-                        <address class="text-center not-italic mb-4">
-                            المملكة العربية السعودية، جدة<br>
-                            طريق الملك عبدالعزيز، حي النهضة<br>
-                            برج إيليت، الطابق 14
-                        </address>
-                        <div class="text-center">
-                            <a href="https://goo.gl/maps/JuQTkGSGqaE2" target="_blank" class="btn-primary-outline inline-block">
-                                <i class="fas fa-directions ml-2"></i>
-                                احصل على الاتجاهات
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Social Media Links -->
-                <div class="text-center mt-16 fade-in fade-in-delay-3">
-                    <h3 class="text-xl font-bold mb-6 text-[#1f3250 ]">تابعنا على وسائل التواصل الاجتماعي</h3>
-                    <div class="flex justify-center gap-6">
-                        <a href="#" class="social-link-lg" aria-label="تويتر">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-link-lg" aria-label="فيسبوك">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-link-lg" aria-label="انستقرام">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-link-lg" aria-label="لينكد إن">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="social-link-lg" aria-label="يوتيوب">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="arabic-ornament ornament-bottom-left"></div>
-        </section>
-        
-        <!-- Arabic Divider -->
-        <div class="section-separator">
-            <div class="separator-top"></div>
-            <div class="separator-bottom"></div>
-        </div>
-        
-
     </main>
     
     <!-- Footer -->
@@ -2759,7 +1939,34 @@
             if (counters.length > 0) {
                 counterObserver.observe(counters[0].parentElement.parentElement);
             }
+            
+            // Preloader script
+            const preloader = document.querySelector('.preloader');
+            const preloaderProgress = document.querySelector('.preloader-progress');
+            
+            // Simulate loading progress
+            let width = 0;
+            const interval = setInterval(function() {
+                width += Math.floor(Math.random() * 10) + 1;
+                if (width > 100) width = 100;
+                preloaderProgress.style.width = width + '%';
+                
+                if (width === 100) {
+                    clearInterval(interval);
+                    // Add small delay before hiding preloader
+                    setTimeout(() => {
+                        preloader.classList.add('fade-out');
+                        document.body.classList.add('loaded');
+                        
+                        // Remove preloader from DOM after transition
+                        setTimeout(() => {
+                            preloader.style.display = 'none';
+                        }, 500);
+                    }, 500);
+                }
+            }, 100);
         });
     </script>
 </body>
+</html> 
 </html> 
