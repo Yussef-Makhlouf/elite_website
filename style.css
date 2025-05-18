@@ -239,7 +239,7 @@ header {
 
 /* White background when scrolled */
 .header-transparent.scrolled {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(15, 23, 42, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow-md);
     padding: 0.7rem 0;
@@ -253,7 +253,7 @@ header {
 }
 
 .header-transparent.scrolled .logo {
-    color: var(--primary-color);
+    color: var(--accent-color);
     text-shadow: none;
 }
 
@@ -264,11 +264,12 @@ header {
 }
 
 .header-transparent.scrolled .nav-link {
-    color: var(--gray-700);
+    color: var(--neutral-light);
     text-shadow: none;
 }
 
-.header-transparent .nav-link:hover {
+.header-transparent .nav-link:hover,
+.header-transparent.scrolled .nav-link:hover {
     color: var(--accent-color);
 }
 
@@ -283,8 +284,8 @@ header {
 }
 
 .header-transparent.scrolled .menu-toggle {
-    color: var(--primary-color);
-    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--neutral-light);
+    background-color: rgba(212, 175, 55, 0.2);
 }
 
 .navbar {

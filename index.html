@@ -1982,16 +1982,207 @@
             visibility: hidden;
         }
     </style>
+    
+    <style>
+        /* Preloader Styles - Dark Theme with Gold Accents */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #050505;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .preloader.fade-out {
+            opacity: 0;
+        }
+
+        .preloader-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .arabic-symbol {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: pulse-gold 2s infinite ease-in-out;
+        }
+
+        .arabic-symbol::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            animation: spin-slow 10s linear infinite;
+        }
+
+        .arabic-symbol::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 1px dashed rgba(212, 175, 55, 0.2);
+            border-radius: 50%;
+            animation: spin-reverse 15s linear infinite;
+        }
+
+        .preloader-logo span {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #d4af37;
+            margin-top: 0.5rem;
+        }
+
+        .preloader-container {
+            width: 250px;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .preloader-progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg,
+                    rgba(212, 175, 55, 0.5) 0%,
+                    rgba(242, 215, 105, 0.8) 50%,
+                    rgba(212, 175, 55, 0.5) 100%);
+            background-size: 200% auto;
+            border-radius: 10px;
+            animation: loading 2s ease forwards, shine 2s linear infinite;
+        }
+
+        .preloader-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5h30v30H30zM0 5h30v30H0z' fill='none' stroke='%23d4af37' stroke-opacity='0.1' stroke-width='1'/%3E%3Cpath d='M30 35h30v30H30zM0 35h30v30H0z' fill='none' stroke='%23d4af37' stroke-opacity='0.1' stroke-width='1'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            z-index: -1;
+        }
+        
+        /* Grid background for preloader */
+        .preloader::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(212, 175, 55, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        @keyframes loading {
+            0% {
+                width: 0%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes pulse-gold {
+            0% {
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 20px rgba(212, 175, 55, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+            }
+        }
+
+        @keyframes spin-slow {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin-reverse {
+            from {
+                transform: rotate(360deg);
+            }
+
+            to {
+                transform: rotate(0deg);
+            }
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* Gold shimmer effect for special elements */
+        .gold-shimmer {
+            background: linear-gradient(90deg,
+                    rgba(212, 175, 55, 0.5) 0%,
+                    rgba(242, 215, 105, 0.7) 25%,
+                    rgba(212, 175, 55, 0.5) 50%,
+                    rgba(242, 215, 105, 0.7) 75%,
+                    rgba(212, 175, 55, 0.5) 100%);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+        }
+
+        /* Remove preloader after loading */
+        body.loaded .preloader {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
 </head>
 
 <body>
     <!-- Preloader -->
     <div class="preloader">
         <div class="preloader-logo">
-            <div class="arabic-symbol">
-                <img src="./image/logo2.png" alt="Elite Arabia Logo" class="preloader-logo-image">
-            </div>
-            <span class="gold-shimmer">Elite Arabia</span>
+            <img src="./image/logo.png" alt="Elite Arabia Logo" class="h-12 w-auto bg-white rounded-full p-2">
+            <span class="gold-shimmer">التميز العربي </span>
         </div>
         <div class="preloader-container">
             <div class="preloader-progress"></div>
@@ -2011,7 +2202,6 @@
                     <a href="#home" class="nav-link navbar-item">الرئيسية</a>
                     <a href="#about" class="nav-link navbar-item">من نحن</a>
                     <a href="#services" class="nav-link navbar-item">خدماتنا</a>
-                    <!-- <a href="#vision" class="nav-link navbar-item">رؤية 2030</a> -->
                     <a href="#projects" class="nav-link navbar-item">مشاريعنا</a>
                     <a href="./real-estate.html" class="nav-link navbar-item">الانشاء والتعمير</a>
                     <a href="#contact" class="nav-link navbar-item">تواصل معنا</a>
@@ -2025,35 +2215,34 @@
         </div>
     </header>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
-        <button class="mobile-menu-close" aria-label="إغلاق القائمة">
-            <i class="fas fa-times"></i>
-        </button>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+            <button class="mobile-menu-close" aria-label="إغلاق القائمة">
+                <i class="fas fa-times"></i>
+            </button>
 
-        <div class="mobile-menu-logo">
-            <div class="mobile-symbol"></div>
-            <span>Elite Arabia</span>
+            <div class="mobile-menu-logo">
+                <img src="./image/logo.png" alt="Elite Arabia Logo" class="h-12 w-auto bg-white rounded-full p-2">
+                <span>التميز العربي </span>
+            </div>
+
+            <nav class="mobile-menu-links">
+                <a href="#home" class="nav-link" aria-label="الرئيسية">الرئيسية</a>
+                <a href="#about" class="nav-link" aria-label="من نحن">من نحن</a>
+                <a href="#services" class="nav-link" aria-label="خدماتنا">خدماتنا</a>
+                <a href="#projects" class="nav-link" aria-label="مشاريعنا">مشاريعنا</a>
+                <a href="/real-estate.html" class="nav-link" aria-label="العقارات">الانشاء والتعمير</a>
+                <a href="#contact" class="nav-link" aria-label="تواصل معنا">تواصل معنا</a>
+            </nav>
+
+            <div class="mobile-menu-social">
+                <a href="https://x.com/elite_arabiaa" class="mobile-social-link" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61576089823907" class="mobile-social-link" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/elite_arabiaa?igsh=MTd0NXRiaWMyM2dtZw==" class="mobile-social-link" aria-label="انستقرام"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@elite_arabiaa" class="mobile-social-link" aria-label="تيك توك"> <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
         </div>
-
-        <nav class="mobile-menu-links">
-            <a href="#home" class="nav-link" aria-label="الرئيسية">الرئيسية</a>
-            <a href="#about" class="nav-link" aria-label="من نحن">من نحن</a>
-            <a href="#services" class="nav-link" aria-label="خدماتنا">خدماتنا</a>
-            <!-- <a href="#vision" class="nav-link" aria-label="رؤية 2030">رؤية 2030</a> -->
-            <a href="#projects" class="nav-link" aria-label="مشاريعنا">مشاريعنا</a>
-            <a href="/real-estate.html" class="nav-link" aria-label="العقارات">الانشاء والتعمير</a>
-            <a href="#contact" class="nav-link" aria-label="تواصل معنا">تواصل معنا</a>
-        </nav>
-
-        <div class="mobile-menu-social">
-            <a href="#" class="mobile-social-link" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="mobile-social-link" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="mobile-social-link" aria-label="انستقرام"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="mobile-social-link" aria-label="تيك توك"> <i class="fab fa-tiktok"></i>
-            </a>
-        </div>
-    </div>
 
     <main>
         <!-- Hero Section -->
@@ -2459,58 +2648,6 @@
         </section>
 
 
-        <!-- Services Gallery Section -->
-        <!-- <section id="services-gallery" class="py-16 bg-neutral-light arabic-pattern">
-            <div class="container mx-auto px-4">
-                <div class="section-header section-header-decorated">
-                    <div class="corner-ornament corner-top-right"></div>
-                    <div class="corner-ornament corner-top-left"></div>
-                    <div class="corner-ornament corner-bottom-right"></div>
-                    <div class="corner-ornament corner-bottom-left"></div>
-                    <h2 class="section-title fade-in-heading arabic-decoration">معرض خدماتنا</h2>
-                    <div class="section-divider"></div>
-                    <p class="section-subtitle">نقدم لكم مجموعة متنوعة من الخدمات المميزة لجميع أنواع الفعاليات والمناسبات</p>
-                </div>
-
-                <div class="services-gallery-container">
-                    <div class="services-gallery-item">
-                        <div class="services-gallery-image">
-                            <img src="./image/services/serv1.png" alt="خدمات إيليت ١" loading="lazy">
-                        </div>
-                    </div>
-                    <div class="services-gallery-item">
-                        <div class="services-gallery-image">
-                            <img src="./image/services/serv2.png" alt="خدمات إيليت ٢" loading="lazy">
-                        </div>
-                    </div>
-                    <div class="services-gallery-item">
-                        <div class="services-gallery-image">
-                            <img src="./image/services/serv3.png" alt="خدمات إيليت ٣" loading="lazy">
-                        </div>
-                    </div>
-                    <div class="services-gallery-item">
-                        <div class="services-gallery-image">
-                            <img src="./image/services/serv4.png" alt="خدمات إيليت ٤" loading="lazy">
-                        </div>
-                    </div>
-                    <div class="services-gallery-item">
-                        <div class="services-gallery-image">
-                            <img src="./image/services/serv5.png" alt="خدمات إيليت ٥" loading="lazy">
-                        </div>
-                    </div>
-                    <div class="services-gallery-item">
-                        <div class="services-gallery-image">
-                            <img src="./image/services/serv1.png" alt="خدمات إيليت ٦" loading="lazy">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-
-
-
-        <!-- Vision 2030 Section -->
-
 
 
 
@@ -2527,7 +2664,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 card-container">
                     <div class="project-card hover-card">
                         <div class="project-image-container overflow-hidden rounded-t-xl">
-                            <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
+                            <img src="./image/event4.webp"
                                 alt="مؤتمر الابتكار"
                                 class="project-image w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
                         </div>
@@ -2562,7 +2699,7 @@
 
                     <div class="project-card hover-card">
                         <div class="project-image-container overflow-hidden rounded-t-xl">
-                            <img src="https://images.unsplash.com/photo-1560439513-74b037a25d84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
+                            <img src="./image/event5.webp"
                                 alt="معرض تجاري"
                                 class="project-image w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
                         </div>
@@ -2580,7 +2717,7 @@
 
                     <div class="project-card hover-card">
                         <div class="project-image-container overflow-hidden rounded-t-xl">
-                            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
+                            <img src="./image/event7.avif"
                                 alt="حفل إطلاق منتج"
                                 class="project-image w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
                         </div>
@@ -2672,8 +2809,8 @@
                                         <div>
                                             <h4 class="contact-info-title">الهاتف</h4>
                                             <p class="flex items-center">
-                                                <a href="tel:+966543900088"
-                                                    class="contact-link text-white hover:text-primary-light">0543900088</a>
+                                                <a href="tel:+966559770606"
+                                                    class="contact-link text-white hover:text-primary-light">0559770606</a>
                                                 <span class="inline-block mx-2 text-primary">|</span>
                                                 <a href="https://wa.me/966543900088"
                                                     class="contact-link text-white hover:text-primary-light">
@@ -2705,7 +2842,7 @@
                                             مباشرة</h3>
 
                                         <div class="space-y-5">
-                                            <a href="tel:+966543900088" class="direct-contact-btn phone-btn">
+                                            <a href="tel:+966559770606" class="direct-contact-btn phone-btn">
                                                 <i class="fas fa-phone-alt ml-3"></i>
                                                 <span>اتصل بنا الآن</span>
                                             </a>
@@ -2726,19 +2863,19 @@
                                     <div class="mt-12">
                                         <h4 class="text-xl font-bold text-primary mb-6">تابعنا على</h4>
                                         <div class="social-grid">
-                                            <a href="#" class="social-grid-item">
+                                            <a href="https://x.com/elite_arabiaa" class="social-grid-item">
                                                 <i class="fab fa-twitter"></i>
                                                 <span>تويتر</span>
                                             </a>
-                                            <a href="#" class="social-grid-item">
+                                            <a href="https://www.facebook.com/profile.php?id=61576089823907" class="social-grid-item">
                                                 <i class="fab fa-facebook-f"></i>
                                                 <span>فيسبوك</span>
                                             </a>
-                                            <a href="#" class="social-grid-item">
+                                            <a href="https://www.instagram.com/elite_arabiaa?igsh=MTd0NXRiaWMyM2dtZw==" class="social-grid-item">
                                                 <i class="fab fa-instagram"></i>
                                                 <span>انستقرام</span>
                                             </a>
-                                            <a href="#" class="social-grid-item">
+                                            <a href="https://www.tiktok.com/@elite_arabiaa" class="social-grid-item">
                                                 <i class="fab fa-tiktok"></i>
                                                 <span>تيك توك</span>
                                             </a>
@@ -2892,17 +3029,6 @@
                     </div>
                 </div>
 
-                <!-- View All Button -->
-                <div class="flex justify-center mt-12">
-                    <div class="flex items-center">
-                        <a href="#" class="view-all-button">
-                            <span>عرض الكل</span>
-                        </a>
-                        <a href="#" class="view-all-back">
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
             </div>
         </section>
     </main>
@@ -2924,16 +3050,16 @@
                     <p class="mb-4">شركة سعودية متخصصة في تنظيم وإدارة الفعاليات بمختلف أنواعها، نعمل بتوافق مع رؤية
                         المملكة 2030.</p>
                     <div class="social-links mt-4">
-                        <a href="#" class="social-link">
+                        <a href="https://x.com/elite_arabiaa" class="social-link">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#" class="social-link">
+                        <a href="https://www.facebook.com/profile.php?id=61576089823907" class="social-link">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="social-link">
+                        <a href="https://www.instagram.com/elite_arabiaa?igsh=MTd0NXRiaWMyM2dtZw==" class="social-link">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="social-link">
+                        <a href="https://www.tiktok.com/@elite_arabiaa" class="social-link">
                             <i class="fab fa-tiktok"></i>
                         </a>
                     </div>
@@ -2945,7 +3071,6 @@
                         <li class="footer-link"><a href="#home">الرئيسية</a></li>
                         <li class="footer-link"><a href="#about">من نحن</a></li>
                         <li class="footer-link"><a href="#services">خدماتنا</a></li>
-                        <li class="footer-link"><a href="#vision">رؤية 2030</a></li>
                         <li class="footer-link"><a href="#projects">مشاريعنا</a></li>
                         <li class="footer-link"><a href="/real-estate.html">العقارات</a></li>
                         <li class="footer-link"><a href="./service-gallery.html">معرض الخدمات</a></li>
@@ -2974,7 +3099,7 @@
                         </li>
                         <li class="footer-contact-item">
                             <i class="fas fa-phone-alt footer-contact-icon"></i>
-                            <span>0543900088</span>
+                            <span>0559770606</span>
                         </li>
                         <li class="footer-contact-item">
                             <i class="fas fa-envelope footer-contact-icon"></i>
@@ -2996,7 +3121,7 @@
         <a href="https://wa.me/966543900088" class="floating-button whatsapp-button" aria-label="واتساب">
             <i class="fab fa-whatsapp"></i>
         </a>
-        <a href="tel:+966543900088" class="floating-button call-button" aria-label="اتصال">
+        <a href="tel:+966559770606" class="floating-button call-button" aria-label="اتصال">
             <i class="fas fa-phone-alt"></i>
         </a>
     </div>

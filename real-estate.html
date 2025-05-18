@@ -28,22 +28,212 @@
     <!-- <script src="js/particles.js"></script> -->
     <!-- <script src="js/magnetic-buttons.js"></script> -->
 
+    <style>
+        /* Preloader Styles - Dark Theme with Gold Accents */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #050505;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .preloader.fade-out {
+            opacity: 0;
+        }
+
+        .preloader-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .arabic-symbol {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: pulse-gold 2s infinite ease-in-out;
+        }
+
+        .arabic-symbol::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            animation: spin-slow 10s linear infinite;
+        }
+
+        .arabic-symbol::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 1px dashed rgba(212, 175, 55, 0.2);
+            border-radius: 50%;
+            animation: spin-reverse 15s linear infinite;
+        }
+
+        .preloader-logo span {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #d4af37;
+            margin-top: 0.5rem;
+        }
+
+        .preloader-container {
+            width: 250px;
+            height: 4px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .preloader-progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg,
+                    rgba(212, 175, 55, 0.5) 0%,
+                    rgba(242, 215, 105, 0.8) 50%,
+                    rgba(212, 175, 55, 0.5) 100%);
+            background-size: 200% auto;
+            border-radius: 10px;
+            animation: loading 2s ease forwards, shine 2s linear infinite;
+        }
+
+        .preloader-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5h30v30H30zM0 5h30v30H0z' fill='none' stroke='%23d4af37' stroke-opacity='0.1' stroke-width='1'/%3E%3Cpath d='M30 35h30v30H30zM0 35h30v30H0z' fill='none' stroke='%23d4af37' stroke-opacity='0.1' stroke-width='1'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            z-index: -1;
+        }
+        
+        /* Grid background for preloader */
+        .preloader::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(212, 175, 55, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        @keyframes loading {
+            0% {
+                width: 0%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes pulse-gold {
+            0% {
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 20px rgba(212, 175, 55, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+            }
+        }
+
+        @keyframes spin-slow {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin-reverse {
+            from {
+                transform: rotate(360deg);
+            }
+
+            to {
+                transform: rotate(0deg);
+            }
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* Gold shimmer effect for special elements */
+        .gold-shimmer {
+            background: linear-gradient(90deg,
+                    rgba(212, 175, 55, 0.5) 0%,
+                    rgba(242, 215, 105, 0.7) 25%,
+                    rgba(212, 175, 55, 0.5) 50%,
+                    rgba(242, 215, 105, 0.7) 75%,
+                    rgba(212, 175, 55, 0.5) 100%);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+        }
+
+        /* Remove preloader after loading */
+        body.loaded .preloader {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
 </head>
 <body>
     <!-- Preloader -->
-    <!-- <div class="preloader">
+    <div class="preloader">
         <div class="preloader-logo">
-            <div class="arabic-symbol">
-                <img src="./image/logo2.png" alt="Elite Arabia Logo" class="preloader-logo-image" >
-            </div>
-            <span>Elite Arabia</span>
+            <img src="./image/logo.png" alt="Elite Arabia Logo" class="h-12 w-auto bg-white rounded-full p-2">
+            <span class="gold-shimmer">التميز العربي </span>
         </div>
         <div class="preloader-container">
             <div class="preloader-progress"></div>
         </div>
-        <div class="preloader-pattern"></div>
+        <div class="preloader-pattern "></div>
     </div>
-                 -->
+                
     <!-- Header -->
     <header id="header" class="header-transparent">
         <div class="container mx-auto px-4">
@@ -54,11 +244,10 @@
                                 <nav class="nav-links hidden md:flex">
                     <a href="#home" class="nav-link navbar-item">الرئيسية</a>
                     <a href="#about-contracting" class="nav-link navbar-item">من نحن</a>
-                    <a href="#contracting-services" class="nav-link navbar-item">خدماتنا</a>
+    
 
                     <a href="#projects-gallery" class="nav-link navbar-item">معرض المشاريع</a>
-                    <a href="#featured-projects" class="nav-link navbar-item">مشاريعنا</a>
-                    <a href="#contact" class="nav-link navbar-item">تواصل معنا</a>
+                  
                     <a href="./index.html" class="nav-link navbar-item">الفعاليات</a>
                 </nav>
                 <!-- Mobile Menu Toggle -->
@@ -76,10 +265,8 @@
         </button>
         
         <div class="mobile-menu-logo">
-            <div class="mobile-symbol">
-                <img src="./image/logo2.png" alt="Elite Arabia Logo" class="h-12 w-auto bg-white rounded-full p-2">
-            </div>
-            <span>Elite Arabia</span>
+            <img src="./image/logo.png" alt="Elite Arabia Logo" class="h-12 w-auto bg-white rounded-full p-2">
+            <span>التميز العربي </span>
         </div>
         
         <nav class="mobile-menu-links">
@@ -94,10 +281,10 @@
         </nav>
         
         <div class="mobile-menu-social">
-            <a href="#" class="mobile-social-link" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="mobile-social-link" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="mobile-social-link" aria-label="انستقرام"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="mobile-social-link" aria-label="لينكد إن"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://x.com/elite_arabiaa" class="mobile-social-link" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61576089823907" class="mobile-social-link" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/elite_arabiaa?igsh=MTd0NXRiaWMyM2dtZw==" class="mobile-social-link" aria-label="انستقرام"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@elite_arabiaa" class="mobile-social-link" aria-label="تيك توك"><i class="fab fa-tiktok"></i></a>
         </div>
     </div>
     
@@ -1443,17 +1630,17 @@
                     <h3 class="footer-column-title">Elite Arabia</h3>
                     <p class="mb-4">شركة سعودية متخصصة في مجال العقار والخدمات العقارية المتكاملة، نعمل بتوافق مع رؤية المملكة 2030.</p>
                     <div class="social-links mt-4">
-                        <a href="#" class="social-link">
+                        <a href="https://x.com/elite_arabiaa" class="social-link">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#" class="social-link">
+                        <a href="https://www.facebook.com/profile.php?id=61576089823907" class="social-link">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="social-link">
+                        <a href="https://www.instagram.com/elite_arabiaa?igsh=MTd0NXRiaWMyM2dtZw==" class="social-link">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-linkedin-in"></i>
+                        <a href="https://www.tiktok.com/@elite_arabiaa" class="social-link">
+                            <i class="fab fa-tiktok"></i>
                         </a>
                     </div>
                 </div>
