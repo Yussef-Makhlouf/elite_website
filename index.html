@@ -29,15 +29,24 @@
     <script src="js/magnetic-buttons.js"></script>
     <style>
         :root {
-            --primary-color: #d4af37; /* Gold color */
-            --primary-dark: #b8860b; /* Darker gold */
-            --primary-light: #f1d78d; /* Lighter gold */
-            --accent-color: #d4af37; /* Gold accent */
-            --bg-dark: #0c0c0c; /* Very dark background */
-            --bg-dark-secondary: #121212; /* Slightly lighter dark background */
-            --text-light: #f8f8f8; /* Light text for dark backgrounds */
-            --text-gold: #d4af37; /* Gold text */
-            --text-gold-light: #f1d78d; /* Lighter gold text */
+            --primary-color: #d4af37;
+            /* Gold color */
+            --primary-dark: #b8860b;
+            /* Darker gold */
+            --primary-light: #f1d78d;
+            /* Lighter gold */
+            --accent-color: #d4af37;
+            /* Gold accent */
+            --bg-dark: #0c0c0c;
+            /* Very dark background */
+            --bg-dark-secondary: #121212;
+            /* Slightly lighter dark background */
+            --text-light: #f8f8f8;
+            /* Light text for dark backgrounds */
+            --text-gold: #d4af37;
+            /* Gold text */
+            --text-gold-light: #f1d78d;
+            /* Lighter gold text */
         }
 
         body {
@@ -82,15 +91,15 @@
         .nav-link:hover {
             color: var(--text-gold-light);
         }
-        
+
         .nav-link:hover::after {
             width: 100%;
         }
-        
+
         .navbar-item.active {
             color: var(--primary-light);
         }
-        
+
         .navbar-item.active::after {
             width: 100%;
         }
@@ -110,7 +119,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         #about::before {
             content: '';
             position: absolute;
@@ -124,17 +133,17 @@
             opacity: 0.15;
             z-index: 0;
         }
-        
+
         #about .container {
             position: relative;
             z-index: 1;
         }
-        
+
         #vision {
             position: relative;
             overflow: hidden;
         }
-        
+
         #vision::before {
             content: '';
             position: absolute;
@@ -148,7 +157,7 @@
             opacity: 0.1;
             z-index: 0;
         }
-        
+
         #vision .container {
             position: relative;
             z-index: 1;
@@ -175,12 +184,12 @@
             position: relative;
             margin-bottom: 3rem;
         }
-        
+
         .section-header-decorated {
             padding: 2rem;
             position: relative;
         }
-        
+
         .corner-ornament {
             position: absolute;
             width: 30px;
@@ -188,35 +197,35 @@
             border: 2px solid rgba(212, 175, 55, 0.3);
             z-index: 2;
         }
-        
+
         .corner-top-right {
             top: 0;
             right: 0;
             border-left: none;
             border-bottom: none;
         }
-        
+
         .corner-top-left {
             top: 0;
             left: 0;
             border-right: none;
             border-bottom: none;
         }
-        
+
         .corner-bottom-right {
             bottom: 0;
             right: 0;
             border-left: none;
             border-top: none;
         }
-        
+
         .corner-bottom-left {
             bottom: 0;
             left: 0;
             border-right: none;
             border-top: none;
         }
-        
+
         .section-title {
             color: var(--text-gold);
             font-size: 2.5rem;
@@ -226,18 +235,18 @@
             display: inline-block;
             margin-bottom: 1rem;
         }
-        
+
         .fade-in-heading {
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 1s forwards;
             animation-delay: 0.3s;
         }
-        
+
         .arabic-decoration {
             position: relative;
         }
-        
+
         .arabic-decoration::before {
             content: '';
             position: absolute;
@@ -268,7 +277,12 @@
         }
 
         /* Cards styling */
-        .about-card, .vision-card, .service-card, .project-card, .testimonial-card, .contact-card {
+        .about-card,
+        .vision-card,
+        .service-card,
+        .project-card,
+        .testimonial-card,
+        .contact-card {
             background-color: rgba(15, 15, 15, 0.85);
             border: 1px solid rgba(212, 175, 55, 0.25);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
@@ -288,7 +302,7 @@
             padding: 2.5rem 1.5rem;
             position: relative;
         }
-        
+
         .about-card::before {
             content: '';
             position: absolute;
@@ -299,7 +313,11 @@
             background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
         }
 
-        .about-card-title, .vision-title, .service-title, .project-title, .testimonial-title {
+        .about-card-title,
+        .vision-title,
+        .service-title,
+        .project-title,
+        .testimonial-title {
             color: var(--text-gold);
             margin-bottom: 1rem;
             font-weight: 700;
@@ -307,8 +325,10 @@
             position: relative;
             display: inline-block;
         }
-        
-        .about-card-title::after, .vision-title::after, .service-title::after {
+
+        .about-card-title::after,
+        .vision-title::after,
+        .service-title::after {
             content: '';
             position: absolute;
             bottom: -5px;
@@ -318,7 +338,9 @@
             background-color: var(--primary-color);
         }
 
-        .about-card-icon, .vision-icon, .service-icon {
+        .about-card-icon,
+        .vision-icon,
+        .service-icon {
             color: var(--primary-color);
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
@@ -385,14 +407,14 @@
             position: relative;
             z-index: 1;
         }
-        
+
         .contact-card {
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
             border: none;
             overflow: hidden;
             position: relative;
         }
-        
+
         .contact-card::before {
             content: '';
             position: absolute;
@@ -406,12 +428,12 @@
             opacity: 0.15;
             z-index: -1;
         }
-        
-        .contact-card > div:first-child {
+
+        .contact-card>div:first-child {
             position: relative;
         }
-        
-        .contact-card > div:first-child::before {
+
+        .contact-card>div:first-child::before {
             content: '';
             position: absolute;
             top: 0;
@@ -421,12 +443,12 @@
             background: linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(10, 10, 10, 0.95));
             z-index: -1;
         }
-        
-        .contact-card > div:last-child {
+
+        .contact-card>div:last-child {
             position: relative;
         }
-        
-        .contact-card > div:last-child::before {
+
+        .contact-card>div:last-child::before {
             content: '';
             position: absolute;
             top: 0;
@@ -436,7 +458,7 @@
             background: rgba(5, 5, 5, 0.95);
             z-index: -1;
         }
-        
+
         .contact-info-icon {
             color: var(--primary-color);
             font-size: 1.5rem;
@@ -457,13 +479,13 @@
             margin-bottom: 0.5rem;
             font-size: 1.1rem;
         }
-        
+
         .contact-info-item {
             margin-bottom: 1.5rem;
             position: relative;
             transition: all 0.3s ease;
         }
-        
+
         .contact-info-item:hover {
             transform: translateX(5px);
         }
@@ -488,13 +510,13 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
         }
-        
+
         .social-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
         }
-        
+
         .social-grid-item {
             display: flex;
             align-items: center;
@@ -505,13 +527,13 @@
             color: var(--text-gold);
             transition: all 0.3s ease;
         }
-        
+
         .social-grid-item:hover {
             background-color: var(--primary-color);
             color: #000;
             transform: scale(1.05);
         }
-        
+
         .social-grid-item i {
             margin-right: 8px;
         }
@@ -530,7 +552,7 @@
             background-color: #050505;
             position: relative;
         }
-        
+
         .hero-section::before {
             content: '';
             position: absolute;
@@ -544,7 +566,7 @@
             opacity: 0.4;
             z-index: 0;
         }
-        
+
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -583,12 +605,14 @@
             color: var(--text-gold);
         }
 
-        .slider-prev, .slider-next {
+        .slider-prev,
+        .slider-next {
             border-color: rgba(212, 175, 55, 0.4);
             color: var(--text-gold);
         }
 
-        .slider-prev:hover, .slider-next:hover {
+        .slider-prev:hover,
+        .slider-next:hover {
             background-color: rgba(212, 175, 55, 0.1);
         }
 
@@ -661,7 +685,8 @@
             color: var(--primary-color);
         }
 
-        .project-tag, .project-location {
+        .project-tag,
+        .project-location {
             color: var(--primary-color);
         }
 
@@ -897,10 +922,11 @@
             height: 100vh;
             min-height: 600px;
             overflow: hidden;
-            background-color: #050505; /* Very dark background */
+            background-color: #050505;
+            /* Very dark background */
             color: #f8f8f8;
         }
-        
+
         .curved-bg-container {
             position: absolute;
             width: 100%;
@@ -910,19 +936,21 @@
             overflow: hidden;
             z-index: 2;
         }
-        
+
         .curved-bg {
             position: absolute;
             width: 140%;
             height: 100%;
             top: 40%;
             left: -20%;
-            background-color: #0a0a0a; /* Slightly lighter dark background */
+            background-color: #0a0a0a;
+            /* Slightly lighter dark background */
             border-radius: 100% 100% 0 0;
             transform: rotate(-10deg);
-            border-top: 1px solid rgba(212, 175, 55, 0.1); /* Subtle gold border */
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            /* Subtle gold border */
         }
-        
+
         /* Background Image Animation Styles */
         .animated-bg-image {
             position: absolute;
@@ -934,7 +962,7 @@
             z-index: 1;
             opacity: 0.6;
         }
-        
+
         .bg-image {
             position: absolute;
             width: 100%;
@@ -942,7 +970,7 @@
             object-fit: cover;
             object-position: center;
         }
-        
+
         .slider-cards-container {
             position: relative;
             width: 40%;
@@ -953,7 +981,7 @@
             display: flex;
             align-items: center;
         }
-        
+
         /* Updated stacked cards styles */
         .slider-cards-stack {
             position: relative;
@@ -961,7 +989,7 @@
             height: 400px;
             perspective: 1000px;
         }
-        
+
         .slider-card {
             position: absolute;
             width: 100%;
@@ -976,36 +1004,37 @@
             cursor: pointer;
             animation: pulse-shadow 3s infinite alternate;
         }
-        
+
         @keyframes pulse-shadow {
             0% {
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             }
+
             100% {
                 box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
             }
         }
-        
+
         .slider-card.active {
             z-index: 30;
             transform: translateX(0) translateY(0) rotateY(0) scale(1);
             opacity: 1;
         }
-        
+
         .slider-card.next-card {
             z-index: 20;
             transform: translateX(-30px) translateY(20px) rotateY(5deg) scale(0.9);
             opacity: 0.8;
             filter: brightness(0.8);
         }
-        
+
         .slider-card.back-card {
             z-index: 10;
             transform: translateX(-60px) translateY(40px) rotateY(10deg) scale(0.8);
             opacity: 0.6;
             filter: brightness(0.6);
         }
-        
+
         .slider-card-inner {
             display: flex;
             flex-direction: column;
@@ -1013,42 +1042,43 @@
             width: 100%;
             backface-visibility: hidden;
         }
-        
+
         .slider-card-image {
             width: 100%;
             overflow: hidden;
         }
-        
+
         .slider-card-image img {
             width: 100%;
             height: auto;
             object-fit: cover;
         }
-        
+
         .slider-card-info {
             padding: 1.5rem;
             background-color: #141414;
             color: #f8f8f8;
             border-top: 1px solid rgba(212, 175, 55, 0.1);
         }
-        
+
         .slider-card-title {
             margin-bottom: 1rem;
             font-size: 1.25rem;
             font-weight: bold;
-            color: #d4af37; /* Gold color */
+            color: #d4af37;
+            /* Gold color */
         }
-        
+
         .slider-card-meta {
             display: flex;
             justify-content: flex-end;
         }
-        
+
         .slider-card-location {
             font-size: 0.875rem;
             color: #ccc;
         }
-        
+
         .slider-navigation {
             position: absolute;
             bottom: -2rem;
@@ -1057,8 +1087,9 @@
             display: flex;
             gap: 1rem;
         }
-        
-        .slider-prev, .slider-next {
+
+        .slider-prev,
+        .slider-next {
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -1067,30 +1098,35 @@
             justify-content: center;
             background-color: transparent;
             border: 1px solid rgba(212, 175, 55, 0.3);
-            color: #d4af37; /* Gold color */
+            color: #d4af37;
+            /* Gold color */
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
-        
-        .slider-prev:hover, .slider-next:hover {
+
+        .slider-prev:hover,
+        .slider-next:hover {
             background-color: rgba(212, 175, 55, 0.1);
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
         }
-        
-        .slider-prev:active, .slider-next:active {
+
+        .slider-prev:active,
+        .slider-next:active {
             transform: scale(0.95);
         }
-        
-        .slider-prev.disabled, .slider-next.disabled {
+
+        .slider-prev.disabled,
+        .slider-next.disabled {
             opacity: 0.5;
             cursor: not-allowed;
             pointer-events: none;
         }
-        
+
         /* Ripple effect for buttons */
-        .slider-prev:after, .slider-next:after {
+        .slider-prev:after,
+        .slider-next:after {
             content: '';
             position: absolute;
             top: 50%;
@@ -1103,27 +1139,29 @@
             transform: scale(1, 1) translate(-50%, -50%);
             transform-origin: 50% 50%;
         }
-        
-        .slider-prev:focus:not(:active)::after, 
+
+        .slider-prev:focus:not(:active)::after,
         .slider-next:focus:not(:active)::after {
             animation: ripple 1s ease-out;
         }
-        
+
         @keyframes ripple {
             0% {
                 transform: scale(0, 0);
                 opacity: 1;
             }
+
             20% {
                 transform: scale(25, 25);
                 opacity: 1;
             }
+
             100% {
                 opacity: 0;
                 transform: scale(40, 40);
             }
         }
-        
+
         .hero-text-container {
             width: 50%;
             padding: 2rem;
@@ -1133,17 +1171,18 @@
             align-items: flex-end;
             z-index: 10;
         }
-        
+
         .hero-main-title {
             font-size: 3.5rem;
             font-weight: bold;
             line-height: 1.2;
             text-align: right;
             margin-bottom: 1rem;
-            color: #d4af37; /* Gold color */
+            color: #d4af37;
+            /* Gold color */
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
-        
+
         .hero-text {
             font-size: 1rem;
             line-height: 1.6;
@@ -1152,66 +1191,66 @@
             max-width: 90%;
             color: #f8f8f8;
         }
-        
+
         /* Responsive adjustments */
         @media (max-width: 1024px) {
             .hero-main-title {
                 font-size: 3rem;
             }
         }
-        
+
         @media (max-width: 768px) {
             .hero-section {
                 height: auto;
                 padding: 6rem 0;
             }
-            
+
             .container {
                 flex-direction: column;
             }
-            
+
             .slider-cards-container {
                 width: 100%;
                 max-width: 100%;
                 margin-bottom: 3rem;
             }
-            
+
             .hero-text-container {
                 width: 100%;
                 justify-content: center;
                 align-items: center;
             }
-            
+
             .hero-main-title {
                 font-size: 2.5rem;
                 text-align: center;
             }
-            
+
             .hero-text {
                 text-align: center;
                 max-width: 100%;
             }
-            
+
             .slider-cards-stack {
                 height: 350px;
                 margin: 0 auto;
                 max-width: 320px;
             }
-            
+
             .slider-card.next-card {
                 transform: translateX(-20px) translateY(20px) rotateY(5deg) scale(0.9);
             }
-            
+
             .slider-card.back-card {
                 transform: translateX(-40px) translateY(40px) rotateY(10deg) scale(0.8);
             }
         }
-        
+
         @media (max-width: 640px) {
             .hero-main-title {
                 font-size: 2rem;
             }
-            
+
             .slider-cards-stack {
                 height: 300px;
                 max-width: 280px;
@@ -1321,7 +1360,8 @@
         .solution-title {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #d4af37; /* Gold color */
+            color: #d4af37;
+            /* Gold color */
             margin: 0;
             text-align: right;
             flex: 1;
@@ -1332,7 +1372,8 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background-color: #d4af37; /* Gold */
+            background-color: #d4af37;
+            /* Gold */
             color: #000;
             padding: 0.75rem 2rem;
             border-radius: 30px;
@@ -1344,7 +1385,8 @@
         }
 
         .view-all-button:hover {
-            background-color: #f1d78d; /* Lighter gold */
+            background-color: #f1d78d;
+            /* Lighter gold */
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(212, 175, 55, 0.3);
         }
@@ -1372,7 +1414,7 @@
             .solutions-section .section-title {
                 font-size: 2rem;
             }
-            
+
             .solution-card-inner {
                 padding: 1.25rem;
             }
@@ -1387,15 +1429,15 @@
             .solutions-section {
                 padding: 4rem 0;
             }
-            
+
             .solutions-section .section-title {
                 font-size: 1.75rem;
             }
-            
+
             .solution-title {
                 font-size: 1rem;
             }
-            
+
             .solutions-section .section-subtitle {
                 font-size: 0.9rem;
             }
@@ -1405,17 +1447,17 @@
             .solutions-section .section-title {
                 font-size: 1.5rem;
             }
-            
+
             .solution-title {
                 font-size: 0.9rem;
             }
-            
+
             .solution-icon {
                 width: 45px;
                 height: 45px;
                 margin-left: 0.75rem;
             }
-            
+
             .solution-card-inner {
                 padding: 1rem;
             }
@@ -1427,36 +1469,38 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         @keyframes shine {
             0% {
                 background-position: -100% 0;
             }
+
             100% {
                 background-position: 200% 0;
             }
         }
-        
+
         /* Gold shimmer effect for special elements */
         .gold-shimmer {
-            background: linear-gradient(90deg, 
-                rgba(212, 175, 55, 0.5) 0%, 
-                rgba(242, 215, 105, 0.7) 25%, 
-                rgba(212, 175, 55, 0.5) 50%, 
-                rgba(242, 215, 105, 0.7) 75%, 
-                rgba(212, 175, 55, 0.5) 100%);
+            background: linear-gradient(90deg,
+                    rgba(212, 175, 55, 0.5) 0%,
+                    rgba(242, 215, 105, 0.7) 25%,
+                    rgba(212, 175, 55, 0.5) 50%,
+                    rgba(242, 215, 105, 0.7) 75%,
+                    rgba(212, 175, 55, 0.5) 100%);
             background-size: 200% auto;
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: shine 3s linear infinite;
         }
-        
+
         /* Enhanced About section feature items */
         .feature-item {
             padding: 1.2rem 1.5rem;
@@ -1468,13 +1512,13 @@
             border-right: 3px solid rgba(212, 175, 55, 0.3);
             overflow: hidden;
         }
-        
+
         .feature-item:hover {
             transform: translateX(5px);
             background-color: rgba(25, 25, 25, 0.7);
             border-right-color: var(--primary-color);
         }
-        
+
         .feature-item::before {
             content: '';
             position: absolute;
@@ -1485,11 +1529,11 @@
             background-color: var(--primary-color);
             transition: height 0.3s ease;
         }
-        
+
         .feature-item:hover::before {
             height: 100%;
         }
-        
+
         .feature-icon {
             font-size: 1.8rem;
             margin-left: 1rem;
@@ -1497,7 +1541,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
+
         /* Enhanced project cards */
         .project-card {
             position: relative;
@@ -1557,7 +1601,8 @@
             justify-content: space-between;
         }
 
-        .project-tag, .project-location {
+        .project-tag,
+        .project-location {
             display: inline-block;
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
@@ -1565,14 +1610,14 @@
             background-color: rgba(212, 175, 55, 0.15);
             color: var(--primary-color);
         }
-        
+
         /* Enhanced footer */
         footer {
             position: relative;
             padding-top: 5rem;
             padding-bottom: 2rem;
         }
-        
+
         footer::before {
             content: '';
             position: absolute;
@@ -1586,7 +1631,7 @@
             opacity: 0.15;
             z-index: 0;
         }
-        
+
         .footer-pattern {
             position: absolute;
             top: 0;
@@ -1597,13 +1642,13 @@
             opacity: 0.1;
             z-index: 0;
         }
-        
+
         .footer-decoration {
             position: relative;
             text-align: center;
             margin-bottom: 3rem;
         }
-        
+
         .footer-decoration::before,
         .footer-decoration::after {
             content: '';
@@ -1613,15 +1658,15 @@
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
         }
-        
+
         .footer-decoration::before {
             left: 0;
         }
-        
+
         .footer-decoration::after {
             right: 0;
         }
-        
+
         .footer-column-title {
             position: relative;
             display: inline-block;
@@ -1629,7 +1674,7 @@
             font-size: 1.3rem;
             font-weight: 600;
         }
-        
+
         .footer-column-title::after {
             content: '';
             position: absolute;
@@ -1639,25 +1684,25 @@
             height: 2px;
             background-color: var(--primary-color);
         }
-        
+
         .social-link {
             margin-right: 0.5rem;
             width: 36px;
             height: 36px;
             transition: all 0.3s ease;
         }
-        
+
         .social-link:hover {
             transform: translateY(-5px);
         }
-        
+
         .footer-link {
             margin-bottom: 0.8rem;
             transition: all 0.3s ease;
             position: relative;
             padding-right: 1.5rem;
         }
-        
+
         .footer-link::before {
             content: '\f054';
             font-family: 'Font Awesome 5 Free';
@@ -1671,21 +1716,21 @@
             opacity: 0;
             transition: all 0.3s ease;
         }
-        
+
         .footer-link:hover {
             padding-right: 1.8rem;
         }
-        
+
         .footer-link:hover::before {
             opacity: 1;
             right: 5px;
         }
-        
+
         .footer-contact-icon {
             color: var(--primary-color);
             margin-left: 0.8rem;
         }
-        
+
         .footer-divider {
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
@@ -1699,7 +1744,7 @@
             padding: 0.5rem;
             border-radius: 10px 10px 0 0;
         }
-        
+
         .slider-main-title {
             color: var(--text-gold);
             font-size: 1.8rem;
@@ -1709,7 +1754,7 @@
             position: relative;
             display: inline-block;
         }
-        
+
         .slider-main-title::after {
             content: '';
             position: absolute;
@@ -1720,43 +1765,51 @@
             height: 2px;
             background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
         }
-        
+
         /* Make slider cards wider on mobile */
         @media (max-width: 768px) {
             .slider-cards-container {
                 width: 90%;
                 margin: 0 auto;
             }
-            
+
             .slider-card {
                 max-width: 350px;
                 margin: 0 auto;
             }
-            
+
             .hero-main-title {
                 font-size: 2.5rem;
                 margin-bottom: 2rem;
             }
         }
-        
+
         /* Make sure the autoplay still works without navigation buttons */
         @keyframes autoSlide {
-            0%, 30% {
+
+            0%,
+            30% {
                 transform: translateX(0) scale(1);
                 z-index: 30;
                 opacity: 1;
             }
-            33%, 63% {
+
+            33%,
+            63% {
                 transform: translateX(-30px) translateY(20px) rotateY(5deg) scale(0.9);
                 z-index: 20;
                 opacity: 0.8;
             }
-            66%, 96% {
+
+            66%,
+            96% {
                 transform: translateX(-60px) translateY(40px) rotateY(10deg) scale(0.8);
                 z-index: 10;
                 opacity: 0.6;
             }
-            97%, 100% {
+
+            97%,
+            100% {
                 transform: translateX(0) scale(1);
                 z-index: 30;
                 opacity: 1;
@@ -1779,11 +1832,11 @@
             opacity: 1;
             transition: opacity 0.5s ease-out;
         }
-        
+
         .preloader.fade-out {
             opacity: 0;
         }
-        
+
         .preloader-logo {
             display: flex;
             flex-direction: column;
@@ -1791,7 +1844,7 @@
             margin-bottom: 2rem;
             position: relative;
         }
-        
+
         .arabic-symbol {
             width: 100px;
             height: 100px;
@@ -1802,7 +1855,7 @@
             position: relative;
             animation: pulse-gold 2s infinite ease-in-out;
         }
-        
+
         .arabic-symbol::before {
             content: '';
             position: absolute;
@@ -1814,7 +1867,7 @@
             border-radius: 50%;
             animation: spin-slow 10s linear infinite;
         }
-        
+
         .arabic-symbol::after {
             content: '';
             position: absolute;
@@ -1826,7 +1879,7 @@
             border-radius: 50%;
             animation: spin-reverse 15s linear infinite;
         }
-        
+
         .preloader-logo-image {
             width: 80px;
             height: 80px;
@@ -1837,7 +1890,7 @@
             background-color: white;
             z-index: 1;
         }
-        
+
         .preloader-logo span {
             font-size: 1.6rem;
             font-weight: 700;
@@ -1845,7 +1898,7 @@
             color: var(--primary-color);
             margin-top: 0.5rem;
         }
-        
+
         .preloader-container {
             width: 250px;
             height: 4px;
@@ -1855,19 +1908,19 @@
             margin-bottom: 2rem;
             position: relative;
         }
-        
+
         .preloader-progress {
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, 
-                rgba(212, 175, 55, 0.5) 0%, 
-                rgba(242, 215, 105, 0.8) 50%, 
-                rgba(212, 175, 55, 0.5) 100%);
+            background: linear-gradient(90deg,
+                    rgba(212, 175, 55, 0.5) 0%,
+                    rgba(242, 215, 105, 0.8) 50%,
+                    rgba(212, 175, 55, 0.5) 100%);
             background-size: 200% auto;
             border-radius: 10px;
             animation: loading 2s ease forwards, shine 2s linear infinite;
         }
-        
+
         .preloader-pattern {
             position: absolute;
             top: 0;
@@ -1878,28 +1931,51 @@
             opacity: 0.05;
             z-index: -1;
         }
-        
+
         @keyframes loading {
-            0% { width: 0%; }
-            100% { width: 100%; }
+            0% {
+                width: 0%;
+            }
+
+            100% {
+                width: 100%;
+            }
         }
-        
+
         @keyframes pulse-gold {
-            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
-            70% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 20px rgba(212, 175, 55, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+            }
         }
-        
+
         @keyframes spin-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
-        
+
         @keyframes spin-reverse {
-            from { transform: rotate(360deg); }
-            to { transform: rotate(0deg); }
+            from {
+                transform: rotate(360deg);
+            }
+
+            to {
+                transform: rotate(0deg);
+            }
         }
-        
+
         /* Remove preloader after loading */
         body.loaded .preloader {
             opacity: 0;
@@ -1974,7 +2050,8 @@
             <a href="#" class="mobile-social-link" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
             <a href="#" class="mobile-social-link" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
             <a href="#" class="mobile-social-link" aria-label="انستقرام"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="mobile-social-link" aria-label="لينكد إن"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="mobile-social-link" aria-label="تيك توك"> <i class="fab fa-tiktok"></i>
+            </a>
         </div>
     </div>
 
@@ -2007,37 +2084,40 @@
                             تفوق التوقعات
                         </h1>
                     </div>
-                    
+
                     <!-- Centered Sliding Cards -->
                     <div class="slider-cards-container mx-auto md:mx-0 max-w-md">
                         <!-- Title above the slider -->
-                        
+
                         <div class="slider-cards-stack">
                             <div class="slider-card active">
                                 <div class="slider-card-inner">
                                     <!-- Title above image -->
-                                 
+
                                     <div class="slider-card-image">
-                                        <img src="./image/services/serv1.png" alt="ملتقى شركاء نجوم للتوظيف" class="w-full object-cover h-64">
+                                        <img src="./image/services/serv1.png" alt="ملتقى شركاء نجوم للتوظيف"
+                                            class="w-full object-cover h-64">
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="slider-card next-card">
                                 <div class="slider-card-inner">
                                     <!-- Title above image -->
-                             
+
                                     <div class="slider-card-image">
-                                        <img src="./image/services/serv2.png" alt="اجتماع الدار الطبي 2023" class="w-full object-cover h-64">
+                                        <img src="./image/services/serv2.png" alt="اجتماع الدار الطبي 2023"
+                                            class="w-full object-cover h-64">
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="slider-card back-card">
                                 <div class="slider-card-inner">
-                                
+
                                     <div class="slider-card-image">
-                                        <img src="./image/services/serv3.png" alt="فعاليةالتميز العربي" class="w-full object-cover h-64">
+                                        <img src="./image/services/serv3.png" alt="فعاليةالتميز العربي"
+                                            class="w-full object-cover h-64">
                                     </div>
                                 </div>
                             </div>
@@ -2046,9 +2126,6 @@
                 </div>
             </div>
         </section>
-
-
-
         <!-- About Us Section -->
         <section id="about" class="py-16 arabic-pattern">
             <div class="container mx-auto px-4">
@@ -2097,8 +2174,7 @@
                     <div class="flex flex-col md:flex-row items-center">
                         <div class="md:w-1/2 mb-8 md:mb-0">
                             <div class="about-image">
-                                <img src="./image/services/serv1.png"
-                                    alt="فريق العمل" class="w-full">
+                                <img src="./image/services/serv1.png" alt="فريق العمل" class="w-full">
                             </div>
                         </div>
                         <div class="md:w-1/2 md:pr-12">
@@ -2149,15 +2225,25 @@
         <!-- CEO Message Section -->
         <section id="ceo-message" class="py-16 bg-gray-50 arabic-pattern relative overflow-hidden">
             <!-- Background elements -->
-            <div class="absolute inset-0 bg-opacity-20" style="background-image: url('./image/bg1.jpg'); background-size: cover; background-position: center; opacity: 0.2; z-index: 0;"></div>
+            <div class="absolute inset-0 bg-opacity-20"
+                style="background-image: url('./image/bg1.jpg'); background-size: cover; background-position: center; opacity: 0.2; z-index: 0;">
+            </div>
             <div class="arabic-pattern-overlay"></div>
-            
+
             <!-- Corner decorations -->
-            <div class="absolute top-0 left-0 w-32 h-32 opacity-30 z-1" style="background-image: url('./image/corner2.png'); background-size: contain; background-repeat: no-repeat; transform: rotate(0deg);"></div>
-            <div class="absolute top-0 right-0 w-32 h-32 opacity-30 z-1" style="background-image: url('./image/corner2.png'); background-size: contain; background-repeat: no-repeat; transform: rotate(90deg);"></div>
-            <div class="absolute bottom-0 right-0 w-32 h-32 opacity-30 z-1" style="background-image: url('./image/corner2.png'); background-size: contain; background-repeat: no-repeat; transform: rotate(180deg);"></div>
-            <div class="absolute bottom-0 left-0 w-32 h-32 opacity-30 z-1" style="background-image: url('./image/corner2.png'); background-size: contain; background-repeat: no-repeat; transform: rotate(270deg);"></div>
-            
+            <div class="absolute top-0 left-0 w-32 h-32 opacity-30 z-1"
+                style="background-image: url('./image/corner2.png'); background-size: contain; background-repeat: no-repeat; transform: rotate(0deg);">
+            </div>
+            <div class="absolute top-0 right-0 w-32 h-32 opacity-30 z-1"
+                style="background-image: url('./image/corner2.png'); background-size: contain; background-repeat: no-repeat; transform: rotate(90deg);">
+            </div>
+            <div class="absolute bottom-0 right-0 w-32 h-32 opacity-30 z-1"
+                style="background-image: url('./image/corner2.png'); background-size: contain; background-repeat: no-repeat; transform: rotate(180deg);">
+            </div>
+            <div class="absolute bottom-0 left-0 w-32 h-32 opacity-30 z-1"
+                style="background-image: url('./image/corner2.png'); background-size: contain; background-repeat: no-repeat; transform: rotate(270deg);">
+            </div>
+
             <div class="container mx-auto px-4 relative z-10">
                 <div class="section-header section-header-decorated">
                     <div class="corner-ornament corner-top-right"></div>
@@ -2174,28 +2260,40 @@
                         <div class="relative z-10">
                             <h3 class="text-2xl font-bold text-primary mb-6 gold-shimmer">الأستاذ / علي حسن الخريصي</h3>
                             <p class="text-lg mb-6 leading-relaxed">
-                                أهلاً بكم في التميز العربي، الشريك الأمثل في صناعة الفعاليات المتميزة. انطلاقاً من رؤيتنا وإيماننا بأهمية الاحترافية والإبداع، نسعى دائماً لتقديم تجارب استثنائية تفوق التوقعات وتترك انطباعاً لا يُنسى.
+                                أهلاً بكم في التميز العربي، الشريك الأمثل في صناعة الفعاليات المتميزة. انطلاقاً من
+                                رؤيتنا وإيماننا بأهمية الاحترافية والإبداع، نسعى دائماً لتقديم تجارب استثنائية تفوق
+                                التوقعات وتترك انطباعاً لا يُنسى.
                             </p>
                             <p class="text-lg mb-6 leading-relaxed">
-                                نفخر في التميز العربي بفريق عمل متميز يجمع بين الخبرة والشغف، ونعمل بالتوافق التام مع رؤية المملكة 2030 لنساهم في بناء مستقبل مشرق ومزدهر.
+                                نفخر في التميز العربي بفريق عمل متميز يجمع بين الخبرة والشغف، ونعمل بالتوافق التام مع
+                                رؤية المملكة 2030 لنساهم في بناء مستقبل مشرق ومزدهر.
                             </p>
                             <p class="text-lg leading-relaxed">
-                                نعدكم بأن نكون دائماً عند حسن ظنكم، وأن نقدم لكم حلولاً متكاملة تناسب تطلعاتكم وتحقق أهدافكم.
+                                نعدكم بأن نكون دائماً عند حسن ظنكم، وأن نقدم لكم حلولاً متكاملة تناسب تطلعاتكم وتحقق
+                                أهدافكم.
                             </p>
-                         
+
                         </div>
                         <!-- Decorative elements inside the card -->
-                        <div class="absolute top-0 right-0 w-20 h-20 opacity-10" style="background-image: url('./image/corner2.png'); background-size: contain; background-repeat: no-repeat;"></div>
-                        <div class="absolute bottom-0 left-0 w-20 h-20 opacity-10" style="background-image: url('./image/corner2.png'); background-size: contain; background-repeat: no-repeat; transform: rotate(180deg);"></div>
+                        <div class="absolute top-0 right-0 w-20 h-20 opacity-10"
+                            style="background-image: url('./image/corner2.png'); background-size: contain; background-repeat: no-repeat;">
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-20 h-20 opacity-10"
+                            style="background-image: url('./image/corner2.png'); background-size: contain; background-repeat: no-repeat; transform: rotate(180deg);">
+                        </div>
                     </div>
-                    
+
                     <!-- CEO Image -->
                     <div class="md:w-1/3 flex justify-center">
                         <div class="relative">
                             <!-- Gold border frame effect -->
-                            <div class="absolute inset-0 border-4 border-primary rounded-xl transform rotate-3 border-opacity-60"></div>
-                            <div class="about-image overflow-hidden rounded-xl border-2 border-primary border-opacity-30 shadow-xl relative">
-                                <img src="./image/event.jpg" alt="الأستاذ علي حسن الخريصي - المدير التنفيذي" class="w-full max-w-md transform hover:scale-105 transition-transform duration-700">
+                            <div
+                                class="absolute inset-0 border-4 border-primary rounded-xl transform rotate-3 border-opacity-60">
+                            </div>
+                            <div
+                                class="about-image overflow-hidden rounded-xl border-2 border-primary border-opacity-30 shadow-xl relative">
+                                <img src="./image/event.jpg" alt="الأستاذ علي حسن الخريصي - المدير التنفيذي"
+                                    class="w-full max-w-md transform hover:scale-105 transition-transform duration-700">
                                 <!-- If there's no CEO image yet, this can be a placeholder -->
                                 <!-- <div class="w-full h-96 bg-gray-800 flex items-center justify-center">
                                     <i class="fas fa-user-tie text-8xl text-primary opacity-30"></i>
@@ -2338,61 +2436,7 @@
                             </div>
                         </div>
 
-                        <div class="swiper-slide">
-                            <div class="service-card hover-card arabic-card swiper-lazy">
-                                <div></div>
-                                <div class="service-card-content h-full">
-                                    <div class="service-icon">
-                                        <i class="fas fa-bullhorn"></i>
-                                    </div>
-                                    <h3 class="service-title">التسويق والعلاقات العامة</h3>
-                                    <p>تقديم خدمات التسويق والعلاقات العامة للفعاليات، وإدارة الحملات الإعلامية والتواصل
-                                        مع وسائل الإعلام.</p>
-                                    <ul class="service-list">
-                                        <li class="service-list-item">
-                                            <i class="fas fa-circle service-list-icon"></i>
-                                            <span>التسويق الرقمي للفعاليات</span>
-                                        </li>
-                                        <li class="service-list-item">
-                                            <i class="fas fa-circle service-list-icon"></i>
-                                            <span>إدارة العلاقات الإعلامية</span>
-                                        </li>
-                                        <li class="service-list-item">
-                                            <i class="fas fa-circle service-list-icon"></i>
-                                            <span>تصميم الهوية البصرية</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="swiper-slide">
-                            <div class="service-card hover-card arabic-card swiper-lazy">
-                                <div></div>
-                                <div class="service-card-content h-full">
-                                    <div class="service-icon">
-                                        <i class="fas fa-cogs"></i>
-                                    </div>
-                                    <h3 class="service-title">الخدمات اللوجستية</h3>
-                                    <p>توفير الخدمات اللوجستية المتكاملة للفعاليات، من النقل والإقامة إلى التجهيزات
-                                        التقنية والضيافة.</p>
-                                    <ul class="service-list">
-                                        <li class="service-list-item">
-                                            <i class="fas fa-circle service-list-icon"></i>
-                                            <span>توفير خدمات النقل والإقامة</span>
-                                        </li>
-                                        <li class="service-list-item">
-                                            <i class="fas fa-circle service-list-icon"></i>
-                                            <span>تجهيز المعدات التقنية</span>
-                                        </li>
-                                        <li class="service-list-item">
-                                            <i class="fas fa-circle service-list-icon"></i>
-                                            <span>خدمات الضيافة والتموين</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Add Pagination -->
@@ -2468,7 +2512,7 @@
         <!-- Vision 2030 Section -->
 
 
-     
+
 
         <!-- Projects Section -->
         <section id="projects" class="py-16 bg-gray-50 arabic-pattern">
@@ -2484,11 +2528,13 @@
                     <div class="project-card hover-card">
                         <div class="project-image-container overflow-hidden rounded-t-xl">
                             <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
-                                alt="مؤتمر الابتكار" class="project-image w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                                alt="مؤتمر الابتكار"
+                                class="project-image w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
                         </div>
                         <div class="project-content p-5 bg-gray-900">
                             <h3 class="project-title mb-2">مؤتمر الابتكار السعودي</h3>
-                            <p class="project-desc text-white text-sm mb-3">تنظيم مؤتمر الابتكار السعودي بمشاركة أكثر من 2000 شخص، وحضور نخبة من
+                            <p class="project-desc text-white text-sm mb-3">تنظيم مؤتمر الابتكار السعودي بمشاركة أكثر من
+                                2000 شخص، وحضور نخبة من
                                 المتحدثين المحليين والدوليين.</p>
                             <div class="project-meta flex justify-between">
                                 <span class="project-tag">مؤتمر</span>
@@ -2499,12 +2545,13 @@
 
                     <div class="project-card hover-card">
                         <div class="project-image-container overflow-hidden rounded-t-xl">
-                            <img src="./image/event.jpg"
-                                alt="مهرجان الفنون" class="project-image w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                            <img src="./image/event.jpg" alt="مهرجان الفنون"
+                                class="project-image w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
                         </div>
                         <div class="project-content p-5 bg-gray-900">
                             <h3 class="project-title mb-2">مهرجان الفنون السعودي</h3>
-                            <p class="project-desc text-white text-sm mb-3">تنظيم مهرجان الفنون السعودي الذي استمر لمدة أسبوع، وشهد مشاركة أكثر
+                            <p class="project-desc text-white text-sm mb-3">تنظيم مهرجان الفنون السعودي الذي استمر لمدة
+                                أسبوع، وشهد مشاركة أكثر
                                 من 100 فنان وحضور أكثر من 50,000 زائر.</p>
                             <div class="project-meta flex justify-between">
                                 <span class="project-tag">مهرجان</span>
@@ -2516,11 +2563,13 @@
                     <div class="project-card hover-card">
                         <div class="project-image-container overflow-hidden rounded-t-xl">
                             <img src="https://images.unsplash.com/photo-1560439513-74b037a25d84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
-                                alt="معرض تجاري" class="project-image w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                                alt="معرض تجاري"
+                                class="project-image w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
                         </div>
                         <div class="project-content p-5 bg-gray-900">
                             <h3 class="project-title mb-2">معرض التجارة الإلكترونية</h3>
-                            <p class="project-desc text-white text-sm mb-3">تنظيم معرض التجارة الإلكترونية بمشاركة أكثر من 200 شركة محلية
+                            <p class="project-desc text-white text-sm mb-3">تنظيم معرض التجارة الإلكترونية بمشاركة أكثر
+                                من 200 شركة محلية
                                 ودولية، وحضور أكثر من 30,000 زائر.</p>
                             <div class="project-meta flex justify-between">
                                 <span class="project-tag">معرض</span>
@@ -2532,11 +2581,13 @@
                     <div class="project-card hover-card">
                         <div class="project-image-container overflow-hidden rounded-t-xl">
                             <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
-                                alt="حفل إطلاق منتج" class="project-image w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                                alt="حفل إطلاق منتج"
+                                class="project-image w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
                         </div>
                         <div class="project-content p-5 bg-gray-900">
                             <h3 class="project-title mb-2">حفل إطلاق منتج تقني</h3>
-                            <p class="project-desc text-white text-sm mb-3">تنظيم حفل إطلاق منتج تقني لإحدى الشركات الكبرى، بحضور نخبة من
+                            <p class="project-desc text-white text-sm mb-3">تنظيم حفل إطلاق منتج تقني لإحدى الشركات
+                                الكبرى، بحضور نخبة من
                                 الشخصيات وتغطية إعلامية واسعة.</p>
                             <div class="project-meta flex justify-between">
                                 <span class="project-tag">حفل إطلاق</span>
@@ -2548,11 +2599,13 @@
                     <div class="project-card hover-card">
                         <div class="project-image-container overflow-hidden rounded-t-xl">
                             <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1046&q=80"
-                                alt="مؤتمر طبي" class="project-image w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                                alt="مؤتمر طبي"
+                                class="project-image w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
                         </div>
                         <div class="project-content p-5 bg-gray-900">
                             <h3 class="project-title mb-2">المؤتمر الطبي السعودي</h3>
-                            <p class="project-desc text-white text-sm mb-3">تنظيم المؤتمر الطبي السعودي بمشاركة أكثر من 1500 طبيب ومتخصص، وحضور
+                            <p class="project-desc text-white text-sm mb-3">تنظيم المؤتمر الطبي السعودي بمشاركة أكثر من
+                                1500 طبيب ومتخصص، وحضور
                                 نخبة من المتحدثين العالميين.</p>
                             <div class="project-meta flex justify-between">
                                 <span class="project-tag">مؤتمر</span>
@@ -2563,12 +2616,13 @@
 
                     <div class="project-card hover-card">
                         <div class="project-image-container overflow-hidden rounded-t-xl">
-                            <img src="./image/cover.png"
-                                alt="مهرجان ثقافي" class="project-image w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
+                            <img src="./image/cover.png" alt="مهرجان ثقافي"
+                                class="project-image w-full h-64 object-cover transition-transform duration-500 hover:scale-110">
                         </div>
                         <div class="project-content p-5 bg-gray-900">
                             <h3 class="project-title mb-2">مهرجان التراث السعودي</h3>
-                            <p class="project-desc text-white text-sm mb-3">تنظيم مهرجان التراث السعودي الذي أبرز جماليات التراث السعودي، وشهد
+                            <p class="project-desc text-white text-sm mb-3">تنظيم مهرجان التراث السعودي الذي أبرز
+                                جماليات التراث السعودي، وشهد
                                 حضور أكثر من 40,000 زائر.</p>
                             <div class="project-meta flex justify-between">
                                 <span class="project-tag">مهرجان</span>
@@ -2580,12 +2634,13 @@
             </div>
         </section>
 
- 
+
         <!-- Contact Section -->
         <section id="contact" class="py-16 arabic-pattern">
             <div class="container mx-auto px-4 relative z-10">
                 <div class="section-header">
-                    <h2 class="section-title fade-in-heading arabic-decoration gold-shimmer" data-text="تواصل معنا">تواصل معنا</h2>
+                    <h2 class="section-title fade-in-heading arabic-decoration gold-shimmer" data-text="تواصل معنا">
+                        تواصل معنا</h2>
                     <div class="section-divider"></div>
                     <p class="section-subtitle">نحن هنا لمساعدتك في تنظيم فعاليتك القادمة. تواصل معنا اليوم للحصول على
                         استشارة مجانية وعرض سعر مخصص.</p>
@@ -2617,9 +2672,11 @@
                                         <div>
                                             <h4 class="contact-info-title">الهاتف</h4>
                                             <p class="flex items-center">
-                                                <a href="tel:+966543900088" class="contact-link text-white hover:text-primary-light">0543900088</a>
+                                                <a href="tel:+966543900088"
+                                                    class="contact-link text-white hover:text-primary-light">0543900088</a>
                                                 <span class="inline-block mx-2 text-primary">|</span>
-                                                <a href="https://wa.me/966543900088" class="contact-link text-white hover:text-primary-light">
+                                                <a href="https://wa.me/966543900088"
+                                                    class="contact-link text-white hover:text-primary-light">
                                                     <i class="fab fa-whatsapp ml-1"></i> واتساب
                                                 </a>
                                             </p>
@@ -2633,7 +2690,8 @@
                                         <div>
                                             <h4 class="contact-info-title">البريد الإلكتروني</h4>
                                             <p><a href="mailto:ceo@elitearabia.sa"
-                                                    class="contact-link text-white hover:text-primary-light">ceo@elitearabia.sa</a></p>
+                                                    class="contact-link text-white hover:text-primary-light">ceo@elitearabia.sa</a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -2643,7 +2701,8 @@
                             <div class="p-8 md:p-10 border-r border-primary-dark border-opacity-20">
                                 <div class="h-full flex flex-col justify-between">
                                     <div>
-                                        <h3 class="text-2xl md:text-3xl font-bold text-primary mb-8 gold-shimmer">تواصل مباشرة</h3>
+                                        <h3 class="text-2xl md:text-3xl font-bold text-primary mb-8 gold-shimmer">تواصل
+                                            مباشرة</h3>
 
                                         <div class="space-y-5">
                                             <a href="tel:+966543900088" class="direct-contact-btn phone-btn">
@@ -2680,8 +2739,8 @@
                                                 <span>انستقرام</span>
                                             </a>
                                             <a href="#" class="social-grid-item">
-                                                <i class="fab fa-linkedin-in"></i>
-                                                <span>لينكد إن</span>
+                                                <i class="fab fa-tiktok"></i>
+                                                <span>تيك توك</span>
                                             </a>
                                         </div>
                                     </div>
@@ -2692,7 +2751,8 @@
 
                     <!-- Business Hours with Gold Accent -->
                     <div class="mt-12 text-center">
-                        <div class="inline-flex items-center px-8 py-4 rounded-full bg-opacity-20 bg-primary border border-primary-dark border-opacity-30">
+                        <div
+                            class="inline-flex items-center px-8 py-4 rounded-full bg-opacity-20 bg-primary border border-primary-dark border-opacity-30">
                             <i class="far fa-clock ml-3 text-primary"></i>
                             <span>ساعات العمل: الأحد - الخميس: 9:00 صباحًا - 5:00 مساءً</span>
                         </div>
@@ -2710,7 +2770,8 @@
                         <span class="text-white opacity-60">حلولنا</span> وخدماتنا
                     </h2>
                     <div class="section-divider bg-white opacity-20 mr-auto ml-0 my-4"></div>
-                    <p class="section-subtitle text-white opacity-80">حلول صُممت خصيصاً لتناسب احتياجات وتطلعات شركتك نحو النجاح</p>
+                    <p class="section-subtitle text-white opacity-80">حلول صُممت خصيصاً لتناسب احتياجات وتطلعات شركتك
+                        نحو النجاح</p>
                 </div>
 
                 <!-- Solutions Grid -->
@@ -2720,9 +2781,15 @@
                         <div class="solution-card-inner">
                             <div class="solution-icon">
                                 <svg viewBox="0 0 72 72" class="solution-svg">
-                                    <path d="M44 22H28c-1.1 0-2 .9-2 2v24c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V24c0-1.1-.9-2-2-2zm0 2v24H28V24h16z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M36 30c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M44 44H28v2h16v-2z" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+                                    <path
+                                        d="M44 22H28c-1.1 0-2 .9-2 2v24c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V24c0-1.1-.9-2-2-2zm0 2v24H28V24h16z"
+                                        fill="currentColor" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M36 30c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z" fill="none"
+                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M44 44H28v2h16v-2z" fill="currentColor" stroke="currentColor"
+                                        stroke-width="1" stroke-linecap="round" />
                                 </svg>
                             </div>
                             <h3 class="solution-title">للمؤتمرات</h3>
@@ -2734,9 +2801,15 @@
                         <div class="solution-card-inner">
                             <div class="solution-icon">
                                 <svg viewBox="0 0 72 72" class="solution-svg">
-                                    <path d="M48 24H24c-1.1 0-2 .9-2 2v20c0 1.1.9 2 2 2h24c1.1 0 2-.9 2-2V26c0-1.1-.9-2-2-2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M40 38H32c-1.1 0-2 .9-2 2v8h12v-8c0-1.1-.9-2-2-2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M36 24v4M28 24v2M44 24v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path
+                                        d="M48 24H24c-1.1 0-2 .9-2 2v20c0 1.1.9 2 2 2h24c1.1 0 2-.9 2-2V26c0-1.1-.9-2-2-2z"
+                                        fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M40 38H32c-1.1 0-2 .9-2 2v8h12v-8c0-1.1-.9-2-2-2z" fill="none"
+                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M36 24v4M28 24v2M44 24v2" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" />
                                 </svg>
                             </div>
                             <h3 class="solution-title">للمعارض</h3>
@@ -2748,10 +2821,15 @@
                         <div class="solution-card-inner">
                             <div class="solution-icon">
                                 <svg viewBox="0 0 72 72" class="solution-svg">
-                                    <path d="M36 22c-7.7 0-14 6.3-14 14s6.3 14 14 14 14-6.3 14-14-6.3-14-14-14z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M36 28c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <circle cx="36" cy="36" r="2" fill="currentColor"/>
-                                    <path d="M36 22v-2M36 52v-2M22 36h-2M52 36h-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path d="M36 22c-7.7 0-14 6.3-14 14s6.3 14 14 14 14-6.3 14-14-6.3-14-14-14z"
+                                        fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M36 28c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z" fill="none"
+                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <circle cx="36" cy="36" r="2" fill="currentColor" />
+                                    <path d="M36 22v-2M36 52v-2M22 36h-2M52 36h-2" stroke="currentColor"
+                                        stroke-width="1.5" stroke-linecap="round" />
                                 </svg>
                             </div>
                             <h3 class="solution-title">للمهرجانات والفعاليات الثقافية</h3>
@@ -2763,9 +2841,14 @@
                         <div class="solution-card-inner">
                             <div class="solution-icon">
                                 <svg viewBox="0 0 72 72" class="solution-svg">
-                                    <path d="M45 22H27c-1.1 0-2 .9-2 2v24c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V24c0-1.1-.9-2-2-2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M35 32h8v8h-8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M29 32h2M29 36h2M29 40h2M35 44h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path
+                                        d="M45 22H27c-1.1 0-2 .9-2 2v24c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V24c0-1.1-.9-2-2-2z"
+                                        fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M35 32h8v8h-8z" fill="none" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M29 32h2M29 36h2M29 40h2M35 44h8" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" />
                                 </svg>
                             </div>
                             <h3 class="solution-title">الحلول والأنظمة التقنية</h3>
@@ -2777,9 +2860,14 @@
                         <div class="solution-card-inner">
                             <div class="solution-icon">
                                 <svg viewBox="0 0 72 72" class="solution-svg">
-                                    <path d="M42 22H30c-1.1 0-2 .9-2 2v24c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V24c0-1.1-.9-2-2-2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M30 28h12M30 36h12M30 44h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                                    <path d="M34 32v-2M38 32v-2M34 40v-2M38 40v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path
+                                        d="M42 22H30c-1.1 0-2 .9-2 2v24c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V24c0-1.1-.9-2-2-2z"
+                                        fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M30 28h12M30 36h12M30 44h12" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" />
+                                    <path d="M34 32v-2M38 32v-2M34 40v-2M38 40v-2" stroke="currentColor"
+                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </div>
                             <h3 class="solution-title">الاتفاقيات الإطارية</h3>
@@ -2791,9 +2879,12 @@
                         <div class="solution-card-inner">
                             <div class="solution-icon">
                                 <svg viewBox="0 0 72 72" class="solution-svg">
-                                    <circle cx="36" cy="36" r="14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M36 30v10M31 35h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M36 22v-2M36 52v-2M22 36h-2M52 36h-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    <circle cx="36" cy="36" r="14" fill="none" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M36 30v10M31 35h10" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M36 22v-2M36 52v-2M22 36h-2M52 36h-2" stroke="currentColor"
+                                        stroke-width="1.5" stroke-linecap="round" />
                                 </svg>
                             </div>
                             <h3 class="solution-title">فعاليات الإتصال الداخلي</h3>
@@ -2843,7 +2934,7 @@
                             <i class="fab fa-instagram"></i>
                         </a>
                         <a href="#" class="social-link">
-                            <i class="fab fa-linkedin-in"></i>
+                            <i class="fab fa-tiktok"></i>
                         </a>
                     </div>
                 </div>
@@ -3026,124 +3117,124 @@
                 }
             });
 
-                            // Initialize Stacked Cards Slider for Hero Section with Automatic Animation
-                function initStackedCardsSlider() {
-                    const cards = document.querySelectorAll('.slider-card');
-                    
-                    if (!cards.length) return;
-                    
-                    // Make sure we have at least 3 cards for proper cycling
-                    if (cards.length < 3) {
-                        console.warn('Stacked cards slider needs at least 3 cards for proper cycling');
-                        return;
-                    }
-                    
-                    let isAnimating = false;
-                    let autoPlayInterval;
-                    
-                    // Set initial classes
-                    function setupInitialClasses() {
-                        cards[0].classList.add('active');
-                        cards[1].classList.add('next-card');
-                        cards[2].classList.add('back-card');
-                        
-                        // Hide any remaining cards
-                        for (let i = 3; i < cards.length; i++) {
-                            cards[i].style.opacity = '0';
-                            cards[i].style.visibility = 'hidden';
-                        }
-                    }
-                    
-                    // Rotate cards forward function
-                    function rotateCardsForward() {
-                        if (isAnimating) return;
-                        isAnimating = true;
-                        
-                        // Get current positions
-                        const activeCard = document.querySelector('.slider-card.active');
-                        const nextCard = document.querySelector('.slider-card.next-card');
-                        const backCard = document.querySelector('.slider-card.back-card');
-                        
-                        // Add visual indicator that animation is happening
-                        activeCard.style.transition = 'all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1)';
-                        nextCard.style.transition = 'all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1)';
-                        backCard.style.transition = 'all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1)';
-                        
-                        // Remove current classes
-                        activeCard.classList.remove('active');
-                        nextCard.classList.remove('next-card');
-                        backCard.classList.remove('back-card');
-                        
-                        // Move active card to back
-                        activeCard.classList.add('back-card');
-                        
-                        // Move next card to active
-                        nextCard.classList.add('active');
-                        
-                        // Move back card to next
-                        backCard.classList.add('next-card');
-                        
-                        // After animation completes
-                        setTimeout(() => {
-                            isAnimating = false;
-                        }, 700); // Slightly faster transition for smoother autoplay
-                    }
-                    
-                    // Start autoplay with a faster rotation
-                    function startAutoPlay() {
-                        stopAutoPlay(); // Clear any existing interval
-                        autoPlayInterval = setInterval(rotateCardsForward, 4000); // 4 seconds per slide
-                    }
-                    
-                    // Stop autoplay
-                    function stopAutoPlay() {
-                        if (autoPlayInterval) {
-                            clearInterval(autoPlayInterval);
-                        }
-                    }
-                    
-                    // Pause on hover
-                    const sliderContainer = document.querySelector('.slider-cards-container');
-                    sliderContainer.addEventListener('mouseenter', stopAutoPlay);
-                    sliderContainer.addEventListener('mouseleave', startAutoPlay);
-                    
-                    // Handle card clicks for manual navigation
-                    cards.forEach(card => {
-                        card.addEventListener('click', () => {
-                            // For simplicity, always rotate forward on any card click
-                            rotateCardsForward();
-                            stopAutoPlay();
-                            startAutoPlay(); // Reset the interval
-                        });
-                    });
-                    
-                    // Initialize
-                    setupInitialClasses();
-                    startAutoPlay();
-                    
-                    // Handle touch events for swiping
-                    let touchStartX = 0;
-                    let touchEndX = 0;
-                    
-                    sliderContainer.addEventListener('touchstart', (e) => {
-                        touchStartX = e.changedTouches[0].screenX;
-                    }, {passive: true});
-                    
-                    sliderContainer.addEventListener('touchend', (e) => {
-                        touchEndX = e.changedTouches[0].screenX;
-                        handleSwipe();
-                    }, {passive: true});
-                    
-                    function handleSwipe() {
-                        // For simplicity, any swipe will rotate forward
-                        rotateCardsForward();
-                        stopAutoPlay();
-                        startAutoPlay();
+            // Initialize Stacked Cards Slider for Hero Section with Automatic Animation
+            function initStackedCardsSlider() {
+                const cards = document.querySelectorAll('.slider-card');
+
+                if (!cards.length) return;
+
+                // Make sure we have at least 3 cards for proper cycling
+                if (cards.length < 3) {
+                    console.warn('Stacked cards slider needs at least 3 cards for proper cycling');
+                    return;
+                }
+
+                let isAnimating = false;
+                let autoPlayInterval;
+
+                // Set initial classes
+                function setupInitialClasses() {
+                    cards[0].classList.add('active');
+                    cards[1].classList.add('next-card');
+                    cards[2].classList.add('back-card');
+
+                    // Hide any remaining cards
+                    for (let i = 3; i < cards.length; i++) {
+                        cards[i].style.opacity = '0';
+                        cards[i].style.visibility = 'hidden';
                     }
                 }
-                
-                // Initialize the stacked cards slider
-                initStackedCardsSlider();
+
+                // Rotate cards forward function
+                function rotateCardsForward() {
+                    if (isAnimating) return;
+                    isAnimating = true;
+
+                    // Get current positions
+                    const activeCard = document.querySelector('.slider-card.active');
+                    const nextCard = document.querySelector('.slider-card.next-card');
+                    const backCard = document.querySelector('.slider-card.back-card');
+
+                    // Add visual indicator that animation is happening
+                    activeCard.style.transition = 'all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1)';
+                    nextCard.style.transition = 'all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1)';
+                    backCard.style.transition = 'all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1)';
+
+                    // Remove current classes
+                    activeCard.classList.remove('active');
+                    nextCard.classList.remove('next-card');
+                    backCard.classList.remove('back-card');
+
+                    // Move active card to back
+                    activeCard.classList.add('back-card');
+
+                    // Move next card to active
+                    nextCard.classList.add('active');
+
+                    // Move back card to next
+                    backCard.classList.add('next-card');
+
+                    // After animation completes
+                    setTimeout(() => {
+                        isAnimating = false;
+                    }, 700); // Slightly faster transition for smoother autoplay
+                }
+
+                // Start autoplay with a faster rotation
+                function startAutoPlay() {
+                    stopAutoPlay(); // Clear any existing interval
+                    autoPlayInterval = setInterval(rotateCardsForward, 4000); // 4 seconds per slide
+                }
+
+                // Stop autoplay
+                function stopAutoPlay() {
+                    if (autoPlayInterval) {
+                        clearInterval(autoPlayInterval);
+                    }
+                }
+
+                // Pause on hover
+                const sliderContainer = document.querySelector('.slider-cards-container');
+                sliderContainer.addEventListener('mouseenter', stopAutoPlay);
+                sliderContainer.addEventListener('mouseleave', startAutoPlay);
+
+                // Handle card clicks for manual navigation
+                cards.forEach(card => {
+                    card.addEventListener('click', () => {
+                        // For simplicity, always rotate forward on any card click
+                        rotateCardsForward();
+                        stopAutoPlay();
+                        startAutoPlay(); // Reset the interval
+                    });
+                });
+
+                // Initialize
+                setupInitialClasses();
+                startAutoPlay();
+
+                // Handle touch events for swiping
+                let touchStartX = 0;
+                let touchEndX = 0;
+
+                sliderContainer.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, { passive: true });
+
+                sliderContainer.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                }, { passive: true });
+
+                function handleSwipe() {
+                    // For simplicity, any swipe will rotate forward
+                    rotateCardsForward();
+                    stopAutoPlay();
+                    startAutoPlay();
+                }
+            }
+
+            // Initialize the stacked cards slider
+            initStackedCardsSlider();
 
             // Initialize Services Swiper
             const servicesSwiper = new Swiper('.services-swiper', {
@@ -3520,9 +3611,9 @@
         });
 
         // Services Gallery Animation
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const galleryItems = document.querySelectorAll('.services-gallery-item');
-            
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry, index) => {
                     if (entry.isIntersecting) {
@@ -3535,7 +3626,7 @@
                     }
                 });
             }, { threshold: 0.2 });
-            
+
             // Set initial style and observe each item
             galleryItems.forEach((item) => {
                 item.style.opacity = '0';
@@ -3546,25 +3637,25 @@
         });
 
         // Preloader script
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Get preloader element
             const preloader = document.querySelector('.preloader');
             const preloaderProgress = document.querySelector('.preloader-progress');
-            
+
             // Simulate loading progress
             let width = 0;
-            const interval = setInterval(function() {
+            const interval = setInterval(function () {
                 width += Math.floor(Math.random() * 10) + 1;
                 if (width > 100) width = 100;
                 preloaderProgress.style.width = width + '%';
-                
+
                 if (width === 100) {
                     clearInterval(interval);
                     // Add small delay before hiding preloader
                     setTimeout(() => {
                         preloader.classList.add('fade-out');
                         document.body.classList.add('loaded');
-                        
+
                         // Remove preloader from DOM after transition
                         setTimeout(() => {
                             preloader.style.display = 'none';
